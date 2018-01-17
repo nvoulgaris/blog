@@ -5,7 +5,7 @@ disqusShortname = ""
 paginate        = 6
 
 [params]
-  title       = "Nikos Voulgaris - Blog"
+  title       = "Nikos Voulgaris | Blog"
   subtitle    = "Challenge everything"
 
   cover       = "img/blog-cover.jpg"
@@ -39,9 +39,19 @@ paginate        = 6
 [[menu.main]]
   name = "Home"
   url = "/"
-  weight = 210
+  weight = 240
 
 [[menu.main]]
   name = "Tags"
-  url = "tags"
-  weight = 200
+  url = "/tags"
+  weight = 230
+
+[[menu.main]]
+  name = "About Me"
+  url = "/about"
+  weight = 220
+
+[[menu.main]]
+  name = "Contact"
+  url = "/contact"
+  weight = 210

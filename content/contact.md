@@ -6,13 +6,12 @@ noauthor = true
 share = false
 title = "Contact"
 type = "page"
-[menu.main]
-weight = 111
+image = "img/contact.jpg"
 
 +++
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Yow !
+I will be happy to share ideas and discuss on any topic. You may get in touch with me in any of the following ways:
+
+  * e-mail: nivoul@gmail.com
+  * [LinkedIn](https://www.linkedin.com/in/nikos-voulgaris-44455546/)
+  * [Twitter](https://twitter.com/nivoul)
+  * [Github](https://github.com/nvoulgaris)
