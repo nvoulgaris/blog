@@ -6,13 +6,11 @@ noauthor = true
 share = false
 title = "About me"
 type = "page"
-[menu.main]
-weight = 111
+image = "img/about_me.jpg"
 
 +++
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Yow !
+Professional software engineer and scrum master. I am currently employed at [Tripsta S.A.](http://www.tripsta.com/), contributing to my effor to one of the biggest Online Travel Agencies in Europe. In the past, I have been employed by organizations ranging from [Nokia](https://www.nokia.com/) to small Greek companies, having the opportunity to work from international telecommunications projects to small websites and mobile applications.
+
+I am passionate about software development and, strongly believing in the community worldwide, I love to broaden my horizons and share my knowledge. I am specifically interested in software design, Extreme programming practices and I wish to call myself a software craftsman. Lately, I am really fascinated by Outside-In Test Driven Development. 
+
+During the day, I deal with software engineering. During the night, I present in radio, DJ, learn Italian, travel, read a lot of books, (used to) play basketball and I would do more if only I could extend the 24 hours...
