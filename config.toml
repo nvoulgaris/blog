@@ -5,7 +5,7 @@ disqusShortname = ""
 paginate        = 6
 
 [params]
-  title       = "Nikos Voulgaris | Blog"
+  title       = "Nikos Voulgaris"
   subtitle    = "Challenge everything"
 
   cover       = "img/blog-cover.jpg"
@@ -18,7 +18,7 @@ paginate        = 6
   twitterName = "nivoul"
   githubName = "nvoulgaris"
 
-  logo = "img/logo.png"
+  logo = ""
   orgName = "EM"
   orgWebsite = "https://www.telematika.org"
   orgDescription = "Here is a description placeholder for your org"
