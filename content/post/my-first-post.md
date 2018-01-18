@@ -1,5 +1,5 @@
 ---
-title: "Agile code"
+title: "Lorem ipsum dolor"
 date: 2018-01-17T12:38:29+02:00
 draft: false
 tags: [agile]
