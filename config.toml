@@ -18,7 +18,7 @@ paginate        = 6
   twitterName = "nivoul"
   githubName = "nvoulgaris"
 
-  logo = "hugo-logo.png"
+  logo = "img/logo.png"
   orgName = "EM"
   orgWebsite = "https://www.telematika.org"
   orgDescription = "Here is a description placeholder for your org"
