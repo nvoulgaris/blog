@@ -32,7 +32,7 @@ paginate        = 6
   pageNotFoundTitle = "404 - Page not found"
 
   singleViewStyle = "casper"
-  disqusShortname = "nvoulgaris"
+  disqusShortname = "https-sharp-heisenberg-e7ab22-netlify-com"
 
 [permalinks]
   post = "/:slug/"
