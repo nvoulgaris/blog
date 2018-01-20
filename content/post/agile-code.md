@@ -1,7 +1,7 @@
 ---
 title: "Agile code"
 date: 2018-01-18T12:38:29+02:00
-tags: [agile]
+tags: [agile,XP]
 image: img/todo.jpg
 ---
 
