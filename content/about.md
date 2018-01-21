@@ -1,12 +1,10 @@
 +++
 comments = false
-date = "2015-04-14T22:17:00+00:00"
-draft = false
+date = "2018-01-20"
 noauthor = true
 share = false
 title = "About me"
 type = "page"
-image = "img/about_me.jpg"
 
 +++
 Professional software engineer and scrum master. I am currently employed at [Tripsta S.A.](http://www.tripsta.com/), contributing to my effort to one of the biggest Online Travel Agencies in Europe. In the past, I have been employed by organizations ranging from [Nokia](https://www.nokia.com/) to small Greek companies, having the opportunity to work from international telecommunications projects to small websites and mobile applications.

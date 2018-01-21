@@ -40,6 +40,11 @@ paginate        = 6
 [[menu.main]]
   name = "Home"
   url = "/"
+  weight = 250
+
+[[menu.main]]
+  name = "About Me"
+  url = "/about"
   weight = 240
 
 [[menu.main]]
@@ -48,8 +53,8 @@ paginate        = 6
   weight = 230
 
 [[menu.main]]
-  name = "About Me"
-  url = "/about"
+  name = "Books"
+  url = "/books"
   weight = 220
 
 [[menu.main]]
