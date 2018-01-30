@@ -2,10 +2,8 @@
 title: "Agile code"
 date: "2018-01-20"
 tags: [agile,XP]
-image: img/todo.jpg
+image: img/posts/todo.jpg
 ---
-
-# The problem
 
 During Christmas, just a few days before I decided to take up blogging, I was reading Sandro Mancuso's excellent book [Software Craftsmanship](https://www.goodreads.com/book/show/18054154-software-craftsmanship). I couldn't help but agree (sometimes even out loud) when reading what Sandro describes as the Agile Hangover. How many companies decide to become *agile* only to find their projects failing for the very same reasons that urged them to become *agile* in the first place? What are the common characteristics of so many failed attempts? What is it that goes so wrong anyway?
 
