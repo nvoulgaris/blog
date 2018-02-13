@@ -11,7 +11,7 @@ paginate        = 6
   cover       = "img/blog-cover.jpg"
   description = "Nikos Voulgaris blog"
   metaDescription = "Nikos Voulgaris blog"
-  googleAnalytics = ""
+  googleAnalytics = "UA-114060129-1"
   customCSS = []
   RSSLink = ""
 
