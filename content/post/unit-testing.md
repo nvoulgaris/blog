@@ -9,7 +9,7 @@ As part of the onboarding process of every new developer in [Tripsta](http://www
 
 It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests **are not**.
 
-> Tests are not nice to haven
+> Tests are not nice to have
 
 > Tests are not negotiable
 
