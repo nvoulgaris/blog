@@ -13,7 +13,7 @@ Before we endeavor to address the topic, let's take a step back and think a litt
 
 In my opinion, the key benefit is the establishment of a **short feedback loop**.
 
-> Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to and end. *The short feedback loop is an end in itself.*
+> Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. *The short feedback loop is an end in itself.*
 
 Agile suggests that we leave behind the old days when the requirements were specified all upfront and the developers worked isolated for a few months only to deliver software needing change. A very short loop is established, allowing for a small chunk of software to be produced, inspected by the stakeholders, adapt to their feedback and repeat the cycle. **Indefinitely.** *The illusion of the end state is eliminated.*
 
