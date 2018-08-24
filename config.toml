@@ -1,8 +1,8 @@
 baseurl         = "/"
 theme           = "casper-two"
 languageCode    = "en-UK"
-disqusShortname = ""
 paginate        = 6
+Copyright = "All rights reserved - 2018"
 
 [params]
   title       = "Nikos Voulgaris"
@@ -17,6 +17,7 @@ paginate        = 6
 
   twitterName = "nivoul"
   githubName = "nvoulgaris"
+  linkedinName = "nikos-voulgaris-44455546"
 
   logo = ""
   orgName = "EM"
@@ -33,6 +34,9 @@ paginate        = 6
 
   singleViewStyle = "casper"
   disqusShortname = "nvoulgaris-com"
+
+  hideHUGOSupport = false
+  hjsStyle = "default"
 
 [permalinks]
   post = "/:slug/"
