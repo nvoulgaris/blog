@@ -14,6 +14,7 @@ Below you may find a list of books that *I have read* and, believing that they a
 * [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.goodreads.com/book/show/3735293-clean-code)
 * [Head First Design Patterns](https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns)
 * [Refactoring: Improving the Design of Existing Code](https://www.goodreads.com/book/show/44936.Refactoring)
+* [Elegant Objects](https://www.goodreads.com/book/show/29326350-elegant-objects)
 
 ### Test Driven Development (TDD)
 
@@ -36,3 +37,4 @@ Below you may find a list of books that *I have read* and, believing that they a
 ### Behavioral
 
 * [The Software Craftsman: Professionalism, Pragmatism, Pride](https://www.goodreads.com/book/show/36045392-the-software-craftsman)
+* [The Pragmatic Programmer: From Journeyman to Master](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)

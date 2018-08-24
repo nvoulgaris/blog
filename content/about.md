@@ -7,8 +7,8 @@ title = "About me"
 type = "page"
 
 +++
-Professional software engineer and scrum master. I am currently employed at [Tripsta](http://www.tripsta.com/), contributing to my effort to one of the biggest Online Travel Agencies in Europe. In the past, I have been employed by organizations ranging from [Nokia](https://www.nokia.com/) to small Greek companies, having the opportunity to work from international telecommunications projects to small websites and mobile applications.
+Professional software engineer and scrum master, passionate about clean code and software craftsmanship. I strongly believe in the power of the community worldwide and therefore, I love to share my knowledge and broaden my horizons. I am particularly interested in software design and Extreme Programming practices and I am really fascinated by Outside-In Test Driven Development.
 
-I am passionate about software development and, strongly believing in the community worldwide, I love to broaden my horizons and share my knowledge. I am specifically interested in software design, Extreme programming practices and I wish to call myself a software craftsman. Lately, I am really fascinated by Outside-In Test Driven Development.
+I am currently employed at [Vivante Health](https://vivantehealth.com/), working as an android software engineer. In the past, I have been employed by organizations ranging from [Nokia](https://www.nokia.com/) and [Tripsta](http://www.tripsta.com/) to small Greek companies, having the opportunity to work from worldwide projects to small websites and mobile applications.
 
-During the day, I deal with software engineering. During the night, I present in radio, DJ, learn Italian, travel, read lots of books, (used to) play basketball and I would do more if only I could extend the 24 hours...
+During the day, I write software. During the night, I present in radio, DJ, study Italian, travel, read lots of books, (used to) play basketball and I would do more if only I could extend the 24 hours...
