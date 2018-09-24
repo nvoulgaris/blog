@@ -17,7 +17,7 @@ Since I - once again - started with what velocity *is not*, let's proceed in a m
 
 # Inspect and adapt
 
-Let's try to go back to the basics and essence of Scrum for a bit. In a nutshell, every couple of weeks (in reality this number ranges between 1 and 4 weeks, but for simplicity's sake I will use 2 weeks for a sprint's length throughout this post) the scrum team gathers with the stakeholders, reviewing their latest increment, inspecting the state of the product and refining the priorities. After this comes the retro and after the retro, the new spring begins with a sprint planning session: the most important meeting in scrum.
+Let's try to go back to the basics and essence of Scrum for a bit. In a nutshell, every couple of weeks (in reality this number ranges between 1 and 4 weeks, but for simplicity's sake I will use 2 weeks for a sprint's length throughout this post) the scrum team gathers with the stakeholders, reviewing their latest increment, inspecting the state of the product and refining the priorities. After this comes the retro and after the retro, the new sprint begins with a sprint planning session: the most important meeting in scrum.
 
 Now the scrum team should take into consideration the outcome of the sprint review and retrospective in order to commit to a new sprint. A new sprint, which should accommodate the prioritized requirements of the product, as defined by the stakeholders, whose voice in this meeting is the Product Owner. Let's think of this for a moment. How is the scrum team supposed to commit to a couple of week's worth of work without having an **estimate** on the amount of work they can deliver in this time?
 
