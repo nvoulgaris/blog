@@ -7,9 +7,9 @@ image: img/posts/fruitful_retros.jpg
 
 How many times have you found yourself engaged in a retrospective, wondering why do you lose all this time? How many times have you committed to action items that no one ever dealt with in any way? How many times have you caught your team or yourself discussing the same issues again and again thinking that this will not be the last time?
 
-Retrospectives are very hard-to-drive meetings. The hurdles to overcome are countless. Team members that will not open up, team members that dominate the conversation, inability to identify root causes, lack of commitment to action items, frustration, politics, just to name a few. Sometimes the Jocker (Scrum Master) has to display a great arsenal to keep all of this under control and - above all - meaningful.
+Retrospectives are very hard-to-drive meetings. The hurdles to overcome are countless. Team members that will not open up, team members that dominate the conversation, inability to identify root causes, lack of commitment to action items, frustration and politics, just to name a few. Sometimes the Jocker (Scrum Master) has to display a great arsenal to keep all of these under control and - above all - meaningful.
 
-My intention in this blog post is to share part of the knowledge, experience and lessons learned by driving retrospectives (called retros for short from now on). Despite this mainly referring to people facilitating these sessions (Scrum Masters), I believe that all members of a scrum team could benefit by it. Throughout this post I will be referring to sprint retrospectives, but these principles, more or less apply to all kinds of retros (release retros, departmental retros etc).
+My intention in this blog post is to share part of the knowledge, experience and lessons learned by driving retrospectives (called retros for short from now on). Despite mainly referring to people facilitating these sessions (Scrum Masters), I believe that all members of a scrum team could benefit by it. Throughout this post I will be referring to sprint retrospectives, but these principles, more or less apply to all kinds of retros (release retros, departmental retros etc).
 
 # The Goal
 
@@ -32,14 +32,14 @@ In an ideal situation, a mature team should be able to walk into the retro and j
 
 Take the time to communicate the purpose of the session and the schedule. It may sound redundant, but it will help the team members orient themselves during the retro and focus on the task at hand for the following period of time.
 
-Usually I ask for a very brief check-in phrase or input (e.g. describe the previous sprint in 3 words). Simplistic as it may sound, keep in mind that there may be people in the room that are hard to open up. As a Scrum Master, we should always make sure that every team member feels comfortable to speak and is engaged in the team exercise. This is what I focus on during this short phase. **Get everyone onboard for what's about to follow**.
+Usually I ask for a very brief check-in phrase or input (e.g. describe the previous sprint in 3 words). Simplistic as it may sound, keep in mind that there may be people in the room that are hard to open up. As Scrum Masters, we should always make sure that every team member feels comfortable to speak and is engaged in the team exercise. This is what I focus on during this short phase. **Get everyone onboard for what's about to follow**.
 
 ## Gather data
 *Usually 20-25 minutes for a 90 minute retro, depending on the team size*
 
-This is the time to identify *what went wrong* (or could just be improved) and *what the team did well* (this is also very important).
+This is the time to identify *what went wrong* (or could just be improved) and *what did the team do well* (this is also very important).
 
-Use an exercise that focuses on **plain facts**. Ask for both negative and positive facts. As it is important to amend any problematic areas, it is equally important to preserve the good habits. Preferably, before discussing, allow the team some time to silently think and jot down a few things on sticky notes, in order to avoid affecting each other's thought in this part. If necessary, you may feed the team by mentioning one or two defective ares that you recognized during the sprint, prior to the exercise, to accelerate results, but be very careful *not to guide them*.
+Use an exercise that focuses on **plain facts**. Ask for both negative and positive facts. As it is important to amend any problematic areas, it is equally important to preserve the good habits. Preferably, before discussing, allow the team some time to silently think and jot down a few things on sticky notes, in order to avoid affecting each other's thought in this part. If necessary, you may feed the team by mentioning one or two defective ares that you recognized during the sprint, prior to the exercise, to get them going and accelerate results, but be very careful *not to guide them*.
 
 This is an extremely important step, as it will feed the rest of the retro with data. If the team fails to come up with the right issues here, it is almost inevitable that the real issues will remain untouched, no matter how great the effort in the rest of the session.
 
@@ -50,7 +50,7 @@ Having identified the major pain points in the previous step, it's time to addre
 
 Pick an exercise to help the team interpret the data gathered from the previous step and *come up with action items* to both address the problems and preserve the good habits. Usually, I avoid a lot of conversation and interaction up to this point to keep the process of gathering the data impartial, but this is the point to *allow collaboration to kick in* (e.g. working in pairs or have a lot of conversation). Make sure the team members are interacting in a productive way. If the items from the previous step are too many, ask the team to prioritize them and work the list top to bottom until the allocated time (or the list) runs out. Ideally, by the end of this step a list with ideas (solutions to problems, things to start/stop/continue doing etc) is composed and lies visible to the team (e.g. sticky notes on the wall, whiteboard etc).
 
-Always keep in mind that this is the very heart of the retro. Tension may be caused, strong arguments may take place. This is healthy and desired, but always make sure that the situation is under control and is actually going somewhere. As a Scrum Master, make sure that personal attacks are avoided, only productive arguments are hold and the team mainly deals with items that is empowered to change.
+Always keep in mind that this is the very heart of the retro. Tension may be caused, strong arguments may take place. This is healthy and desired, but always make sure that the situation is under control and is actually going somewhere. As a Scrum Master, make sure that personal attacks are avoided, only productive arguments are hold and the team mainly deals with items that is actually empowered to change.
 
 ## Decide what to do
 *Usually 20-25 minutes for a 90 minute retro, depending on the team size*
@@ -70,7 +70,7 @@ Any very brief exercise will do for this part. Just make sure that as you achiev
 
 # SMART action items
 
-Perhaps the biggest pitfall for a retro is to come up with action items that are not [SMART](https://en.wikipedia.org/wiki/SMART_criteria). There is a huge difference between action items and wishful thinking. For instance, consider the following two outcomes of a team's retro:
+Perhaps the biggest pitfall for a retro is to come up with action items that are not [SMART](https://en.wikipedia.org/wiki/SMART_criteria). There is a huge difference between *action items* and *wishful thinking*. For instance, consider the following two outcomes of a team's retro:
 
 > Improve collective ownership of the code.
 
@@ -88,7 +88,7 @@ Do you see the difference? For an action item to be meaningful, it has to be:
 
 Getting people to open up can be one of the trickiest tasks for a Scrum Master, but it constitutes a key ingredient for a fruitful retro. People may be quiet due to their personality or because they choose to remain silent for their own purposes. Both cases are difficult to handle, but each requires a different approach.
 
-When dealing with team members that are shy or not very outgoing, remember to work hard with them while *setting the stage*. Before leaving this step, make sure that they have shared something with the group. This will make them feel more engaged and will increase the probability that they will share more during the retro. If necessary, during the retro, explicitly ask them to comment, especially if you know that they have an opinion on the matter, but they are obviously reluctant to share it.
+When dealing with team members that are shy or not very outgoing, remember to work hard with them while *setting the stage*. Before leaving this step, make sure that they have shared something with the group. This will make them feel more engaged and will increase the probability that they will share more during the retro. If necessary, during the retro, explicitly ask them to comment on a topic, especially if you know that they have an opinion on the matter, but they are obviously reluctant to share it.
 
 When people remain silent driven by politics, the spectrum of options is considerably narrowed down. What I feel is useful is to state once again that the purpose of this session is to improve as a team and in order to do so, sincere input and respect by everyone is a prerequisite. However, an individual who chooses to play his own game most likely will not change his path by such a speech. I would also suggest to drive the rest of the team to open her up.
 
@@ -108,10 +108,10 @@ A team that tends to frequently focus on items outside of its power is in danger
 
 As soon as retro starts feeling like a routine, do something to disrupt this. During this session, we want team members to be creative and think outside of the box. A routine is the worst enemy of this.
 
-Always strive to keep the team energized and keep the blood flowing. Use exercises that require standing up, walking in the room. Keep it playful. Change the room or the time it takes places. Whatever you do, *do not create a routine*.
+Always strive to keep the team energized and keep the blood flowing. Use exercises that require standing up and walking in the room. Keep it playful.  If possible, change the room or the time the retro takes place. Whatever you do, *do not create a routine*.
 
 # Conclusion
 
-Driving a retro is a very tricky business. However, retros are key to the healthy functioning of an Agile team. Make sure to prepare beforehand and constantly keep in mind that the team should be after SMART action items. Don't let it be derailed and the hard work is definitely going to pay off.
+Driving a retro is a very tricky business. However, retros are key to the healthy functioning of an Agile team. Make sure to prepare beforehand and constantly keep in mind that the team should be after SMART action items. Don't let it be derailed and the hard work is definitely going to pay off. Finally, never forget. *The retro is now*.
 
 P.S. Feel free to share your thoughts or comment on mine. As always, I would very much love a nice, productive conversation on the topic.
