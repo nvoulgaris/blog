@@ -97,4 +97,4 @@ A usually confusing case is when a new software engineer joins the development t
 
 # Conclusion
 
-Perceiving velocity as a productivity reporting tool is **flat out wrong**. Productivity is measured indeed, but not for reporting. Just for internal use within the team. Use it to create a sustainable pace, to help the team deliver on a steady basis, create trust and mature the team. The actual method for calculating the velocity for upcoming sprints does not matter. There are loads of techniques out there. Either pick one or create your own. Just make sure that you use it in the right way and it helps the team.
+Perceiving velocity as a productivity reporting tool is **flat-out wrong**. Productivity is measured indeed, but not for reporting. Just for internal use within the team. Use it to create a sustainable pace, to help the team deliver on a steady basis, create trust and mature the team. The actual method for calculating the velocity for upcoming sprints does not matter. There are loads of techniques out there. Either pick one or create your own. Just make sure that you use it in the right way and it helps the team.
