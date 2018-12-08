@@ -1,7 +1,7 @@
 ---
 title: "Test behavior"
 date: "2018-05-23"
-tags: [unit-testing, design]
+tags: [unit-testing, object oriented design]
 image: img/posts/writing.jpg
 ---
 

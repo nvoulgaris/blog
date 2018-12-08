@@ -1,7 +1,7 @@
 ---
 title: "Designing a RESTful shopping cart"
 date: "2018-03-10"
-tags: [rest, design]
+tags: [rest, object oriented design]
 image: img/posts/shopping_cart.jpg
 ---
 

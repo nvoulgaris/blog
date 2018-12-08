@@ -1,8 +1,8 @@
 ---
 title: "How getters and setters harm encapsulation"
-date: "2018-12-06"
-tags: [agile,retrospectives]
-image: img/posts/fruitful_retros.jpg
+date: "2018-12-08"
+tags: [object oriented design,encapsulation]
+image: img/posts/encapsulation.jpg
 ---
 
 Taking a step back and looking at something that you've been doing for years with a new, *fresh* perspective can lead to profound insights. I had an insight like this a few months ago, when I decided to look at `getters` and `setters` from a different point of view.
@@ -36,7 +36,7 @@ This is exactly where `getters` and `setters` enter the picture. Conventional wi
 
 # An example
 
-In order to better illustrate the nature of this problematic situation, let's consider for a moment the `AirCondition` class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:
+In order to better illustrate the nature of this problem, let's consider for a moment the `AirCondition` class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:
 
 ```
 if (airCondition.getTemperature() > 25) {
@@ -50,7 +50,7 @@ if (airCondition.getTemperature() > 25) {
 }
 ```
 
-However, all we do is constantly manipulating the object's state, essentially implementing the logic that it should posses. We are *micromanaging* the object. We keep on **asking** it's state and then modify it instead of **telling** it the end result we are after. Conforming to OOP, all we need to do is to send it a message, like the following
+However, all we do is constantly manipulating the object's state, essentially implementing the logic that it should possess. We are *micromanaging* the object. Instead, we should *trust* it on knowing how to do its job. We keep on **asking** about it's state and then modify it instead of **telling** it the end result that we wish. Conforming to OOP, all we need to do is to *send it a message*, like the following
 
 ```
 airCondition.adjustTemperatureTo(25)
@@ -58,4 +58,22 @@ airCondition.adjustTemperatureTo(25)
 
 and it should get the job done, because it *knows* how to actually do it.
 
+# Tight coupling
+
+We all know (at least in principle) that our classes should be highly cohesive and loosely coupled. The theory is great, but let's consider how these guidelines apply to this specific example. Let's assume that we wish to refactor the `AirCondition` class. Perhaps we would like to rename the `temperature` variable to `currentTemperature`. Performing this elementary refactoring move, would create a chain reaction, causing all the classes that depend upon it (its collaborators) to fail to compile and impose the need to refactor them too. Perhaps, some collaborators of these collaborators should be refactored as well and so forth.
+
+This scenario illustrates perfectly the side effects of a design with tightly coupled classes. However, on the second, the *imperative* approach, the collaborators of the refactored, `AirCondition` class would remain unaffected, agnostic to the modification (given that the public API of the class was not modified). We can therefore conclude that the imperative approach has led to a more loosely coupled design.
+
 # Tell, don't ask
+
+Some of you might have already noticed that these ideas start to sound a lot like the *Tell, don't ask* principle (also known as *Law of Demeter*). (In case you're not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the logic to act on these data in different objects is not wise.
+
+> Data and functionality that depends on these data belong in the same object
+
+# A story and a lesson learned
+
+Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn't normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually walked into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, via `getters` and `setters`. Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using `getters` and `setters`, essentially not a thing would have changed in terms of the quality of the code and the product.
+
+At the end of the day, what difference would it make to use `airCondition.getTemperature()` instead of `airCondition.temperature`? Perhaps that is the reason why the designers of Kotlin decided to provide `getters` and `setters` by default, without even going into the trouble to code (generate) them or even call(!) them (in Kotlin `airCondition.temperature` actually calls `airCondition.getTemperature()` under the hood).
+
+# Conclusion
