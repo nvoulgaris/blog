@@ -1,7 +1,7 @@
 ---
 title: "Comparing TDD flavours"
-date: "2019-03-19"
-tags: [tdd]
+date: "2019-03-25"
+tags: [tdd,xp]
 image: img/posts/tdd_flavours.jpg
 ---
 
@@ -23,7 +23,7 @@ This approach attempts to *minimize mocking* and most of the *design happens at 
 
 ## Outside-In (London school)
 
-Outside-In TDD uses a different approach. An extra step is inserted in the TDD cycle, the one of writing a failing *acceptance* test. So, we first focus on writing a failing acceptance test and then on locking ourselves in the above mentioned TDD cycle, for every class needed, until the requirement of this acceptance test is fulfilled. Focusing on one acceptance test at a time, we TDD our way from the outmost layer of the system (controller, queue consumer etc) all the way to the core (e.g. database layer).
+Outside-In TDD uses a different approach. An extra step is inserted in the TDD cycle, the one of writing a failing *acceptance* test. So, we first focus on writing a failing acceptance test and then on locking ourselves in the above mentioned TDD cycle, for every class needed, until the requirement of this acceptance test is fulfilled. Focusing on one acceptance test at a time, we TDD our way from the outmost layer of the system (controller, queue consumer etc) all the way to the core (domain, database layer etc).
 
 Some principal differences with regard to the previous approach are that *mocking and stubbing are heavily used* and most of the *design decisions are made in the red state*, allowing for more minor adjustments in the refactor step.
 
@@ -39,7 +39,7 @@ Having said that, I have come forward with my bias before delving into the topic
 
 # Comparison
 
-Let me start by clarifying that the two TDD styles *are not mutually exclusive*. A skilled software engineer should ideally switch between the two, adapting to the situation in hand. However, I do feel that there are considerable strengths and weaknesses and to the analysis of these is where I will focus on the rest of this post.
+Let me start by clarifying that the two TDD styles *are not mutually exclusive*. A skilled software engineer should ideally switch between the two, adapting to the situation in hand. However, I do feel that there are considerable strengths and weaknesses in each one and to the analysis of these is where I will focus for the rest of this post.
 
 ## Classicist
 
@@ -55,7 +55,7 @@ Remember that during refactoring we want a steady, fast-executing suite of tests
 
 #### Delayed design decisions
 
-Another strong quality of the classicist TDD that I like a lot is that design decisions are delayed as much as possible (if only we all did more of this). This follows logically from the fact that we first make it work (red to green) and then we think about how to make it better, doing most of the design in the refactor state, as stated more than once earlier. Delaying design decisions is one of the qualities that makes us truly agile (as opposed to lots of sticky notes, but that is another post once again - see [agile code](https://nvoulgaris.com/agile-code)).
+Another strong quality of the classicist TDD that I like a lot is that design decisions are delayed as much as possible (if only we all did more of this). This follows logically from the fact that we first make it work (red to green) and then we think about how to make it better, doing most of the design in the refactor step, as stated more than once earlier. Delaying design decisions is one of the qualities that makes us truly agile (as opposed to lots of sticky notes, but that is another post once again - see [agile code](https://nvoulgaris.com/agile-code)).
 
 ### Evolutionary design
 
@@ -69,6 +69,20 @@ I am a big fan of the triple A rule (Arrange-Act-Assert) and part of the reason 
 
 With the classicist approach I find that tests tend to grow large quite often, with complicated setups and assertions, which in extreme cases can defeat the whole documentation purpose (there is the name of the test to partially save this). This was definitely one of the notes I made while watching the clean coders comparative case study video series. Uncle Bob's tests were lengthy.
 
+#### Complex refactorings
+
+Since we are trying to flesh out the whole system starting from its core logic, it is quite probable to find ourselves in a situation where a class, deep inside the core of the application, has too many responsibilities or its design is cumbersome. Such cases, sometimes require *drastic* refactoring moves.
+
+Complex refactorings are never pleasant and the more complex they are, the more the likelihood of breaking the tests increases. Usually, I find it much more preferable to apply small refactoring tweaks than tearing the whole system apart, while trying to keep my tests green.
+
+#### Treating the API as a second-class citizen
+
+Starting from the core logic of the application poses an extra problem. Thinking of the API is usually deferred until the implementation reaches it. One may argue that this is not a drawback, but we should always keep in mind when building a system that we do so **only** because someone else needs to use it. If we are writing a web service for instance, some client will consume this API, otherwise we wouldn't be writing it in the first place.
+
+Therefore, I regard this as a considerable problem. We are running the risk of over-engineering our solution, implementing logic that will not be used. Don't get me wrong here. Creating abstractions and achieving loose coupling between our HTTP layer and our domain is very much desired. I just find it really useful to begin my thinking from the API.
+
+I am really sitting on the fence regarding Uncle Bob's abstraction decisions on the clean coders comparative case study video series, leaning a little bit towards considering them premature and therefore potentially harmful.
+
 ## Outside-In
 
 ### Strengths
@@ -79,15 +93,23 @@ One of the principal differences between the two approaches is in which state mo
 
 Despite some objections on this (more on this later on), I love the way TDD is really used as a design tool. During the JHUG talk/demo we discussed on how TDD does not magically create good design by itself. TDD gives us the time and place to design and this is done brilliantly in the Outside-In style.
 
-#### Acceptance test drive the architecture
+#### Acceptance tests drive the architecture
+
+Earlier, I made the point how using the classicist approach can result in treating the API as a second-level citizen. I feel quite the opposite when using the Outside-In approach. Not only we start off with the HTTP layer, but the needs of this layer drive the rest of the implementation and architecture all the way to the classes deep inside in the domain. The whole system is built in a way that serves the clients' needs and therefore its purpose. Of course, we are free (and in fact encouraged) to create the right abstractions and seal our implementation, without compromising our attention to the API.
+
+#### Adopting the client's point of view
+
+While running our inner TDD cycles we are very diligent in mocking all the dependencies of the class under test and put a lot of thought in the stubs that we will use. As mentioned earlier, this is in fact *design*. What I particularly like about this design method is that we always focus on the way the clients of these mocked classes will interact with them. We are designing their public API, allowing ourselves to *hide* the implementation details behind this public API when the time comes to implement this class.
+
+What is so brilliant about this though process is that we always approach a new class from the point of view of its clients. We first think what kind of **behavior** we would like this class to provide in order to fulfill which business requirements (tests).
 
 #### Test readability
 
-As opposed to the classicist approach, I love the way the tests read in Outside-In TDD. Arrange, act and assert are evidently separated, tests are relatively short and the intent is clearly expressed in a *state-machine* manner. Also, taking the *"should"* naming convention (which I *absolutely* love) in consideration, the executable documentation produced is all that one could ask for.
+As opposed to the classicist approach, I love the way the tests read in Outside-In TDD. Arrange, act and assert are evidently separated, tests are relatively short and the intent is clearly expressed in a *state-machine* manner. Also, taking the *"should"* naming convention (which I *absolutely* love) into consideration, the executable documentation produced is all that one could ask for.
 
 #### Method and discipline
 
-I left for last what I perceive as a vague, less objective advantage. When writing code using the Outside-In TDD approach, I always feel that there is method and discipline in my work. It is almost as if I am following an algorithm, approaching the problems in layers, breaking it down in small pieces and knowing exactly what needs to be done next and where am I in the whole process at any given moment. The acceptance tests acts like a north star that will not let you get lost while running the inner TDD cycles. This is mainly due to the fact that the way it fails will lead me to the point I have to pick up the implementation from when finished implementing a class.
+I left for last what I perceive as a vague, less objective advantage. When writing code using the Outside-In TDD approach, I always feel that there is method and discipline in my work. I feel that I am working very *methodically*. It is almost as if I am following an algorithm, approaching the problems in layers, breaking it down in small pieces and knowing exactly what needs to be done next and where am I in the whole process at any given moment. The acceptance tests acts like a north star that will not let you get lost while running the inner TDD cycles. This is mainly due to the fact that the way they fail will lead me to the point I have to pick up the implementation from when finished implementing a class.
 
 I understand that this is utterly subjective, but I do not feel the same way when using the classicist approach. Throughout the clean coders comparative case study video series I always knew where Sandro was and what was missing for an API to be finished, but I always had to think harder when Uncle Bob was driving the implementation.
 
@@ -95,13 +117,15 @@ I understand that this is utterly subjective, but I do not feel the same way whe
 
 #### Refactoring limitations
 
-Throughout my journey to understand and adopt the Outside-In TDD style, I always struggled with the refactoring limitations that are posed by following this technique. In a nutshell, the mocking and stubbing that are used result in tight coupling between the production and test code, with severe implications to refactoring capabilities.
+Throughout my journey to understand and adopt the Outside-In TDD style, I always struggled with the refactoring limitations that are posed by following this technique. In a nutshell, the mocking and stubbing that are heavily used result in tight coupling between the production and test code, with severe implications to refactoring capabilities.
 
 This caused me great unease until I truly understood the *deviation in the philosophy* between the two approaches. In the classicist approach emphasis is first put on making it work and *then* on the structure of the code. Therefore, the room for refactoring in the refactor step is *created* because it is *needed*, given that this is where we largely shape the structure of the code. On the other hand, with the Outside-In approach, we focus on structure from the beginning, leaving less room for modifications in the refactor step since we *anticipate less major modifications*.
 
 It does take some time to truly understand this differentiation in the way of thinking, but as soon as one does get it, it's all very clear. In my perception, a profoundly uneasy state to be in is thinking in classicist terms (I will structure the code in the refactor step) when trying to apply Outside-In TDD.
 
-#### Not suitable for exploratory code
+#### Not suitable for algorithmic code
+
+As this approach focuses on *dependencies* and *collaboration* between classes, is follows logically that it is not an ideal candidate for implementing an algorithmic piece of code. Usually, there are no collaborators in such a case and therefore this technique will be of limited use. Therefore, this constitutes a perfect example to demonstrate cases in which we should switch to a different TDD style, such as the classicist one.
 
 # Conclusion
 

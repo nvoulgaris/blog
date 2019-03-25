@@ -1,7 +1,7 @@
 ---
 title: "Agile code"
 date: "2018-01-20"
-tags: [agile,XP]
+tags: [agile,xp]
 image: img/posts/todo.jpg
 ---
 
