@@ -1,7 +1,7 @@
 ---
 title: "How getters and setters harm encapsulation"
 date: "2018-12-09"
-tags: [object oriented design,encapsulation]
+tags: [software design,encapsulation]
 image: img/posts/encapsulation.jpg
 ---
 

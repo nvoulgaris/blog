@@ -1,15 +1,19 @@
 ---
 title: "Open-Closed principle: a case study"
-date: "2019-07-13"
-tags: [object-oriented-design]
+date: "2019-07-14"
+tags: [software design]
 image: img/posts/open_closed.jpg
 ---
 
-A few days ago
+Have you ever come across of big ball of mud in the system that you work on? Have you ever wondered how it ended up like this? I bet that no one gets up in the morning and thinks *"I will get to work to create a huge mess today"*. However, there was at least one huge mess in the majority of the software projects I have worked on. What causes this?
+
+A typical scenario is that a piece of code starts off simple and innocent, but we always have to keep in mind the bigger picture. The architecture of the system. The code design. It is an integral part of our day to day work. Failing to pay attention to it, can start a chain reaction. One that leads to a big ball of mud.
+
+Let's use a simple case from a real world project and study the risks that we introduce by not thinking ahead and designing the code carefully.
 
 # A case study
 
-Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe it is worthwhile to examine a much more realistic case. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts. I feel that with a case study taken directly from a professional project, the trade-offs and the line of thought can be better valued.
+Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe that a real case will enable us to apply the principles to a professional context, which is key to a better understanding. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts.
 
 ## The problem
 
@@ -32,23 +36,23 @@ for (View view : formViews) {
 }
 ```
 
-Now, this is a very succint piece of code and if we take the trouble to extract some methods for the conditions in the `if` blocks, it could even read greatly and retain the same level of abstraction.
+Now, this is a very succint piece of code and if we care enough to extract some methods for the `if` block conditions, it could even be readable and retain the same level of abstraction.
 
-However, there are things that should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?
+However, there are things that we should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?
 
 ## Architecture
 
 Let's not fool ourselves, we've all written code like this (at least I know that I have), but as we grow more experienced, we should identify shortcomings and take the pains to address them.
 
-Apart from some minor issues, like the fact that we should extract some constants from these magic strings and the ones that we mentioned above (extracting methods for the conditions in the `if` block etc), which are easy to amend and would not cost that much in the long run even if we neglected to do it, there is a serious disadvantage in this piece of code.
+Apart from some minor issues, like the fact that we should extract some constants from these magic strings and the ones that we mentioned above (extracting methods for the the `if` block conditions etc), which are easy to amend and would not cost that much in the long run even if we neglected them, there is a serious concern in this piece of code.
 
-Let's think for a moment what would happen if a new field was added to the form. A field which did not exist before and therefore for which we hadn't implemented any validation logic. A postcode field. How would we add support for this new field in our existing code?
+Let's think for a moment what would happen if a new field was added to the form. A field which did not exist before and therefore for which we hadn't implemented any validation logic. Say a postcode field. How would we add support for this new field in our existing code?
 
-Most probably we would add an extra `else if` block to handle the case of the postcode. However, that means that we would be *modifying* the existing code to *add* and extra feature. This sounds like an *oxymoron*, doesn't it? When we want to add a new feature, we should *add* some code and *not modify* the existing code.
+Most probably we would add an extra `else if` block to handle the case of the postcode. However, that means that we would be *modifying* the existing code to *add* an extra feature. This sounds like an *oxymoron*, doesn't it? When we want to add a new feature, we should *add* some code and *not modify* the existing code.
 
-Of course, this case is simple and I bet you think *"what could possibly go wrong with adding an extra `else if` block?"*, but as we keep on adding more and more conditionals when requested to add a new field to a form the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by *making a modification for one case, we accidentally break another case*. According to Uncle Bob's work, that is the moment that this piece of code is exhibiting the symptom of **fragility**.
+Of course, this case is simple and I bet you think *"what could possibly go wrong with adding an extra `else if` block?"*, but as we keep on adding more and more conditionals when requested to add a new field to a form, the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by *making a modification for one case, we accidentally break another case*. According to Uncle Bob, that is a sign of great significance. The system is exhibiting the symptom of **fragility**.
 
-Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation for any software craftsman. Therefore, let's examine how we could shield our code from such problems.
+Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftsmen, we should go to great lengths to avoid it. Therefore, let's examine how we could shield our code from such problems.
 
 # The Open-Closed Principle
 
@@ -64,7 +68,7 @@ Since this is a notoriously difficult to understand principle (perhaps due to th
 
 Let's keep in mind that the goal is to implement a validation module that can be extended without being modified. Let's try to design it in such a way that implementing the postcode validation cannot affect the existing validation logic.
 
-In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a pack of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:
+In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a set of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:
 
 ```
 formViews.forEach(view -> {
@@ -73,7 +77,7 @@ formViews.forEach(view -> {
 });
 ```
 
-This reads like a nice algorithm. For every view, get hold of an appropriate validator and apply the `validate()` method to the text that it the view holds. It's worth noticing that we get a `Validator` on runtime via the `ViewValidatorFactory`, without knowing which one we will get on compile time. To achieve this, we need to use an interface, like the following:
+This reads like a nice algorithm. For every view, we get hold of an appropriate validator and apply its `validate()` method to the text that the view holds. Notice that we do not know *how* each specific field get validated. This is achieved by getting a `Validator` on runtime using the `ViewValidatorFactory`, but not knowing on compile time which one we will get on runtime. To achieve this, we need to create an interface like the following and have the factory returning objects deriving from this interface
 
 ```
 public interface ViewValidator {
@@ -82,7 +86,7 @@ public interface ViewValidator {
 }
 ```
 
-and implement it for every specific field that we need to validate, as follows:
+and implement it for every specific field that we need to validate, as follows
 
 ```
 public class EmailValidator implements ViewValidator {
@@ -103,7 +107,7 @@ public class PhoneValidator implements ViewValidator {
 }
 ```
 
-Now, all that's left to glue it all together is to implement the factory that creates the validators based on the view, like the following:
+Now, all that's left to glue it all together is to implement the factory that creates the validators based on the view.
 
 ```
 public class ViewValidatorFactory {
@@ -125,14 +129,24 @@ This design is depicted below, in figure 1.1.
 
 {{< figure src="/img/posts/ocp_before.png" caption="Figure 1.1: Validation compliant to the Open-Closed Principle" alt="Figure 1.1: Validation compliant to the Open-Closed Principle" >}}
 
-The `ValidationService` has a transitive dependency to the `EmailValidator` and `PhoneValidation` (which is a shortcoming that we should amend using an abstract factory to applying the Dependency Inversion Principle) and therefore will be recompiled when we add a `PostcodeValidator`, but other than that (which is harmless unless we have an architectural boundary between the two modules) the source code of the `ValidationService` and the rest of the validators will remain untouched, which means that we have solved the fragility issue, by provisioning for the addition of new fields (and therefore validation logic for them) in the future.
+The `ValidationService` has a transitive dependency to the `EmailValidator` and `PhoneValidator` (which is a shortcoming that we should amend using an abstract factory to apply the Dependency Inversion Principle) and therefore will be recompiled when we add a `PostcodeValidator`, but other than that (which is harmless unless we have an architectural boundary between the two modules) the source code of the `ValidationService` and the rest of the validators will remain untouched, which means that we have solved the fragility issue, by provisioning for the addition of new fields (and therefore validation logic for them) in the future. In other words, *there is no way to break the fnctionality of (e.g.) the `EmailValidator` by adding a `PostcodeValidator`*.
 
-Indeed, Let's consider what is needed to add validation for the postcode now. All we have to do is to create a new derivative of the `ViewValidator`, the `PostcodeValidator` and apply a minimal modification to the factory, to be able to create one for the appropriate view. The change is depicted in figure 1.2 with dotted rectangles and arrows.
+Indeed, Let's consider what is needed to add validation for the postcode now. All we have to do is to create a new derivative of the `ViewValidator`, the `PostcodeValidator` and apply a minimal modification to the factory, to be able to create one for the appropriate view. The change is depicted in figure 1.2, denoted with dotted rectangles and arrows.
 
 {{< figure src="/img/posts/ocp_after.png" caption="Figure 1.2: Adding a postcode validator to the existing implementation" alt="Figure 1.1: Adding a postcode validator to the existing implementation" >}}
 
+In this way, we manage to *extend* the behavior of `ValidationService` without *modifying* it.
+
+# Iterative approach
+
+Of course, presenting the code in its final state, like I did, may lead to a reasonable question. Did it just pop magically into my mind? What if I can't think of the big picture all in once?
+
+As a matter of fact, that is neither the way I wrote it, nor the way I would consult anyone to go about writing it. On the contrary, I used an **iterative approach**. I started with a suite of tests that led me to the first implementation. Then I identified the problems and I felt dissatisfied with the implementation, which led me to refactoring. I used the suite of tests as a safety net and I started applying small modifications to the *structure* of the code, making sure that I did not break the tests after every such modification. With every change, I amended something, which got me closer to what I had in mind as a goal (an open-closed validation module).
+
+There is no need to thing of everything upfront. In fact, there is no need to think of *anything* upfront. Just get a working piece of code, as simply as you can, but don't stop there. Don't be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsman would.
+
 # Conclusion
 
-Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftsmen, we should train ourselves to identifying downsides and merits of architectures and code design decisions and *even more importantly*, take pains to address these.
+Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftsmen, we should train ourselves to identifying downsides and merits of architectures and code design decisions and *even more importantly*, take pains to address them.
 
 Violating the Open-Closed Principle may seem harmless, but as the code base grows it can turn out to be an insurmountable obstacle to the project's sustainability. There is no such thing as a perfect architecture, that can shield our code from every potential future change, but provisioning for reasonable changes and structuring the code respectively is part of our job, rather than nice-to-have.
