@@ -2,7 +2,7 @@ baseurl         = "/"
 theme           = "casper-two"
 languageCode    = "en-UK"
 paginate        = 6
-Copyright = "All rights reserved - 2018"
+Copyright       = "All rights reserved - 2019"
 
 [params]
   title       = "Nikos Voulgaris"
