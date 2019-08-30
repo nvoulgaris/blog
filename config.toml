@@ -2,7 +2,7 @@ baseurl         = "/"
 theme           = "casper-two"
 languageCode    = "en-UK"
 paginate        = 6
-Copyright = "All rights reserved - 2018"
+Copyright       = "All rights reserved - 2019"
 
 [params]
   title       = "Nikos Voulgaris"
@@ -37,6 +37,18 @@ Copyright = "All rights reserved - 2018"
 
   hideHUGOSupport = false
   hjsStyle = "default"
+
+  enableRobotsTXT = true
+  canonifyURLs = true
+
+[author]
+  name = "Nikos Voulgaris"
+  displayName = "Nikos Voulgaris"
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 1
 
 [permalinks]
   post = "/:slug/"
