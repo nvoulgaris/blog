@@ -38,18 +38,6 @@ Copyright       = "All rights reserved - 2019"
   hideHUGOSupport = false
   hjsStyle = "default"
 
-  enableRobotsTXT = true
-  canonifyURLs = true
-
-[author]
-  name = "Nikos Voulgaris"
-  displayName = "Nikos Voulgaris"
-
-[sitemap]
-  changefreq = "monthly"
-  filename = "sitemap.xml"
-  priority = 1
-
 [permalinks]
   post = "/:slug/"
 
