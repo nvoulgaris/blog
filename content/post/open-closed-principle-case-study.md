@@ -52,7 +52,7 @@ Most probably we would add an extra `else if` block to handle the case of the po
 
 Of course, this case is simple and I bet you think *"what could possibly go wrong with adding an extra `else if` block?"*, but as we keep on adding more and more conditionals when requested to add a new field to a form, the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by *making a modification for one case, we accidentally break another case*. According to Uncle Bob, that is a sign of great significance. The system is exhibiting the symptom of **fragility**.
 
-Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftsmen, we should go to great lengths to avoid it. Therefore, let's examine how we could shield our code from such problems.
+Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftspeople, we should go to great lengths to avoid it. Therefore, let's examine how we could shield our code from such problems.
 
 # The Open-Closed Principle
 
@@ -143,10 +143,10 @@ Of course, presenting the code in its final state, like I did, may lead to a rea
 
 As a matter of fact, that is neither the way I wrote it, nor the way I would consult anyone to go about writing it. On the contrary, I used an **iterative approach**. I started with a suite of tests that led me to the first implementation. Then I identified the problems and I felt dissatisfied with the implementation, which led me to refactoring. I used the suite of tests as a safety net and I started applying small modifications to the *structure* of the code, making sure that I did not break the tests after every such modification. With every change, I amended something, which got me closer to what I had in mind as a goal (an open-closed validation module).
 
-There is no need to think of everything upfront. In fact, there is no need to think of *anything* upfront. Just get a working piece of code, as simply as you can, but don't stop there. Don't be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsman would.
+There is no need to think of everything upfront. In fact, there is no need to think of *anything* upfront. Just get a working piece of code, as simply as you can, but don't stop there. Don't be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsperson would.
 
 # Conclusion
 
-Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftsmen, we should train ourselves to identifying downsides and merits of architectures and code design decisions and *even more importantly*, take pains to address them.
+Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftspeople, we should train ourselves to identifying downsides and merits of architectures and code design decisions and *even more importantly*, take pains to address them.
 
 Violating the Open-Closed Principle may seem harmless, but as the code base grows it can turn out to be an insurmountable obstacle to the project's sustainability. There is no such thing as a perfect architecture, that can shield our code from every potential future change, but provisioning for reasonable changes and structuring the code respectively is part of our job, rather than nice-to-have.

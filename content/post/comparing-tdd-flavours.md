@@ -129,6 +129,6 @@ As this approach focuses on *dependencies* and *collaboration* between classes, 
 
 # Conclusion
 
-TDD is a very handy tool to have in our arsenal and if we intend to be true *software craftsmen*, this arsenal better be mighty and better include both TDD styles. We ought to study and apply both of them and draw our own conclusions as to which one we favor in which situation and why.
+TDD is a very handy tool to have in our arsenal and if we intend to be true *software craftspeople*, this arsenal better be mighty and better include both TDD styles. We ought to study and apply both of them and draw our own conclusions as to which one we favor in which situation and why.
 
 In my opinion, judging based on the problem in hand is crucial and ideally we should learn to switch between the two. Don't forget that in software engineering almost everything is a trade-off and working these trade-offs is what makes us better *professional* software engineers. There is no silver bullet for most problems and - despite personal preferences - TDD styles is not an exception.
