@@ -30,7 +30,7 @@ In an ideal situation, a mature team should be able to walk into the retro and j
 ## Set the stage
 *Usually 5-10 minutes for a 90 minute retro, depending on the team size*
 
-Take the time to communicate the purpose of the session and the schedule. It may sound redundant, but it will help the team members orient themselves during the retro and focus on the task at hand for the following period of time.
+Take the time to communicate the purpose of the session and the schedule. It may sound redundant, but it will help the team members orient themselves during the retro and focus on the task in hand for the following period of time.
 
 Usually I ask for a very brief check-in phrase or input (e.g. describe the previous sprint in 3 words). Simplistic as it may sound, keep in mind that there may be people in the room that are hard to open up. As Scrum Masters, we should always make sure that every team member feels comfortable to speak and is engaged in the team exercise. This is what I focus on during this short phase. **Get everyone onboard for what's about to follow**.
 
