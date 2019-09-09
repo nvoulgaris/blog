@@ -36,7 +36,7 @@ This is clearly an issue that could - and perhaps should - be addressed. Thinkin
 
 # The loan pattern
 
-Thankfully, there is a design pattern, which solves exactly this problem, in a *very elegant way* and its name it the **loan pattern**. I first came across it while reading Venkat Subramaniam's excellent book [Functional Programming in Java](https://www.goodreads.com/book/show/17698629-functional-programming-in-java). Venkat does a wonderful job explaining this pattern as it naturally emerges while refactoring a real world piece of code and I suggest that you read it (see section *"Creating Fluent Interfaces Using Lambda Expressions"*), but I will try to explain the basic points myself here.
+Thankfully, there is a design pattern, which solves exactly this problem, in a *very elegant way* and its name is the **loan pattern**. I first came across it while reading Venkat Subramaniam's excellent book [Functional Programming in Java](https://www.goodreads.com/book/show/17698629-functional-programming-in-java). Venkat does a wonderful job explaining this pattern as it naturally emerges while refactoring a real world piece of code and I suggest that you read it (see section *"Creating Fluent Interfaces Using Lambda Expressions"*), but I will try to explain the basic points myself here.
 
 Essentially, the pattern removes the responsibility of dealing with the object's life cycle from the function that uses it. Instead, this responsibility lies with the class itself. In order to achieve this, we *create* a resource and *pass* it to the function. As soon as the function terminates, the resource is *destroyed*.
 
