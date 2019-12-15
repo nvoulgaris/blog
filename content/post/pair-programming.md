@@ -1,47 +1,68 @@
 ---
-title: "Pair programming: making the sum greater than the parts"
-date: "2019-11-30"
+title: "Pair programming: making the whole greater than the sum of its parts"
+date: "2019-12-15"
 tags: [pair programming,xp]
 image: img/posts/pair_programming.jpg
 ---
 
-When was the last time that you did some pair programming?
+When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side?
+
+Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a *team sport*. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.
+
+In the following of this post, I will try to articulate my thoughts on pair programming, which I believe is an empowering practice and a skill that builds successful teams.
 
 # What is it
 
-Pair programming is an extreme programming (XP) practice and, according to Kent Beck's book [*"Extreme Programming Explained: Embrace Change"*](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained), it is
+Pair programming is an extreme programming (XP) practice. According to Kent Beck's book, [*"Extreme Programming Explained: Embrace Change"*](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained) it is
 
 > A programming technique where two people program with one keyboard, one mouse, and one monitor
 
-So, essentially, two software engineers, working at the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the *driver* and the *navigator*.
+So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the *driver* and the *navigator*.
 
  * The **driver** is writing the code, focusing on the task in hand and in the micro view of the code.
  * The **navigator** is constantly reviewing the code being written by the driver, is looking for logic problems and bugs and is thinking ahead of the architecture and design of the system, focusing on the macro view of the code.
 
-# Why
+ Now, having decided to pair, how do you go about doing it?
 
-Now, the first reaction of people that have not used the practice is skeptical, to say the least. After all, it sounds very counter intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let's talk a little bit about the benefits of pair programming.
+# How to pair program
+
+Before thinking about roles and pieces of code, my advice is to focus on the setup. I find it critical that the screen is positioned in the **center** of the desk and *both participants have equal access to it*. Otherwise, you are running the risk of creating a situation in which one participant feels like a "guest" in the other's office, instead of an equal collaborator.
+
+Having taken care of the screen's position, the second most important point, in my opinion, is having *two keyboards*, if possible. This contradicts the above-mentioned definition of pair programming, which talks about one keyboard, but I believe it is very important to *remove the psychological barrier of actually having to "grab" the keyboard to contribute* one line of code when needed.
+
+With the setup in place, let's focus on the process. I would suggest making sure that you **swap roles frequently**. This ensures that both participants stay engaged and focused and that their minds work on both the micro and macro view of the code. Having the same driver for a lot of time can end up with the navigator feeling marginalized and disengaged. There is no "right" amount of time, but, out of personal experience, I would suggest swapping every few minutes. Of course, this is totally subjective and the pair should experiment and find what works best for it.
+
+Staying in the context of role swapping, when using Test Driven Development (TDD), I have found extremely useful the *"ping pong"* technique. According to this, the driver writes a failing unit test. Then, roles are swapped and the new driver makes it pass and writes the next failing unit test. Then, roles are swapped again and so on and so forth. This technique creates pace and ensures frequent role swaps.
+
+Apart from roles, make sure to also *switch pairs frequently*. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I've heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a *soft swap* and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a *hard swap*, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.
+
+Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice *watching* the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that
+
+> Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life
+
+# Why bother
+
+Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let's talk a little bit about the benefits of pair programming.
 
 ## The sum is greater than the parts
 
-
+Pair programming is a powerful technique when you need to tackle a very difficult problem. The reason is that, empirically, *the quality of the work that is being produced by the pair is higher* than the one of the work that each team member would produce on her own. I know that it sounds strange and is indeed very counter-intuitive, but, surprisingly, I have found it to be true every single time that I have paired on a difficult task. When done right, the level of concentration is unprecedented and two minds, deeply focusing on the same problem, can produce extremely high-quality work.
 
 ## Collective code ownership
 
-The more a team is practicing pair programming, the more it increases collective code ownership. When an individual writes a piece of code and then the team reviews it, inevitably, the author is implicitly perceived as the *"owner"* of this piece of code. Pairing defaults the [bus factor](https://en.wikipedia.org/wiki/Bus_factor) to 2 and increases collective code ownership, a vital quality for an agile team.
+The more a team is practicing pair programming, the more it **increases collective code ownership**. When an individual writes a piece of code and then the team reviews it, inevitably, the author is implicitly perceived as the *"owner"* of this piece of code. Apart from increased collective code ownership, which is a vital quality for an agile team, pairing defaults the [bus factor](https://en.wikipedia.org/wiki/Bus_factor) to 2.
 
-## More efficient
 ## Code is reviewed automatically
 
-One of the greater benefits of pair programming is that the code is reviewed automatically, as it gets constantly reviewed by the navigator while is being typed by the driver. Taking into consideration that roles are swapped frequently, essentially the code is reviewed by the pair. Additionally, it is reviewed in a more active way, *driven by conversation and modifications*, instead of passively and silently reading a pull request without the author of the code. As a matter of fact, it is so well reviewed that it can be checked in and merged, although I would propose to open a pull request, have the rest of team have a look at it as well as have the pair take a more distant look after the work is done.
+One of the greater benefits of pair programming is that the *code is reviewed automatically*, as it gets constantly reviewed by the navigator while is being typed by the driver. Taking into consideration that roles are swapped frequently, essentially the code is reviewed by the pair. Additionally, it is reviewed in a more active way, *driven by conversation and modifications*, instead of passively and silently reading a pull request without the author of the code being present to initiate a conversation. As a matter of fact, it is so well reviewed that it can be checked in and merged right away, although I would advise against it and I would propose to open a pull request, have the rest of team have a look at it as well as have the pair take a more distant look after the work is done.
 
 ## Increased collaboration
 
-Gone are the days that software was produced by individual sitting in their cubicles, working as isolated as possible. Nowadays, it is well understood that great software is delivered by great teams. Therefore, we focus our energy a lot into building great teams. Honestly, I can't think of a more catalytic action to this than having two people working together, on the same problem. Essentially, this boosts team energy like nothing else I have seen. Personally, as a scrum master, I always encouraged the team to work in pairs as much as they can and make sense.
+Gone are the days that software was produced by individual sitting in their cubicles, working as isolated as possible. Nowadays, it is well understood that great software is delivered by great teams. Therefore, we focus our energy a lot into building great teams. Honestly, I can't think of a more catalytic action to this than having two people working together, on the same problem. Personally, as a scrum master, I always encouraged the team to work in pairs as much as they can.
 
 ## Learning opportunity
 
-People say that code reviews is a great learning opportunity. I can't even begin to describe what a wonderful learning opportunity pair programming is. Honestly, I don't remember pairing without sharing knowledge. Sometimes sharing great software design ideas. Sometimes learning a keyboard shortcut or a small IDE feature. There's always knowledge sharing during pair programming.
+People say that code reviews are a great learning opportunity. I can't even begin to describe what a wonderful learning opportunity pair programming is. Honestly, I don't remember pairing without *sharing knowledge*. Sometimes sharing great software design ideas. Sometimes learning a keyboard shortcut or a small IDE feature. There's always knowledge sharing during pair programming.
 
 ## More difficult to cut corners
 
@@ -49,65 +70,48 @@ We do get tired when writing code. Especially, when solving hard problems. These
 
 ## Less distractions
 
-A software engineer works focused on a task, having built a mental diagram and his colleague asks "shall we go for lunch in 10 minutes?". Suddenly, the mental diagram is gone and 15 minutes are required to reconstruct it. Does anyone relate to such an incident? Writing code requires extreme concentration and we all know that interrupting a software engineer while writing code is a huge "no-no" (especially when wearing headphones). Fortunately, working in pairs decreases interruptions a lot. It is just more difficult to interrupt a pair than a single individual and people seem to think twice before it.
+A software engineer works focused on a task, having built a mental diagram and his colleague asks "have you had lunch?". Suddenly, the mental diagram is gone and 15 minutes are required to reconstruct it. Sounds familiar? Writing code requires extreme concentration and we all know that interrupting a software engineer while writing code is a huge "no-no" (especially when wearing headphones). Fortunately, working in pairs decreases interruptions a lot. People usually think twice before interrupting a pair.
 
 ## Onboard a new team member
 
-Do you remember your last onboarding a company experience? How long did it take you to become fully enabled and how did you go about it? Personally, I believe that working on a task and asking questions when stuck is a suboptimal approach. I find that pairing with a teammate is an excellent onboarding technique. As a matter of fact, I believe that pair programming is tailored made for onboarding new members. knowledge sharing is flowing in an unprecedented pace (both domain/business and technical) and there's also a deliverable coming of the process.
+Do you remember your last onboarding-a-company experience? How long did it take you to become fully enabled and how did you go about achieving it? Personally, I believe that working on a task and asking questions when stuck is a suboptimal approach. I find that pairing with a teammate is an excellent onboarding technique. As a matter of fact, I believe that pair programming is tailored made for onboarding new members. knowledge sharing is flowing in an unprecedented pace (both domain/business and technical) and there's also a deliverable coming out of the process.
 
-# How to pair program
+# When to pair
 
-Before thinking about roles and pieces of code, my advice is to focus on the setup. I find it critical that the screen is positioned in the center of the desk and both participants have equal access to it. Otherwise, you are running the risk of creating a situation in which one participant feels like a "guest" in the other's office, instead of an equal collaborator.
+Of course, as with most practices, pair programming is not a silver bullet and we should be cautious *when* or for *how long* we practice it. As I mentioned above, there are teams out there that pair by default. There are also teams that pair only when no individual can solve the problem on her own. I personally feel that there are limits and each individual (and team) has to know when to pair and for how long to pair. Don't get me wrong. Perhaps always pairing is what works for you. I just argue that this is not the case for everyone. So, I would suggest to feel free to pair at any given moment, but try hard to pair in the following situations:
 
-The second most important point, in my opinion, is having two keyboards, if possible. This contradicts the above-mentioned definition of pair programming, which talks about one keyboard, but I find it important remove the psychological barrier of actually having to "grab" the keyboard to contribute one line of code when needed.
+ * **Solving mission-critical or hard problems:** I always feel that the most sensible case of choosing to pair is when tackling a very difficult problem or a mission-critical task. The quality of the code will rise, the number of defects will drop and, - arguably - most importantly, it will create/increase collective code ownership. Personally, as a rule, I try to pair in such situations and more often than not, I have seen it pay off. Retrospectively, I feel that any result I could produce would be inferior to the one we produced with my pair. Also, when something breaks in this, mission-critical piece of code, there are at least two people that are very familiar with it and can modify it fearlessly.
 
-Having taken care of the setup, I would suggest making sure that you swap roles frequently. This ensures that both participants stay engaged and focused and that their minds work on both the micro and macro view of the code. Having the same driver for a lot of time can end up with the navigator feeling marginalized and disengaged. There is no "right" amount of time, but, out of personal experience, I would suggest swapping every few minutes (20 the most). Of course, this is totally subjective and the pair can better find the window that works best for it.
+ * **Making architectural/design decisions:** There are tasks that require making architectural or design decisions. Perhaps they are fairly simple or perhaps, after making these decisions, finishing the implementation is straightforward. I would encourage you to pair when working on such tasks. Architectural and design decisions are very important in a software project and having two minds working on them is preferable to having just one. This will help you engage in a dialogue and weigh different alternatives instead of going with the first idea or not challenging a decision, both of which are common cases when working on our own. Additionally, at least two people will be familiar with these, important decisions.
 
-Staying in the context of role swapping, when using Test Driven Development (TDD), I have found extremely useful the *"ping pong"* technique. According to this, the driver writes a failing unit test. Then, roles are swapped and the new driver makes it pass and writes the next failing unit test. Then, roles are swapped again and so on and so forth.
+While knowing when it to pair is important, we should also know when **not** to pair. So, I would discourage pairing when **solving trivial problems.** If you find yourself having to change a configuration or implement a fairly simple feature, that barely requires any design at all, pairing would be an overkill in my opinion. This is because there would be no important decisions to be made or serious hurdles to overcome and putting two minds in this problems just seems wasteful to me.
 
-Apart from roles, make sure to switch pairs frequently. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I've heard of team, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a *soft swap* and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a *hard swap*, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.
+# How much should we pair for
 
-Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice - novice or expert - expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice *watching* the expert programming and getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down, and it will, but always remember that
+So, knowing when to pair is important, exactly as is knowing *when to stop*. Allow me to stress once more that there are no rules on these matters and I strongly feel that conclusions should be drawn **empirically** and always remain open to adjustments as the team matures. Therefore, below I outline my personal findings.
 
-> Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life
+Something to always keep in mind is that writing code in pairs is *exhausting*. It requires a tremendous level of concentration, exactly like individual programming does, plus a lot of energy devoted to interacting with your partner. After a few hours of pairing, it grows increasingly harder to keep producing high-quality work, which is the goal after all. So, I have come to believe that I should stop pairing when I feel like this. For me, this usually means that I should not pair for  more than a few hours a day. However, this conclusion is totally *empirical*. Once again, there are teams out there that pair by default. So, I would strongly recommend that each team (or pair) experiments until it finds its balance and that best works for it.
 
-* Suitable desk - both should have equal access
-* Two keyboards
-* Frequently switch drivers
-* Rotate pairs within the team
-* Prefer same level, but also try expert - novice (but avoid having the expert driving a lot)
+If you do practice pair programming though, I would suggest that you do it on a *frequent basis*, every day if possible.
 
-# When
+# Pairing remotely
 
-As I mentioned above, there are teams out there that pair by default. However, I personally feel that there
+Remote work has evolved in an integral part of software engineering teams. I used to think that pair programming would be very difficult (if not impossible) to do when the team members do not share the same physical space. After all, this technique is heavily based on the benefits of direct communication and interaction. I recently gave it a try nonetheless, and the results were remarkable. Not only it worked, but the outcome was of excellent quality.
 
-When Tackling a very difficult problem or a mission critical task, try to pair. The quality of the code will rise, the number of defects will drop and, - arguably - most importantly, it will create collective code ownership.
+Retrospectively, I gave it some thought and tried to understand *why* it worked in such a great way. I realized, that neither communication nor interaction is negatively affected when using modern technology in the right way. Online call and remote control tools allow us to work seamlessly on the same machine. Besides, each participant is comfortably sitting before her dedicated screen and keyboard, without even feeling that her personal space is invaded, which might be the case when first adopting pair programming in person.
 
-* Tackling a difficult problem (mission critical tasks)
-* Making architecture and design decisions
-
-While knowing when it to pair is important, we should also know when *not* to pair.
-
-* Not pair when solving trivial tasks
-
-# For how much
-
-Of course, as with most practices, pair programming is not a silver bullet and we should be cautious when or for how much we practice it.
-
-Something to always keep in mind is that writing code in pairs is *exhausting*. It requires a tremendous level of concentration, exactly like individual programming, plus a lot of energy devoted to interacting with your partner. After a few hours of pairing, it grows increasingly harder to keep producing high-quality work, which is the goal after all. So, *empirically*, I believe that it is wise to practice pair programming for only a few hours per day. Of course, how many "few" actually is varies among teams and I strongly suggest that each team (or pair) experiments and - empirically - finds its own balance, that works best for it.
-
-If you do practice pair programming though, I would suggest that you do it on a frequent basis, every day if possible.
-
-# Remotely
-
-A question that always comes up refers to team working remotely. Remote work is an integral part of software engineering teams and...
+I would strongly recommend to give remote pair programming a go and the results might astound you, just as they did me.
 
 # Challenges
 
-* Sceptics (uncomfortable, afraid of lower efficiency)
-* The pair should be engaged (the observer should be playing an active part too)
-* Embrace communication throughout the task
+As with every new practice, there are going to be hurdles to overcome when adopting it. Below, I have outlined the ones, which I think are the most common ones and my suggested approaches to tackle them.
 
-# Consider Mob
+ * **Resistance:** People are resistant to change. That's a fact. It is natural (actually it is the definition of "inertia"). Software engineers that are not practicing pair programming are going to be sceptical when it comes to adopting it. In my experience, it is even harder than making them write tests - or write tests first - since it involves the natural discomfort of entering their personal space. Also, people are going to be afraid of lower efficiency. I am not in favor of *persuading* people for anything. I would suggest to propose them to pair on a simple task, just to see what it looks like and perhaps briefly present the benefits of the technique. If this doesn't work, try to lure them. For instance, ask a teammate for her assistance, ask her to write it down on your machine. Maybe grab the keyboard to contribute and give it back to her, asking for some more guidance. If this doesn't work either, perhaps not going any further for the moment being would be the best choice.
+
+ * **Disengagement:** One of the biggest pitfalls to watch out for is a disengaged pair. Usually, this means that instead of working together, the pair just works side by side. A common symptom is a navigator who is not paying attention to what the driver types and is not playing an active part in the process. This kind of behavior totally defeats the purpose and should be avoided by all means. If you find yourself in this situation, I would suggest to ask your partner if she needs a short break or if she desires to stop pairing altogether for the time being.
+
+ * **Lack of communication:** Always remember that the key in pair programming is *communication*. This is what makes the sum greater than the parts and this is what drives everything throughout the whole process. So, make sure that you *embrace communication* at all times when pairing. If you realize that you are not communicating and interacting enough with your partner, try to stimulate it. Think out loud, contemplate on decisions that you make, ask questions and try to keep the feedback between the two of you flowing at all times. When you feel that you don't have the energy for this, take a short break, or stop pairing for the moment being. After all, if there isn't enough energy for communication, how can there be enough energy to produce high-quality software?
 
 # Conclusion
+
+Pair programming is a truly powerful technique. It brings high-quality results, increased levels of collaboration, collective code ownership and loads of other benefits. Studying the technique is important in order to apply it correctly to gain all these benefits. As responsible, professional software engineers, we should empirically find out when of for how long to use it in order to maximize the advantages for our team. Working remotely not only does not hinder pair programming but, with the right tools, it can leverage the merits. Finally, don't be discouraged by challenges. As always, they will present themselves, but they can be overcome.
