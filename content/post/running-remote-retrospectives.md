@@ -1,6 +1,6 @@
 ---
 title: "Running remote retrospectives"
-date: "2020-04-04"
+date: "2020-04-05"
 tags: [agile,retrospectives]
 image: img/posts/remote_retrospectives.jpg
 ---
@@ -9,7 +9,7 @@ Remote work has become an integral part of a number of professions, with softwar
 
 So, in this article I will share my thoughts and tips on points I consider important when running a remote retrospective. These come from the point of view of a scrum master. Regardless of whether people call themselves a "scrum master" or not, running a retrospective means wearing the hat, at least temporarily.
 
-My intention here is not to cover the fundamentals, such as the *goal* and the *structure* of the session. These are covered extensively in my [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retros) post. My aim is to complement that post with the special case of a geographically distributed team.
+My intention here is not to cover the fundamentals, such as the *goal* and the *structure* of the session. These are covered extensively in my [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retrospectives) post. My aim is to complement that post with the special case of a geographically distributed team.
 
 *Throughout this post, I will be referring to a fully remote team. Apart from this and the colocated team, there is also a third case, in which some of the team members are working remotely and some in the same location. I will not be covering the latter in this post.*
 
@@ -47,7 +47,7 @@ What I would caution one against is not to use any tool and host a blank session
 
 ## Reconsider the format
 
-Concerning the format of the session, I feel that there is a lot of room for experimentation. Generally, I like sticking to the 5 steps that I have thoroughly described in my [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retros) post, but there are quite a few factors that should be considered.
+Concerning the format of the session, I feel that there is a lot of room for experimentation. Generally, I like sticking to the 5 steps that I have thoroughly described in my [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retrospectives) post, but there are quite a few factors that should be considered.
 
 Some exercises are not suitable for a team that is not colocated. For instance, there is no meaning running the *park bench* exercise on a remote session. The advantages of such an exercise derive from the mobility within the room, the high energy level and the playful format. I believe that attempting to run a variation of this exercise during a remote session would backfire. So, I would propose picking exercises that suite collaboration from distance.
 
@@ -55,7 +55,7 @@ Also, perhaps one might notice that an exercise takes considerably more time whe
 
 # Facilitation
 
-As far as facilitation is concerned most of the things that apply in colocated retrospectives, apply to remote ones too. Therefore, I will not repeat the thoughts that I have expressed in [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retros) (such as how to deal with silent members or members that dominate the conversation), but there are a few points worth discussing.
+As far as facilitation is concerned most of the things that apply in colocated retrospectives, apply to remote ones too. Therefore, I will not repeat the thoughts that I have expressed in [driving fruitful retrospectives](https://nvoulgaris.com/driving-fruitful-retrospectives) (such as how to deal with silent members or members that dominate the conversation), but there are a few points worth discussing.
 
 These thoughts assume that the facilitator is acting as a scrum master. The case the facilitator wears two hats, the one of the scrum master and the one of the member of the development team is outside of the scope of this blog post.
 
