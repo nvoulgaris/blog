@@ -1,6 +1,4 @@
-[submodule "themes/casper-two"]
-	path = themes/casper-two
-	url = https://github.com/eueung/hugo-casper-two.git
 [submodule "themes/hugo-casper-two"]
 	path = themes/hugo-casper-two
 	url = git@github.com:nvoulgaris/hugo-casper-two.git
+	branch = master
