@@ -38,6 +38,9 @@ Copyright       = "All rights reserved - 2019"
   hideHUGOSupport = false
   hjsStyle = "default"
 
+  enableRobotsTXT = true
+  canonifyURLs = true
+
 [permalinks]
   post = "/:slug/"
 
