@@ -1,5 +1,5 @@
 baseurl         = "/"
-theme           = "casper-two"
+theme           = "hugo-casper-two"
 languageCode    = "en-UK"
 paginate        = 6
 Copyright       = "All rights reserved - 2019"
