@@ -65,18 +65,48 @@ This essentially means that the team delivered value early. The stakeholders and
 
 ## Teamwork
 
+A WIP limit is essentially the application of a restriction. A restriction on the amount of work that can be concurrently undertaken. However, team members remain the same. Hence, the less the number of stories or tasks that can be simultaneously in-progress the more the level of cooperation among the team members has to increase.
+
+Think about it. In a very simplistic scenario, a team of two software engineers with a WIP limit of one would always pair (in the case where the WIP limit is applied to tasks) or - at least - work on the same story (in the case where the WIP limit is applied to stories). A team of - say - 5 software engineers with a WIP limit of four would mean that there should always be at least one pair. Reduce this to a WIP limit of three and the pairs become at 2 at all given moments.
+
+Pairing is a more intense form of collaboration, but working on the same story is still more collaborative than two software engineers working on different stories. Given sufficient time, this restriction will strengthen the team bonds and will help build the right chemistry.
+
 ## Bus factor
+
+Increased teamwork goes hand in hand with increased bus factors. I believe this is quite straightforward. The more often two or more people work on the same story, the more the parts of the code that more people will be familiar with. On the contrary, a team whose members tend to work alone on a story will end up with a codebase full of parts that only a single software engineer is familiar with.
 
 ## Identify bottlenecks
 
+Applying a WIP limit is a tailor-made technique for surfacing bottlenecks in a team's process. Let's imagine a scenario in which a team uses the flow *"todo"*, *"doing"*, *"review"*, *"delivered"* and then *"done"*. It undertakes stories and when the code is written, the story is passed to the rest of the team for code review. The engineer(s) that worked on this story naturally grab the next one until this one gets reviewed. It is quite common for teams to end up with a pile of stories that should get reviewed towards the end of the sprint. This, of course, leads to rushed code reviews and a big band release with a dozen features in it. This is a typical case of a *bottleneck in the process*.
+
+Now, let's imagine that this team applies some WIP limits. Remember that these may span from one to several swimlanes. Let's assume that the *"review"* swimlane has a dedicated limit of three stories. When the third story gets in the lane the team should prioritize code reviewing these stories. Otherwise, no new stories can be propagated from *"doing"* to *"review"*. These stories will be reviewed and if the *"delivered"* column has a respective limit, they will also get deployed to production and reach *"done"*, allowing space for more stories to be worked.
+
+The application of the limit has not only made the problem apparent, but it has also provided a solution to it.
+
 # Fine-tuning the limits
+
+Assuming that some symptoms are visible and the team feels that some WIP limits would be helpful, a natural question would be how can one go about setting them. What are the right the numbers? How many swimlanes should a limit span?
 
 ## Avoid multitasking
 
+I would propose that the first thing to avoid is multitasking. A WIP limit greater than the number of software engineers in the team would mean that people are encouraged to multitask. For instance, imagine a team of five software engineers with a WIP limit of 6.
+
+Keep this in mind. In my opinion, if you are ready to set a WIP limit greater than the number of software engineers in the team, take a step back. Think the problem over again. Why do you want to do this? What do you expect to gain out of it?
+
 ## Not too high
+
+Building on this point, a WIP limit equal to the number of software engineers in the team would mean that no one can multitask, but on the other hand, pairing and collaboration are not encouraged. This kind of beats the purpose, because fostering collaboration is a key motive for using this technique.
+
+The two above strategies can work but, only as first steps and only in rare situations. For instance, if some team members are very reluctant about using WIP limits and yet the rest of the team feels that they would be beneficial, perhaps it's a decent first step. However, I see very limited benefits besides these cases.
 
 ## But not too low either
 
+On the other hand, a very restrictive WIP limit can have negative effects. Not every task and story is suitable for pairing or requires more than one person working on it. Also, pairing is great, but, as discussed in extensively in my [pair programming post](https://nvoulgaris.com/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/), it can be exhaustive. Setting a WIP limit of two in a team with four software engineers would automatically mean that the engineers should always work in pairs to honour this rule. If this is what you are after - always working in pair - by all means, go for it. However, pay a lot of attention to it. Such a restrictive limit may lead to people feeling that they are suffocating or it may just be counterproductive.
+
 ## Inspect and adapt
+
+Having said all these, we still haven't answered the above-mentioned questions. Well, you might have guessed it. There is not *right* answer. *There is no silver bullet*. The very philosophy of *Agile* suggests a totally different approach to *right* answers and *silver bullets*. Scrum says *"inspect and adapt"*. That is what I would suggest.
+
+Start off with discussing the situation during the retrospective. Come up with the first iteration of a few WIP limits. Give it a go and watch what happens. Adjust it and repeat the process. This is an ever ending-process. Keep shifting towards what works best for the team and always keep in mind that different things work on different teams.
 
 # Conclusion
