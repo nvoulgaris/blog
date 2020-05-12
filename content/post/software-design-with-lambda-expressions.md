@@ -21,7 +21,7 @@ However, in software, there is no such thing as a *perfect* design and there nev
 
 Considering the solution of the previous post, there is definitely room for improvement. First of all, as already mentioned in that post, we should apply the Dependency Inversion Principle to invert the dependencies between the `ValidationService` and `EmailValidator` and `PhoneValidator` (currently there is a transitive dependency between them, while the former should not know about the latter). A second point of interest is the life cycle of the `ViewValidator` object that we create. Please remember that we designed it to be used like this:
 
-```
+```java
 formViews.forEach(view -> {
     ViewValidator validator = ViewValidatorFactory.makeFor(view);
     validator.validate(view.getText());
@@ -42,7 +42,7 @@ Essentially, the pattern removes the responsibility of dealing with the object's
 
 In our case, to achieve this, we would ideally want to write something like this (remember that `tags` is what will be used to determine the type of validation that should be applied and `value` is the value that is to be validated)
 
-```
+```java
 Validator.validate(
   validator -> validator.withTags("email").withValue("someone@example.com")
 );
@@ -56,7 +56,7 @@ This is an incredibly *smart* and *elegant* solution to a very sneaky problem. L
 
 Assuming that the `Validator` class is to be used as stated above, the obvious challenge would be to come up with a way to make use of the loaned resource in the `validate()` function. This can be easily achieved with the `Consumer` functional interface (`java.util.function.Consumer`), which is designed to accept an object and execute a piece of code on it. So, redesigning our `Validator` class like the following, would do the job.
 
-```
+```java
 public class Validator {
 
     private static String COMMA = ",";
@@ -114,7 +114,7 @@ There's a lot of things to notice in this class, so let's take them one by one.
 
 Below is the `Validation` interface
 
-```
+```java
 public interface Validation {
 
     List<Violation> applyTo(final String value);
@@ -123,7 +123,7 @@ public interface Validation {
 
 and its three derivatives
 
-```
+```java
 public class EmailValidation implements Validation {
 
     @Override

@@ -15,7 +15,7 @@ Before we delve into the topic, let me clarify the following: practicing TDD as 
 
 Allow me to begin with an example that will help us understand the nature of the problem in hand. Let's consider the following, very simplistic function that performs division between two integers (it's hardly reasonable to assume that anyone would need such a function, but let's consider it for the sake of the argument).
 
-```
+```java
 public int divide(int a, int b) {
   return a / b;
 }

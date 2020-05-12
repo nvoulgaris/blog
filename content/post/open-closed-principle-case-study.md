@@ -27,7 +27,7 @@ Therefore, all we have to do is to implement a module that receives this list of
 
 This sounds like a reasonably straightforward task and agile teaches us that we should go with the simplest thing working. Therefore, a first implementation of the solution could look like the following:
 
-```
+```java
 for (View view : formViews) {
   if (view.getTag() == "Email")
     // Apply email validation logic
@@ -70,7 +70,7 @@ Let's keep in mind that the goal is to implement a validation module that can be
 
 In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a set of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:
 
-```
+```java
 formViews.forEach(view -> {
     ViewValidator validator = ViewValidatorFactory.makeFor(view);
     validator.validate(view.getText());
@@ -79,7 +79,7 @@ formViews.forEach(view -> {
 
 This reads like a nice algorithm. For every view, we get hold of an appropriate validator and apply its `validate()` method to the text that the view holds. Notice that we do not know *how* each specific field get validated. This is achieved by getting a `Validator` on runtime using the `ViewValidatorFactory`, but not knowing on compile time which one we will get on runtime. To achieve this, we need to create an interface like the following and have the factory returning objects deriving from this interface
 
-```
+```java
 public interface ViewValidator {
 
     void validate(String input) throws ValidationException;
@@ -88,7 +88,7 @@ public interface ViewValidator {
 
 and implement it for every specific field that we need to validate, as follows
 
-```
+```java
 public class EmailValidator implements ViewValidator {
 
     public void validate(String input) throws ValidationException {
@@ -98,7 +98,7 @@ public class EmailValidator implements ViewValidator {
 ```
 and
 
-```
+```java
 public class PhoneValidator implements ViewValidator {
 
     public void validate(String input) throws ValidationException {
@@ -109,7 +109,7 @@ public class PhoneValidator implements ViewValidator {
 
 Now, all that's left to glue it all together is to implement the factory that creates the validators based on the view.
 
-```
+```java
 public class ViewValidatorFactory {
 
   public ViewValidator makeFor(View view) {
