@@ -38,7 +38,7 @@ This is exactly where `getters` and `setters` enter the picture. Conventional wi
 
 In order to better illustrate the nature of this problem, let's consider for a moment the `AirCondition` class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:
 
-```
+```java
 if (airCondition.getTemperature() > 25) {
   while (airCondition.getTemperature() > 25) {
     airCondition.decrementTemperature();
@@ -52,7 +52,7 @@ if (airCondition.getTemperature() > 25) {
 
 However, all we do is constantly manipulating the object's state, essentially **implementing the logic that it should possess**. We are *micromanaging* the object. Instead, we should *trust* it on knowing how to do its job. We keep on **asking** about it's state and then modify it instead of **telling** it the end result that we wish. Conforming to OOP, all we need to do is to *send it a message*, like the following
 
-```
+```java
 airCondition.adjustTemperatureTo(25)
 ```
 

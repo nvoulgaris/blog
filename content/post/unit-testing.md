@@ -38,7 +38,7 @@ Whenever we come across a piece of code that we did not write, we want to be abl
 
 Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:
 
-```
+```java
 public class AccountTest {
 
   @Test
@@ -50,7 +50,7 @@ public class AccountTest {
 
 This is a very common naming convention. However, after attending a Sandro Mancuso workshop, I was introduced to the following, far better approach, the benefits of which I presented to my team and we shifted to it.
 
-```
+```java
 public class AccountShould {
 
   @Test public void
@@ -80,7 +80,7 @@ When should we stop writing the test and start writing the production code? That
 
  * **Are the diagnostics clear?** There will come a time in the future that this test will break and then someone (most probably us) will have to understand what is wrong and fix it. How hard will it be to fix it if we cannot tell what is wrong? A few months ago, I fell into exactly this pitfall, a test that I had written (quite a few months back) failed against the production code that I had written and all I had in the console was:
 
-```
+```java
 Expected: 1
 Got: 0
 ```
@@ -99,7 +99,7 @@ When it comes to designing our unit tests, I strongly recommend that the backbon
 
 Let's consider the following example (*I like using a blank line between the three steps, to make the code  more readable*):
 
-```
+```java
 @Test
 public void validatorShouldThrowExceptionWhenBookingIDIsNull() throws Exception {
   Booking booking = BookingBuilder.aBooking().withBookingId(null).build();
@@ -127,7 +127,7 @@ How many assertions should a test have? The answer should always be *one*. What 
 
 Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?
 
-```
+```java
 @Test public void
 calculatorShouldGeneratePositiveEvenIntegers() {
   int number = calculator.generate();
@@ -139,7 +139,7 @@ calculatorShouldGeneratePositiveEvenIntegers() {
 
 There may be two *physical* assertions, but they essentially constitute a single *logical* assertion. This test will fail *if and only if the calculator does not generate positive even numbers*, as opposed to the following test:
 
-```
+```java
 @Test public void
 calculatorShouldDivideNumbers() {
   int number = calculator.divide(2, 2);
@@ -158,7 +158,7 @@ This test will both fail when calculator fails to divide correctly and when the 
 
 Coming back to the arrange - act - assert example, assuming that I have a business requirement that a booking without booking ID is invalid, and I am writing the booking validator logic, I may start as follows:
 
-```
+```java
 @Test public void
 validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull() {
   assertThrows(InvalidBookingException.class, validateBooking);
@@ -167,7 +167,7 @@ validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull() {
 
 Starting off with the *assert*, I know both the right answer and how to check it. I am also driven to the proper act for my assertion.
 
-```
+```java
 @Test public void
 validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull() {
   Executable validateBooking = () -> validator.validate(booking);
@@ -178,7 +178,7 @@ validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull() {
 
 Now there is only one step missing, the arrange part. I need a booking and it should have a `null` booking ID.
 
-```
+```java
 @Test public void
 validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull() {
   Booking booking = BookingBuilder.aBooking().withBookingId(null).build();
