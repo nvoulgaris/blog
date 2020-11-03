@@ -38,9 +38,9 @@ A truly agile way of working requires constant adaptations. Constant adaptations
 
 A feedback loop may sound like a subtle concept, but if you think about it, it's everywhere in our work:
 
- * Scrum events are feedback loops. During the daily scrum, the team receives the feedback of yesterday's work and adaptst to it for the upcoming day. During the sprint retrospective the team collects the feedack of the way they worked in the previous sprint and makes amendments for the upcoming sprint. During the sprint review the stakeholders generate feedback on the completed increment and the product backlog get adjusted based on it (*sprint review is so misunderstood that perhaps deserves a blog post of its own*).
+ * Scrum events are feedback loops. During the daily scrum, the team receives the feedback of yesterday's work and adapts the upcoming day's work. During the sprint retrospective the team collects the feedack concerning the way they worked in the previous sprint and makes amendments for the upcoming sprint. During the sprint review the stakeholders generate feedback on the completed increment and the product backlog get adjusted based on it (*sprint review is so misunderstood that perhaps deserves a blog post of its own*).
 
- * Test Driven Development is a feedback loop. A very short one actualy (when done right). The engineers set up a loop between the code and themselves. A change in the code produces immediate feedback. Did the change work? Did it break anything? Does the code written in the last few seconds need modifications? *This actually constitutes the fastest feedback a software engineer will ever get on her code.*
+ * Test-Driven Development (TDD) is a feedback loop. A very short one actually (when done right). The engineers set up a loop between the code and themselves. A change in the code produces immediate feedback. Did the change work? Did it break anything? Does the code written in the last few seconds need modifications? *This actually constitutes the fastest feedback a software engineer will ever get on her code.*
 
  * Pair programming is a feedback loop. This loop is set up between the two engineers working together. The code one writes produces feedback from the other, which changes the code, which changes the feedback and so on and so forth.
 
@@ -48,18 +48,48 @@ A feedback loop may sound like a subtle concept, but if you think about it, it's
 
 # Enabling inspection and adaptation
 
-Returning to the original idea of adjusting our course as often as needed based on feedback, I believe it is becoming aparent that feedback loops enable organizations to align with it.
+Feedback loops are *enablers*. Remember, we need to adjust our course as often as needed based on feedback. How can we adapt the product to feedback if we don't get any from the stakeholders? A feedback loop concerning done product increments between the stakeholders/users and the engineers solves this problem.
+
+Suppose we do get feedback on a regular basis. How can we embrace the changes if our technical practises do not support quick stirring? The XP technical practises (TDD, pair programming, refactoring etc) enable software engineers to work in a way that expect frequent changes. These practises, as discussed, are full of feedback loops.
+
+For our feedback loops to be valuable, not only do they need to be in place, but we should make sure that they are short as well. Getting feedback after a 6-month release, in order to plan the next one technically is a feedback loop, but one that can be useful in Agile environments. Six months is an aeon ahead on a typical market and almost impossible to meaningfully predict the needs imposed by the market in that long. The release features are doomed to become obsolete to some extent. 
+
+A unit test suite that needs 15 minutes to run is technically a feedback loop, but again, not a useful one. There is no way an engineer can perform TDD using this test suit. The TDD cycle is going to be too slow to provide an advantage.
+
+To work in an Agile way we need to strive to keep our feedback loops as short as possible. We need to shrink them so long as we keep them meaningful. The shorter the loop the quicker the feedback and the adaptation.
 
 # Scaffolding
 
-Now let's assume that we could do all these things. We could flip the magic switch and, starting from tomorrow, we could create more feedback loops, shorten them, use the feedback and adapt based on it, embrace all XP technical practises etc. 
+Now let's assume that we could do all these things. We could flip the magic switch and, starting from tomorrow, we could create more feedback loops, shorten them, use their feedback to adapt, embrace all XP technical practises etc. 
 
 Why would it make sense to use an Agile framework then? Changes create discomfort. It's natural. Especially when they are radical and they concern the way we work every day. What would scrum, kanban, SAFe, LeSS, you-name-it provide that would justify this tremendous effort and energy needed to adopt them? Take a minute to reflect before proceeding.
 
 My answer would be a resounding *nothing*. If we already enjoy all the merits that these frameworks bring, why bother adopting them?
 
-However, this magic switch does not exist. That's were the frameworks come into play. They could be used to *initiate* the transition and help us create all these good habits. They would work us our guidance. They would essentially be *scaffolding* to the whole shift of mindset.
+However, this magic switch does not exist. That's were the frameworks come into play. They can be used to *initiate* the transition and help us create all these good habits. They can provide the time and place for feedback loops to be created and their feedback to be used. They would put us in the right track and *help us identify what works best for us*. They can be our guide to explore the shift to the Agile mindset. They are great as long as they are used as *scaffolding*.
 
-If we apply them in a ritualistic way, we remain oblivious to the true merits that they can bring along and we end up being slaves to 
+Getting passed the scaffolding stage *they should be gradually thrown away, giving way to our own, unique Agile process as it emerges*. The process that works best for us.
 
-# If it's the same for everyone, it's not agile
+Failing to throw them away and adjust the process in a way that suits our needs and work defeats the purpose. Frameworks are there to put us on the right track and not be blindly followed to the letter, in a ritualistic way. *Applying them dogmatically only implies a cargo cult mentality*. Doing thins without understanding why and expecting certain results to just happen is precisely the definition of cargo cult. 
+
+The Agile mindset has autonomous teams, which work in a self-organized manner at its heart. What are the chances that two self-organized teams, working in an autonomous way will need and use the exact same process to the letter? 
+
+> If a process is the same for everyone, it is not Agile
+
+Dogmatically following a framework (e.g. Scrum) to the letter results in everyone doing exactly the same. 
+
+# Never stop learning
+
+Being a Scrum Master myself, I've fallen prey to the frameworks too. During my early days getting passed the Scrum Master training, if the daily stand-up was reaching a 16th minute, I thought that my whole professional world was falling apart. I felt that it was part of my job to amend it, even if the team wrapped up and finished the stand-up in a total of 16-17 minutes. It still felt wrong. I was myself a victim of the above-mentioned cargo cult mentality.
+
+However, thinking back, I find it quite reasonable. It's a natural step in the learning process. To master something one has to first understand it perfectly and know it inside out. One has to apply it, practise it a lot until one is able to decipher the true meaning and master it.
+
+Working with a team will not make you a Scrum Master / Product Owner / Agile Software engineer. A certification will **definitely** not make you one (and I own a certification too). Instead, go out in the industry and work with teams. Listen closely and try to help them. Take time to reflect and identify what works. Above all, never stop learning and be open to changing your mind or standpoint.
+
+# Conclusion
+
+Almost 20 years ago a few people got together and tried to uncover better ways to make software. The message got lost in the way. The intention became misunderstood. The end result is a cargo cult mentality that follows rules blindly, creating more problems than it solves. Job titles and certifications are born, but these doesn't change the way software is being written.
+
+Agility is based on the idea of constant adaptation, based on feedback. Feedback from the stakeholders, the users, the market, the code and our fellow software engineers. The way to get this is to establish feedback loops and make sure that they are short enough to provide meaning. These will enable constant inspection and adaptation.
+
+Agile frameworks are out there to put people on the right track, not to be followed religiously. They are tools and should be used to help us uncover *our* better ways of making software. As time goes by they should naturally give way to the process that works best for us. A continuous learning mentality will support this gradual transition. Be open-minded and you will be surprised.
