@@ -1,7 +1,7 @@
 baseurl         = "/"
 theme           = "hugo-casper-two"
 languageCode    = "en-UK"
-paginate        = 6
+paginate        = 9
 Copyright       = "All rights reserved - 2019"
 
 [params]
