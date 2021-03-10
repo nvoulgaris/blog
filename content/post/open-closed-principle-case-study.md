@@ -60,7 +60,7 @@ The Open-Closed principle (OCP) is the O of Uncle Bob's SOLID principles (descri
 
 > A software artifact should be open for extension but closed for modification.
 
-Contradictory as it may sound, there's a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify it's code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should *add* some code instead of *modifying* the existing code.
+Contradictory as it may sound, there's a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should *add* some code instead of *modifying* the existing code.
 
 Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let's apply it to the input validation problem, that we analyzed earlier.
 
