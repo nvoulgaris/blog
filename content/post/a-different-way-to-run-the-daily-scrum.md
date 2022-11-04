@@ -1,13 +1,13 @@
 ---
 title: "A different way to run the daily scrum"
-date: "2022-11-02"
+date: "2022-11-04"
 tags: [agile,scrum]
 image: img/posts/a_different_way_to_run_the_daily_scrum.jpg
 ---
 
-I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run by sharing an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.
+I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run and share an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.
 
-Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don't remember if is this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.
+Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don't remember if this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.
 
 # Symptoms
 
@@ -23,7 +23,7 @@ During the daily scrum, team members share their input, but no fruitful communic
 
  Mark is sharing the exact same input in both cases, but notice how the work progresses in the second situation. In the first case, the team is not collaborating.
 
-# Monologue
+## Monologue
 
 As mentioned above, the daily scrum is all about collaboration. If people are only speaking when their turn is up, how are they collaborating? Instead, a healthy team should be syncing and planning during the session. We should be hearing things like "Shall I use the dev environment to test this?", "I will release after the scrum. Do you want me to wait for this to be merged?", "Shall I branch off your branch on this on  or from develop?", "Do you need any help with this or shall I pick something up from the ToDos?".
 
@@ -38,6 +38,10 @@ The daily scrum is supposed to be a *planning session*. Not a reporting session.
 In scrum, we are supposed to be delivering value fast. It doesn't make sense to have a bunch of PBIs stuck at the "Review" swimlane for 3 days and picking up new work instead of reviewing the open PRs. The daily scrum is the time and place to make these decisions if they are not made during the day.
 
 Bottlenecks in the sprint board can be an indication of poor daily scrums. Of course, the root cause may be different here, but when we see jammed swimlanes we should think of the daily scrum.
+
+## My PBI
+
+Often you may hear people use phrases like "Yesterday, I finished the implementation in my PBI". This is a highly problematic situation, as this single phrase implies that the team members are not thinking of the sprint's work in a collective way. They work isolated and this can impede their understanding of success. Completing *"my"* PBI while my teammate struggles doesn't make sprint a success. This doesn't mean that the team members are selfish. All I am trying to say is that software engineering is a team sport and it takes effort to deeply understand this and change your day-to-day work habits accordingly.
 
 # Another way
 
@@ -67,7 +71,11 @@ Finally, there can be some time to share anything that needs to be shared and wa
 
 ### Reduced lead time
 
-### Increased collaboration
+This format focuses on getting things done and delivering value. It's all about what needs to be done within the next 24 hours to move this PBI to the next swimlane. Inevitably, this prioritizes closing the open PBIs over opening new ones. As we have already discussed in the [*Limiting work in progress*](https://nvoulgaris.com/limiting-work-in-progress-in-scrum) post, this reduces the team's lead time.
+
+### Teamwork mentality
+
+Furthermore, the transition from monologue to an intensely collaborative format builds stronger team relationships and fosters the teamwork mentality. The team learn to function as a unit, as opposed to a set of individuals. They learn to cooperate and they understand that great results take more than an individual writing code. There is no "my PBI" anymore. There is "our work".
 
 ## Considerations
 
@@ -84,3 +92,9 @@ Additionally, people whose work is not directly visible on the board (e.g. desig
 Having shared this technique, which I have successfully used, it is important to understand that **every team is different**. Just because it worked for a team it doesn't mean that it will also work for another one. Dogmatically applying a solution that worked for another team and expecting results goes against the very nature of the agile mindset. I would not advise against applying this format, but rather use it as a starting point. Call it an experiment and remember to evaluate this experiment. Then tweak it and run another experiment. Evaluate this one too. Then tweak it again. Chances are that the result that works for your team is different than the one I described. Maybe slightly different, maybe radically different. The point is to understand that the **process is here to serve us** and not the other way around. If it is not working, then change it to something that works. Make it your own.
 
 # Conclusion
+
+The daily scrum is a pivotal event that can make all the difference between a successful and a failed sprint. Often, it gets executed in a formalistic way, which offers no real value. There are a number of symptoms that can help us identify a dysfunctional daily scrum session, such as lack of planning for the next 24 hours, jammed swimlanes and people not engaging in conversation during the session.
+
+A different way to run the session can prove beneficial. I have successfully used what I call the "per-PBI" format to run daily scrums and I feel that it offers a series of advantages, such as reduced lead time and improved team cohesion. Along with it, of course, come some downsides, such as certain roles feeling left out and increased duration of the session.
+
+No matter if we choose the "per-PBI" format or not, the responsibility of identifying the dysfunction and taking action to improve the situation lies with us, the software engineering team. So, I would strongly advise for experimenting with different formats and tweaking the process until it serves the team
