@@ -15,7 +15,6 @@ Below you may find a list of books that *I have read* and, believing that they a
 * [Head First Design Patterns](https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns)
 * [Refactoring: Improving the Design of Existing Code](https://www.goodreads.com/book/show/44936.Refactoring)
 * [Refactoring to Patterns](https://www.goodreads.com/book/show/85041.Refactoring_to_Patterns)
-* [Elegant Objects](https://www.goodreads.com/book/show/29326350-elegant-objects)
 
 ### Test Driven Development (TDD)
 
