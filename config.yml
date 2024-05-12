@@ -38,7 +38,12 @@ params:
   footer:
     since: 2018
 
-disqusShortname: nvoulgaris-com
+comments:
+  enabled: true
+  provider: disqus
+
+  disqusjs:
+    shortname: nvoulgaris-com
 
 services:
     googleAnalytics:
