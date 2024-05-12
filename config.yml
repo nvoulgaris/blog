@@ -1,3 +1,4 @@
+disqusShortname: nvoulgaris-com
 module:
   imports:
     - path: github.com/CaiJimmy/hugo-theme-stack/v3
@@ -16,7 +17,6 @@ params:
       src: ../../img/nv_author_icon.jpg
   rssFullContent: true
   favicon: /favicon.ico
-  disqusShortname: nvoulgaris-com
   article:
     headingAnchor: false
   headingAnchor: false
@@ -38,6 +38,10 @@ params:
     default: auto
   footer:
     since: 2018
+  comments:
+    enabled: true
+    provider: disqus
+    disqusShortname: nvoulgaris-com
 
 services:
     googleAnalytics:
