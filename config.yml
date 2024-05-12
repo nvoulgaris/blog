@@ -38,9 +38,9 @@ params:
   footer:
     since: 2018
 
+disqusShortname: nvoulgaris-com
+
 services:
-    disqus:
-        shortname: nvoulgaris-com
     googleAnalytics:
         id: UA-114060129-1
 
