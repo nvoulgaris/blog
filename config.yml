@@ -16,6 +16,7 @@ params:
       src: ../../img/nv_author_icon.jpg
   rssFullContent: true
   favicon: /favicon.ico
+  disqusShortname: nvoulgaris-com
   article:
     headingAnchor: false
   headingAnchor: false
@@ -37,13 +38,6 @@ params:
     default: auto
   footer:
     since: 2018
-
-comments:
-  enabled: true
-  provider: disqus
-
-  disqusjs:
-    shortname: nvoulgaris-com
 
 services:
     googleAnalytics:
