@@ -1,0 +1,96 @@
+module:
+  imports:
+    - path: github.com/CaiJimmy/hugo-theme-stack/v3
+
+languageCode: en-us
+paginate: 7
+title: Nikos Voulgaris
+copyright: Nikos Voulgaris
+
+params:
+  sidebar:
+    subtitle: Challenge everything
+    avatar:
+      enabled: true
+      local: false
+      src: ../../img/nv_author_icon.jpg
+  rssFullContent: true
+  favicon: /favicon.ico
+  article:
+    headingAnchor: false
+  headingAnchor: false
+  widgets:
+    homepage:
+      - type: search
+      - type: tag-cloud
+        params:
+          limit: 12
+      - type: archives
+    page:
+      - type: search
+      - type: toc
+      - type: tag-cloud
+        params:
+          limit: 10
+  colorScheme:
+    toggle: true
+    default: auto
+  footer:
+    since: 2018
+
+services:
+    disqus:
+        shortname: nvoulgaris-com
+    googleAnalytics:
+        id: UA-114060129-1
+
+permalinks:
+    post: /:slug/
+    page: /:slug/
+
+menu: 
+  main:
+    - name: Home
+      url: /
+      weight: -90
+      params:
+        icon: home
+    - name: Search
+      url: /search
+      weight: -80
+      params: 
+        icon: search
+    - name: About Me
+      url: /about
+      weight: -70
+      params:
+        icon: user
+    - name: Tags
+      url: /tags
+      weight: -60
+      params:
+        icon: tag
+    - name: Books
+      url: /books
+      weight: -50
+      params:
+        icon: archives
+    - name: Contact
+      url: /contact
+      weight: -40
+      params:
+        icon: messages
+  social:
+    - name: Github
+      url: https://github.com/nvoulgaris
+      weight: -40
+      params:
+        icon: brand-github
+    - name: Twitter
+      url: https://twitter.com/nivoul
+      weight: -30
+      params:
+        icon: brand-twitter
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/nikos-voulgaris-44455546
+      weight: -20

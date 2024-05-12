@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A case study for a RESTful API">
+<title>Designing a RESTful shopping cart</title>
+
+<link rel='canonical' href='//localhost:1313/designing-a-restful-shopping-cart/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Designing a RESTful shopping cart">
+<meta property='og:description' content="A case study for a RESTful API">
+<meta property='og:url' content='//localhost:1313/designing-a-restful-shopping-cart/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='rest' /><meta property='article:tag' content='software design' /><meta property='article:published_time' content='2018-03-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-03-10T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/shopping_cart.jpg' />
+<meta name="twitter:title" content="Designing a RESTful shopping cart">
+<meta name="twitter:description" content="A case study for a RESTful API"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/shopping_cart.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/nikos-voulgaris-44455546'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-case-study">The case study</a>
+      <ul>
+        <li><a href="#assumptions">Assumptions</a></li>
+        <li><a href="#making-some-decisions">Making some decisions</a></li>
+        <li><a href="#http-methods">HTTP methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/designing-a-restful-shopping-cart/">
+                
+                    <img src="/img/posts/shopping_cart.jpg" loading="lazy" alt="Featured image of post Designing a RESTful shopping cart" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/designing-a-restful-shopping-cart/">Designing a RESTful shopping cart</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A case study for a RESTful API
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 10, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Designing APIs for inter microservice communication is one of the most difficult aspects of modern software engineering and the reasons range in a very broad spectrum. First of all, microservices is a relatively new <em>trend</em> and virtually everyone in the software engineering community talks about them nowadays. However, I believe that we still don&rsquo;t know what exactly they are (let alone how they will develop in the future) and therefore, we can&rsquo;t always design them in an efficient way. We&rsquo;ve all experienced microservices that weren&rsquo;t so &ldquo;micro&rdquo; after all (how &ldquo;micro&rdquo; they should be anyway?).</p>
+<p>Adding to it, REST is a marvelous architecture (developed back in 2000 by Roy Fielding as part of his <a class="link" href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm"  target="_blank" rel="noopener"
+    >doctoral dissertation</a>). However, it is as misunderstood as beautiful. The web is packed of &ldquo;RESTful&rdquo; web services which are not so RESTful after all. The requirement to communicate with such a system can create previously unseen obstacles, making design very challenging. Furthermore, more often than not, the ecosystem in which a microservice is being developed, contains legacy system(s), which impose very difficult constraints to the design, usually leading to exceptions and inconsistencies, which usually lead to problems further down the road.</p>
+<p>Among others, the above mentioned phenomena, can increase the degree of difficulty of designing a RESTful API for inter microservice communication. In this post, I will endeavor to share my journey and outcome of designing such an API.</p>
+<h2 id="the-case-study">
+    <a href="#the-case-study">#</a>
+    The case study
+</h2><p>This example attempts to design an efficient, RESTful API as a solution to the problem of creating a microservice that is responsible for handling the lifecycle of a shopping cart.</p>
+<h3 id="assumptions">
+    <a href="#assumptions">#</a>
+    Assumptions
+</h3><h4 id="authentication---authorization">
+    <a href="#authentication---authorization">#</a>
+    Authentication - Authorization
+</h4><p>Throughout this example we consider authentication - authorization functionality to exist and to be provided by a separate microservice. Therefore, a JWT token (or some other token) is supposedly provided by this microservice and included in the <code>Authorization</code> header in all HTTP requests. In addition, we assume that authorization is not required for the HTTP request to list all available products.</p>
+<h4 id="requests---responses-body">
+    <a href="#requests---responses-body">#</a>
+    Requests - Responses body
+</h4><p>The body (as well as the headers) provided in the following HTTP requests and responses is an example which attempts to meaningfully demonstrate the essence of the argument and by no means are complete or fully functional. For instance, in the <em>list all products</em> response, products are obviously not represented merely by their IDs and prices, but believing that this structure suffices to communicate the essence of the call, they are intentionally left partially complete.</p>
+<h4 id="api-design-decisions">
+    <a href="#api-design-decisions">#</a>
+    API Design decisions
+</h4><p>Throughout this post, <strong>API design</strong> is on the spotlight. Neither <em>application design</em>, nor <em>technological decisions</em> (e.g. persistence layer technology) will not be covered since they do not constitute part of the <em>API design</em>.</p>
+<h3 id="making-some-decisions">
+    <a href="#making-some-decisions">#</a>
+    Making some decisions
+</h3><h4 id="which-calls">
+    <a href="#which-calls">#</a>
+    Which calls
+</h4><p>Identifying the correct HTTP calls can be trickier than it actually sounds. My advice would be to approach the problem by carefully producing sequence diagrams to cover all the use cases of the new system. Given that we have them, we can proceed to identify the interaction the system will have with the rest of the systems and therefore define the endpoints and HTTP calls that cover these.</p>
+<h4 id="persisting-data">
+    <a href="#persisting-data">#</a>
+    Persisting data
+</h4><p>A common misconception concerning REST is that one is not allowed to store any data in order to implement a RESTful web service. This is not quite true. Persisting data is perfectly fine as long as these data do not concern the <em>state</em> of the client. So, persisting the cart data will not make you uncompliant with REST. In essence, what the architecture is trying to achieve is to make each request <em>independent of any sort of state</em>. There lies a fundamental REST aspect: <strong>statelessness</strong>. So, by all means, we go ahead and persist the cart data in our system.</p>
+<h4 id="eager-or-lazy-initialization">
+    <a href="#eager-or-lazy-initialization">#</a>
+    Eager or lazy initialization
+</h4><p>An interesting decision we have to make is <em>when</em> to initialize the sopping cart. There are two options: we either <em>lazily</em> create the cart the first time we&rsquo;re asked to put a product in it or we <em>eagerly</em> create it with a separate call before we can put any products in it. In the first case, we use one less call, which sounds like a good thing and we do not create a shopping cart for a user that will never put anything in it. However, a small ambiguity is introduced in our <em>put a product in the cart</em> call, since it will return <code>201 CREATED</code> the first time it is called (as it will also create a resource - the shopping cart) and <code>200 OK</code> for any subsequent call (since the shopping cart already exists and we&rsquo;re just putting products in it). Although the first two pros seem quite strong, the final decision is to go with the latter approach for clarity reasons.</p>
+<h4 id="post-without-body">
+    <a href="#post-without-body">#</a>
+    POST without body
+</h4><p>Often we face a situation in which we wish to either create a resource or trigger an action, but there are no data to be submitted to the system. We might get tempted to use a <code>GET</code> request, since the request will not have any body. However, we should not succumb to it. Using a <code>POST</code> HTTP request (or a <code>PUT</code> one, depending on the situation) without a body for these purposes is perfectly fine. Beware though that, in such cases, it is important to remember to include the <code>Content-Length</code> header with value <code>0</code>, since its absence may cause problems to proxies. This is demonstrated both in the request to create a shopping cart and in the one that triggers the checkout.</p>
+<h3 id="http-methods">
+    <a href="#http-methods">#</a>
+    HTTP methods
+</h3><h4 id="list-all-products">
+    <a href="#list-all-products">#</a>
+    List all products
+</h4><p>A <code>GET</code> HTTP request is sent to retrieve all the available products. A list of all available products is returned.</p>
+<h5 id="request">
+    <a href="#request">#</a>
+    Request
+</h5><pre tabindex="0"><code>GET /products
+Content-type: application/json
+Accept: application/json
+</code></pre><h5 id="response">
+    <a href="#response">#</a>
+    Response
+</h5><pre tabindex="0"><code>200 OK
+Content-type: application/json
+</code></pre><pre tabindex="0"><code>{
+  &#34;products&#34;: [
+    {
+      &#34;id&#34;: 298743,
+      &#34;price&#34;: {
+        &#34;total&#34;: 23,
+        &#34;tax&#34;: 6,
+        &#34;currency&#34;: EUR
+      }
+    },
+    {
+      &#34;id&#34;: 287543,
+      &#34;price&#34;: {
+        &#34;total&#34;: 14,
+        &#34;tax&#34;: 3,
+        &#34;currency&#34;: EUR
+      }
+    }
+  ]
+}
+</code></pre><h4 id="create-a-shopping-cart">
+    <a href="#create-a-shopping-cart">#</a>
+    Create a shopping cart
+</h4><p>A <code>POST</code> HTTP request is sent. A shopping cart is created. The <code>Location</code> header is used to link to the newly created resource (the cart) in order for the client to be able to access it without querying anew.</p>
+<h5 id="request-1">
+    <a href="#request-1">#</a>
+    Request
+</h5><pre tabindex="0"><code>POST /cart
+Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
+Content-type: application/json
+Accept: application/json
+Content-Length: 0
+</code></pre><h5 id="response-1">
+    <a href="#response-1">#</a>
+    Response
+</h5><pre tabindex="0"><code>201 Created
+Content-type: application/json
+Location: /cart/{cart_id}
+</code></pre><h4 id="put-a-product-in-the-cart">
+    <a href="#put-a-product-in-the-cart">#</a>
+    Put a product in the cart
+</h4><p>A <code>POST</code> HTTP request is used to put a product in the cart. The product is sent as part of the request body. The reply contains all cart data in order not to force the client to query again for it.</p>
+<h5 id="request-2">
+    <a href="#request-2">#</a>
+    Request
+</h5><pre tabindex="0"><code>POST /cart/{cart_id}
+Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
+Content-type: application/json
+Accept: application/json
+</code></pre><h5 id="response-2">
+    <a href="#response-2">#</a>
+    Response
+</h5><pre tabindex="0"><code>200 OK
+Content-type: application/json
+</code></pre><pre tabindex="0"><code>{
+  &#34;cart_id&#34;: 174826,
+  &#34;products&#34;: [
+    {
+      &#34;id&#34;: 298743,
+      &#34;quantity&#34;: 1
+    },
+    {
+      &#34;id&#34;: 287543,
+      &#34;quantity&#34;: 1
+    }
+  ],
+  &#34;payment&#34;: {
+    &#34;total&#34;: 74,
+    &#34;tax&#34;: 17,
+    &#34;currency&#34;: EUR
+  }
+}
+</code></pre><h4 id="get-cart-contents">
+    <a href="#get-cart-contents">#</a>
+    Get cart contents
+</h4><p>A <code>GET</code> HTTP request is used to fetch the contents of a shopping cart.</p>
+<h5 id="request-3">
+    <a href="#request-3">#</a>
+    Request
+</h5><pre tabindex="0"><code>GET /cart/{cart_id}
+Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
+Content-type: application/json
+Accept: application/json
+</code></pre><h5 id="response-3">
+    <a href="#response-3">#</a>
+    Response
+</h5><pre tabindex="0"><code>200 OK
+Content-type: application/json
+</code></pre><pre tabindex="0"><code>{
+  &#34;cart_id&#34;: 174826,
+  &#34;products&#34;: [
+    {
+      &#34;id&#34;: 298743,
+      &#34;quantity&#34;: 1
+    },
+    {
+      &#34;id&#34;: 287543,
+      &#34;quantity&#34;: 1
+    }
+  ],
+  &#34;payment&#34;: {
+    &#34;total&#34;: 74,
+    &#34;tax&#34;: 17,
+    &#34;currency&#34;: EUR
+  }
+}
+</code></pre><h4 id="checkout">
+    <a href="#checkout">#</a>
+    Checkout
+</h4><p>A <code>POST</code> HTTP request will trigger the checkout action, buying all products currently withing this cart.</p>
+<h5 id="request-4">
+    <a href="#request-4">#</a>
+    Request
+</h5><pre tabindex="0"><code>POST /cart/{cart_id}/checkout
+Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
+Content-type: application/json
+Accept: application/json
+Content-Length: 0
+</code></pre><h5 id="response-4">
+    <a href="#response-4">#</a>
+    Response
+</h5><pre tabindex="0"><code>200 OK
+Content-type: application/json
+</code></pre><h2 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h2><p>Designing RESTful APIs is often misunderstood or poorly performed. However, REST is truly a gift, leveraging our systems architecture and using it right can prove gold for our microservices. As usually, there is not a single approach to the problem of designing a RESTful API, but it is worthwhile to think carefully of our decisions, challenge them and try hard to be compliant with the essence of this architecture. The benefits can be of immense value.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/rest/">Rest</a>
+        
+            <a href="/tags/software-design/">Software Design</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

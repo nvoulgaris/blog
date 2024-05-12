@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="How many times have you experienced software engineering teams that, regardless of the reasons, opted for quick solutions, resulting in poor code quality and created problems that accumulated over time? Where did this lead? Eventually, the product resembles an iceberg. The stakeholders can only see the end result, the behavior of the system, the part of the iceberg that lies above the surface, unaware of what lies underneath it. However, the software engineers have the full picture.">
+<title>Dealing with technical debt in an agile environment</title>
+
+<link rel='canonical' href='//localhost:1313/p/dealing-with-technical-debt-in-an-agile-environment/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Dealing with technical debt in an agile environment">
+<meta property='og:description' content="How many times have you experienced software engineering teams that, regardless of the reasons, opted for quick solutions, resulting in poor code quality and created problems that accumulated over time? Where did this lead? Eventually, the product resembles an iceberg. The stakeholders can only see the end result, the behavior of the system, the part of the iceberg that lies above the surface, unaware of what lies underneath it. However, the software engineers have the full picture.">
+<meta property='og:url' content='//localhost:1313/p/dealing-with-technical-debt-in-an-agile-environment/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='technical debt' /><meta property='article:tag' content='agile' /><meta property='article:published_time' content='2019-01-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-01-27T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/technical_debt.jpg' />
+<meta name="twitter:title" content="Dealing with technical debt in an agile environment">
+<meta name="twitter:description" content="How many times have you experienced software engineering teams that, regardless of the reasons, opted for quick solutions, resulting in poor code quality and created problems that accumulated over time? Where did this lead? Eventually, the product resembles an iceberg. The stakeholders can only see the end result, the behavior of the system, the part of the iceberg that lies above the surface, unaware of what lies underneath it. However, the software engineers have the full picture."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/technical_debt.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#unprofessional-technical-debt">Unprofessional technical debt</a></li>
+    <li><a href="#outdated-design-technical-debt">Outdated design technical debt</a></li>
+    <li><a href="#software-grew-old-technical-debt">Software grew old technical debt</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#development-slows-down">Development slows down</a></li>
+    <li><a href="#reduced-quality">Reduced quality</a></li>
+    <li><a href="#demoralization">Demoralization</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/dealing-with-technical-debt-in-an-agile-environment/">
+                
+                    <img src="/img/posts/technical_debt.jpg" loading="lazy" alt="Featured image of post Dealing with technical debt in an agile environment" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/dealing-with-technical-debt-in-an-agile-environment/">Dealing with technical debt in an agile environment</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 27, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>How many times have you experienced software engineering teams that, regardless of the reasons, opted for quick solutions, resulting in poor code quality and created problems that accumulated over time? Where did this lead?</p>
+<p>Eventually, the product resembles an iceberg. The stakeholders can only see the end result, the behavior of the system, the part of the iceberg that lies above the surface, unaware of what lies underneath it. However, the software engineers have the full picture. They know every aspect of the system and they understand the need to take some extra time to tide things up a bit more than usually once in a while.</p>
+<p>On the other hand, the stakeholders, happy with the current image above the surface, most likely will never request to devote effort (time and money) to get (what they perceive as) a perfectly working product to a better shape, especially in the short loops of agile software development, in which they expect tangible business value every few weeks.</p>
+<p>It seems like a dead end, but a truly professional team of software engineers should never allow themselves to result in such a situation. It&rsquo;s their <em>responsibility</em> to be proactive about it. Let&rsquo;s take things slow though and discuss a little bit about technical debt.</p>
+<h1 id="what-is-it">
+    <a href="#what-is-it">#</a>
+    What is it
+</h1><p>The term technical debt refers to all the things in a code base that could (and should) be improved, but do not directly affect the behavior of the system. It&rsquo;s the things that the software engineers know should be done in a different, better way, but either chose to defer for the future or realized later on.</p>
+<blockquote>
+<p>Technical debt is code written today that requires more effort in the future</p>
+</blockquote>
+<p>This resembles a lot a bank loan, in which an individual gets money today that require more money (initial amount plus interest) in the future to pay off, essentially creating debt.</p>
+<p>The term <em>technical debt</em> is a metaphor, referring to quick win software solutions that will slow development down in the future in order to pay the debt off. Also, since typically future amendments require more time than it would be originally required to provide a proper solution, the debt is accumulated and paid with interest. Not paying the debt usually results in loosing the product, as the code base eventually becomes either <em>unmaintainable</em> or <em>too expensive</em> to maintain.</p>
+<h1 id="where-does-it-come-from">
+    <a href="#where-does-it-come-from">#</a>
+    Where does it come from
+</h1><p>There ways in which technical debt can be created are numerous and very diverse. Some are easier to spot and even prevent, some are quite tricky and some are inevitable.</p>
+<h2 id="unprofessional-technical-debt">
+    <a href="#unprofessional-technical-debt">#</a>
+    Unprofessional technical debt
+</h2><p>An easy to spot (and, most importantly, prevent) way of creating technical debt is simply not taking the time to do our job in the right way. Every time we opt for a <em>hack</em>, a <em>quick-and-dirty</em> solution, a <em>workaround</em>, every time we <em>skip some unit tests</em> or <em>do not refactor</em> the code, we create debt. Every time we are sloppy with our work because someone says that <em>&ldquo;this is urgent&rdquo;</em> or <em>&ldquo;needs to be done by today&rdquo;</em> and we succumb to this pressure, we create future troubles for our team and our organization.</p>
+<blockquote>
+<p>Every time we cut corners, we create technical debt</p>
+</blockquote>
+<p>I am trying to put as much emphasis as I can to it and be harsh. Of course, coming up with a way to improve code or identify weaknesses is not only natural, but welcomed, especially as we become more mature. However, <em>wittingly</em> applying discounts - therefore creating this type of technical debt -  is, in my opinion, absolutely <strong>unprofessional</strong> and <strong>irresponsible</strong>. Deliberately undermining our code quality to reduce time to market is an approach that will come back to bite us in the future. Period.</p>
+<h2 id="outdated-design-technical-debt">
+    <a href="#outdated-design-technical-debt">#</a>
+    Outdated design technical debt
+</h2><p>Sometimes we start off with simple and robust design and architecture for the initial requirements of the system, but as time goes by and increments are added, we fail to adjust the design and architecture in a proportional way. This phenomenon is more likely to occur when new developers join the team and do not fully understand the original design.</p>
+<p>While this can be prevented too (by taking the time to adjust the architecture as we develop the system) it is not unlikely at all that (even when applying frequent incremental refactorings) there will be a point in time when more drastic changes are needed.</p>
+<h2 id="software-grew-old-technical-debt">
+    <a href="#software-grew-old-technical-debt">#</a>
+    Software grew old technical debt
+</h2><p>Technology races forward in an astonishing pace these days and therefore we may find ourselves with a dependency that will become deprecated in the upcoming release (a database driver for instance). There is not much we can do about it and no one is to blame really. We should just take the time to keep our dependencies up to date. Of course, doing so <em>proactively</em> is much preferable to  waiting for a deprecation announcement.</p>
+<h1 id="there-will-always-be-technical-debt">
+    <a href="#there-will-always-be-technical-debt">#</a>
+    There will always be technical debt
+</h1><p>Of course, trying to always be technical debt free is simply <em>delusional</em>. Databases deprecate their old driver versions, systems grow enough to require that architecture should be revised and no matter how exceptionally we write a piece of code, as we grow more experienced and knowledgeable, we will always identify weakness and better ways to write it.</p>
+<blockquote>
+<p>If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.</p>
+</blockquote>
+<p>So, technical debt will present itself no matter how professional and diligent we are.</p>
+<h1 id="and-its-ok">
+    <a href="#and-its-ok">#</a>
+    And it&rsquo;s OK
+</h1><p>This is a fact and we have to accept it. After all, we should always bear in mind that the iterative nature of shipping software is built on the foundation of feedback. We solve the problem, we deliver the solution, get feedback on it and then try to improve it. Trying to ship a <em>perfect</em> product will result in a tail chase.</p>
+<p>Technical debt, comes hand in hand with agile products and innovation. Sometimes we have to prototype solutions. Most of the times we have to get a feature out quickly, just to get feedback and learn what the users really want (after all they usually don&rsquo;t know what they want either, until they have a prototype to play with). This will create technical debt and we have to find our peace with it and embrace it.</p>
+<p>Of course, this is fundamentally different from ignoring it and just letting the code rot. On the contrary, it is something that should be dealt with, because it costs. And <em>it costs a lot</em>.</p>
+<h1 id="how-costly-is-it">
+    <a href="#how-costly-is-it">#</a>
+    How costly is it
+</h1><p>A team or a product can be severely hurt by technical debt in multiple ways. Unfortunately, these problems tend to steadily grow under the radar and only become visible when it&rsquo;s too late. Let&rsquo;s discuss the ones I believe are the worst ones.</p>
+<h2 id="development-slows-down">
+    <a href="#development-slows-down">#</a>
+    Development slows down
+</h2><p>What happens to a system when the code slowly rots? As Uncle Bob explains, it is becoming difficult to change. A single modification ignites a chain reaction that causes a cascade of modifications in dependent modules. The system is resisting to change. It is becoming <em>rigid</em>.</p>
+<p>The more rigid a system becomes, the more development slows down. Gradually features  require more and more effort to be implemented. The stakeholders have to <strong>wait more to get value</strong> and <strong>features become more expensive</strong>.</p>
+<h2 id="reduced-quality">
+    <a href="#reduced-quality">#</a>
+    Reduced quality
+</h2><p>To make matters worse, developing features in a rigid system is far more error prone. Introducing defects is more likely in a highly coupled, complicated, rotten design than in a clean, frequently refactored one. This is observed as <strong>reduced quality</strong>, which although cannot be measured, can be <em>felt</em> by the stakeholders. In extreme cases, this can even result in <strong>performance issues</strong>.</p>
+<h2 id="demoralization">
+    <a href="#demoralization">#</a>
+    Demoralization
+</h2><p>I saved the most sneaky and costly one for last. Chances are that a well taken care of piece of code will remain so and future software engineers that will touch it will go to great lengths to keep its quality high. On the other hand, sloppiness and low quality propagate tremendously fast within a code base. A badly written, poor quality, piece of code will most likely tempt the next software engineer to work on it to opt for a hack, or a quick-and-dirty solution. Andy Hunt and Dave Thomas use a great metaphor of <em>a broken window</em> to describe exactly this phenomenon in their book, <a class="link" href="https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer"  target="_blank" rel="noopener"
+    >&ldquo;The Pragmatic Programmer&rdquo;</a>.</p>
+<p>The poorer the quality, the faster more and more technical debt will accumulate, <em>demoralizing</em> the team and rendering the code a nightmare for any software engineer. This is a typical situation, which, more often than not, results in the <strong>best people leaving</strong> the product (usually the company as well) and set off for new adventures. This is not only costly for the product, but for the organization as well.</p>
+<h1 id="how-to-deal-with-it">
+    <a href="#how-to-deal-with-it">#</a>
+    How to deal with it
+</h1><p>Having said all these, how are we going to approach such a tricky situation? The stakeholders definitely will not ask us to take time to address technical debt.</p>
+<p>Mapping it to actual value can be a solution, but it usually turns out to be quite difficult. For instance, updating the database driver can improve the performance of the application, but how can we transform this into a measurable, well defined Product Backlog Item (PBI) that presents <em>business value</em>? How faster is the application going to be and how beneficial is this to the business anyway? Even if this can be achieved, how about refactoring to improve the application&rsquo;s design? There is no way we can present tangible business value out of it. <em>But it does reflect to business value in a shocking way.</em></p>
+<p>There are multiple approaches, but let me present you mine. I suggest to reserve a corner of your scrum board for technical debt. Have every team member that comes across technical debt, write a sticky note about it and stick it to this corner. Also, take some time to discuss about it with the rest of the team (perhaps in the upcoming daily scrum). During planning, take this debt corner into consideration. When asked to refine, estimate or plan a PBI that (even remotely) touches an area with technical debt, <em>include this debt sticky note in the PBI</em>.</p>
+<p>This method will not only make the team address technical debt in a proactive manner, dealing with it in the first chance, therefore keeping the code in a relatively good shape. It will also facilitate in working with the stakeholders to educate them on the value of software quality.</p>
+<p>The latter may sound minor in comparison to the former, but sometimes it is the greater good between the two. An educated group of stakeholders is more likely to support software engineers in doing their job the right way.</p>
+<p>Finally, this method ensures that problems will never pile up and cause troubles. If an area needs improvement, it will be improved on the next task that touches it. Therefore, a situation in which an issue is added on top of an already existing one, is ruled out by definition.</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>The accumulation of technical debt is a very sneaky problem, present in almost every code base. Negligence will accelerate the process, but even the most diligent group of engineers will not avoid the problem. Therefore, we have to embrace its presence. However, it can prove immensely costly, not only drastically reducing code quality and productivity, but also driving the best engineers out out of the product. So, it should be addressed.</p>
+<p>Making it a part of our agile loop ensures that time will be taken to deal with it, people will become educated on it and it will be dealt with proactively. Regardless of the approach, letting technical debt accumulate and eventually cause serious problems to the product is not only a pity and wasteful, but also utterly unprofessional.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/technical-debt/">Technical Debt</a>
+        
+            <a href="/tags/agile/">Agile</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/driving-fruitful-retrospectives/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/fruitful_retros.jpg" loading="lazy" data-key="" data-hash="/img/posts/fruitful_retros.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Driving fruitful retrospectives</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/working-the-velocity-of-a-scrum-team/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/velocity.jpg" loading="lazy" data-key="" data-hash="/img/posts/velocity.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Working the velocity of a scrum team</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/technical-background-the-extra-mile-on-scrum-mastery/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/extra_mile.jpg" loading="lazy" data-key="" data-hash="/img/posts/extra_mile.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Technical background: the extra mile on scrum mastery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/agile-code/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/todo.jpg" loading="lazy" data-key="" data-hash="/img/posts/todo.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile code</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

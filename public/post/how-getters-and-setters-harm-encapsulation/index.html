@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Taking a step back and looking at something that you&rsquo;ve been doing for years with a fresh perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at getters and setters from a different point of view. During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took getters and setters for granted.">
+<title>How getters and setters harm encapsulation</title>
+
+<link rel='canonical' href='//localhost:1313/post/how-getters-and-setters-harm-encapsulation/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="How getters and setters harm encapsulation">
+<meta property='og:description' content="Taking a step back and looking at something that you&rsquo;ve been doing for years with a fresh perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at getters and setters from a different point of view. During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took getters and setters for granted.">
+<meta property='og:url' content='//localhost:1313/post/how-getters-and-setters-harm-encapsulation/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='software design' /><meta property='article:tag' content='encapsulation' /><meta property='article:published_time' content='2018-12-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-12-09T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/encapsulation.jpg' />
+<meta name="twitter:title" content="How getters and setters harm encapsulation">
+<meta name="twitter:description" content="Taking a step back and looking at something that you&rsquo;ve been doing for years with a fresh perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at getters and setters from a different point of view. During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took getters and setters for granted."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/encapsulation.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/page/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/how-getters-and-setters-harm-encapsulation/">
+                
+                    <img src="/img/posts/encapsulation.jpg" loading="lazy" alt="Featured image of post How getters and setters harm encapsulation" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/how-getters-and-setters-harm-encapsulation/">How getters and setters harm encapsulation</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 09, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Taking a step back and looking at something that you&rsquo;ve been doing for years with a <em>fresh</em> perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at <code>getters</code> and <code>setters</code> from a different point of view.</p>
+<p>During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took <code>getters</code> and <code>setters</code> for granted. It was something I <em>had</em> to do. Later on, I learned (although now I know that I did not fully understand at the time) about the notion of encapsulation and how these <code>getters</code> and <code>setters</code> are a key step to achieving it. It then made even more sense to <em>always</em> code (or rather generate) them in every single POJO in my code.</p>
+<p>So I did consistently, until I read a blog post that got me thinking and revisiting the whole concept of encapsulation in a fresh, unbiased way. Now, that I believe the dust has settled, I will try to communicate my thoughts on the matter in this post.</p>
+<h1 id="object-oriented-design">
+    <a href="#object-oriented-design">#</a>
+    Object-oriented design
+</h1><p>It all starts with true object-oriented design. If one goes online looking for a definition and a brief description of Object-Oriented Programming (OOP), one will come across (among some wise stuff) all kinds of nonsense. They usually start with something like <em>&ldquo;OOP is about modeling the real world&hellip;&rdquo;</em>. Well, it&rsquo;s not.</p>
+<p>OOP is a design <em>philosophy</em> according to which, a software system should consist of a set of <em>self sustainable</em> objects and <em>messages</em> that can be passed between these objects. Now, notice that the two key words here are <em>self sustainable</em> and <em>messages</em>. In other words, our objects should be:</p>
+<ul>
+<li>empowered to accomplish what lies within their responsibility (which had better be a single one) and</li>
+<li>their outside world (other objects) should have a way of telling them what they need them to do</li>
+</ul>
+<p>This is really straightforward. Let&rsquo;s assume that we have an <code>AirCondition</code> object. What we would like is to be able to <strong>tell</strong> it to adjust the room temperature to (say) 25 degrees Celsius and for it to be able to do so. Notice that we are not interested in <em>how</em> is it going to achieve this. All we want is to <em>command</em> it and have the job done. Essentially, we are <em>sending a message</em>. We are <em>delegating</em> the task. Now, this brings us to the point that we can understand both what encapsulation is and why we need it.</p>
+<h1 id="encapsulation">
+    <a href="#encapsulation">#</a>
+    Encapsulation
+</h1><p>The gist behind the notion of encapsulation is that the <em>objects should not reveal their internals</em> (implementation details) <em>to the outside world</em> (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of <em>how</em> they achieve the tasks that are <em>told</em> to achieve it&rsquo;s <em>their</em> business and no one else&rsquo;s.</p>
+<p>In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&rsquo;s state in order to perform the tasks that it&rsquo;s told to perform.</p>
+<blockquote>
+<p>Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.</p>
+</blockquote>
+<h1 id="the-problem-with-getters-and-setters">
+    <a href="#the-problem-with-getters-and-setters">#</a>
+    The problem with <code>getters</code> and <code>setters</code>
+</h1><p>This is exactly where <code>getters</code> and <code>setters</code> enter the picture. Conventional wisdom has it that since the object&rsquo;s properties are to remain &ldquo;hidden&rdquo;, they should be wrapped by a <code>getter</code> and <code>setter</code> each, enabling the external world to &ldquo;access&rdquo; them, without learning about the object&rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. <em>Does it make any sense at all?</em> At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper <code>getter</code> and <code>setter</code>? Essentially we are messing with the object&rsquo;s state in either case - which is quite overtly exposed to the public via these methods.</p>
+<h1 id="an-example">
+    <a href="#an-example">#</a>
+    An example
+</h1><p>In order to better illustrate the nature of this problem, let&rsquo;s consider for a moment the <code>AirCondition</code> class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&gt;</span> 25) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&gt;</span> 25) {
+</span></span><span style="display:flex;"><span>    airCondition.<span style="color:#a6e22e">decrementTemperature</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&lt;</span> 25) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&lt;</span> 25) {
+</span></span><span style="display:flex;"><span>    airCondition.<span style="color:#a6e22e">incrementTemperature</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>However, all we do is constantly manipulating the object&rsquo;s state, essentially <strong>implementing the logic that it should possess</strong>. We are <em>micromanaging</em> the object. Instead, we should <em>trust</em> it on knowing how to do its job. We keep on <strong>asking</strong> about it&rsquo;s state and then modify it instead of <strong>telling</strong> it the end result that we wish. Conforming to OOP, all we need to do is to <em>send it a message</em>, like the following</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>airCondition.<span style="color:#a6e22e">adjustTemperatureTo</span>(25)
+</span></span></code></pre></div><p>and it should get the job done, because it <em>knows</em> how to actually do it. We shouldn&rsquo;t even know if there is or there is not a property holding the current temperature, let alone query for it directly. This is part of the means the <code>AirCondition</code> class could use to achieve its purposes, it&rsquo;s subject to change at any given moment and its strictly <strong>its own business</strong>.</p>
+<h1 id="tight-coupling">
+    <a href="#tight-coupling">#</a>
+    Tight coupling
+</h1><p>We all know (at least in principle) that our classes should be <em>highly cohesive</em> and <em>loosely coupled</em>. The theory is great, but let&rsquo;s consider how these guidelines (about coupling in particular) apply to this specific example.</p>
+<p>Let&rsquo;s assume that we wish to refactor the <code>AirCondition</code> class. Perhaps we would like to rename the <code>temperature</code> variable to <code>currentTemperature</code>. Performing this elementary refactoring move, would create a chain reaction, causing all the classes that depend upon it (its collaborators) to fail to compile and impose the need to refactor them too. Perhaps, some collaborators of these collaborators should be refactored as well and so forth.</p>
+<p>This scenario illustrates perfectly the side effects of a design with tightly coupled classes. However, on the second, <em>imperative</em> approach, the collaborators of the refactored, <code>AirCondition</code> class would remain unaffected, agnostic to the modification. We can therefore conclude that <em>the imperative approach has led to a more loosely coupled design</em>.</p>
+<h1 id="tell-dont-ask">
+    <a href="#tell-dont-ask">#</a>
+    Tell, don&rsquo;t ask
+</h1><p>Some of you might have already noticed that these ideas start to sound a lot like the <em>Tell, don&rsquo;t ask</em> principle (also known as <em>Law of Demeter</em>). (In case you&rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.</p>
+<blockquote>
+<p>Data and functionality that depends on these data belong in the same object</p>
+</blockquote>
+<h1 id="a-story-and-a-lesson-learned">
+    <a href="#a-story-and-a-lesson-learned">#</a>
+    A story and a lesson learned
+</h1><p>Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with <code>getters</code> and <code>setters</code>.</p>
+<p>Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using <code>getters</code> and <code>setters</code> instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.</p>
+<p>At the end of the day, what difference would it make to use <code>airCondition.getTemperature()</code> instead of <code>airCondition.temperature</code>? Perhaps that is the reason why the designers of Kotlin decided to provide <code>getters</code> and <code>setters</code> by default, without even going into the trouble to code (generate) them or even call(!) them (in Kotlin <code>airCondition.temperature</code> actually calls <code>airCondition.getTemperature()</code> under the hood).</p>
+<h1 id="amending-the-situation">
+    <a href="#amending-the-situation">#</a>
+    Amending the situation
+</h1><p>Assuming that the problem is clear, a reasonable question to ask would be what to do to amend it. A very helpful first step would be to stop writing <code>getters</code> and <code>setters</code> this very moment. This would surface cases that collaborators need access to another classe&rsquo;s properties.</p>
+<p>When you face such a situation, take a moment and reflect. <em>Do you really need to expose this property</em>? Is there a better way to solve the problem? Perhaps, instead of exposing the property, a new method can be introduced in the object to receive the message that an operation needs to be performed. Exactly the operation that the collaborator who wanted access on the property was about to implement. <em>Whose responsibility is this operation</em>?</p>
+<p>Sometimes <code>getters</code> and <code>setters</code> will be needed, but I reckon that most of the times, different, better object-oriented solution will present themselves. This will gradually improve the design of the system you are working on.</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>Object-oriented design is all about passing messages between self sustainable objects and ecapsulation is a tool that can be immensely helpful on this task by resulting in loose coupling. On the other hand, letting our classes see deeply into the internal implementation of their collaborators, essentially results in tight coupling.</p>
+<p>Wrapping class properties with <code>getters</code> and <code>setters</code> helps look deep inside the internals of other class. It provides a <strong>false</strong> sense of encapsulation, but even worse, it pushes us towards treating classes as mere data structures and implementing the logic that these data serve in collaborators, defeating the very purpose of true object-oriented design.</p>
+<p>Experiment by stop writing <code>getters</code> and <code>setters</code> instead and observe the side effects. I strongly believe that it will lead to a better design.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/software-design/">Software Design</a>
+        
+            <a href="/tags/encapsulation/">Encapsulation</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/test-behavior-not-state/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/writing.jpg" loading="lazy" data-key="" data-hash="/img/posts/writing.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Test behavior</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/designing-a-restful-shopping-cart/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/shopping_cart.jpg" loading="lazy" data-key="" data-hash="/img/posts/shopping_cart.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Designing a RESTful shopping cart</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

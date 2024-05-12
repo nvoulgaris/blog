@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Moving off the beaten track in the daily scrum can trade formality for value">
+<title>A different way to run the daily scrum</title>
+
+<link rel='canonical' href='//localhost:1313/a-different-way-to-run-the-daily-scrum/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="A different way to run the daily scrum">
+<meta property='og:description' content="Moving off the beaten track in the daily scrum can trade formality for value">
+<meta property='og:url' content='//localhost:1313/a-different-way-to-run-the-daily-scrum/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='agile' /><meta property='article:tag' content='scrum' /><meta property='article:published_time' content='2022-11-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-06T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/a_different_way_to_run_the_daily_scrum.jpg' />
+<meta name="twitter:title" content="A different way to run the daily scrum">
+<meta name="twitter:description" content="Moving off the beaten track in the daily scrum can trade formality for value"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/a_different_way_to_run_the_daily_scrum.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/nikos-voulgaris-44455546'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#symptoms">Symptoms</a>
+      <ul>
+        <li><a href="#no-collaboration">No collaboration</a></li>
+        <li><a href="#monologue">Monologue</a></li>
+        <li><a href="#no-planning-ahead">No planning ahead</a></li>
+        <li><a href="#stuck-pbis">Stuck PBIs</a></li>
+        <li><a href="#my-pbi">My PBI</a></li>
+      </ul>
+    </li>
+    <li><a href="#another-way">Another way</a>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#advantages">Advantages</a></li>
+        <li><a href="#considerations">Considerations</a></li>
+      </ul>
+    </li>
+    <li><a href="#own-the-process">Own the process</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/a-different-way-to-run-the-daily-scrum/">
+                
+                    <img src="/img/posts/a_different_way_to_run_the_daily_scrum.jpg" loading="lazy" alt="Featured image of post A different way to run the daily scrum" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/a-different-way-to-run-the-daily-scrum/">A different way to run the daily scrum</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Moving off the beaten track in the daily scrum can trade formality for value
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 06, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Have you ever felt that the daily scrum offers no value? That we are wasting some precious time and getting everybody tired at the same time?</p>
+<p>I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run and share an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.</p>
+<p>Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don&rsquo;t remember if this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.</p>
+<h2 id="symptoms">
+    <a href="#symptoms">#</a>
+    Symptoms
+</h2><p>Before changing anything, we have to learn to identify the cases that call for change. For this purpose, I have listed some symptoms that I find to be good indicators. Let&rsquo;s go over them.</p>
+<h3 id="no-collaboration">
+    <a href="#no-collaboration">#</a>
+    No collaboration
+</h3><p>During the daily scrum, team members share their input, but no fruitful communication takes place. To better understand this, let&rsquo;s think of the following hypothetical daily scrum situations:</p>
+<ul>
+<li>
+<p><strong>Situation #1</strong>: <em>Mark</em>: &ldquo;Yesterday, I finished the implementation and  opened a PR for this PBI. Today, I will start working on this one until I get some review feedback&rdquo;.</p>
+</li>
+<li>
+<p><strong>Situation #2</strong>: <em>Mark</em>: &ldquo;Yesterday, I finished the implementation and  opened a PR for this PBI. Can somebody review it, please?&rdquo; <em>Helen</em>: &ldquo;I would review it, but I don&rsquo;t have time today. I will be able to review it tomorrow though.&rdquo; <em>Jason</em>: &ldquo;I can do it. Let&rsquo;s just make sure to upload it in a test environment too.&rdquo; <em>Mark</em>: &ldquo;Thanks, guys. I&rsquo;ll upload it and then I&rsquo;ll work on this PBI until I hear back from you.&rdquo;</p>
+</li>
+</ul>
+<p>Mark is sharing the exact same input in both cases, but notice how the work progresses in the second situation. In the first case, the team is not collaborating.</p>
+<h3 id="monologue">
+    <a href="#monologue">#</a>
+    Monologue
+</h3><p>As mentioned above, the daily scrum is all about collaboration. If people are only speaking when their turn is up, how are they collaborating? Instead, a healthy team should be syncing and planning during the session. We should be hearing things like &ldquo;Shall I use the test environment to test this?&rdquo;, &ldquo;I will release after the scrum. Do you want me to wait for this to be merged too?&rdquo;, &ldquo;Shall I merge this to your branch or to develop?&rdquo;, &ldquo;Do you need any help with this or shall I pick something up from the To-Dos?&rdquo;.</p>
+<p>People not being fully engaged, being indifferent and <em>only talking when their turn is up</em> is a sign that clearly shows that the session is dysfunctional.</p>
+<h3 id="no-planning-ahead">
+    <a href="#no-planning-ahead">#</a>
+    No planning ahead
+</h3><p>The daily scrum is supposed to be a <em>planning session</em>. Not a reporting session. Yes, we share the latest developments, but we do so in order to <em>plan the next 24 hours</em>. Try to keep track of the planning/reporting ratio. If it decreases, it is a very bad sign. Of course, this cannot be easily measured, but keep an eye on it and try to draw some conclusions.</p>
+<h3 id="stuck-pbis">
+    <a href="#stuck-pbis">#</a>
+    Stuck PBIs
+</h3><p>In scrum, we are supposed to be delivering value fast. It doesn&rsquo;t make sense to have a bunch of PBIs stuck at the &ldquo;Review&rdquo; swimlane for 3 days and picking up new work instead of reviewing the open PRs. The daily scrum is the time and place to make these decisions if they are not made during the day.</p>
+<p>Bottlenecks in the sprint board can be an indication of poor daily scrums. Of course, the root cause may be different here, but when we see jammed swimlanes we ought to think of the daily scrum too.</p>
+<h3 id="my-pbi">
+    <a href="#my-pbi">#</a>
+    My PBI
+</h3><p>Often you may hear people use phrases like &ldquo;Yesterday, I finished the implementation in my PBI&rdquo;. This is a highly problematic situation, as this single phrase implies that the team members are not thinking of the sprint&rsquo;s work in a collective way. They work in an isolated way and this can impede their understanding of success.</p>
+<p><em>Completing &ldquo;my&rdquo; PBI while my teammate struggles doesn&rsquo;t make the sprint a success</em>. This doesn&rsquo;t mean that the team members are selfish. All I am trying to say is that software engineering is a team sport and it takes effort to deeply understand this and change your day-to-day work habits accordingly.</p>
+<h2 id="another-way">
+    <a href="#another-way">#</a>
+    Another way
+</h2><p>The typical format most teams that I know of use is the &ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&rdquo;. I usually call this the &ldquo;per-person&rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:</p>
+<blockquote>
+<p>The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.</p>
+</blockquote>
+<h3 id="overview">
+    <a href="#overview">#</a>
+    Overview
+</h3><p>An alternative to the &ldquo;per-person&rdquo; format would be the &ldquo;per-PBI&rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&ldquo;Done&rdquo; swimlane).</p>
+<p>Let&rsquo;s use an example to understand it better. Assuming that the team&rsquo;s sprint backlog is the following:</p>
+<figure><img src="/img/posts/sprint_board.png"
+    alt="Figure 1.1: Sprint board">
+</figure>
+
+<p>The daily scrum would first focus on the topmost PBI in the &ldquo;Delivered&rdquo; swimlane. They would ask if it can be considered done. If yes, it would be moved to the &ldquo;Done&rdquo; swimlane. If not, a team member could undertake to check if it works as expected and move it to &ldquo;Done&rdquo;. Then they would do the same for the second &ldquo;Delivered&rdquo; PBI if there was any and so on and so forth.</p>
+<p>They would then move to the &ldquo;Merged&rdquo; swimlane, focusing on how could they get these tickets to &ldquo;Delivered&rdquo;. Would they deploy on production? If yes, who would undertake it? Are there any dependencies that need to be deployed as well? Who should be notified? These are the things that <em>should</em> be discussed during a healthy daily scrum.</p>
+<p>The next step would be the &ldquo;Review&rdquo; swimlane, in which the team needs to ensure that the PBIs do not remain idle for review if there is the capacity from team members to review them. They could decide who gets to review what and share more context if needed. Priorities could be defined if time and/or capacity do not suffice for all the PBIs. Again, the focus would be on how to move these PBI to &ldquo;Merged&rdquo; within the next 24 hours.</p>
+<p>Then, they would briefly discuss the &ldquo;In Progress&rdquo; PBIs, sharing progress and impediments and making clarifications if needed. The last step would be to talk about starting new PBIs in the next 24 hours.</p>
+<p>Finally, there can be some time to share anything that needs to be shared and wasn&rsquo;t already covered.</p>
+<h3 id="advantages">
+    <a href="#advantages">#</a>
+    Advantages
+</h3><h4 id="reduced-lead-time">
+    <a href="#reduced-lead-time">#</a>
+    Reduced lead time
+</h4><p>This format focuses on getting things done and delivering value. It&rsquo;s all about what needs to be done within the next 24 hours to move this PBI to the next swimlane. Inevitably, this prioritizes closing the open PBIs over opening new ones. As we have already discussed in the <a class="link" href="https://nvoulgaris.com/limiting-work-in-progress-in-scrum"  target="_blank" rel="noopener"
+    ><em>Limiting work in progress</em></a> post, this reduces the team&rsquo;s lead time.</p>
+<h4 id="focus-shifts-to-planning">
+    <a href="#focus-shifts-to-planning">#</a>
+    Focus shifts to planning
+</h4><p>Instead of discouraging interruptions while other team members are sharing their input, this format welcomes their contribution. Fostering dialogue in this way shifts the focus from reporting to planning. Team members communicate more and it&rsquo;s all about moving the ticket to the right, instead of plainly sharing yesterday&rsquo;s actions.</p>
+<h4 id="teamwork-mentality">
+    <a href="#teamwork-mentality">#</a>
+    Teamwork mentality
+</h4><p>Furthermore, the transition from monologue to an intensely collaborative format builds stronger team relationships and a teamwork mentality. The team learns to function as a unit, as opposed to a set of individuals. They learn to cooperate and they understand that great results take more than an individual writing code. There is no &ldquo;my PBI&rdquo; anymore. There is &ldquo;our work&rdquo;.</p>
+<h3 id="considerations">
+    <a href="#considerations">#</a>
+    Considerations
+</h3><h4 id="longer-daily-scrums">
+    <a href="#longer-daily-scrums">#</a>
+    Longer daily scrums
+</h4><p>From my personal experience, I&rsquo;ve noticed that the session sometimes tends to last longer with this format. This is a result of the increased dialogue. However, there can be a number of root causes behind this.</p>
+<p>The first thing that should come into our minds is whether there are too many open PBIs. If yes, the team should focus on closing some of them before starting to work on new ones. It could also show that the team is getting dragged into long conversations, which could be kept shorter. Finally, maybe the team <em>needs</em> this extra time. Personally, I wouldn&rsquo;t mind a slightly longer daily scrum so long as the conversation is fruitful and meaningful.</p>
+<h4 id="people-feel-left-out">
+    <a href="#people-feel-left-out">#</a>
+    People feel left out
+</h4><p>Also, people whose work is not directly visible on the board (e.g. designers and product owners) could start to feel left out with this format. My advice would be to encourage them to contribute whenever needed in the conversation and to use the time at the end of the session to share their input if it wasn&rsquo;t already shared.</p>
+<h2 id="own-the-process">
+    <a href="#own-the-process">#</a>
+    Own the process
+</h2><p>Having shared this technique, which I have successfully used, it is important to understand that <strong>every team is different</strong>. Just because it worked for a team it doesn&rsquo;t mean that it will also work for another one. Dogmatically applying a solution that worked for another team and expecting results goes against the very nature of the agile mindset.</p>
+<p>I would not advise against applying this format, but rather use it as a starting point. Call it an experiment and remember to evaluate this experiment. Then tweak it and run another experiment. Evaluate this one too. Then tweak it again. Chances are that the result that works for your team is different than the one I described. Maybe slightly different, maybe radically different. The point is to understand that the <strong>process is here to serve us</strong> and not the other way around. If it is not working, then change it to something that works. Make it your own.</p>
+<h2 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h2><p>The daily scrum is a pivotal event that can make all the difference between a successful and a failed sprint. Often, it gets executed in a formalistic way, which offers no real value. There are a number of symptoms that can help us identify a dysfunctional daily scrum session, such as lack of planning for the next 24 hours, jammed swimlanes and people not engaging in conversation during the session.</p>
+<p>A different way to run the session can prove beneficial. I have successfully used what I call the &ldquo;per-PBI&rdquo; format to run daily scrums and I feel that it offers a series of advantages, such as reduced lead time and improved team cohesion. Along with it come some downsides, such as certain roles feeling left out and increased duration of the session.</p>
+<p>No matter if we choose the &ldquo;per-PBI&rdquo; format or not, the responsibility of identifying the dysfunction and taking action to improve the situation lies with us, the software engineering team. So, I would strongly advise experimenting with different formats and tweaking the process until it serves the team.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/agile/">Agile</a>
+        
+            <a href="/tags/scrum/">Scrum</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/limiting-work-in-progress-in-scrum/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/wip_limits.jpg" loading="lazy" data-key="" data-hash="/img/posts/wip_limits.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Limiting work in progress in scrum</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/working-the-velocity-of-a-scrum-team/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/velocity.jpg" loading="lazy" data-key="" data-hash="/img/posts/velocity.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Working the velocity of a scrum team</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/technical-background-the-extra-mile-on-scrum-mastery/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/extra_mile.jpg" loading="lazy" data-key="" data-hash="/img/posts/extra_mile.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Technical background: the extra mile on scrum mastery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/agile-theater/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/agile_theater.jpg" loading="lazy" data-key="" data-hash="/img/posts/agile_theater.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile theater</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/running-remote-retrospectives/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/remote_retrospectives.jpg" loading="lazy" data-key="" data-hash="/img/posts/remote_retrospectives.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Running remote retrospectives</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

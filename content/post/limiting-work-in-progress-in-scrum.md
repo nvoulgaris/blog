@@ -1,9 +1,10 @@
----
-title: "Limiting work in progress in scrum"
-date: "2020-05-17"
-tags: [agile, scrum]
-image: img/posts/wip_limits.jpg
----
++++
+title = "Limiting work in progress in scrum"
+date = "2020-05-17"
+tags = ["agile","scrum"]
+image = "img/posts/wip_limits.jpg"
+description = "Experimenting with Kanban's WIP limits to elevate a scrum team"
++++
 
 How would you identify bottlenecks in your team's process? How would you surface them? How would you encourage the team to increase collaboration? How would you decrease lead times and increase the bus factor?
 
@@ -11,7 +12,7 @@ Working in an *Agile* way is far from following a predefined set of rules. On th
 
 This post is all about experimenting with limiting work-in-progress (WIP). Applying WIP limits is a beautiful technique, originated in Kanban, but I believe it can be applied very effectively on *Scrum* teams too. Before we analyze the technique though, let's briefly go over the symptoms that may push a team towards experimenting with WIP limits in the first place.
 
-# Symptoms
+## Symptoms
 
 Let's imagine a *Scrum* team consisting of five software engineers is in the middle of a two-week sprint. The first five stories *in-progress* and the team is juggling among them, trying to advance all of them at the same time.
 
@@ -27,7 +28,7 @@ Lastly, this way of working inevitably leads to significantly **small [bus facto
 
 I could continue commenting on this situation, but I believe that I have made my point. So, (hopefully) agreeing that this is a problematic situation, let's go over a technique that can mitigate it.
 
-# What is a WIP limit
+## What is a WIP limit
 
 Limiting work-in-progress is a very simple technique.
 
@@ -37,7 +38,7 @@ So, if a team has a WIP limit of two stories, it can only work on two stories at
 
 It originates from Kanban and there it applies to tasks on the team's Kanban board. In *Scrum*, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of *in-progress* may be adjusted according to the team's needs. For instance, a story can be considered *in-progress* until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.
 
-## Can this be applied to scrum?
+### Can this be applied to scrum?
 
 It would be reasonable to wonder whether there would be any sense in applying such a technique to *Scrum*, given that the work is bound by the sprint duration. One could argue that WIP limits in Kanban make sense because there is no such boundary.
 
@@ -45,11 +46,11 @@ However, considering all the above-mentioned symptoms, which could be more or le
 
 In case applying a Kanban technique to *Scrum* feels like breaking the rules, let's always keep in mind that being *Agile* is all about the **culture**. Blindly adopting a set of rules is a cargo cult mentality that leads nowhere. If you ask me, if WIP limits serve us, let's use them.
 
-# WIP limit benefits
+## WIP limit benefits
 
 Let's examine some of the benefits that a team would expect by applying WIP limits.
 
-## Reduced lead time
+### Reduced lead time
 
 *Lead time* is a metric, expressing the time elapsed between starting and completing an item of work.
 
@@ -69,7 +70,7 @@ These numbers are fictitious of course, but they are meant to illustrate the poi
 
 This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.
 
-## Teamwork
+### Teamwork
 
 A WIP limit is essentially the application of a restriction. A restriction on the amount of work that can be concurrently undertaken. However, team members remain the same despite the restriction. Hence, the smaller the number of stories or tasks that can be simultaneously *in-progress* the more the level of cooperation among the team members has to increase.
 
@@ -77,11 +78,11 @@ Think about it. In a very simplistic scenario, a team of two software engineers 
 
 Pairing is a more intense form of collaboration, but working on the same story is still more collaborative than two software engineers working on different stories. Given sufficient time, this restriction will strengthen the team bonds and will help build the right chemistry.
 
-## Bus factor
+### Bus factor
 
 Increased teamwork goes hand in hand with increased bus factors. I believe this is quite straightforward. The more often two or more people work on the same story, the more the parts of the code that more people will be familiar with. On the contrary, a team whose members tend to work alone on a story will end up with a codebase full of parts that only a single software engineer is familiar with.
 
-## Identify bottlenecks
+### Identify bottlenecks
 
 Applying a WIP limit is a tailor-made technique for surfacing bottlenecks in a team's process. Let's imagine a scenario in which a team uses the flow *"todo"*, *"doing"*, *"review"*, *"delivered"* and then *"done"*. It undertakes stories and when the code is written, the story is passed to the rest of the team for code review. The engineer(s) that worked on this story naturally grab the next one until this one gets reviewed. It is quite common for teams to end up with a pile of stories that should get reviewed towards the end of the sprint. This, of course, leads to rushed code reviews and a big bang release with a dozen features in it. This is a typical case of a *bottleneck in the process*.
 
@@ -89,33 +90,33 @@ Now, let's imagine that this team applies some WIP limits. Remember that these m
 
 The application of the limit has not only made the problem apparent, but it has also provided a solution to it.
 
-# Fine-tuning the limits
+## Fine-tuning the limits
 
 Assuming that some symptoms are visible and the team feels that some WIP limits would be helpful, a natural question would be how can a team go about setting them. What are the right the numbers? How many swimlanes should a limit span?
 
-## Avoid multitasking
+### Avoid multitasking
 
 I would propose that the first thing to avoid is multitasking. A WIP limit greater than the number of software engineers in the team would mean that people are encouraged to multitask. For instance, imagine a team of five software engineers with a WIP limit of 6.
 
 Keep this in mind. In my opinion, if you are ready to set a WIP limit greater than the number of software engineers in the team, take a step back. Think the problem over again. Why do you want to do this? What do you expect to gain out of it?
 
-## Not too high
+### Not too high
 
 Building on this point, a WIP limit equal to the number of software engineers in the team would mean that no one can multitask, but on the other hand, pairing and collaboration are not encouraged. This kind of beats the purpose, because fostering collaboration is a key motive for using this technique.
 
 The two above-mentioned strategies can work but, only as first steps and only in rare situations. For instance, if some team members are very reluctant about using WIP limits and yet the rest of the team feels that they would be beneficial, perhaps it's a decent first step. However, I see very limited benefits besides these cases.
 
-## But not too low either
+### But not too low either
 
 On the other hand, a very restrictive WIP limit can have negative effects. Not every task and story is suitable for pairing or requires more than one person working on it. Also, pairing is great, but, as discussed in extensively in my [pair programming post](https://nvoulgaris.com/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/), it can be exhaustive. Setting a WIP limit of two in a team with four software engineers would automatically mean that the engineers should always work in pairs to honour this rule. If this is what you are after - always working in pair - by all means, go for it. However, pay a lot of attention to it. Such a restrictive limit may lead to people feeling that they are suffocating or it may just be counterproductive.
 
-## Inspect and adapt
+### Inspect and adapt
 
 Having said all these, we still haven't answered the above-mentioned questions. Well, you might have guessed it. There is no *right* answer. *There is no silver bullet*. The very philosophy of *Agile* suggests a totally different approach to *right* answers and *silver bullets*. *Scrum* says *"inspect and adapt"*. That is what I would suggest.
 
 Start off with discussing the situation during the retrospective. Come up with the first iteration of a few WIP limits. Give it a go and watch what happens. Adjust it and repeat the process. This is an ever-ending-process. Keep shifting towards what works best for the team and always keep in mind that different things work on different teams.
 
-# Conclusion
+## Conclusion
 
 Being *Agile* means being after continuous improvement. This requires being able to read the symptoms and come up with experiments to help the team work better. Lack of focus, disrespect to priority, big bang releases and small bus factors are serious symptoms that should be dealt with.
 

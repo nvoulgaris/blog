@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Regain your lost faith in the value of retrospectives">
+<title>Driving fruitful retrospectives</title>
+
+<link rel='canonical' href='//localhost:1313/driving-fruitful-retrospectives/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Driving fruitful retrospectives">
+<meta property='og:description' content="Regain your lost faith in the value of retrospectives">
+<meta property='og:url' content='//localhost:1313/driving-fruitful-retrospectives/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='agile' /><meta property='article:tag' content='retrospectives' /><meta property='article:published_time' content='2018-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-11-10T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/fruitful_retros.jpg' />
+<meta name="twitter:title" content="Driving fruitful retrospectives">
+<meta name="twitter:description" content="Regain your lost faith in the value of retrospectives"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/fruitful_retros.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/nikos-voulgaris-44455546'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-goal">The Goal</a></li>
+    <li><a href="#structure">Structure</a>
+      <ul>
+        <li><a href="#set-the-stage">Set the stage</a></li>
+        <li><a href="#gather-data">Gather data</a></li>
+        <li><a href="#generate-insights">Generate insights</a></li>
+        <li><a href="#decide-what-to-do">Decide what to do</a></li>
+        <li><a href="#close-the-retrospective">Close the retrospective</a></li>
+      </ul>
+    </li>
+    <li><a href="#smart-action-items">SMART action items</a></li>
+    <li><a href="#dealing-with-silent-team-members">Dealing with silent team members</a></li>
+    <li><a href="#dealing-with-team-members-that-dominate-the-conversation">Dealing with team members that dominate the conversation</a></li>
+    <li><a href="#keep-the-conversation-productive">Keep the conversation productive</a></li>
+    <li><a href="#avoid-creating-a-routine">Avoid creating a routine</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/driving-fruitful-retrospectives/">
+                
+                    <img src="/img/posts/fruitful_retros.jpg" loading="lazy" alt="Featured image of post Driving fruitful retrospectives" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/driving-fruitful-retrospectives/">Driving fruitful retrospectives</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Regain your lost faith in the value of retrospectives
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 10, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>How many times have you found yourself engaged in a retrospective, wondering why do you lose all this time? How many times have you committed to action items that no one ever dealt with in any way? How many times have you caught your team or yourself discussing the same issues again and again thinking that this will not be the last time?</p>
+<p>Retrospectives are very hard-to-drive meetings. The hurdles to overcome are countless. Team members that will not open up, team members that dominate the conversation, inability to identify root causes, lack of commitment to action items, frustration and politics, just to name a few. Sometimes the Jocker (Scrum Master) has to display a great arsenal to keep all of these under control and - above all - meaningful.</p>
+<p>My intention in this blog post is to share part of the knowledge, experience and lessons learned by driving retrospectives. Despite mainly referring to people facilitating these sessions (Scrum Masters), I believe that all members of a scrum team could benefit by it. Throughout this post, I will be referring to sprint retrospectives, but these principles, more or less apply to all kinds of retrospectives (release retrospectives, departmental retrospectives etc).</p>
+<h2 id="the-goal">
+    <a href="#the-goal">#</a>
+    The Goal
+</h2><p>Before we even begin talking about how to carry out successful retrospectives, let&rsquo;s think for a moment why we have them in the first place. This meeting is a key part of the ever ending <em>inspect and adapt</em> loop. It&rsquo;s the team&rsquo;s official slot reserved for thinking what we did during the last sprint and how could we improve it.</p>
+<p>Bear in mind that this is the <em>last resort</em> for improvement. The proper moment is <em>any</em> moment. As soon as we know that something could be improved, we should try to improve it right away. When you come across any pain point, don&rsquo;t forget that <strong>the retrospective is now!</strong> However, this runs the great risk of never prioritizing and never doing it and therefore, the sprint retrospective is there to force us to work on these issues.</p>
+<blockquote>
+<p>The goal of a retrospective is to produce action items</p>
+</blockquote>
+<h2 id="structure">
+    <a href="#structure">#</a>
+    Structure
+</h2><p>One of the great pitfalls to be avoided is not preparing a retrospective before facilitating it. Structure and preparation are <strong>key</strong> to the success of the retrospective and there is a reason for it. Team members often get emotional or carried away when engaged in retrospective conversations (they are supposed to after all) and it can be very easy to lose sight of the goal and spend the session in a meaningless way.</p>
+<p>Always make sure that you know <strong>exactly</strong> how the session unfolds relative to the schedule. Is it going too slow? Are we spending too much time on this topic? How far behind are we? Can we cover it and in which way? <em>Always make sure that there is enough time to reach to action items.</em></p>
+<p>In an ideal situation, a mature team should be able to walk into the retrospective and just share their thoughts, drive the discussion to conclusions and action items, commit on working on them and move on with the following sprint. However, since this is barely realistic, I always use exercises to put the team in the right context and help them focus on identifying <em>strengths</em> and <em>weaknesses</em>. An excellent source of exercises is <a class="link" href="https://retromat.org"  target="_blank" rel="noopener"
+    >retromat</a>. In the vast majority of the retrospectives I have facilitated, I have broken the structure down to the following five sections.</p>
+<h3 id="set-the-stage">
+    <a href="#set-the-stage">#</a>
+    Set the stage
+</h3><p><em>Usually, 5-10 minutes for a 90-minute retrospective, depending on the team size</em></p>
+<p>Take the time to communicate the purpose of the session and the schedule. It may sound redundant, but it will help the team members orient themselves during the retrospective and focus on the task in hand for the following period of time.</p>
+<p>Usually, I ask for a very brief check-in phrase or input (e.g. describe the previous sprint in 3 words). Simplistic as it may sound, keep in mind that there may be people in the room that are hard to open up. As Scrum Masters, we should always make sure that every team member feels comfortable to speak and is engaged in the team exercise. This is what I focus on during this short phase. <strong>Get everyone onboard for what&rsquo;s about to follow</strong>.</p>
+<h3 id="gather-data">
+    <a href="#gather-data">#</a>
+    Gather data
+</h3><p><em>Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size</em></p>
+<p>This is the time to identify <em>what went wrong</em> (or could just be improved) and <em>what did the team do well</em> (this is also very important).</p>
+<p>Use an exercise that focuses on <strong>plain facts</strong>. Ask for both negative and positive facts. As it is important to amend any problematic areas, it is equally important to preserve the good habits. Preferably, before discussing, allow the team some time to silently think and jot down a few things on sticky notes, in order to avoid affecting each other&rsquo;s thought in this part. If necessary, you may feed the team by mentioning one or two defective ares that you recognized during the sprint, prior to the exercise, to get them going and accelerate results, but be very careful <em>not to guide them</em>.</p>
+<p>This is an extremely important step, as it will feed the rest of the retrospective with data. If the team fails to come up with the right issues here, it is almost inevitable that the real issues will remain untouched, no matter how great the effort in the rest of the session.</p>
+<h3 id="generate-insights">
+    <a href="#generate-insights">#</a>
+    Generate insights
+</h3><p><em>Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size</em></p>
+<p>Having identified the major pain points in the previous step, it&rsquo;s time to address them. The point of this step is to come up with potential solutions to these pain points, but <em>do not neglect to preserve the good habits</em> as well.</p>
+<p>Pick an exercise to help the team interpret the data gathered from the previous step and <em>come up with action items</em> to both address the problems and preserve the good habits. Usually, I avoid a lot of conversation and interaction up to this point to keep the process of gathering the data impartial, but this is the point to <em>allow collaboration to kick in</em> (e.g. working in pairs or have a lot of conversation). Make sure the team members are interacting in a productive way. If the items from the previous step are too many, ask the team to prioritize them and work the list top to bottom until the allocated time (or the list) runs out. Ideally, by the end of this step a list with ideas (solutions to problems, things to start/stop/continue doing etc) is composed and lies visible to the team (e.g. sticky notes on the wall, whiteboard etc).</p>
+<p>Always keep in mind that this is the very heart of the retrospective. Tension may be caused, strong arguments may take place. This is healthy and desired, but always make sure that the situation is under control and is actually going somewhere. As a Scrum Master, make sure that personal attacks are avoided, only productive arguments are hold and the team mainly deals with items that is actually empowered to change.</p>
+<h3 id="decide-what-to-do">
+    <a href="#decide-what-to-do">#</a>
+    Decide what to do
+</h3><p><em>Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size</em></p>
+<p>Presumably, most of the hard work is over. A list of action items is in the team&rsquo;s hands. What is left is to decide on a reasonable amount of action items to work on the upcoming sprint.</p>
+<p>In this step, I always like using exercises that foster collaboration (and conversation) and create clear, unambiguous results. For instance, an <a class="link" href="https://retromat.org/en/?id=88"  target="_blank" rel="noopener"
+    >impediments cup</a> facilitates <em>prioritizing action items</em>, creating a <em>clear result</em> and <em>engage in discussion</em> while doing so.</p>
+<p>Basically, this is a matter of prioritization. All action items are useful, but the team has to commit to a reasonable number of them. This depends on a lot of factors (size of the team, difficulty of the action item, sprint length etc). Make sure that the decisions are taken collaboratively (but not chase after consent, as it can kill the retrospective) and the reasons for them are clear to the team. Additionally, be very careful not to use a process that creates winners and losers, as this can hurt morale.</p>
+<h3 id="close-the-retrospective">
+    <a href="#close-the-retrospective">#</a>
+    Close the retrospective
+</h3><p><em>Usually, 5-10 minutes for a 90-minute retrospective, depending on the team size</em></p>
+<p>This step can be used to both <em>get feedback on the retrospective</em> and <em>close the session in a light tone</em>. It&rsquo;s very likely that as problems surfaced, people opened up, things got tense and there were disagreements. This was very desired indeed, but as the session draws to a close, the point is to leave all these behind, keep all the hard work and close in a good mood in order to begin the next sprint.</p>
+<p>Any very brief exercise will do for this part. Just make sure that as you achieve the above-mentioned goal, you&rsquo;re not tiring an already exhausted team. Preferably, choose a fun and invigorating exercise.</p>
+<h2 id="smart-action-items">
+    <a href="#smart-action-items">#</a>
+    SMART action items
+</h2><p>Perhaps the biggest pitfall for a retrospective is to come up with action items that are not <a class="link" href="https://en.wikipedia.org/wiki/SMART_criteria"  target="_blank" rel="noopener"
+    >SMART</a>. There is a huge difference between <em>action items</em> and <em>wishful thinking</em>. For instance, consider the following two outcomes of a team&rsquo;s retrospective:</p>
+<blockquote>
+<p>Improve collective ownership of the code.</p>
+</blockquote>
+<blockquote>
+<p>No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.</p>
+</blockquote>
+<p>Do you see the difference? For an action item to be meaningful, it has to be:</p>
+<ul>
+<li>Specific</li>
+<li>Measurable</li>
+<li>Agreed upon</li>
+<li>Realistic</li>
+<li>Trackable</li>
+</ul>
+<h2 id="dealing-with-silent-team-members">
+    <a href="#dealing-with-silent-team-members">#</a>
+    Dealing with silent team members
+</h2><p>Getting people to open up can be one of the trickiest tasks for a Scrum Master, but it constitutes a key ingredient for a fruitful retrospective. People may be quiet due to their personality or because they choose to remain silent for their own purposes. Both cases are difficult to handle, but each requires a different approach.</p>
+<p>When dealing with team members that are shy or not very outgoing, remember to work hard with them while <em>setting the stage</em>. Before leaving this step, make sure that they have shared something with the group. This will make them feel more engaged and will increase the probability that they will share more during the retrospective. If necessary, during the retrospective, explicitly ask them to comment on a topic, especially if you know that they have an opinion on the matter, but they are obviously reluctant to share it.</p>
+<p>When people remain silent driven by politics, the spectrum of options is considerably narrowed down. What I feel is useful is to state once again that the purpose of this session is to improve as a team and in order to do so, sincere input and respect by everyone is a prerequisite. However, an individual who chooses to play his own game most likely will not change his path by such a speech. I would also suggest to drive the rest of the team to open her up.</p>
+<h2 id="dealing-with-team-members-that-dominate-the-conversation">
+    <a href="#dealing-with-team-members-that-dominate-the-conversation">#</a>
+    Dealing with team members that dominate the conversation
+</h2><p>On the other hand, having a team member that simply dominates all conversation is a definite disaster for the outcome of the retrospective. A team member may do so either wittingly or unwittingly. In any case, find a suitable point in her speech and <em>interrupt</em> her. Make sure you are very polite, but firmly explain that this session cannot work like this and the team will lose sight of the goal in this manner. Strive to achieve that discussion is as evenly as possible distributed throughout the group and <em>all have a fair chance of expressing themselves</em>.</p>
+<p>This is not an easy situation to be in. No matter how polite you are, chances are that the person you interrupt will feel offended (even if she doesn&rsquo;t show it), but do not yield to this thought. In the past, I have driven retrospectives that suffered for this exact reason, because I never summoned up the courage to interrupt this person. Hopefully, I&rsquo;ve learned from my mistakes.</p>
+<h2 id="keep-the-conversation-productive">
+    <a href="#keep-the-conversation-productive">#</a>
+    Keep the conversation productive
+</h2><p>The moment the conversation is derailed, the retrospective is immediately jeopardized. Having team members aimlessly discussing instead of trying to reach to the root cause of problems and solve them can be a disaster. Personal attacks and conflicts can cause this. Make sure that you are very strict on this and put the team back on track as soon as you realize it. Additionally, discussing on items that are out of the team&rsquo;s reach can also kill the retrospective. Make sure that you <em>spend no time on such topics</em>.</p>
+<p>A team that tends to frequently focus on items outside of its power is in danger of essentially wasting retrospective after retrospective dealing with issues that they will never be able to solve. Also, as they are convinced that an external factor is slowing them down, they run the risk of lowering their own morale and start feeling underprivileged. <em>Kill this as soon as you notice it</em>. No matter how disastrous these external factors are, this is the time to focus on improving the internal team functioning. An excellent exercise to help you with this is <a class="link" href="https://retromat.org/en/?id=29"  target="_blank" rel="noopener"
+    >Circles &amp; Soup</a>.</p>
+<h2 id="avoid-creating-a-routine">
+    <a href="#avoid-creating-a-routine">#</a>
+    Avoid creating a routine
+</h2><p>As soon as retrospective starts feeling like a routine, do something to disrupt this. During this session, we want team members to be creative and think outside of the box. A routine is the worst enemy of this.</p>
+<p>Always strive to keep the team energized and keep the blood flowing. Use exercises that require standing up and walking in the room. Keep it playful.  If possible, change the room or the time the retrospective takes place. Whatever you do, <em>do not create a routine</em>.</p>
+<h2 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h2><p>Driving a retrospective is a very tricky business. However, retrospectives are key to the healthy functioning of an Agile team. Make sure to prepare beforehand and constantly keep in mind that the team should be after SMART action items. Don&rsquo;t let it be derailed and the hard work is definitely going to pay off. Finally, never forget. <em>The retrospective is now</em>.</p>
+<p>P.S. Feel free to share your thoughts or comment on mine. As always, I would very much love a nice, productive conversation on the topic.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/agile/">Agile</a>
+        
+            <a href="/tags/retrospectives/">Retrospectives</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/working-the-velocity-of-a-scrum-team/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/velocity.jpg" loading="lazy" data-key="" data-hash="/img/posts/velocity.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Working the velocity of a scrum team</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/technical-background-the-extra-mile-on-scrum-mastery/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/extra_mile.jpg" loading="lazy" data-key="" data-hash="/img/posts/extra_mile.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Technical background: the extra mile on scrum mastery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/agile-code/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/todo.jpg" loading="lazy" data-key="" data-hash="/img/posts/todo.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile code</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

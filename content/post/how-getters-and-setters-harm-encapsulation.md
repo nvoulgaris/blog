@@ -1,9 +1,10 @@
----
-title: "How getters and setters harm encapsulation"
-date: "2018-12-09"
-tags: [software design,encapsulation]
-image: img/posts/encapsulation.jpg
----
++++
+title = "How getters and setters harm encapsulation"
+date = "2018-12-09"
+tags = ["software design","encapsulation"]
+image = "img/posts/encapsulation.jpg"
+description = "Think twice before exposing the implementation details of a class"
++++
 
 Taking a step back and looking at something that you've been doing for years with a *fresh* perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at `getters` and `setters` from a different point of view.
 
@@ -11,7 +12,7 @@ During my first steps as a software engineer, I learned about Plain Old Objects 
 
 So I did consistently, until I read a blog post that got me thinking and revisiting the whole concept of encapsulation in a fresh, unbiased way. Now, that I believe the dust has settled, I will try to communicate my thoughts on the matter in this post.
 
-# Object-oriented design
+## Object-oriented design
 
 It all starts with true object-oriented design. If one goes online looking for a definition and a brief description of Object-Oriented Programming (OOP), one will come across (among some wise stuff) all kinds of nonsense. They usually start with something like *"OOP is about modeling the real world..."*. Well, it's not.
 
@@ -22,7 +23,7 @@ OOP is a design *philosophy* according to which, a software system should consis
 
 This is really straightforward. Let's assume that we have an `AirCondition` object. What we would like is to be able to **tell** it to adjust the room temperature to (say) 25 degrees Celsius and for it to be able to do so. Notice that we are not interested in *how* is it going to achieve this. All we want is to *command* it and have the job done. Essentially, we are *sending a message*. We are *delegating* the task. Now, this brings us to the point that we can understand both what encapsulation is and why we need it.
 
-# Encapsulation
+## Encapsulation
 
 The gist behind the notion of encapsulation is that the *objects should not reveal their internals* (implementation details) *to the outside world* (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of *how* they achieve the tasks that are *told* to achieve it's *their* business and no one else's.
 
@@ -30,11 +31,11 @@ In a technical level, an object exposes a set of public methods (API) and probab
 
 > Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.
 
-# The problem with `getters` and `setters`
+## The problem with getters and setters
 
 This is exactly where `getters` and `setters` enter the picture. Conventional wisdom has it that since the object's properties are to remain "hidden", they should be wrapped by a `getter` and `setter` each, enabling the external world to "access" them, without learning about the object's state. Now, pause for a minute and read this last sentence once again before proceeding. *Does it make any sense at all?* At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper `getter` and `setter`? Essentially we are messing with the object's state in either case - which is quite overtly exposed to the public via these methods.
 
-# An example
+## An example
 
 In order to better illustrate the nature of this problem, let's consider for a moment the `AirCondition` class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:
 
@@ -58,7 +59,7 @@ airCondition.adjustTemperatureTo(25)
 
 and it should get the job done, because it *knows* how to actually do it. We shouldn't even know if there is or there is not a property holding the current temperature, let alone query for it directly. This is part of the means the `AirCondition` class could use to achieve its purposes, it's subject to change at any given moment and its strictly **its own business**.
 
-# Tight coupling
+## Tight coupling
 
 We all know (at least in principle) that our classes should be *highly cohesive* and *loosely coupled*. The theory is great, but let's consider how these guidelines (about coupling in particular) apply to this specific example.
 
@@ -66,13 +67,13 @@ Let's assume that we wish to refactor the `AirCondition` class. Perhaps we would
 
 This scenario illustrates perfectly the side effects of a design with tightly coupled classes. However, on the second, *imperative* approach, the collaborators of the refactored, `AirCondition` class would remain unaffected, agnostic to the modification. We can therefore conclude that *the imperative approach has led to a more loosely coupled design*.
 
-# Tell, don't ask
+## Tell, don't ask
 
 Some of you might have already noticed that these ideas start to sound a lot like the *Tell, don't ask* principle (also known as *Law of Demeter*). (In case you're not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.
 
 > Data and functionality that depends on these data belong in the same object
 
-# A story and a lesson learned
+## A story and a lesson learned
 
 Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn't normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with `getters` and `setters`.
 
@@ -80,7 +81,7 @@ Eventually, I failed to pass the message (at least adequately enough to initiate
 
 At the end of the day, what difference would it make to use `airCondition.getTemperature()` instead of `airCondition.temperature`? Perhaps that is the reason why the designers of Kotlin decided to provide `getters` and `setters` by default, without even going into the trouble to code (generate) them or even call(!) them (in Kotlin `airCondition.temperature` actually calls `airCondition.getTemperature()` under the hood).
 
-# Amending the situation
+## Amending the situation
 
 Assuming that the problem is clear, a reasonable question to ask would be what to do to amend it. A very helpful first step would be to stop writing `getters` and `setters` this very moment. This would surface cases that collaborators need access to another classe's properties.
 
@@ -88,7 +89,7 @@ When you face such a situation, take a moment and reflect. *Do you really need t
 
 Sometimes `getters` and `setters` will be needed, but I reckon that most of the times, different, better object-oriented solution will present themselves. This will gradually improve the design of the system you are working on.
 
-# Conclusion
+## Conclusion
 
 Object-oriented design is all about passing messages between self sustainable objects and ecapsulation is a tool that can be immensely helpful on this task by resulting in loose coupling. On the other hand, letting our classes see deeply into the internal implementation of their collaborators, essentially results in tight coupling.
 

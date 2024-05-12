@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side? Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a team sport. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.">
+<title>Pair programming: making the whole greater than the sum of its parts</title>
+
+<link rel='canonical' href='//localhost:1313/post/pair-programming/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Pair programming: making the whole greater than the sum of its parts">
+<meta property='og:description' content="When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side? Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a team sport. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.">
+<meta property='og:url' content='//localhost:1313/post/pair-programming/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='pair programming' /><meta property='article:tag' content='xp' /><meta property='article:published_time' content='2019-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-12-15T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/pair_programming.jpg' />
+<meta name="twitter:title" content="Pair programming: making the whole greater than the sum of its parts">
+<meta name="twitter:description" content="When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side? Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a team sport. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/pair_programming.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/page/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-sum-is-greater-than-the-parts">The sum is greater than the parts</a></li>
+    <li><a href="#collective-code-ownership">Collective code ownership</a></li>
+    <li><a href="#code-is-reviewed-automatically">Code is reviewed automatically</a></li>
+    <li><a href="#increased-collaboration">Increased collaboration</a></li>
+    <li><a href="#learning-opportunity">Learning opportunity</a></li>
+    <li><a href="#more-difficult-to-cut-corners">More difficult to cut corners</a></li>
+    <li><a href="#less-distractions">Less distractions</a></li>
+    <li><a href="#onboard-a-new-team-member">Onboard a new team member</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/pair-programming/">
+                
+                    <img src="/img/posts/pair_programming.jpg" loading="lazy" alt="Featured image of post Pair programming: making the whole greater than the sum of its parts" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/pair-programming/">Pair programming: making the whole greater than the sum of its parts</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 15, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    15 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side?</p>
+<p>Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a <em>team sport</em>. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.</p>
+<p>In the following of this post, I will try to articulate my thoughts on pair programming, which I believe is an empowering practice and a skill that builds successful teams.</p>
+<h1 id="what-is-it">
+    <a href="#what-is-it">#</a>
+    What is it
+</h1><p>Pair programming is an extreme programming (XP) practice. According to Kent Beck&rsquo;s book, <a class="link" href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained"  target="_blank" rel="noopener"
+    ><em>&ldquo;Extreme Programming Explained: Embrace Change&rdquo;</em></a> it is</p>
+<blockquote>
+<p>A programming technique where two people program with one keyboard, one mouse, and one monitor</p>
+</blockquote>
+<p>So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the <em>driver</em> and the <em>navigator</em>.</p>
+<ul>
+<li>The <strong>driver</strong> is writing the code, focusing on the task in hand and in the micro view of the code.</li>
+<li>The <strong>navigator</strong> is constantly reviewing the code being written by the driver, is looking for logic problems and bugs and is thinking ahead of the architecture and design of the system, focusing on the macro view of the code.</li>
+</ul>
+<p>Now, having decided to pair, how do you go about doing it?</p>
+<h1 id="how-to-pair-program">
+    <a href="#how-to-pair-program">#</a>
+    How to pair program
+</h1><p>Before thinking about roles and pieces of code, my advice is to focus on the setup. I find it critical that the screen is positioned in the <strong>center</strong> of the desk and <em>both participants have equal access to it</em>. Otherwise, you are running the risk of creating a situation in which one participant feels like a &ldquo;guest&rdquo; in the other&rsquo;s office, instead of an equal collaborator.</p>
+<p>Having taken care of the screen&rsquo;s position, the second most important point, in my opinion, is having <em>two keyboards</em>, if possible. This contradicts the above-mentioned definition of pair programming, which talks about one keyboard, but I believe it is very important to <em>remove the psychological barrier of actually having to &ldquo;grab&rdquo; the keyboard to contribute</em> one line of code when needed.</p>
+<p>With the setup in place, let&rsquo;s focus on the process. I would suggest making sure that you <strong>swap roles frequently</strong>. This ensures that both participants stay engaged and focused and that their minds work on both the micro and macro view of the code. Having the same driver for a lot of time can end up with the navigator feeling marginalized and disengaged. There is no &ldquo;right&rdquo; amount of time, but, out of personal experience, I would suggest swapping every few minutes. Of course, this is totally subjective and the pair should experiment and find what works best for it.</p>
+<p>Staying in the context of role swapping, when using Test Driven Development (TDD), I have found extremely useful the <em>&ldquo;ping pong&rdquo;</em> technique. According to this, the driver writes a failing unit test. Then, roles are swapped and the new driver makes it pass and writes the next failing unit test. Then, roles are swapped again and so on and so forth. This technique creates pace and ensures frequent role swaps.</p>
+<p>Apart from roles, make sure to also <em>switch pairs frequently</em>. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a <em>soft swap</em> and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a <em>hard swap</em>, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.</p>
+<p>Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice <em>watching</em> the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that</p>
+<blockquote>
+<p>Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life</p>
+</blockquote>
+<h1 id="why-bother">
+    <a href="#why-bother">#</a>
+    Why bother
+</h1><p>Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&rsquo;s talk a little bit about the benefits of pair programming.</p>
+<h2 id="the-sum-is-greater-than-the-parts">
+    <a href="#the-sum-is-greater-than-the-parts">#</a>
+    The sum is greater than the parts
+</h2><p>Pair programming is a powerful technique when you need to tackle a very difficult problem. The reason is that, empirically, <em>the quality of the work that is being produced by the pair is higher</em> than the one of the work that each team member would produce on her own. I know that it sounds strange and is indeed very counter-intuitive, but, surprisingly, I have found it to be true every single time that I have paired on a difficult task. When done right, the level of concentration is unprecedented and two minds, deeply focusing on the same problem, can produce extremely high-quality work.</p>
+<h2 id="collective-code-ownership">
+    <a href="#collective-code-ownership">#</a>
+    Collective code ownership
+</h2><p>The more a team is practicing pair programming, the more it <strong>increases collective code ownership</strong>. When an individual writes a piece of code and then the team reviews it, inevitably, the author is implicitly perceived as the <em>&ldquo;owner&rdquo;</em> of this piece of code. Apart from increased collective code ownership, which is a vital quality for an agile team, pairing defaults the <a class="link" href="https://en.wikipedia.org/wiki/Bus_factor"  target="_blank" rel="noopener"
+    >bus factor</a> to 2.</p>
+<h2 id="code-is-reviewed-automatically">
+    <a href="#code-is-reviewed-automatically">#</a>
+    Code is reviewed automatically
+</h2><p>One of the greater benefits of pair programming is that the <em>code is reviewed automatically</em>, as it gets constantly reviewed by the navigator while is being typed by the driver. Taking into consideration that roles are swapped frequently, essentially the code is reviewed by the pair. Additionally, it is reviewed in a more active way, <em>driven by conversation and modifications</em>, instead of passively and silently reading a pull request without the author of the code being present to initiate a conversation. As a matter of fact, it is so well reviewed that it can be checked in and merged right away, although I would advise against it and I would propose to open a pull request, have the rest of team have a look at it as well as have the pair take a more distant look after the work is done.</p>
+<h2 id="increased-collaboration">
+    <a href="#increased-collaboration">#</a>
+    Increased collaboration
+</h2><p>Gone are the days that software was produced by individual sitting in their cubicles, working as isolated as possible. Nowadays, it is well understood that great software is delivered by great teams. Therefore, we focus our energy a lot into building great teams. Honestly, I can&rsquo;t think of a more catalytic action to this than having two people working together, on the same problem. Personally, as a scrum master, I always encouraged the team to work in pairs as much as they can.</p>
+<h2 id="learning-opportunity">
+    <a href="#learning-opportunity">#</a>
+    Learning opportunity
+</h2><p>People say that code reviews are a great learning opportunity. I can&rsquo;t even begin to describe what a wonderful learning opportunity pair programming is. Honestly, I don&rsquo;t remember pairing without <em>sharing knowledge</em>. Sometimes sharing great software design ideas. Sometimes learning a keyboard shortcut or a small IDE feature. There&rsquo;s always knowledge sharing during pair programming.</p>
+<h2 id="more-difficult-to-cut-corners">
+    <a href="#more-difficult-to-cut-corners">#</a>
+    More difficult to cut corners
+</h2><p>We do get tired when writing code. Especially, when solving hard problems. These are the moments when we get more prone to cutting corners. <em>&ldquo;Let&rsquo;s skip this unit test&rdquo;</em>. <em>&ldquo;I could improve this, but let&rsquo;s leave it like this for now and I&rsquo;ll refactor in the future&rdquo;</em>. We&rsquo;ve all been there and it is quite natural when we grow really tired. We still know the right thing to do, but we lack the <em>discipline</em> to do it at this given moment. When working in pairs, cutting corners is more difficult. Usually, either the navigator will &ldquo;push&rdquo; towards the right direction or the driver will feel less at liberty to opt for a dirty solution.</p>
+<h2 id="less-distractions">
+    <a href="#less-distractions">#</a>
+    Less distractions
+</h2><p>A software engineer works focused on a task, having built a mental diagram and his colleague asks &ldquo;have you had lunch?&rdquo;. Suddenly, the mental diagram is gone and 15 minutes are required to reconstruct it. Sounds familiar? Writing code requires extreme concentration and we all know that interrupting a software engineer while writing code is a huge &ldquo;no-no&rdquo; (especially when wearing headphones). Fortunately, working in pairs decreases interruptions a lot. People usually think twice before interrupting a pair.</p>
+<h2 id="onboard-a-new-team-member">
+    <a href="#onboard-a-new-team-member">#</a>
+    Onboard a new team member
+</h2><p>Do you remember your last onboarding-a-company experience? How long did it take you to become fully enabled and how did you go about achieving it? Personally, I believe that working on a task and asking questions when stuck is a suboptimal approach. I find that pairing with a teammate is an excellent onboarding technique. As a matter of fact, I believe that pair programming is tailored made for onboarding new members. knowledge sharing is flowing in an unprecedented pace (both domain/business and technical) and there&rsquo;s also a deliverable coming out of the process.</p>
+<h1 id="when-to-pair">
+    <a href="#when-to-pair">#</a>
+    When to pair
+</h1><p>Of course, as with most practices, pair programming is not a silver bullet and we should be cautious <em>when</em> or for <em>how long</em> we practice it. As I mentioned above, there are teams out there that pair by default. There are also teams that pair only when no individual can solve the problem on her own. I personally feel that there are limits and each individual (and team) has to know when to pair and for how long to pair. Don&rsquo;t get me wrong. Perhaps always pairing is what works for you. I just argue that this is not the case for everyone. So, I would suggest to feel free to pair at any given moment, but try hard to pair in the following situations:</p>
+<ul>
+<li>
+<p><strong>Solving mission-critical or hard problems:</strong> I always feel that the most sensible case of choosing to pair is when tackling a very difficult problem or a mission-critical task. The quality of the code will rise, the number of defects will drop and, - arguably - most importantly, it will create/increase collective code ownership. Personally, as a rule, I try to pair in such situations and more often than not, I have seen it pay off. Retrospectively, I feel that any result I could produce would be inferior to the one we produced with my pair. Also, when something breaks in this, mission-critical piece of code, there are at least two people that are very familiar with it and can modify it fearlessly.</p>
+</li>
+<li>
+<p><strong>Making architectural/design decisions:</strong> There are tasks that require making architectural or design decisions. Perhaps they are fairly simple or perhaps, after making these decisions, finishing the implementation is straightforward. I would encourage you to pair when working on such tasks. Architectural and design decisions are very important in a software project and having two minds working on them is preferable to having just one. This will help you engage in a dialogue and weigh different alternatives instead of going with the first idea or not challenging a decision, both of which are common cases when working on our own. Additionally, at least two people will be familiar with these, important decisions.</p>
+</li>
+</ul>
+<p>While knowing when it to pair is important, we should also know when <strong>not</strong> to pair. So, I would discourage pairing when <strong>solving trivial problems.</strong> If you find yourself having to change a configuration or implement a fairly simple feature, that barely requires any design at all, pairing would be an overkill in my opinion. This is because there would be no important decisions to be made or serious hurdles to overcome and putting two minds in this problems just seems wasteful to me.</p>
+<h1 id="how-much-should-we-pair-for">
+    <a href="#how-much-should-we-pair-for">#</a>
+    How much should we pair for
+</h1><p>So, knowing when to pair is important, exactly as is knowing <em>when to stop</em>. Allow me to stress once more that there are no rules on these matters and I strongly feel that conclusions should be drawn <strong>empirically</strong> and always remain open to adjustments as the team matures. Therefore, below I outline my personal findings.</p>
+<p>Something to always keep in mind is that writing code in pairs is <em>exhausting</em>. It requires a tremendous level of concentration, exactly like individual programming does, plus a lot of energy devoted to interacting with your partner. After a few hours of pairing, it grows increasingly harder to keep producing high-quality work, which is the goal after all. So, I have come to believe that I should stop pairing when I feel like this. For me, this usually means that I should not pair for  more than a few hours a day. However, this conclusion is totally <em>empirical</em>. Once again, there are teams out there that pair by default. So, I would strongly recommend that each team (or pair) experiments until it finds its balance and that best works for it.</p>
+<p>If you do practice pair programming though, I would suggest that you do it on a <em>frequent basis</em>, every day if possible.</p>
+<h1 id="pairing-remotely">
+    <a href="#pairing-remotely">#</a>
+    Pairing remotely
+</h1><p>Remote work has evolved in an integral part of software engineering teams. I used to think that pair programming would be very difficult (if not impossible) to do when the team members do not share the same physical space. After all, this technique is heavily based on the benefits of direct communication and interaction. I recently gave it a try nonetheless, and the results were remarkable. Not only it worked, but the outcome was of excellent quality.</p>
+<p>Retrospectively, I gave it some thought and tried to understand <em>why</em> it worked in such a great way. I realized, that neither communication nor interaction is negatively affected when using modern technology in the right way. Online call and remote control tools allow us to work seamlessly on the same machine. Besides, each participant is comfortably sitting before her dedicated screen and keyboard, without even feeling that her personal space is invaded, which might be the case when first adopting pair programming in person.</p>
+<p>I would strongly recommend to give remote pair programming a go and the results might astound you, just as they did me.</p>
+<h1 id="challenges">
+    <a href="#challenges">#</a>
+    Challenges
+</h1><p>As with every new practice, there are going to be hurdles to overcome when adopting it. Below, I have outlined the ones, which I think are the most common ones and my suggested approaches to tackle them.</p>
+<ul>
+<li>
+<p><strong>Resistance:</strong> People are resistant to change. That&rsquo;s a fact. It is natural (actually it is the definition of &ldquo;inertia&rdquo;). Software engineers that are not practicing pair programming are going to be sceptical when it comes to adopting it. In my experience, it is even harder than making them write tests - or write tests first - since it involves the natural discomfort of entering their personal space. Also, people are going to be afraid of lower efficiency. I am not in favor of <em>persuading</em> people for anything. I would suggest to propose them to pair on a simple task, just to see what it looks like and perhaps briefly present the benefits of the technique. If this doesn&rsquo;t work, try to lure them. For instance, ask a teammate for her assistance, ask her to write it down on your machine. Maybe grab the keyboard to contribute and give it back to her, asking for some more guidance. If this doesn&rsquo;t work either, perhaps not going any further for the moment being would be the best choice.</p>
+</li>
+<li>
+<p><strong>Disengagement:</strong> One of the biggest pitfalls to watch out for is a disengaged pair. Usually, this means that instead of working together, the pair just works side by side. A common symptom is a navigator who is not paying attention to what the driver types and is not playing an active part in the process. This kind of behavior totally defeats the purpose and should be avoided by all means. If you find yourself in this situation, I would suggest to ask your partner if she needs a short break or if she desires to stop pairing altogether for the time being.</p>
+</li>
+<li>
+<p><strong>Lack of communication:</strong> Always remember that the key in pair programming is <em>communication</em>. This is what makes the sum greater than the parts and this is what drives everything throughout the whole process. So, make sure that you <em>embrace communication</em> at all times when pairing. If you realize that you are not communicating and interacting enough with your partner, try to stimulate it. Think out loud, contemplate on decisions that you make, ask questions and try to keep the feedback between the two of you flowing at all times. When you feel that you don&rsquo;t have the energy for this, take a short break, or stop pairing for the moment being. After all, if there isn&rsquo;t enough energy for communication, how can there be enough energy to produce high-quality software?</p>
+</li>
+</ul>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>Pair programming is a truly powerful technique. It brings high-quality results, increased levels of collaboration, collective code ownership and loads of other benefits. Studying the technique is important in order to apply it correctly to gain all these benefits. As responsible, professional software engineers, we should empirically find out when of for how long to use it in order to maximize the advantages for our team. Working remotely not only does not hinder pair programming but, with the right tools, it can leverage the merits. Finally, don&rsquo;t be discouraged by challenges. As always, they will present themselves, but they can be overcome.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pair-programming/">Pair Programming</a>
+        
+            <a href="/tags/xp/">Xp</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/comparing-tdd-flavours/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/tdd_flavours.jpg" loading="lazy" data-key="" data-hash="/img/posts/tdd_flavours.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comparing TDD flavours</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/agile-code/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/todo.jpg" loading="lazy" data-key="" data-hash="/img/posts/todo.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile code</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

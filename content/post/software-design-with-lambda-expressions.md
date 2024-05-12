@@ -1,21 +1,22 @@
----
-title: "Software design with lambda expressions"
-date: "2019-09-01"
-tags: [software design,functional programming]
-image: img/posts/software_design_with_lambda_expressions.jpg
----
++++
+title = "Software design with lambda expressions"
+date = "2019-09-01"
+tags = ["software design","functional programming"]
+image = "img/posts/software_design_with_lambda_expressions.jpg"
+description = "Communicate intent and decisions via software design"
++++
 
 Lambda expressions are powerful and allow us to write concise, elegant, declarative code. A lot of people has already adopted them, mainly leveraging the power of streams in iterations, but lambda's toolkit is far richer than that. This is why I decided to write this blog post and explore some aspects of how lambda expressions can prove useful in software design.
 
 We will do this exploration via a real world case study in order to demonstrate how we can apply these principles in our everyday work.
 
-# The case study
+## The case study
 
 Instead of creating a new case study, from scratch, I decided to extend the one from my previous blog [post](https://nvoulgaris.com/open-closed-principle-a-case-study), in which we examined closely the problem of input validation. We assumed an android application that displays a form and we came up with a robust solution to validate the input of this form (leaving out android specifics on purpose and simplifying a bit to put emphasis on the right parts).
 
 The key takeaway was that after drafting a first, working version of the code, we refactored our way to a much better crafted one. We applied the Open-Closed Principle so that we could extend the behavior of our validation module (e.g. add validation for new fields, such as a postcode field) without having to modify our existing validation code. In this way, we improved the design of our solution by making the code *less fragile* and therefore *more maintainable*.
 
-## Room for improvement
+### Room for improvement
 
 However, in software, there is no such thing as a *perfect* design and there never will be. There will always be things to improve. As responsible, professional software craftspeople, we should always study the pros and cons of our solutions and know their weaknesses and limitations and, as I always like to say, *work the trade-offs*.
 
@@ -34,7 +35,7 @@ In this case we create a new instance of `ViewValidator` for every view that we 
 
 This is clearly an issue that could - and perhaps should - be addressed. Thinking carefully about the architecture of the system (its design on a macro level) is essential, but taking the time to think through our micro level design (e.g. class design) is equally important.
 
-# The loan pattern
+## The loan pattern
 
 Thankfully, there is a design pattern, which solves exactly this problem, in a *very elegant way* and its name is the **loan pattern**. I first came across it while reading Venkat Subramaniam's excellent book [Functional Programming in Java](https://www.goodreads.com/book/show/17698629-functional-programming-in-java). Venkat does a wonderful job explaining this pattern as it naturally emerges while refactoring a real world piece of code and I suggest that you read it (see section *"Creating Fluent Interfaces Using Lambda Expressions"*), but I will try to explain the basic points myself here.
 
@@ -52,7 +53,7 @@ The point is that whoever uses this piece of code does not have to worry about t
 
 This is an incredibly *smart* and *elegant* solution to a very sneaky problem. Lambda expressions empower us to implement it. Let's dive into the implementation.
 
-# Applying the loan pattern
+## Applying the loan pattern
 
 Assuming that the `Validator` class is to be used as stated above, the obvious challenge would be to come up with a way to make use of the loaned resource in the `validate()` function. This can be easily achieved with the `Consumer` functional interface (`java.util.function.Consumer`), which is designed to accept an object and execute a piece of code on it. So, redesigning our `Validator` class like the following, would do the job.
 
@@ -153,7 +154,7 @@ public class DefaultValidation implements Validation {
 
 That's it. We have implemented the loan pattern.
 
-# Retrospective
+## Retrospective
 
 So, by this point you might be wondering if it is worthwhile to go through all this refactoring. Let's take a step back and examine what we have achieved.
 
@@ -167,7 +168,7 @@ So, by this point you might be wondering if it is worthwhile to go through all t
 
 As far as the form validation case study is concerned, it might worth it or it might not. To be honest, it doesn't matter. I did take the trouble to do exactly this refactor (except in Kotlin) the first time that I had to enhance our validation feature after having read Venkat's book, but that is up to each one of us. Once again, as software craftspeople it's us that should work the trade-offs everyday and make the call. In any case, the key point is that *we can use functional interfaces and lambda expressions to produce elegant and robust software designs*.
 
-# Conclusion
+## Conclusion
 
 Lambda expressions allow us to write concise and declarative code, but they offer way more than that. They can be used as a *design tool*. High order functions (functions that take functions as arguments) are a game changer and they can fundamentally alter our perceptions on architecture, design patterns and software design.
 

@@ -2,3 +2,6 @@
 	path = themes/hugo-casper-two
 	url = git@github.com:nvoulgaris/hugo-casper-two.git
 	branch = master
+[submodule "themes/hugo-theme-stack"]
+	path = themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack/

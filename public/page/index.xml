@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Nikos Voulgaris</title>
+        <link>//localhost:1313/page/</link>
+        <description>Recent content in Pages on Nikos Voulgaris</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Nikos Voulgaris</copyright>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archives</title>
+        <link>//localhost:1313/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Books</title>
+        <link>//localhost:1313/books/</link>
+        <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/books/</guid>
+        <description>&lt;p&gt;Below you may find a list of books that &lt;em&gt;I have read&lt;/em&gt; and, believing that they are worth reading, &lt;em&gt;I recommend&lt;/em&gt; them. I will be updating this list as I read more books that should be added here.&lt;/p&gt;
+&lt;h3 id=&#34;software-designarchitecture&#34;&gt;
+    &lt;a href=&#34;#software-designarchitecture&#34;&gt;#&lt;/a&gt;
+    Software design/architecture
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/3735293-clean-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clean Code: A Handbook of Agile Software Craftsmanship&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Head First Design Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/85041.Refactoring_to_Patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Refactoring to Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;test-driven-development-tdd&#34;&gt;
+    &lt;a href=&#34;#test-driven-development-tdd&#34;&gt;#&lt;/a&gt;
+    Test Driven Development (TDD)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/387190.Test_Driven_Development&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Test Driven Development: By Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Growing Object-Oriented Software, Guided by Tests&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;scrum&#34;&gt;
+    &lt;a href=&#34;#scrum&#34;&gt;#&lt;/a&gt;
+    Scrum
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/2455391.Scrum_and_XP_from_the_Trenches&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Scrum and XP from the Trenches&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/18165261-scrum-mastery&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Scrum Mastery: From Good To Great Servant-Leadership&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/17984584-the-people-s-scrum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The People&amp;rsquo;s Scrum: Agile Ideas for Revolutionary Transformation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;agilecoachingleadership&#34;&gt;
+    &lt;a href=&#34;#agilecoachingleadership&#34;&gt;#&lt;/a&gt;
+    Agile/Coaching/Leadership
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/21343.The_Five_Dysfunctions_of_a_Team&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Five Dysfunctions of a Team: A Leadership Fable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/19093884-our-iceberg-is-melting&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Our Iceberg is Melting: Changing and Succeeding Under Any Conditions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/16158522-eleven-rings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Eleven Rings: The Soul of Success&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4894.Who_Moved_My_Cheese_&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Who Moved My Cheese?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;behavioral&#34;&gt;
+    &lt;a href=&#34;#behavioral&#34;&gt;#&lt;/a&gt;
+    Behavioral
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/36045392-the-software-craftsman&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Software Craftsman: Professionalism, Pragmatism, Pride&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/10284614-the-clean-coder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Clean Coder: A Code of Conduct for Professional Programmers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Pragmatic Programmer: From Journeyman to Master&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>About me</title>
+        <link>//localhost:1313/about-me/</link>
+        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/about-me/</guid>
+        <description>&lt;p&gt;I am a professional software engineer and scrum master, passionate about clean code and software craftsmanship and true believer in the original intents of Agile. I am particularly interested in software design and Extreme Programming practices and I am really fascinated by Test Driven Development (especially the Outside-In technique). I strongly believe in the power of the community worldwide and therefore, I love to share my knowledge and broaden my horizons.&lt;/p&gt;
+&lt;p&gt;I am currently employed at &lt;a class=&#34;link&#34; href=&#34;https://www.theblueground.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blueground&lt;/a&gt;, contributing as a software engineer in a scrum team. In the past, I have worked in organizations ranging from &lt;a class=&#34;link&#34; href=&#34;https://www.nokia.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nokia&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;http://www.tripsta.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tripsta&lt;/a&gt; to small startup companies, having the opportunity to work on a broad spectrum of software projects and business domains like telecommunications, travel and health.&lt;/p&gt;
+&lt;p&gt;During the day, I write software. During the night, I present in radio, DJ, study Italian, travel, read lots of books, (used to) play basketball and I would do more if only I could extend the 24 hours&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Contact</title>
+        <link>//localhost:1313/contact/</link>
+        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/contact/</guid>
+        <description>&lt;p&gt;I will be happy to share ideas and discuss on any topic. You may get in touch with me in any of the following ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;e-mail: &lt;a class=&#34;link&#34; href=&#34;mailto:nivoul@gmail.com&#34; &gt;nivoul@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.linkedin.com/in/nikos-voulgaris-44455546/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/nivoul&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nvoulgaris&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>//localhost:1313/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

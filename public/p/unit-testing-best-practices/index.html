@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="As part of the onboarding process of every new developer in Tripsta, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have. It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests are not.">
+<title>Unit testing best practices</title>
+
+<link rel='canonical' href='//localhost:1313/p/unit-testing-best-practices/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Unit testing best practices">
+<meta property='og:description' content="As part of the onboarding process of every new developer in Tripsta, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have. It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests are not.">
+<meta property='og:url' content='//localhost:1313/p/unit-testing-best-practices/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='unit-testing' /><meta property='article:published_time' content='2018-02-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-02-10T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/test_board.jpg' />
+<meta name="twitter:title" content="Unit testing best practices">
+<meta name="twitter:description" content="As part of the onboarding process of every new developer in Tripsta, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have. It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests are not."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/test_board.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#naming">Naming</a></li>
+    <li><a href="#isolation">Isolation</a></li>
+    <li><a href="#watch-the-test-fail">Watch the test fail</a></li>
+    <li><a href="#triple-a">Triple A</a></li>
+    <li><a href="#single-assertion">Single assertion</a></li>
+    <li><a href="#assert-first">Assert first</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/unit-testing-best-practices/">
+                
+                    <img src="/img/posts/test_board.jpg" loading="lazy" alt="Featured image of post Unit testing best practices" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/unit-testing-best-practices/">Unit testing best practices</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 10, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>As part of the onboarding process of every new developer in <a class="link" href="http://www.tripsta.com/"  target="_blank" rel="noopener"
+    >Tripsta</a>, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have.</p>
+<p>It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests <strong>are not</strong>.</p>
+<blockquote>
+<p>Tests are not nice to have</p>
+</blockquote>
+<blockquote>
+<p>Tests are not negotiable</p>
+</blockquote>
+<p>When I hear phrases like <em>&ldquo;If we have time, we&rsquo;ll write some tests too&rdquo;</em> or <em>&ldquo;It costs 13 story points, but since there is no time, we can  make it 8 if we don&rsquo;t write tests&rdquo;</em> I want to quit my job and sell greengrocery for a living. Tests should be an integral part of writing software.</p>
+<p>I could use a lot of lines talking about the necessity of writing unit tests, the benefits they provide and how they should be an integral part of the software development process instead of just a verification layer (<em>hint: TDD</em>),  but that is another blog post on its own. So, let&rsquo;s delve into a handful of best practices which I have come to value over the years.</p>
+<h1 id="best-practices">
+    <a href="#best-practices">#</a>
+    Best practices
+</h1><h2 id="naming">
+    <a href="#naming">#</a>
+    Naming
+</h2><p>Some people are bad at naming. Some other (such as me) are terrible at it. In any case, taking the time to come up with a proper name for everything in our code <em>is worth it</em>. Regardless of how much time we need. Uncle Bob (Robert Martin) likes to say <em>&ldquo;with code, we do more reading than writing, by a huge factor. Which of those operations should be made efficient?&rdquo;</em> Naming <strong>matters</strong>!! If I were to give you a single piece of advice on naming, it would be the following:</p>
+<blockquote>
+<p>Write the tests you&rsquo;d want to read</p>
+</blockquote>
+<p>Before stop writing a test and moving to the production code, ask yourself these two questions:</p>
+<ul>
+<li>Does the test clearly express its behavior?</li>
+<li>Is it easy to understand?</li>
+</ul>
+<p>Usually, a developer that struggles to come up with a proper name will settle for a mediocre one, that does not express behavior properly, or even a bad one, which is hard to understand and misleads its reader.</p>
+<blockquote>
+<p>Tests should be a documentation of the module&rsquo;s behavior?</p>
+</blockquote>
+<p>Whenever we come across a piece of code that we did not write, we want to be able to read its test suite and figure out what this piece of code does. So, take the time (however much you need) to name your tests (and the variables and functions in them) as best as you can and when you come across a mediocre or a bad name, <em>change it to something better</em> (leaving the code cleaner than you found it, as Uncle Bob would say).</p>
+<p>Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AccountTest</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">account_shouldStoreADepositTransaction_whenGivenOne</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Implementation</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is a very common naming convention. However, after attending a Sandro Mancuso workshop, I was introduced to the following, far better approach, the benefits of which I presented to my team and we shifted to it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AccountShould</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">storeADepositTransaction</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Implementation</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So, my advice is to be restless. Scan our (rich) community over the Internet and do not be afraid to shift to new practices and techniques so long as you recognize the value they offer.</p>
+<h2 id="isolation">
+    <a href="#isolation">#</a>
+    Isolation
+</h2><p>This whole point I want to make on isolation can be summarized in the following sentence:</p>
+<blockquote>
+<p>Tests should leave the system in the state that they found it</p>
+</blockquote>
+<p>The last thing that we would like to face is 10 failing tests as a result of a single failure that dragged the following 9 tests with it. When we see x tests failing, we should know that there are exactly x problems with the system. Whenever a test is failing, it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately (by its name and the failure).</p>
+<p>In order to achieve this, we should ensure that our test, even when it fails, will restore the system to the exact situation it found it and it won&rsquo;t leave it dirty. Each test should not know and care if another one run before it (let alone if it failed or not).</p>
+<h2 id="watch-the-test-fail">
+    <a href="#watch-the-test-fail">#</a>
+    Watch the test fail
+</h2><p>When should we stop writing the test and start writing the production code? That is a surprisingly hard to answer question for a lot of people when I give the training. Take a minute and think about it before reading further on. There are a couple of questions I like asking myself before I stop writing the test.</p>
+<ul>
+<li>
+<p><strong>Does it fail for the right reason?</strong> What good is a test if it does not break when the functionality breaks? How can we know that this won&rsquo;t happen if we do not watch the test fail and make sure that it fails for the <em>right reason</em>?</p>
+</li>
+<li>
+<p><strong>Are the diagnostics clear?</strong> There will come a time in the future that this test will break and then someone (most probably us) will have to understand what is wrong and fix it. How hard will it be to fix it if we cannot tell what is wrong? A few months ago, I fell into exactly this pitfall, a test that I had written (quite a few months back) failed against the production code that I had written and all I had in the console was:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Expected: 1
+</span></span><span style="display:flex;"><span>Got: 0
+</span></span></code></pre></div><p>I forced myself in a debugging session to figure out what was wrong. If only I had taken the time to make the diagnostics clear enough&hellip;</p>
+<h2 id="triple-a">
+    <a href="#triple-a">#</a>
+    Triple A
+</h2><p>When it comes to designing our unit tests, I strongly recommend that the backbone of the structure should be based on <em>Arrange - Act - Assert</em> (aka AAA). This is a very simple yet solid technique, consisting of the following three steps:</p>
+<ul>
+<li>
+<p><strong>Arrange</strong>: Initially, we should prepare the system for the upcoming test, making sure that all preconditions are met.</p>
+</li>
+<li>
+<p><strong>Act</strong>: Then we should trigger the part of the code that we wish to test.</p>
+</li>
+<li>
+<p><strong>Assert</strong>: Finally, we should evaluate whether the code meets our expectations or not. This is the point in which a flag should be raised, declaring the outcome of the test and this flag should either be green or red (no yellow or orange results - more on this on the <em>single assertion</em> section).</p>
+</li>
+</ul>
+<p>Let&rsquo;s consider the following example (<em>I like using a blank line between the three steps, to make the code  more readable</em>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validatorShouldThrowExceptionWhenBookingIDIsNull</span>() <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>  Booking booking <span style="color:#f92672">=</span> BookingBuilder.<span style="color:#a6e22e">aBooking</span>().<span style="color:#a6e22e">withBookingId</span>(<span style="color:#66d9ef">null</span>).<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Executable validateBooking <span style="color:#f92672">=</span> () <span style="color:#f92672">-&gt;</span> bookingValidator.<span style="color:#a6e22e">validate</span>(booking);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  assertThrows(ValidationException.<span style="color:#a6e22e">class</span>, validateBooking);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We want to test that a <code>Validator</code> class will throw an exception when validating a booking with null booking ID. In order to achieve this, we need a booking, which has a null booking ID. Given that we have it, we should execute the <code>validate(booking)</code> method, which is the part of the code we wish to verify its functionality. Finally, we want to have a way to know if the code behaved in the expected way (threw a <code>ValidationException</code>), so we write an assertion to expect exactly this.</p>
+<p>Some of the highlight benefits I find in this approach are the following:</p>
+<ul>
+<li>It promotes a <em>clear separation</em> among the setup, execute and verification steps.</li>
+<li>A reader who is familiar with this technique can <em>understand the test fast</em>.</li>
+<li><em>Code smells</em> in the test become easier to spot (e.g. a series of <em>act-assert</em> steps - more on this on the <em>single assertion</em> section)</li>
+<li><em>Discourages overengineering</em> a test by focusing on the the absolutely needed steps to write it.</li>
+</ul>
+<h2 id="single-assertion">
+    <a href="#single-assertion">#</a>
+    Single assertion
+</h2><p>How many assertions should a test have? The answer should always be <em>one</em>. What message is a red bar sending to us? That something is wrong in the system. Which is our reflex move? To find out what is this. This is exactly why we want our tests to be shouting out loud the reason for their failure. If a test fails, we should know, just by reading its name, what the problem is. How can this happen if a test fails for multiple reasons though?</p>
+<blockquote>
+<p>Unit tests should fail for one and only one reason</p>
+</blockquote>
+<p>Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">calculatorShouldGeneratePositiveEvenIntegers</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> number <span style="color:#f92672">=</span> calculator.<span style="color:#a6e22e">generate</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  assertThat(number <span style="color:#f92672">&gt;</span> 0).<span style="color:#a6e22e">isTrue</span>();
+</span></span><span style="display:flex;"><span>  assertThat(number <span style="color:#f92672">%</span> 2).<span style="color:#a6e22e">isEqualTo</span>(0);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>There may be two <em>physical</em> assertions, but they essentially constitute a single <em>logical</em> assertion. This test will fail <em>if and only if the calculator does not generate positive even numbers</em>, as opposed to the following test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">calculatorShouldDivideNumbers</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> number <span style="color:#f92672">=</span> calculator.<span style="color:#a6e22e">divide</span>(2, 2);
+</span></span><span style="display:flex;"><span>  assertThat(number).<span style="color:#a6e22e">isEqualTo</span>(1);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Executable divideByZero <span style="color:#f92672">=</span> () <span style="color:#f92672">-&gt;</span> calculator.<span style="color:#a6e22e">divide</span>(4, 0);
+</span></span><span style="display:flex;"><span>  assertThrows(ArithmeticException.<span style="color:#a6e22e">class</span>, divideByZero);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This test will both fail when calculator fails to divide correctly and when the error case of dividing by zero does not throw an <code>ArithmeticException</code>. Therefore, in essence, we want to avoid a series of <em>act-assert</em> sequences. A single act followed by more than one physical assertions is fine.</p>
+<h2 id="assert-first">
+    <a href="#assert-first">#</a>
+    Assert first
+</h2><p><em>Assert first</em> is a technique described in Kent Beck&rsquo;s excellent book <a class="link" href="https://www.goodreads.com/book/show/387190.Test_Driven_Development"  target="_blank" rel="noopener"
+    >Test Driven Development: By Example</a>. As counterintuitive as it may sound (and feel for someone not used to it), it comes with tons of advantages and it will become second nature given some time. The main idea lies in the fact that writing a test presents multiple problems. The two principal ones are <em>&ldquo;what is the right answer?&rdquo;</em> and <em>&ldquo;how am I going to check it&rdquo;</em>. Taking this bottom up approach helps us focus on the target and avoid overengineering the test.</p>
+<p>Coming back to the arrange - act - assert example, assuming that I have a business requirement that a booking without booking ID is invalid, and I am writing the booking validator logic, I may start as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull</span>() {
+</span></span><span style="display:flex;"><span>  assertThrows(InvalidBookingException.<span style="color:#a6e22e">class</span>, validateBooking);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Starting off with the <em>assert</em>, I know both the right answer and how to check it. I am also driven to the proper act for my assertion.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull</span>() {
+</span></span><span style="display:flex;"><span>  Executable validateBooking <span style="color:#f92672">=</span> () <span style="color:#f92672">-&gt;</span> validator.<span style="color:#a6e22e">validate</span>(booking);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  assertThrows(InvalidBookingException.<span style="color:#a6e22e">class</span>, validateBooking);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now there is only one step missing, the arrange part. I need a booking and it should have a <code>null</code> booking ID.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">validatorShouldThrowInvalidBookingExceptionWhenBookingIdIsNull</span>() {
+</span></span><span style="display:flex;"><span>  Booking booking <span style="color:#f92672">=</span> BookingBuilder.<span style="color:#a6e22e">aBooking</span>().<span style="color:#a6e22e">withBookingId</span>(<span style="color:#66d9ef">null</span>).<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Executable validateBooking <span style="color:#f92672">=</span> () <span style="color:#f92672">-&gt;</span> validator.<span style="color:#a6e22e">validate</span>(booking);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  assertThrows(InvalidBookingException.<span style="color:#a6e22e">class</span>, validateBooking);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Writing a test in this bottom - up fashion seems strange initially, I know. My suggestion would be to give it a shot, stick with it passed the uncomfortable denial phase (the <em>&ldquo;I want to write my tests like I&rsquo;m used to&rdquo;</em> phase), and it will pay off.</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>I tried to share some knowledge and some techniques I use when writing unit tests, because I feel that the area is misunderstood. These are the most important topics I wanted to touch, but the list is far from exhaustive.</p>
+<p>Whichever the techniques we might use, let&rsquo;s always keep in mind that tests are an integral part of the system and therefore they should be designed and maintained. We should care for them and we should take the time to write the <em>right tests</em> in the <em>right way</em>.</p>
+<p><em>P.S. I would also love to cover the whole &ldquo;test state vs test behavior&rdquo; topic, but this post is already lengthy enough and this is a really long topic</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unit-testing/">Unit-Testing</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

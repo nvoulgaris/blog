@@ -1,9 +1,10 @@
----
-title: "Agile theater"
-date: "2020-11-08"
-tags: [agile]
-image: img/posts/agile_theater.jpg
----
++++
+title = "Agile theater"
+date = "2020-11-08"
+tags = ["agile"]
+image = "img/posts/agile_theater.jpg"
+description = "To work in a truly agile way, colourful sticky notes and standing up meetings won't help a lot. Creating feedback loops will."
++++
 
 Almost 20 years past the authorship and signature of the Agile manifesto and its true message has gone astray. The residual believers of the original ideas of the Agile manifesto have found shelter in the Software Craftsmanship movement, but nowadays the roots of the problem lie far deeper than the lost ideas and the wasted potential to do things better.
 
@@ -13,7 +14,7 @@ If you are part of an agile organization, have you ever taken a step back to cre
 
 These questions should be easy to answer, especially by anyone who is part of an organization that has spent enormous amounts of effort and money in a so-called, agile transformation, and yet, they prove astonishingly difficult. In this blog post, I will try to put in words what *I believe* the true Agile mindset is.
 
-# The problem
+## The problem
 
 Before attempting to provide a solution, one has to really understand the problem. So, let's try to delve into it. Let's study the following, hypothetical case.
 
@@ -33,7 +34,7 @@ We will discuss how this may be achieved later on, but first, let's understand w
 
  * Everything *seems* Agile from the outside, but nothing is really changed. Hence the term *Agile theater*. There are neither hooks in the process nor the technical foundation required for constant inspection and adaption. Feedback is not flowing between the software engineers and the stakeholders/users.
 
-# Feedback loops
+## Feedback loops
 
 A truly agile way of working requires constant adaptations. Constant adaptations require a constant flow of feedback. Therefore, lots of feedback loops are needed. The shorter these loops are, the more adaptation they will allow for. The sooner one receives feedback on one's action, the easier it is to amend mistakes.
 
@@ -47,7 +48,7 @@ A feedback loop may sound like a subtle concept, but if you think about it's *po
 
  * Code reviews are a feedback loop. Actually, it is the exact same loop with pair programming, except that it involves more people and the feedback flows *significantly slower*.
 
-# Enabling inspection and adaptation
+## Enabling inspection and adaptation
 
 Feedback loops are *enablers*. Remember, we need to adjust our course as often as needed based on feedback. How can we adapt the product to feedback if we don't get any from the stakeholders?
 
@@ -59,7 +60,7 @@ A unit test suite that needs 15 minutes to run is technically a feedback loop, b
 
 To work in an Agile way we need to strive to *keep our feedback loops as short as possible*. We need to shrink them, so long as we keep them meaningful. The shorter the loop the quicker the feedback and therefore the adaptation.
 
-# Scaffolding
+## Scaffolding
 
 Now let's assume that we could do all these things. We could flip a magic switch and, starting from tomorrow, we could create more feedback loops, shorten them, use their feedback to adapt, embrace all XP technical practices etc. 
 
@@ -81,7 +82,7 @@ Dogmatically following a framework (e.g. Scrum) to the letter results in everyon
 
 Don't get me wrong. The process that works best for you may be ridiculously close to Scrum (or Kanban etc). I only suggest that these frameworks need not be followed blindly to the letter.
 
-# Never stop learning
+## Never stop learning
 
 Being a Scrum Master myself, I've fallen prey to the frameworks too. During my early days getting passed the Scrum Master training, if the daily stand-up was reaching the 16th minute, I thought that my whole professional world was falling apart. I felt obliged to make the team see that is *should* have been stopped earlier, even if the team wrapped up and finished the stand-up in a total of 16-17 minutes. It still felt wrong. I was myself a victim of the above-mentioned cargo cult mentality.
 
@@ -89,7 +90,7 @@ However, thinking back, I find it quite reasonable. It's a natural step in the l
 
 Working with a team will not make you a Scrum Master / Product Owner / Agile Software engineer. A certification will **definitely not** make you one (and I own a certification too). Instead, go out in the industry and work with teams. Listen closely and try to help them. Take time to reflect and identify what works. Above all, never stop learning and be open to changing your mind or standpoint.
 
-# Conclusion
+## Conclusion
 
 Almost 20 years ago a few people got together and tried to uncover better ways to make software. The message got lost in the way. The intention became misunderstood. The end result is a cargo cult mentality that follows rules blindly, creating more problems than it solves. Job titles and certifications are born, but these don't change the way software is being written.
 
