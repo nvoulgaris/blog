@@ -83,9 +83,14 @@ menu:
   social:
     - name: Github
       url: https://github.com/nvoulgaris
+      weight: -40
       params:
         icon: brand-github
     - name: Twitter
       url: https://twitter.com/nivoul
+      weight: -30
       params:
         icon: brand-twitter
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/nikos-voulgaris-44455546
+      weight: -20
