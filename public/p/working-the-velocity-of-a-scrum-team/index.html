@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, cool product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.">
+<title>Working the velocity of a scrum team</title>
+
+<link rel='canonical' href='//localhost:1313/p/working-the-velocity-of-a-scrum-team/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Working the velocity of a scrum team">
+<meta property='og:description' content="Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, cool product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.">
+<meta property='og:url' content='//localhost:1313/p/working-the-velocity-of-a-scrum-team/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='agile' /><meta property='article:tag' content='scrum' /><meta property='article:published_time' content='2018-09-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-09-23T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/velocity.jpg' />
+<meta name="twitter:title" content="Working the velocity of a scrum team">
+<meta name="twitter:description" content="Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, cool product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/velocity.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#who">Who</a>
+      <ul>
+        <li><a href="#the-scrum-masters-role">The Scrum Master&rsquo;s role</a></li>
+        <li><a href="#who-else-needs-to-know">Who else needs to know</a></li>
+      </ul>
+    </li>
+    <li><a href="#how">How</a>
+      <ul>
+        <li><a href="#one-technique">One technique</a></li>
+        <li><a href="#first-sprint">First sprint</a></li>
+        <li><a href="#new-team-member">New team member</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/working-the-velocity-of-a-scrum-team/">
+                
+                    <img src="/img/posts/velocity.jpg" loading="lazy" alt="Featured image of post Working the velocity of a scrum team" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/working-the-velocity-of-a-scrum-team/">Working the velocity of a scrum team</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 23, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, <em>cool</em> product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.</p>
+<p>Among a lot of factors that have resulted to this, arguably the king of the problems is how people misunderstand the concept of the <em>velocity</em> of a scrum team. Scrum Masters and Product Owners treat it as a productivity reporting tool, trying to make the development team <em>commit</em> (we will discuss this <em>&ldquo;commitment&rdquo;</em> issue in another post) to as high a number as possible, while the development team, feeling that they are judged by this number, struggle to increase it sprint by sprint. However, this is a <strong>fundamentally flawed</strong> view.</p>
+<blockquote>
+<p>Velocity is not a productivity reporting tool!</p>
+</blockquote>
+<p>I wish I could stress this even more. <strong>Velocity is not a productivity reporting tool!</strong>.</p>
+<p>Since I - once again - started with what velocity <em>is not</em>, let&rsquo;s proceed in a more conventional way and talk about what velocity actually <em>is</em>.</p>
+<h1 id="inspect-and-adapt">
+    <a href="#inspect-and-adapt">#</a>
+    Inspect and adapt
+</h1><p>Let&rsquo;s try to go back to the basics and essence of Scrum for a bit. In a nutshell, every couple of weeks (in reality this number ranges between 1 and 4 weeks, but for simplicity&rsquo;s sake I will use 2 weeks for a sprint&rsquo;s length throughout this post) the scrum team gathers with the stakeholders, reviewing their latest increment, inspecting the state of the product and refining the priorities. After this comes the retro and after the retro, the new sprint begins with a sprint planning session: the most important meeting in scrum.</p>
+<p>Now the scrum team should take into consideration the outcome of the sprint review and retrospective in order to commit to a new sprint. A new sprint, which should accommodate the prioritized requirements of the product, as defined by the stakeholders, whose voice in this meeting is the Product Owner. Let&rsquo;s think of this for a moment. How is the scrum team supposed to commit to a couple of week&rsquo;s worth of work without having an <strong>estimate</strong> on the amount of work they can deliver in this time?</p>
+<h1 id="sprint-planning">
+    <a href="#sprint-planning">#</a>
+    Sprint planning
+</h1><p>In order to execute a sprint planning session meaningfully, there have to be two inputs: a <strong>refined Product Backlog</strong> and the team&rsquo;s calculated <strong>velocity</strong> for the upcoming sprint. These will produce a single output: a <strong>sprint backlog</strong>. The Scrum Master should see to this.</p>
+<p>Now it is becoming visible that the team&rsquo;s velocity is <em>key</em> to deciding on how many and which Product Backlog Items should the scrum team work on the upcoming sprint. This is an <em>indication</em>, which the team should <em>consult</em> when asking questions like <em>&ldquo;is this amount of work a reasonable chunk for the upcoming sprint? Is it too much? Should we work on more items&rdquo;</em>.</p>
+<p>If it is reasonable for one to assume that the team is able to successfully work on more items than they actually put in the sprint backlog, then the team is <strong>undercommitting</strong> and therefore failing to honor their role as <em>professional</em> software engineers. If the team is clearly committing on a sprint that will most likely fail to deliver, it is <strong>overcommitting</strong>, failing once again to honor their role as <em>professional</em> software engineers, as they create expectations for the stakeholders that they will not be met.</p>
+<p>This is exactly why velocity is <strong>critical</strong> to the success of a sprint planning session and therefore to the success of the sprint. <strong>Velocity helps creating a sustainable pace</strong>. This pace will neither burn the team out or leave it idle for too much. Additionally, it provides <em>confidence</em> to the development team to estimate their upcoming work in <em>reasonable chunks</em>. Chunks that they can actually deliver, therefore causing the <em>trust</em> of the stakeholders in the development team to increase.</p>
+<h1 id="calculating-the-teams-velocity">
+    <a href="#calculating-the-teams-velocity">#</a>
+    Calculating the team&rsquo;s velocity
+</h1><p>Now, having said all these, I hope that it is clear that monitoring the team&rsquo;s velocity is very very important, but <em>who</em> actually is responsible for this and <em>how</em> can one do a good job on it? After all, no one can predict the future and the work that a group of people will produce in two weeks time seems quite hard to get right.</p>
+<h2 id="who">
+    <a href="#who">#</a>
+    Who
+</h2><h3 id="the-scrum-masters-role">
+    <a href="#the-scrum-masters-role">#</a>
+    The Scrum Master&rsquo;s role
+</h3><p>The Scrum Master is sometimes called the <em>joker</em> and part of the reason is that she has a lot of balls in the air at any given moment. One of these is that she is responsible for monitoring the team&rsquo;s velocity and coming up with reasonable calculations for upcoming sprints as input in the sprint planning sessions.</p>
+<h3 id="who-else-needs-to-know">
+    <a href="#who-else-needs-to-know">#</a>
+    Who else needs to know
+</h3><p>I once was working in a company that used to start the sprint reviews with the following phrase: &ldquo;Our estimated velocity for the past sprint was &hellip; and our actual velocity was &hellip;&rdquo;. I <strong>completely disagree</strong> with this (I had stated it a number of times)! Velocity is a piece of information that, in my opinion, concerns solely the scrum team members (perhaps excluding very few cases).</p>
+<p>The stakeholders definitely need <strong>not</strong> know the velocity of the team. They only need to know that the team is maturing and <em>can be trusted</em> in their estimates. Otherwise, this would only enforce the view that the development team&rsquo;s productivity is being judged by their velocity (at least in their eyes).</p>
+<p>The Product Owner should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter.</p>
+<p>The development team should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter either.</p>
+<h2 id="how">
+    <a href="#how">#</a>
+    How
+</h2><p>Estimating the velocity of a scrum team for the upcoming sprint is not a straightforward task. Estimation by itself is not an easy task anyway. Needless to say, there is no silver bullet for it. But the good news is that there doesn&rsquo;t have to be one. We&rsquo;re not after a precise, infallible estimation. We&rsquo;re after creating rhythm, building confidence and trust.</p>
+<p>A number of techniques are being daily applied by different Scrum Masters in different teams. None is right. None is wrong. Let me try to describe a technique that I have used for quite a long time and I find it useful.</p>
+<h3 id="one-technique">
+    <a href="#one-technique">#</a>
+    One technique
+</h3><p>In the heart of the technique lie statistical calculations based on empirical data. A number of factors that affect the estimated velocity, are literally plugged into an formula that produces the magic number. The factors are listed and explained below:</p>
+<ul>
+<li><strong>Team members</strong>: The number of members of the development team. Do not confuse this with the number of members of the scrum team, which will be different if either the Scrum Master or the Product Owner do not contribute to writing code.</li>
+<li><strong>Sprint duration</strong>: The days which will be available for the scrum team to complete its work in the sprint. Personally, I do not include the day of the scrum events, as no code is written during this day.</li>
+<li><strong>No workdays</strong>: Days during which the team will not be working during the sprint (e.g. bank holidays, conferences that the whole team attends etc)</li>
+<li><strong>Team holidays</strong>: Days during a single team member will not contribute to the team&rsquo;s work (e.g. annual leave). For instance, if a member has submitted annual leave for a day and another member for two days, this number will be 3.</li>
+<li><strong>Focus factor</strong>: A number indicating how reliable the team&rsquo;s commitments tend to be. I explain this factor in depth further on.</li>
+</ul>
+<p><strong>Actual work days</strong> is produced by the following formula:</p>
+<blockquote>
+<p>(Team members * Sprint duration) - (Team members * No workdays) - Team holidays</p>
+</blockquote>
+<p><strong>Focus factor</strong> is a bit more complicated. Basically, the piece of information that we want to take into consideration is the degree in which the team estimations match the actual work done. The reason for using more than one past sprints is that as teams change, as they mature they go through different phases. These affect their focus factor. For instance, as a new team member is integrated with the team, one would expect the focus factor to have an slightly increasing trend. The focus factor for a single sprint is provided by the following formula:</p>
+<blockquote>
+<p>Actual velocity points / committed velocity points</p>
+</blockquote>
+<p>Finally, the formula producing the estimated velocity for the upcoming sprint is the following:</p>
+<blockquote>
+<p>(Actual work days) * (average focus factor of the last x sprints)</p>
+</blockquote>
+<ul>
+<li>
+<p><em>I usually use the average focus factor of the last 3 sprints (x = 3), but feel free to use any number of sprints that works for you</em></p>
+</li>
+<li>
+<p><em>I find it very convenient to use an excel spreadsheet for these calculations. I just plug the numbers in every sprint and I have both the calculations ready and reliable metrics and statistics when I need them. (I have a template for this spreadsheet. Do not hesitate to ask me for it. I will gladly share it.)</em></p>
+</li>
+<li>
+<p><em>Never forget that this number is a statistical calculation. Reality is much more complex. So, before committing to a sprint backlog, <strong>always</strong> make sure that the team believes that this is a reasonable chunk of work for the upcoming sprint. Ask them to forget about the number and actually do a gut feel. Don&rsquo;t just blindly follow the output of any formula or technique.</em></p>
+</li>
+</ul>
+<p>Probably a couple of very reasonable questions have already formed into your mind, like <em>&ldquo;What do we do on the first sprint, with no previous data existing yet?&rdquo;</em> or <em>&ldquo;What if a new member joins the team?&rdquo;</em>. Let&rsquo;s discuss these both.</p>
+<h3 id="first-sprint">
+    <a href="#first-sprint">#</a>
+    First sprint
+</h3><p>A very challenging period to estimate a team&rsquo;s velocity is right after the team is formed. After all, there are no previous data whatsoever. There is no silver bullet for this problem either, but I would propose the following method: make sure that for the first few sprints the team bluntly <strong>overcommits</strong>. Not slightly overcommitting, but estimate a profoundly unreasonable amount of work. Explain to the team that this is happening for precise reasons and no one is expecting them to deliver this mountain of work. Protect them from destroying their morale! Now, over the first sprints (I believe roughly 3 will suffice), the current ability of the team will become clear. When confident, stop this and use a proper method for calculating the velocity, like the one described above.</p>
+<h3 id="new-team-member">
+    <a href="#new-team-member">#</a>
+    New team member
+</h3><p>A usually confusing case is when a new software engineer joins the development team. Intuition suggests that the team&rsquo;s velocity should increase. After all, there is one more engineer now, right? This is true, but in the long term. On the contrary, over the first few sprints, it is more likely that velocity will drop. Obviously, the new engineer, no matter how skillful, is not going to be productive right away. To make matters worse, the current engineers will have to both spend time on her orientation and keep on carrying out their regular work. This leaves them with less time to do the latter. Therefore, the most likely scenario is that velocity will drop slightly for the first few sprints and then gradually catch up and probably exceed the previous numbers (of course this also depends on how the new team will glue together, but this is another post).</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>Perceiving velocity as a productivity reporting tool is <strong>flat-out wrong</strong>. Productivity is measured indeed, but not for reporting. Just for internal use within the team. Use it to create a sustainable pace, to help the team deliver on a steady basis, create trust and mature the team. The actual method for calculating the velocity for upcoming sprints does not matter. There are loads of techniques out there. Either pick one or create your own. Just make sure that you use it in the right way and it helps the team.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/agile/">Agile</a>
+        
+            <a href="/tags/scrum/">Scrum</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/technical-background-the-extra-mile-on-scrum-mastery/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/extra_mile.jpg" loading="lazy" data-key="" data-hash="/img/posts/extra_mile.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Technical background: the extra mile on scrum mastery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/agile-code/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/todo.jpg" loading="lazy" data-key="" data-hash="/img/posts/todo.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile code</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

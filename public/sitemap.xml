@@ -1,0 +1,217 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/a-different-way-to-run-the-daily-scrum/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/agile/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/post/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/scrum/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/tcr/</loc>
+    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/test-commit-revert/</loc>
+    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/agile-theater/</loc>
+    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/limiting-work-in-progress-in-scrum/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/retrospectives/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/running-remote-retrospectives/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/pair-programming/</loc>
+    <lastmod>2019-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/</loc>
+    <lastmod>2019-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/xp/</loc>
+    <lastmod>2019-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/functional-programming/</loc>
+    <lastmod>2019-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/software-design/</loc>
+    <lastmod>2019-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/software-design-with-lambda-expressions/</loc>
+    <lastmod>2019-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/open-closed-principle-a-case-study/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/page/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/comparing-tdd-flavours/</loc>
+    <lastmod>2019-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/tdd/</loc>
+    <lastmod>2019-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/dealing-with-technical-debt-in-an-agile-environment/</loc>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/technical-debt/</loc>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/encapsulation/</loc>
+    <lastmod>2018-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/how-getters-and-setters-harm-encapsulation/</loc>
+    <lastmod>2018-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/driving-fruitful-retrospectives/</loc>
+    <lastmod>2018-11-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/working-the-velocity-of-a-scrum-team/</loc>
+    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/code-coverage/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/how-much-code-coverage-should-i-have/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/unit-testing/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/technical-background-the-extra-mile-on-scrum-mastery/</loc>
+    <lastmod>2018-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/test-behavior/</loc>
+    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/designing-a-restful-shopping-cart/</loc>
+    <lastmod>2018-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/rest/</loc>
+    <lastmod>2018-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/unit-testing-best-practices/</loc>
+    <lastmod>2018-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/books/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/about-me/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/agile-code/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/contact/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/search/</loc>
+  </url>
+  
+</urlset>

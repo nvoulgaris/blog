@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>TDD on Nikos Voulgaris</title>
+        <link>//localhost:1313/tags/tdd/</link>
+        <description>Recent content in TDD on Nikos Voulgaris</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Nikos Voulgaris</copyright>
+        <lastBuildDate>Mon, 25 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/tdd/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Comparing TDD flavours</title>
+        <link>//localhost:1313/comparing-tdd-flavours/</link>
+        <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/comparing-tdd-flavours/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/tdd_flavours.jpg" alt="Featured image of post Comparing TDD flavours" /&gt;&lt;p&gt;A few days ago, right after my talk/demo on hands-on Test Driven Development (TDD) on the JHUG meetup, I noticed that a lot of conversation was about applying TDD in real world systems. Somehow people felt that it was great for a short demo or for implementing a small, algorithmic piece of code, but could not see how it could be applied to a greater scale.&lt;/p&gt;
+&lt;p&gt;Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches. Timing couldn&amp;rsquo;t be better. Having just finished watching an exceptionally good &lt;a class=&#34;link&#34; href=&#34;https://cleancoders.com/videos/comparativeDesign&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;clean coders series&lt;/a&gt; on the comparison between the two TDD styles, I had already decided to blog about it.&lt;/p&gt;
+&lt;p&gt;Therefore, after giving a very brief overview of the two approaches, I will attempt to describe their strengths and weaknesses according to my opinion.&lt;/p&gt;
+&lt;h2 id=&#34;overview-of-the-techniques&#34;&gt;
+    &lt;a href=&#34;#overview-of-the-techniques&#34;&gt;#&lt;/a&gt;
+    Overview of the techniques
+&lt;/h2&gt;&lt;p&gt;There is no way I can thoroughly describe the two approaches in such a short post, but this isn&amp;rsquo;t the intention here anyway. However, I feel that a very brief overview would facilitate in understanding the points that I am about to make. There is plenty of sources online explaining in detail both techniques, so please, feel free to consult them prior to continuing if needed.&lt;/p&gt;
+&lt;h3 id=&#34;classicist-chicago-school&#34;&gt;
+    &lt;a href=&#34;#classicist-chicago-school&#34;&gt;#&lt;/a&gt;
+    Classicist (Chicago school)
+&lt;/h3&gt;&lt;p&gt;Classicist TDD requires that we lock ourselves in the red-green-refactor cycle, pushing requirements in the form of failing unit tests (red), implementing an increment to fulfill these requirements (green) and then working on structuring the code in a better way (refactor).&lt;/p&gt;
+&lt;p&gt;This approach attempts to &lt;em&gt;minimize mocking&lt;/em&gt; and most of the &lt;em&gt;design happens at the refactor step&lt;/em&gt;, having already implemented a working increment.&lt;/p&gt;
+&lt;h3 id=&#34;outside-in-london-school&#34;&gt;
+    &lt;a href=&#34;#outside-in-london-school&#34;&gt;#&lt;/a&gt;
+    Outside-In (London school)
+&lt;/h3&gt;&lt;p&gt;Outside-In TDD uses a different approach. An extra step is inserted in the TDD cycle, the one of writing a failing &lt;em&gt;acceptance&lt;/em&gt; test. So, we first focus on writing a failing acceptance test and then on locking ourselves in the above mentioned TDD cycle, for every class needed, until the requirement of this acceptance test is fulfilled. Focusing on one acceptance test at a time, we TDD our way from the outmost layer of the system (controller, queue consumer etc) all the way to the core (domain, database layer etc).&lt;/p&gt;
+&lt;p&gt;Some principal differences with regard to the previous approach are that &lt;em&gt;mocking and stubbing are heavily used&lt;/em&gt; and most of the &lt;em&gt;design decisions are made in the red state&lt;/em&gt;, allowing for more minor adjustments in the refactor step.&lt;/p&gt;
+&lt;h2 id=&#34;where-i-stand&#34;&gt;
+    &lt;a href=&#34;#where-i-stand&#34;&gt;#&lt;/a&gt;
+    Where I stand
+&lt;/h2&gt;&lt;p&gt;It is reasonable for one to wonder whether I am biased on the topic or not. So, please allow me to clarify it before I proceed.&lt;/p&gt;
+&lt;p&gt;In my early TDD steps, I was mainly influenced by Uncle Bob and therefore, I started off as a classicist TDDer. After a considerably big learning curve, I started to like TDD a lot, but I was not &lt;em&gt;thrilled&lt;/em&gt; by it. I always felt that the technique was great, but its professional application was limited and the benefits not always tangible (at least in my mind).&lt;/p&gt;
+&lt;p&gt;This changed radically the day I attended Sandro Mancuso&amp;rsquo;s excellent &lt;em&gt;&amp;ldquo;Crafted design&amp;rdquo;&lt;/em&gt; workshop. Despite my obvious shortcomings during the workshop, I loved the idea and I followed up hard and persisted until I was able to apply Outside-In TDD professionally and eventually transfer knowledge within my company and influence colleagues. I was finally thrilled and enthusiastic about applying TDD professionally and, frankly, ever since I did, I find it very hard to work in a different way. So, this is where I stand. &lt;em&gt;I love Outside-In TDD&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Having said that, I have come forward with my bias before delving into the topic on purpose. I wanted to state where I stand and clarify that I will &lt;em&gt;not&lt;/em&gt; let it impede my judgement.&lt;/p&gt;
+&lt;h2 id=&#34;comparison&#34;&gt;
+    &lt;a href=&#34;#comparison&#34;&gt;#&lt;/a&gt;
+    Comparison
+&lt;/h2&gt;&lt;p&gt;Let me start by clarifying that the two TDD styles &lt;em&gt;are not mutually exclusive&lt;/em&gt;. A skilled software engineer should ideally switch between the two, adapting to the situation in hand. However, I do feel that there are considerable strengths and weaknesses in each one and to the analysis of these is where I will focus for the rest of this post.&lt;/p&gt;
+&lt;h3 id=&#34;classicist&#34;&gt;
+    &lt;a href=&#34;#classicist&#34;&gt;#&lt;/a&gt;
+    Classicist
+&lt;/h3&gt;&lt;h4 id=&#34;strengths&#34;&gt;
+    &lt;a href=&#34;#strengths&#34;&gt;#&lt;/a&gt;
+    Strengths
+&lt;/h4&gt;&lt;h5 id=&#34;enables-refactoring-through-loose-coupling-and-contra-variant-structure&#34;&gt;
+    &lt;a href=&#34;#enables-refactoring-through-loose-coupling-and-contra-variant-structure&#34;&gt;#&lt;/a&gt;
+    Enables refactoring through loose coupling and contra-variant structure
+&lt;/h5&gt;&lt;p&gt;An undeniable, powerful advantage of classicist TDD is that tests are loosely coupled to production code. The lack of mocking (and therefore stubbing) leaves the tests with a minimum amount of knowledge of &lt;em&gt;how&lt;/em&gt; is the production code achieving &lt;em&gt;what&lt;/em&gt; it needs to achieve. This enables even bold refactorings, using the unit tests as a safety net throughout the process. After all, as already mentioned above, important design decisions are made in the refactor step in this approach.&lt;/p&gt;
+&lt;p&gt;This refactoring ability is enhanced by the contra-variant structure of the code. Instead of having a test class per production class, the two structures are independent. This is achieved by testing public APIs, letting implementation details hide behind these APIs. This empowers refactoring even more, as even serious refactoring moves (like deleting whole classes for instance) would most likely not lead to broken tests.&lt;/p&gt;
+&lt;p&gt;Remember that during refactoring we want a steady, fast-executing suite of tests to verify &lt;strong&gt;after every refactoring move&lt;/strong&gt; that we indeed only &lt;em&gt;changed the structure&lt;/em&gt; of the code and &lt;em&gt;not its behavior&lt;/em&gt;. I have articulated my arguments on this on my &lt;em&gt;&amp;ldquo;test behavior&amp;rdquo;&lt;/em&gt; &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/test-behavior&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;post&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;delayed-design-decisions&#34;&gt;
+    &lt;a href=&#34;#delayed-design-decisions&#34;&gt;#&lt;/a&gt;
+    Delayed design decisions
+&lt;/h5&gt;&lt;p&gt;Another strong quality of the classicist TDD that I like a lot is that design decisions are delayed as much as possible (if only we all did more of this). This follows logically from the fact that we first make it work (red to green) and then we think about how to make it better, doing most of the design in the refactor step, as stated more than once earlier. Delaying design decisions is one of the qualities that makes us truly agile (as opposed to lots of sticky notes, but that is another post once again - see &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/agile-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;agile code&lt;/a&gt;).&lt;/p&gt;
+&lt;h4 id=&#34;evolutionary-design&#34;&gt;
+    &lt;a href=&#34;#evolutionary-design&#34;&gt;#&lt;/a&gt;
+    Evolutionary design
+&lt;/h4&gt;&lt;p&gt;In the classicist approach we start off small in terms of design and as we grow the code base to accommodate more requirements, we continuously refactor the code to adjust the design. This line of thought complements the delayed design decisions characteristic and binds excellently to the agile mindset. Together, they embrace the &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;YAGNI&lt;/a&gt; principle and therefore, premature design decisions and over-engineered solutions are avoided. Instead, at any given moment, the design reflects the current needs of the application.&lt;/p&gt;
+&lt;h4 id=&#34;weaknesses&#34;&gt;
+    &lt;a href=&#34;#weaknesses&#34;&gt;#&lt;/a&gt;
+    Weaknesses
+&lt;/h4&gt;&lt;h5 id=&#34;reduced-test-readability&#34;&gt;
+    &lt;a href=&#34;#reduced-test-readability&#34;&gt;#&lt;/a&gt;
+    Reduced test readability
+&lt;/h5&gt;&lt;p&gt;I am a big fan of the triple A rule (Arrange-Act-Assert) and part of the reason is that the test reads like a state machine, fulfilling its &lt;em&gt;documentation&lt;/em&gt; purpose. Ideally, I like 3-liner unit tests (one line for every stage), maximizing both &lt;em&gt;readability&lt;/em&gt; and &lt;em&gt;communication of intent&lt;/em&gt; (method extraction can help us make almost every unit test a 3-liner).&lt;/p&gt;
+&lt;p&gt;With the classicist approach I find that tests tend to grow large quite often, with complicated setups and assertions, which in extreme cases can defeat the whole documentation purpose (there is the name of the test to partially save this). This was definitely one of the notes I made while watching the clean coders comparative case study video series. Uncle Bob&amp;rsquo;s tests were lengthy.&lt;/p&gt;
+&lt;h5 id=&#34;complex-refactorings&#34;&gt;
+    &lt;a href=&#34;#complex-refactorings&#34;&gt;#&lt;/a&gt;
+    Complex refactorings
+&lt;/h5&gt;&lt;p&gt;Since we are trying to flesh out the whole system starting from its core logic, it is quite probable to find ourselves in a situation where a class, deep inside the core of the application, has too many responsibilities or its design is cumbersome. Such cases, sometimes require &lt;em&gt;drastic&lt;/em&gt; refactoring moves.&lt;/p&gt;
+&lt;p&gt;Complex refactorings are never pleasant and the more complex they are, the more the likelihood of breaking the tests increases. Usually, I find it much more preferable to apply small refactoring tweaks than tearing the whole system apart, while trying to keep my tests green.&lt;/p&gt;
+&lt;h5 id=&#34;treating-the-api-as-a-second-class-citizen&#34;&gt;
+    &lt;a href=&#34;#treating-the-api-as-a-second-class-citizen&#34;&gt;#&lt;/a&gt;
+    Treating the API as a second-class citizen
+&lt;/h5&gt;&lt;p&gt;Starting from the core logic of the application poses an extra problem. Thinking of the API is usually deferred until the implementation reaches it. One may argue that this is not a drawback, but we should always keep in mind when building a system that we do so &lt;strong&gt;only&lt;/strong&gt; because someone else needs to use it. If we are writing a web service for instance, some client will consume this API, otherwise we wouldn&amp;rsquo;t be writing it in the first place.&lt;/p&gt;
+&lt;p&gt;Therefore, I regard this as a considerable problem. We are running the risk of over-engineering our solution, implementing logic that will not be used. Don&amp;rsquo;t get me wrong here. Creating abstractions and achieving loose coupling between our HTTP layer and our domain is very much desired. I just find it really useful to begin my thinking from the API.&lt;/p&gt;
+&lt;p&gt;I am really sitting on the fence regarding Uncle Bob&amp;rsquo;s abstraction decisions on the clean coders comparative case study video series, leaning a little bit towards considering them premature and therefore potentially harmful.&lt;/p&gt;
+&lt;h3 id=&#34;outside-in&#34;&gt;
+    &lt;a href=&#34;#outside-in&#34;&gt;#&lt;/a&gt;
+    Outside-In
+&lt;/h3&gt;&lt;h4 id=&#34;strengths-1&#34;&gt;
+    &lt;a href=&#34;#strengths-1&#34;&gt;#&lt;/a&gt;
+    Strengths
+&lt;/h4&gt;&lt;h4 id=&#34;tdd-as-a-design-tool&#34;&gt;
+    &lt;a href=&#34;#tdd-as-a-design-tool&#34;&gt;#&lt;/a&gt;
+    TDD as a design tool
+&lt;/h4&gt;&lt;p&gt;One of the principal differences between the two approaches is in which state most of the design decisions are made. While in the classicist approach this is happening in the refactor state, in Outside-In the answer is the red state. When writing a failing unit test, we have to think ahead of ourselves and &lt;em&gt;design&lt;/em&gt;. We have to decide &lt;em&gt;what are the collaborators of the class under test going to be&lt;/em&gt; and &lt;em&gt;how is this class going to communicate with them (public API) to fulfill this business requirement (test)&lt;/em&gt;. These are core design decisions and are made &lt;em&gt;before&lt;/em&gt; the implementation. Of course, design can be refined in the refactor step, but usually, in a much more light way.&lt;/p&gt;
+&lt;p&gt;Despite some objections on this (more on this later on), I love the way TDD is really used as a design tool. During the JHUG talk/demo we discussed on how TDD does not magically create good design by itself. TDD gives us the time and place to design and this is done brilliantly in the Outside-In style.&lt;/p&gt;
+&lt;h5 id=&#34;acceptance-tests-drive-the-architecture&#34;&gt;
+    &lt;a href=&#34;#acceptance-tests-drive-the-architecture&#34;&gt;#&lt;/a&gt;
+    Acceptance tests drive the architecture
+&lt;/h5&gt;&lt;p&gt;Earlier, I made the point how using the classicist approach can result in treating the API as a second-level citizen. I feel quite the opposite when using the Outside-In approach. Not only we start off with the HTTP layer, but the needs of this layer drive the rest of the implementation and architecture all the way to the classes deep inside in the domain. The whole system is built in a way that serves the clients&amp;rsquo; needs and therefore its purpose. Of course, we are free (and in fact encouraged) to create the right abstractions and seal our implementation, without compromising our attention to the API.&lt;/p&gt;
+&lt;h5 id=&#34;adopting-the-clients-point-of-view&#34;&gt;
+    &lt;a href=&#34;#adopting-the-clients-point-of-view&#34;&gt;#&lt;/a&gt;
+    Adopting the client&amp;rsquo;s point of view
+&lt;/h5&gt;&lt;p&gt;While running our inner TDD cycles we are very diligent in mocking all the dependencies of the class under test and put a lot of thought in the stubs that we will use. As mentioned earlier, this is in fact &lt;em&gt;design&lt;/em&gt;. What I particularly like about this design method is that we always focus on the way the clients of these mocked classes will interact with them. We are designing their public API, allowing ourselves to &lt;em&gt;hide&lt;/em&gt; the implementation details behind this public API when the time comes to implement this class.&lt;/p&gt;
+&lt;p&gt;What is so brilliant about this though process is that we always approach a new class from the point of view of its clients. We first think what kind of &lt;strong&gt;behavior&lt;/strong&gt; we would like this class to provide in order to fulfill which business requirements (tests).&lt;/p&gt;
+&lt;h5 id=&#34;test-readability&#34;&gt;
+    &lt;a href=&#34;#test-readability&#34;&gt;#&lt;/a&gt;
+    Test readability
+&lt;/h5&gt;&lt;p&gt;As opposed to the classicist approach, I love the way the tests read in Outside-In TDD. Arrange, act and assert are evidently separated, tests are relatively short and the intent is clearly expressed in a &lt;em&gt;state-machine&lt;/em&gt; manner. Also, taking the &lt;em&gt;&amp;ldquo;should&amp;rdquo;&lt;/em&gt; naming convention (which I &lt;em&gt;absolutely&lt;/em&gt; love) into consideration, the executable documentation produced is all that one could ask for.&lt;/p&gt;
+&lt;h5 id=&#34;method-and-discipline&#34;&gt;
+    &lt;a href=&#34;#method-and-discipline&#34;&gt;#&lt;/a&gt;
+    Method and discipline
+&lt;/h5&gt;&lt;p&gt;I left for last what I perceive as a vague, less objective advantage. When writing code using the Outside-In TDD approach, I always feel that there is method and discipline in my work. I feel that I am working very &lt;em&gt;methodically&lt;/em&gt;. It is almost as if I am following an algorithm, approaching the problems in layers, breaking it down in small pieces and knowing exactly what needs to be done next and where am I in the whole process at any given moment. The acceptance tests acts like a north star that will not let you get lost while running the inner TDD cycles. This is mainly due to the fact that the way they fail will lead me to the point I have to pick up the implementation from when finished implementing a class.&lt;/p&gt;
+&lt;p&gt;I understand that this is utterly subjective, but I do not feel the same way when using the classicist approach. Throughout the clean coders comparative case study video series I always knew where Sandro was and what was missing for an API to be finished, but I always had to think harder when Uncle Bob was driving the implementation.&lt;/p&gt;
+&lt;h4 id=&#34;weaknesses-1&#34;&gt;
+    &lt;a href=&#34;#weaknesses-1&#34;&gt;#&lt;/a&gt;
+    Weaknesses
+&lt;/h4&gt;&lt;h5 id=&#34;refactoring-limitations&#34;&gt;
+    &lt;a href=&#34;#refactoring-limitations&#34;&gt;#&lt;/a&gt;
+    Refactoring limitations
+&lt;/h5&gt;&lt;p&gt;Throughout my journey to understand and adopt the Outside-In TDD style, I always struggled with the refactoring limitations that are posed by following this technique. In a nutshell, the mocking and stubbing that are heavily used result in tight coupling between the production and test code, with severe implications to refactoring capabilities.&lt;/p&gt;
+&lt;p&gt;This caused me great unease until I truly understood the &lt;em&gt;deviation in the philosophy&lt;/em&gt; between the two approaches. In the classicist approach emphasis is first put on making it work and &lt;em&gt;then&lt;/em&gt; on the structure of the code. Therefore, the room for refactoring in the refactor step is &lt;em&gt;created&lt;/em&gt; because it is &lt;em&gt;needed&lt;/em&gt;, given that this is where we largely shape the structure of the code. On the other hand, with the Outside-In approach, we focus on structure from the beginning, leaving less room for modifications in the refactor step since we &lt;em&gt;anticipate less major modifications&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;It does take some time to truly understand this differentiation in the way of thinking, but as soon as one does get it, it&amp;rsquo;s all very clear. In my perception, a profoundly uneasy state to be in is thinking in classicist terms (I will structure the code in the refactor step) when trying to apply Outside-In TDD.&lt;/p&gt;
+&lt;h5 id=&#34;not-suitable-for-algorithmic-code&#34;&gt;
+    &lt;a href=&#34;#not-suitable-for-algorithmic-code&#34;&gt;#&lt;/a&gt;
+    Not suitable for algorithmic code
+&lt;/h5&gt;&lt;p&gt;As this approach focuses on &lt;em&gt;dependencies&lt;/em&gt; and &lt;em&gt;collaboration&lt;/em&gt; between classes, is follows logically that it is not an ideal candidate for implementing an algorithmic piece of code. Usually, there are no collaborators in such a case and therefore this technique will be of limited use. Therefore, this constitutes a perfect example to demonstrate cases in which we should switch to a different TDD style, such as the classicist one.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;TDD is a very handy tool to have in our arsenal and if we intend to be true &lt;em&gt;software craftspeople&lt;/em&gt;, this arsenal better be mighty and better include both TDD styles. We ought to study and apply both of them and draw our own conclusions as to which one we favor in which situation and why.&lt;/p&gt;
+&lt;p&gt;In my opinion, judging based on the problem in hand is crucial and ideally we should learn to switch between the two. Don&amp;rsquo;t forget that in software engineering almost everything is a trade-off and working these trade-offs is what makes us better &lt;em&gt;professional&lt;/em&gt; software engineers. There is no silver bullet for most problems and - despite personal preferences - TDD styles is not an exception.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

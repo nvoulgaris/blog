@@ -1,9 +1,10 @@
----
-title: "Technical background: the extra mile on scrum mastery"
-date: "2018-06-22"
-tags: [agile, scrum]
-image: img/posts/extra_mile.jpg
----
++++
+title = "Technical background: the extra mile on scrum mastery"
+date = "2018-06-22"
+tags = ["agile","scrum"]
+image = "img/posts/extra_mile.jpg"
+description = "Understanding how to truly help a team work in an agile way"
++++
 
 Among other things, scrum is very *"trendy"* lately. Virtually any company that I know of has either adopted it or attempted to do so or at least considered it. The software industry needs change rapidly, evolving the scrum master in one of the most sought after roles. However, the inability of the offer to meet the demand and the absence of required technical skills to become a scrum master has made the role appealing to a number of people outside the industry, giving birth to an ongoing debate. *Should the scrum master have a technical background?*
 

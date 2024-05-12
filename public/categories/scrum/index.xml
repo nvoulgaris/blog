@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Scrum on Nikos Voulgaris</title>
+        <link>//localhost:1313/categories/scrum/</link>
+        <description>Recent content in Scrum on Nikos Voulgaris</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Nikos Voulgaris</copyright>
+        <lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/scrum/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>A different way to run the daily scrum</title>
+        <link>//localhost:1313/a-different-way-to-run-the-daily-scrum/</link>
+        <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/a-different-way-to-run-the-daily-scrum/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/a_different_way_to_run_the_daily_scrum.jpg" alt="Featured image of post A different way to run the daily scrum" /&gt;&lt;p&gt;Have you ever felt that the daily scrum offers no value? That we are wasting some precious time and getting everybody tired at the same time?&lt;/p&gt;
+&lt;p&gt;I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run and share an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.&lt;/p&gt;
+&lt;p&gt;Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don&amp;rsquo;t remember if this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.&lt;/p&gt;
+&lt;h2 id=&#34;symptoms&#34;&gt;
+    &lt;a href=&#34;#symptoms&#34;&gt;#&lt;/a&gt;
+    Symptoms
+&lt;/h2&gt;&lt;p&gt;Before changing anything, we have to learn to identify the cases that call for change. For this purpose, I have listed some symptoms that I find to be good indicators. Let&amp;rsquo;s go over them.&lt;/p&gt;
+&lt;h3 id=&#34;no-collaboration&#34;&gt;
+    &lt;a href=&#34;#no-collaboration&#34;&gt;#&lt;/a&gt;
+    No collaboration
+&lt;/h3&gt;&lt;p&gt;During the daily scrum, team members share their input, but no fruitful communication takes place. To better understand this, let&amp;rsquo;s think of the following hypothetical daily scrum situations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Situation #1&lt;/strong&gt;: &lt;em&gt;Mark&lt;/em&gt;: &amp;ldquo;Yesterday, I finished the implementation and  opened a PR for this PBI. Today, I will start working on this one until I get some review feedback&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Situation #2&lt;/strong&gt;: &lt;em&gt;Mark&lt;/em&gt;: &amp;ldquo;Yesterday, I finished the implementation and  opened a PR for this PBI. Can somebody review it, please?&amp;rdquo; &lt;em&gt;Helen&lt;/em&gt;: &amp;ldquo;I would review it, but I don&amp;rsquo;t have time today. I will be able to review it tomorrow though.&amp;rdquo; &lt;em&gt;Jason&lt;/em&gt;: &amp;ldquo;I can do it. Let&amp;rsquo;s just make sure to upload it in a test environment too.&amp;rdquo; &lt;em&gt;Mark&lt;/em&gt;: &amp;ldquo;Thanks, guys. I&amp;rsquo;ll upload it and then I&amp;rsquo;ll work on this PBI until I hear back from you.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mark is sharing the exact same input in both cases, but notice how the work progresses in the second situation. In the first case, the team is not collaborating.&lt;/p&gt;
+&lt;h3 id=&#34;monologue&#34;&gt;
+    &lt;a href=&#34;#monologue&#34;&gt;#&lt;/a&gt;
+    Monologue
+&lt;/h3&gt;&lt;p&gt;As mentioned above, the daily scrum is all about collaboration. If people are only speaking when their turn is up, how are they collaborating? Instead, a healthy team should be syncing and planning during the session. We should be hearing things like &amp;ldquo;Shall I use the test environment to test this?&amp;rdquo;, &amp;ldquo;I will release after the scrum. Do you want me to wait for this to be merged too?&amp;rdquo;, &amp;ldquo;Shall I merge this to your branch or to develop?&amp;rdquo;, &amp;ldquo;Do you need any help with this or shall I pick something up from the To-Dos?&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;People not being fully engaged, being indifferent and &lt;em&gt;only talking when their turn is up&lt;/em&gt; is a sign that clearly shows that the session is dysfunctional.&lt;/p&gt;
+&lt;h3 id=&#34;no-planning-ahead&#34;&gt;
+    &lt;a href=&#34;#no-planning-ahead&#34;&gt;#&lt;/a&gt;
+    No planning ahead
+&lt;/h3&gt;&lt;p&gt;The daily scrum is supposed to be a &lt;em&gt;planning session&lt;/em&gt;. Not a reporting session. Yes, we share the latest developments, but we do so in order to &lt;em&gt;plan the next 24 hours&lt;/em&gt;. Try to keep track of the planning/reporting ratio. If it decreases, it is a very bad sign. Of course, this cannot be easily measured, but keep an eye on it and try to draw some conclusions.&lt;/p&gt;
+&lt;h3 id=&#34;stuck-pbis&#34;&gt;
+    &lt;a href=&#34;#stuck-pbis&#34;&gt;#&lt;/a&gt;
+    Stuck PBIs
+&lt;/h3&gt;&lt;p&gt;In scrum, we are supposed to be delivering value fast. It doesn&amp;rsquo;t make sense to have a bunch of PBIs stuck at the &amp;ldquo;Review&amp;rdquo; swimlane for 3 days and picking up new work instead of reviewing the open PRs. The daily scrum is the time and place to make these decisions if they are not made during the day.&lt;/p&gt;
+&lt;p&gt;Bottlenecks in the sprint board can be an indication of poor daily scrums. Of course, the root cause may be different here, but when we see jammed swimlanes we ought to think of the daily scrum too.&lt;/p&gt;
+&lt;h3 id=&#34;my-pbi&#34;&gt;
+    &lt;a href=&#34;#my-pbi&#34;&gt;#&lt;/a&gt;
+    My PBI
+&lt;/h3&gt;&lt;p&gt;Often you may hear people use phrases like &amp;ldquo;Yesterday, I finished the implementation in my PBI&amp;rdquo;. This is a highly problematic situation, as this single phrase implies that the team members are not thinking of the sprint&amp;rsquo;s work in a collective way. They work in an isolated way and this can impede their understanding of success.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Completing &amp;ldquo;my&amp;rdquo; PBI while my teammate struggles doesn&amp;rsquo;t make the sprint a success&lt;/em&gt;. This doesn&amp;rsquo;t mean that the team members are selfish. All I am trying to say is that software engineering is a team sport and it takes effort to deeply understand this and change your day-to-day work habits accordingly.&lt;/p&gt;
+&lt;h2 id=&#34;another-way&#34;&gt;
+    &lt;a href=&#34;#another-way&#34;&gt;#&lt;/a&gt;
+    Another way
+&lt;/h2&gt;&lt;p&gt;The typical format most teams that I know of use is the &amp;ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&amp;rdquo;. I usually call this the &amp;ldquo;per-person&amp;rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;overview&#34;&gt;
+    &lt;a href=&#34;#overview&#34;&gt;#&lt;/a&gt;
+    Overview
+&lt;/h3&gt;&lt;p&gt;An alternative to the &amp;ldquo;per-person&amp;rdquo; format would be the &amp;ldquo;per-PBI&amp;rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&amp;ldquo;Done&amp;rdquo; swimlane).&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s use an example to understand it better. Assuming that the team&amp;rsquo;s sprint backlog is the following:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/sprint_board.png&#34;
+    alt=&#34;Figure 1.1: Sprint board&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The daily scrum would first focus on the topmost PBI in the &amp;ldquo;Delivered&amp;rdquo; swimlane. They would ask if it can be considered done. If yes, it would be moved to the &amp;ldquo;Done&amp;rdquo; swimlane. If not, a team member could undertake to check if it works as expected and move it to &amp;ldquo;Done&amp;rdquo;. Then they would do the same for the second &amp;ldquo;Delivered&amp;rdquo; PBI if there was any and so on and so forth.&lt;/p&gt;
+&lt;p&gt;They would then move to the &amp;ldquo;Merged&amp;rdquo; swimlane, focusing on how could they get these tickets to &amp;ldquo;Delivered&amp;rdquo;. Would they deploy on production? If yes, who would undertake it? Are there any dependencies that need to be deployed as well? Who should be notified? These are the things that &lt;em&gt;should&lt;/em&gt; be discussed during a healthy daily scrum.&lt;/p&gt;
+&lt;p&gt;The next step would be the &amp;ldquo;Review&amp;rdquo; swimlane, in which the team needs to ensure that the PBIs do not remain idle for review if there is the capacity from team members to review them. They could decide who gets to review what and share more context if needed. Priorities could be defined if time and/or capacity do not suffice for all the PBIs. Again, the focus would be on how to move these PBI to &amp;ldquo;Merged&amp;rdquo; within the next 24 hours.&lt;/p&gt;
+&lt;p&gt;Then, they would briefly discuss the &amp;ldquo;In Progress&amp;rdquo; PBIs, sharing progress and impediments and making clarifications if needed. The last step would be to talk about starting new PBIs in the next 24 hours.&lt;/p&gt;
+&lt;p&gt;Finally, there can be some time to share anything that needs to be shared and wasn&amp;rsquo;t already covered.&lt;/p&gt;
+&lt;h3 id=&#34;advantages&#34;&gt;
+    &lt;a href=&#34;#advantages&#34;&gt;#&lt;/a&gt;
+    Advantages
+&lt;/h3&gt;&lt;h4 id=&#34;reduced-lead-time&#34;&gt;
+    &lt;a href=&#34;#reduced-lead-time&#34;&gt;#&lt;/a&gt;
+    Reduced lead time
+&lt;/h4&gt;&lt;p&gt;This format focuses on getting things done and delivering value. It&amp;rsquo;s all about what needs to be done within the next 24 hours to move this PBI to the next swimlane. Inevitably, this prioritizes closing the open PBIs over opening new ones. As we have already discussed in the &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/limiting-work-in-progress-in-scrum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;em&gt;Limiting work in progress&lt;/em&gt;&lt;/a&gt; post, this reduces the team&amp;rsquo;s lead time.&lt;/p&gt;
+&lt;h4 id=&#34;focus-shifts-to-planning&#34;&gt;
+    &lt;a href=&#34;#focus-shifts-to-planning&#34;&gt;#&lt;/a&gt;
+    Focus shifts to planning
+&lt;/h4&gt;&lt;p&gt;Instead of discouraging interruptions while other team members are sharing their input, this format welcomes their contribution. Fostering dialogue in this way shifts the focus from reporting to planning. Team members communicate more and it&amp;rsquo;s all about moving the ticket to the right, instead of plainly sharing yesterday&amp;rsquo;s actions.&lt;/p&gt;
+&lt;h4 id=&#34;teamwork-mentality&#34;&gt;
+    &lt;a href=&#34;#teamwork-mentality&#34;&gt;#&lt;/a&gt;
+    Teamwork mentality
+&lt;/h4&gt;&lt;p&gt;Furthermore, the transition from monologue to an intensely collaborative format builds stronger team relationships and a teamwork mentality. The team learns to function as a unit, as opposed to a set of individuals. They learn to cooperate and they understand that great results take more than an individual writing code. There is no &amp;ldquo;my PBI&amp;rdquo; anymore. There is &amp;ldquo;our work&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;considerations&#34;&gt;
+    &lt;a href=&#34;#considerations&#34;&gt;#&lt;/a&gt;
+    Considerations
+&lt;/h3&gt;&lt;h4 id=&#34;longer-daily-scrums&#34;&gt;
+    &lt;a href=&#34;#longer-daily-scrums&#34;&gt;#&lt;/a&gt;
+    Longer daily scrums
+&lt;/h4&gt;&lt;p&gt;From my personal experience, I&amp;rsquo;ve noticed that the session sometimes tends to last longer with this format. This is a result of the increased dialogue. However, there can be a number of root causes behind this.&lt;/p&gt;
+&lt;p&gt;The first thing that should come into our minds is whether there are too many open PBIs. If yes, the team should focus on closing some of them before starting to work on new ones. It could also show that the team is getting dragged into long conversations, which could be kept shorter. Finally, maybe the team &lt;em&gt;needs&lt;/em&gt; this extra time. Personally, I wouldn&amp;rsquo;t mind a slightly longer daily scrum so long as the conversation is fruitful and meaningful.&lt;/p&gt;
+&lt;h4 id=&#34;people-feel-left-out&#34;&gt;
+    &lt;a href=&#34;#people-feel-left-out&#34;&gt;#&lt;/a&gt;
+    People feel left out
+&lt;/h4&gt;&lt;p&gt;Also, people whose work is not directly visible on the board (e.g. designers and product owners) could start to feel left out with this format. My advice would be to encourage them to contribute whenever needed in the conversation and to use the time at the end of the session to share their input if it wasn&amp;rsquo;t already shared.&lt;/p&gt;
+&lt;h2 id=&#34;own-the-process&#34;&gt;
+    &lt;a href=&#34;#own-the-process&#34;&gt;#&lt;/a&gt;
+    Own the process
+&lt;/h2&gt;&lt;p&gt;Having shared this technique, which I have successfully used, it is important to understand that &lt;strong&gt;every team is different&lt;/strong&gt;. Just because it worked for a team it doesn&amp;rsquo;t mean that it will also work for another one. Dogmatically applying a solution that worked for another team and expecting results goes against the very nature of the agile mindset.&lt;/p&gt;
+&lt;p&gt;I would not advise against applying this format, but rather use it as a starting point. Call it an experiment and remember to evaluate this experiment. Then tweak it and run another experiment. Evaluate this one too. Then tweak it again. Chances are that the result that works for your team is different than the one I described. Maybe slightly different, maybe radically different. The point is to understand that the &lt;strong&gt;process is here to serve us&lt;/strong&gt; and not the other way around. If it is not working, then change it to something that works. Make it your own.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;The daily scrum is a pivotal event that can make all the difference between a successful and a failed sprint. Often, it gets executed in a formalistic way, which offers no real value. There are a number of symptoms that can help us identify a dysfunctional daily scrum session, such as lack of planning for the next 24 hours, jammed swimlanes and people not engaging in conversation during the session.&lt;/p&gt;
+&lt;p&gt;A different way to run the session can prove beneficial. I have successfully used what I call the &amp;ldquo;per-PBI&amp;rdquo; format to run daily scrums and I feel that it offers a series of advantages, such as reduced lead time and improved team cohesion. Along with it come some downsides, such as certain roles feeling left out and increased duration of the session.&lt;/p&gt;
+&lt;p&gt;No matter if we choose the &amp;ldquo;per-PBI&amp;rdquo; format or not, the responsibility of identifying the dysfunction and taking action to improve the situation lies with us, the software engineering team. So, I would strongly advise experimenting with different formats and tweaking the process until it serves the team.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

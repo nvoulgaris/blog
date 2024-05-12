@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Experimenting with Kanban's WIP limits to elevate a scrum team">
+<title>Limiting work in progress in scrum</title>
+
+<link rel='canonical' href='//localhost:1313/limiting-work-in-progress-in-scrum/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Limiting work in progress in scrum">
+<meta property='og:description' content="Experimenting with Kanban's WIP limits to elevate a scrum team">
+<meta property='og:url' content='//localhost:1313/limiting-work-in-progress-in-scrum/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='agile' /><meta property='article:tag' content='scrum' /><meta property='article:published_time' content='2020-05-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-05-17T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/wip_limits.jpg' />
+<meta name="twitter:title" content="Limiting work in progress in scrum">
+<meta name="twitter:description" content="Experimenting with Kanban's WIP limits to elevate a scrum team"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/wip_limits.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#symptoms">Symptoms</a></li>
+    <li><a href="#what-is-a-wip-limit">What is a WIP limit</a>
+      <ul>
+        <li><a href="#can-this-be-applied-to-scrum">Can this be applied to scrum?</a></li>
+      </ul>
+    </li>
+    <li><a href="#wip-limit-benefits">WIP limit benefits</a>
+      <ul>
+        <li><a href="#reduced-lead-time">Reduced lead time</a></li>
+        <li><a href="#teamwork">Teamwork</a></li>
+        <li><a href="#bus-factor">Bus factor</a></li>
+        <li><a href="#identify-bottlenecks">Identify bottlenecks</a></li>
+      </ul>
+    </li>
+    <li><a href="#fine-tuning-the-limits">Fine-tuning the limits</a>
+      <ul>
+        <li><a href="#avoid-multitasking">Avoid multitasking</a></li>
+        <li><a href="#not-too-high">Not too high</a></li>
+        <li><a href="#but-not-too-low-either">But not too low either</a></li>
+        <li><a href="#inspect-and-adapt">Inspect and adapt</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/limiting-work-in-progress-in-scrum/">
+                
+                    <img src="/img/posts/wip_limits.jpg" loading="lazy" alt="Featured image of post Limiting work in progress in scrum" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/limiting-work-in-progress-in-scrum/">Limiting work in progress in scrum</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Experimenting with Kanban&#39;s WIP limits to elevate a scrum team
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 17, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>How would you identify bottlenecks in your team&rsquo;s process? How would you surface them? How would you encourage the team to increase collaboration? How would you decrease lead times and increase the bus factor?</p>
+<p>Working in an <em>Agile</em> way is far from following a predefined set of rules. On the contrary, is all about <em>inspecting and adapting</em>. It&rsquo;s about finding what works best for the team and it is an <em>ever-ending</em> process. This includes a lot of <em>experimentation</em>. Adopting something new for a few days/weeks, evaluating its benefits and either keep it or discard it before you move on to the next experiment. A team not chasing continuous improvement cannot be <em>Agile</em>.</p>
+<p>This post is all about experimenting with limiting work-in-progress (WIP). Applying WIP limits is a beautiful technique, originated in Kanban, but I believe it can be applied very effectively on <em>Scrum</em> teams too. Before we analyze the technique though, let&rsquo;s briefly go over the symptoms that may push a team towards experimenting with WIP limits in the first place.</p>
+<h2 id="symptoms">
+    <a href="#symptoms">#</a>
+    Symptoms
+</h2><p>Let&rsquo;s imagine a <em>Scrum</em> team consisting of five software engineers is in the middle of a two-week sprint. The first five stories <em>in-progress</em> and the team is juggling among them, trying to advance all of them at the same time.</p>
+<p>There is a number of issues that one could note in the above-mentioned situation. I would argue that the first one is the <strong>lack of focus</strong>. Focus is one of the five <em>Scrum</em> values. It is a quality that without it, <em>Scrum</em> can never work. It is as simple as that. Although the team is focused on a macro-level (there is a two-week sprint with a well-defined sprint goal), the lack of focus on a micro-level is resounding.</p>
+<p>Secondly, there is a <strong>total absence of priority</strong>. The stories in a sprint board are sorted based on their priority. The higher the priority of the story, the higher on the board the story is. Trying to put this priority in words, it would be something in the following lines: <em>&ldquo;if as a team we manage to get a single story done in the sprint, let this be the topmost one. If we get two stories done, let them be the first two ones&rdquo;</em> and so on and so forth. A team that is working on five stories in parallel does not honour the notion of priority and to some extent, it is missing part of the essence of <em>Scrum</em> as a framework.</p>
+<p>Furthermore, a team in such a situation exhibits <strong>chemistry issues</strong>. Perhaps people do not enjoy working with each other or they believe that it is not efficient. Whatever the reason, there is no teamwork (e.g. pair programming) and the team is behaving like a set of individuals instead. However, great results are more often than not delivered by great <em>teams</em>.</p>
+<p>Such a workflow has the tendency to lead to a <strong>big bang release</strong> towards the end of the sprint. This allows for no time to react to a release that caused issues and it does not give a smooth, steady flow of value to the stakeholders and the users. A failed release could cause the sprint to fail.</p>
+<p>Lastly, this way of working inevitably leads to significantly <strong>small <a class="link" href="https://en.wikipedia.org/wiki/Bus_factor"  target="_blank" rel="noopener"
+    >bus factors</a></strong>, usually to a bus factor of one or two. This impedes collective code ownership and in case an individual leaves the team, a knowledge gap is also created.</p>
+<p>I could continue commenting on this situation, but I believe that I have made my point. So, (hopefully) agreeing that this is a problematic situation, let&rsquo;s go over a technique that can mitigate it.</p>
+<h2 id="what-is-a-wip-limit">
+    <a href="#what-is-a-wip-limit">#</a>
+    What is a WIP limit
+</h2><p>Limiting work-in-progress is a very simple technique.</p>
+<blockquote>
+<p>A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.</p>
+</blockquote>
+<p>So, if a team has a WIP limit of two stories, it can only work on two stories at the same time at any given moment. In order to start working on a third one, one of the two previously <em>in-progress</em> has to be <em>done</em>.</p>
+<p>It originates from Kanban and there it applies to tasks on the team&rsquo;s Kanban board. In <em>Scrum</em>, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of <em>in-progress</em> may be adjusted according to the team&rsquo;s needs. For instance, a story can be considered <em>in-progress</em> until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.</p>
+<h3 id="can-this-be-applied-to-scrum">
+    <a href="#can-this-be-applied-to-scrum">#</a>
+    Can this be applied to scrum?
+</h3><p>It would be reasonable to wonder whether there would be any sense in applying such a technique to <em>Scrum</em>, given that the work is bound by the sprint duration. One could argue that WIP limits in Kanban make sense because there is no such boundary.</p>
+<p>However, considering all the above-mentioned symptoms, which could be more or less addressed by applying a WIP limit, I feel that it is meaningful. As a matter of fact, we have applied it in teams that I have been a part of with considerable success.</p>
+<p>In case applying a Kanban technique to <em>Scrum</em> feels like breaking the rules, let&rsquo;s always keep in mind that being <em>Agile</em> is all about the <strong>culture</strong>. Blindly adopting a set of rules is a cargo cult mentality that leads nowhere. If you ask me, if WIP limits serve us, let&rsquo;s use them.</p>
+<h2 id="wip-limit-benefits">
+    <a href="#wip-limit-benefits">#</a>
+    WIP limit benefits
+</h2><p>Let&rsquo;s examine some of the benefits that a team would expect by applying WIP limits.</p>
+<h3 id="reduced-lead-time">
+    <a href="#reduced-lead-time">#</a>
+    Reduced lead time
+</h3><p><em>Lead time</em> is a metric, expressing the time elapsed between starting and completing an item of work.</p>
+<blockquote>
+<p>A <em>Scrum</em> team&rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being <em>done</em>.</p>
+</blockquote>
+<p>Let&rsquo;s study again the hypothetical example of the <em>Scrum</em> team of five software engineers in the middle of the sprint with five stories in-progress. Let&rsquo;s also assume that the team manages to complete all five stories at the very last day of the sprint and that these were all the stories in this sprint. What is the lead time of the team?</p>
+<p>Each of the five stories took nine days (the working days of a two-week sprint excluding the <em>Scrum</em> events day) to complete, so the team&rsquo;s average lead time is</p>
+<blockquote>
+<p>(5 * 9) / 5 = 9 days</p>
+</blockquote>
+<p>Let&rsquo;s assume that the team had applied a WIP limit of two. This means that no more than two stories could be worked on parallel. The first two stories could perhaps be <em>done</em> in the third and fourth day respectively. The next two stories could be completed in the seventh and eight days respectively and the last story could be completed on the very last day of the sprint. Let&rsquo;s calculate again the team&rsquo;s average lead time.</p>
+<blockquote>
+<p>(3 + 4 + 7 + 8 + 9) 5 = 5.4 days</p>
+</blockquote>
+<p>These numbers are fictitious of course, but they are meant to illustrate the point. As a matter of fact, feel free to fiddle with the numbers and inspect the results. The result will always be less than nine. I feel that plugging some reasonable numbers in the formula will result in an average lead time <em>significantly below</em> 9, like 5.4.</p>
+<p>This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.</p>
+<h3 id="teamwork">
+    <a href="#teamwork">#</a>
+    Teamwork
+</h3><p>A WIP limit is essentially the application of a restriction. A restriction on the amount of work that can be concurrently undertaken. However, team members remain the same despite the restriction. Hence, the smaller the number of stories or tasks that can be simultaneously <em>in-progress</em> the more the level of cooperation among the team members has to increase.</p>
+<p>Think about it. In a very simplistic scenario, a team of two software engineers with a WIP limit of one would always pair (in the case where the WIP limit is applied to tasks) or - at least - work on the same story (in the case where the WIP limit is applied to stories). A team of - say - 5 software engineers with a WIP limit of four would mean that there should always be at least one pair. Reduce this to a WIP limit of three and the pairs become at 2 at all given moments.</p>
+<p>Pairing is a more intense form of collaboration, but working on the same story is still more collaborative than two software engineers working on different stories. Given sufficient time, this restriction will strengthen the team bonds and will help build the right chemistry.</p>
+<h3 id="bus-factor">
+    <a href="#bus-factor">#</a>
+    Bus factor
+</h3><p>Increased teamwork goes hand in hand with increased bus factors. I believe this is quite straightforward. The more often two or more people work on the same story, the more the parts of the code that more people will be familiar with. On the contrary, a team whose members tend to work alone on a story will end up with a codebase full of parts that only a single software engineer is familiar with.</p>
+<h3 id="identify-bottlenecks">
+    <a href="#identify-bottlenecks">#</a>
+    Identify bottlenecks
+</h3><p>Applying a WIP limit is a tailor-made technique for surfacing bottlenecks in a team&rsquo;s process. Let&rsquo;s imagine a scenario in which a team uses the flow <em>&ldquo;todo&rdquo;</em>, <em>&ldquo;doing&rdquo;</em>, <em>&ldquo;review&rdquo;</em>, <em>&ldquo;delivered&rdquo;</em> and then <em>&ldquo;done&rdquo;</em>. It undertakes stories and when the code is written, the story is passed to the rest of the team for code review. The engineer(s) that worked on this story naturally grab the next one until this one gets reviewed. It is quite common for teams to end up with a pile of stories that should get reviewed towards the end of the sprint. This, of course, leads to rushed code reviews and a big bang release with a dozen features in it. This is a typical case of a <em>bottleneck in the process</em>.</p>
+<p>Now, let&rsquo;s imagine that this team applies some WIP limits. Remember that these may span from one to several swimlanes. Let&rsquo;s assume that the <em>&ldquo;review&rdquo;</em> swimlane has a dedicated limit of three stories. When the third story gets in the lane the team should prioritize code reviewing these stories. Otherwise, no new stories can be propagated from <em>&ldquo;doing&rdquo;</em> to <em>&ldquo;review&rdquo;</em>. These stories will be reviewed and if the <em>&ldquo;delivered&rdquo;</em> column has a respective limit, they will also get deployed to production and eventually reach <em>&ldquo;done&rdquo;</em>, allowing space for more stories to be worked.</p>
+<p>The application of the limit has not only made the problem apparent, but it has also provided a solution to it.</p>
+<h2 id="fine-tuning-the-limits">
+    <a href="#fine-tuning-the-limits">#</a>
+    Fine-tuning the limits
+</h2><p>Assuming that some symptoms are visible and the team feels that some WIP limits would be helpful, a natural question would be how can a team go about setting them. What are the right the numbers? How many swimlanes should a limit span?</p>
+<h3 id="avoid-multitasking">
+    <a href="#avoid-multitasking">#</a>
+    Avoid multitasking
+</h3><p>I would propose that the first thing to avoid is multitasking. A WIP limit greater than the number of software engineers in the team would mean that people are encouraged to multitask. For instance, imagine a team of five software engineers with a WIP limit of 6.</p>
+<p>Keep this in mind. In my opinion, if you are ready to set a WIP limit greater than the number of software engineers in the team, take a step back. Think the problem over again. Why do you want to do this? What do you expect to gain out of it?</p>
+<h3 id="not-too-high">
+    <a href="#not-too-high">#</a>
+    Not too high
+</h3><p>Building on this point, a WIP limit equal to the number of software engineers in the team would mean that no one can multitask, but on the other hand, pairing and collaboration are not encouraged. This kind of beats the purpose, because fostering collaboration is a key motive for using this technique.</p>
+<p>The two above-mentioned strategies can work but, only as first steps and only in rare situations. For instance, if some team members are very reluctant about using WIP limits and yet the rest of the team feels that they would be beneficial, perhaps it&rsquo;s a decent first step. However, I see very limited benefits besides these cases.</p>
+<h3 id="but-not-too-low-either">
+    <a href="#but-not-too-low-either">#</a>
+    But not too low either
+</h3><p>On the other hand, a very restrictive WIP limit can have negative effects. Not every task and story is suitable for pairing or requires more than one person working on it. Also, pairing is great, but, as discussed in extensively in my <a class="link" href="https://nvoulgaris.com/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/"  target="_blank" rel="noopener"
+    >pair programming post</a>, it can be exhaustive. Setting a WIP limit of two in a team with four software engineers would automatically mean that the engineers should always work in pairs to honour this rule. If this is what you are after - always working in pair - by all means, go for it. However, pay a lot of attention to it. Such a restrictive limit may lead to people feeling that they are suffocating or it may just be counterproductive.</p>
+<h3 id="inspect-and-adapt">
+    <a href="#inspect-and-adapt">#</a>
+    Inspect and adapt
+</h3><p>Having said all these, we still haven&rsquo;t answered the above-mentioned questions. Well, you might have guessed it. There is no <em>right</em> answer. <em>There is no silver bullet</em>. The very philosophy of <em>Agile</em> suggests a totally different approach to <em>right</em> answers and <em>silver bullets</em>. <em>Scrum</em> says <em>&ldquo;inspect and adapt&rdquo;</em>. That is what I would suggest.</p>
+<p>Start off with discussing the situation during the retrospective. Come up with the first iteration of a few WIP limits. Give it a go and watch what happens. Adjust it and repeat the process. This is an ever-ending-process. Keep shifting towards what works best for the team and always keep in mind that different things work on different teams.</p>
+<h2 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h2><p>Being <em>Agile</em> means being after continuous improvement. This requires being able to read the symptoms and come up with experiments to help the team work better. Lack of focus, disrespect to priority, big bang releases and small bus factors are serious symptoms that should be dealt with.</p>
+<p>Limiting work-in-progress can provide a great boost to the team, like reducing the average lead time, improving collaboration, increasing the bus factor, identifying bottlenecks and more. If a team exhibits these symptoms, applying some WIP limits could be an experiment worth considering.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/agile/">Agile</a>
+        
+            <a href="/tags/scrum/">Scrum</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/working-the-velocity-of-a-scrum-team/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/velocity.jpg" loading="lazy" data-key="" data-hash="/img/posts/velocity.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Working the velocity of a scrum team</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/technical-background-the-extra-mile-on-scrum-mastery/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/extra_mile.jpg" loading="lazy" data-key="" data-hash="/img/posts/extra_mile.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Technical background: the extra mile on scrum mastery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/running-remote-retrospectives/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/remote_retrospectives.jpg" loading="lazy" data-key="" data-hash="/img/posts/remote_retrospectives.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Running remote retrospectives</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/dealing-with-technical-debt-in-an-agile-environment/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/technical_debt.jpg" loading="lazy" data-key="" data-hash="/img/posts/technical_debt.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dealing with technical debt in an agile environment</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/driving-fruitful-retrospectives/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/fruitful_retros.jpg" loading="lazy" data-key="" data-hash="/img/posts/fruitful_retros.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Driving fruitful retrospectives</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Retrospectives on Nikos Voulgaris</title>
+        <link>//localhost:1313/tags/retrospectives/</link>
+        <description>Recent content in Retrospectives on Nikos Voulgaris</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Nikos Voulgaris</copyright>
+        <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/retrospectives/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Running remote retrospectives</title>
+        <link>//localhost:1313/running-remote-retrospectives/</link>
+        <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/running-remote-retrospectives/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/remote_retrospectives.jpg" alt="Featured image of post Running remote retrospectives" /&gt;&lt;p&gt;Remote work has become an integral part of a number of professions, with software engineering being number one in the list. Working remotely requires a cultural foundation and a shift of mind on our perception. I believe that there is quite a lot of room for improvement on these points.&lt;/p&gt;
+&lt;p&gt;So, in this article I will share my thoughts and tips on points I consider important when running a remote retrospective. These come from the point of view of a scrum master. Regardless of whether people call themselves a &amp;ldquo;scrum master&amp;rdquo; or not, running a retrospective means wearing the hat, at least temporarily.&lt;/p&gt;
+&lt;p&gt;My intention here is not to cover the fundamentals, such as the &lt;em&gt;goal&lt;/em&gt; and the &lt;em&gt;structure&lt;/em&gt; of the session. These are covered extensively in my &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/driving-fruitful-retrospectives&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;driving fruitful retrospectives&lt;/a&gt; post. My aim is to complement that post with the special case of a geographically distributed team.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Throughout this post, I will be referring to a fully remote team. Apart from this and the colocated team, there is also a third case, in which some of the team members are working remotely and some in the same location. I will not be covering the latter in this post.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;engagement&#34;&gt;
+    &lt;a href=&#34;#engagement&#34;&gt;#&lt;/a&gt;
+    Engagement
+&lt;/h2&gt;&lt;p&gt;The primary goal of a scrum master remains the same whether the retrospective is taking place remotely or colocated. It is to make sure that &lt;strong&gt;all participants engage in the activity&lt;/strong&gt;. This is a precondition. I cannot imagine a successful session that fails to meet this. When I drive retrospectives, this is the primary reason for which I use the &lt;em&gt;&amp;ldquo;set the stage&amp;rdquo;&lt;/em&gt; step.&lt;/p&gt;
+&lt;p&gt;We will discuss a few extra points on this topic further below, on the &lt;em&gt;facilitation&lt;/em&gt; part, but the reason that I am mentioning it here is that being remote imposes a few extra difficulties. So, before even starting the session, I would propose to &lt;em&gt;focus on communication&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Without communication, there is no engagement and without engagement, there is no retrospective.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Therefore I would propose to spend some time both during the preparation of the session and at the beginning of it to make sure that &lt;em&gt;people can be seen, heard and understood&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;use-the-camera&#34;&gt;
+    &lt;a href=&#34;#use-the-camera&#34;&gt;#&lt;/a&gt;
+    Use the camera
+&lt;/h3&gt;&lt;p&gt;Using the camera is a great tip for remotely working teams. I find it particularly important during the retrospective. It feels very different conversing with just a voice than with an individual who is located somewhere else. Context and a great deal of expressivity derives from our body language. A lot of our reactions are expressed via it, using facial expressions or hand gestures, without verbal communication. Take a moment to think of how much volume of information is missed when listening to someone without seeing him.&lt;/p&gt;
+&lt;p&gt;These, missing pieces of information can make the difference between a constructive argument and one that leads to a dead end. These can also have a resounding effect on team bonding and chemistry in the long run. Personally, I always encourage geographically distributed teams to use their cameras as much as they can, but when it comes to the retrospective, I &lt;em&gt;insist&lt;/em&gt; that everyone should use it.&lt;/p&gt;
+&lt;h3 id=&#34;make-sure-everyone-can-be-seen-and-heard&#34;&gt;
+    &lt;a href=&#34;#make-sure-everyone-can-be-seen-and-heard&#34;&gt;#&lt;/a&gt;
+    Make sure everyone can be seen and heard
+&lt;/h3&gt;&lt;p&gt;Taking the time to make sure that everything is functioning properly before starting the retrospective is very important. &lt;em&gt;Has everybody said something. Is everyone&amp;rsquo;s mic functioning as expected? Can everyone hear everybody else? Can everyone see everybody else?&lt;/em&gt; Ask yourself these questions before starting.&lt;/p&gt;
+&lt;p&gt;There is no point in starting a retrospective without resolving all sound and video problems. As a matter of fact, in case there is such a problem, the last thing the team wants is to be interrupted in the middle of an exercise to resolve a technical issue with somebody&amp;rsquo;s mic or camera. The last thing a participant wants is to contribute to the conversation only to find out, after a few seconds, that no one heard him.&lt;/p&gt;
+&lt;h2 id=&#34;tools&#34;&gt;
+    &lt;a href=&#34;#tools&#34;&gt;#&lt;/a&gt;
+    Tools
+&lt;/h2&gt;&lt;p&gt;Being remote significantly restricts both the options on tools that can be used and the range of exercises that can be run. However, a wise choice on a collaboration tool and a careful selection of exercises can really boost the results of the session.&lt;/p&gt;
+&lt;h3 id=&#34;use-an-online-collaboration-tool&#34;&gt;
+    &lt;a href=&#34;#use-an-online-collaboration-tool&#34;&gt;#&lt;/a&gt;
+    Use an online collaboration tool
+&lt;/h3&gt;&lt;p&gt;Retrospectives are all about interaction. The participants should come up with ideas and add information to the session. In order for the data to be meaningful, they should be gathered, processed and the team should work on them. During a colocated session, the wall or a board is naturally used. During a remote retrospective, I would strongly suggest to use an online collaboration tool. There is no point in suggesting a specific one, as there are loads out there that are free and can get the job done. Just make sure that a group of people can simultaneously work on the same space and that the data are updated in real-time (there is no need to refresh in order to see an update). In my experience, the more playful the tool is, the more the participants enjoy the session, so I would suggest something with a sticky-note-on-the-wall look and feel and lots of colours.&lt;/p&gt;
+&lt;p&gt;What I would caution one against is not to use any tool and host a blank session, with the participants just discussing without any common ground to work on.&lt;/p&gt;
+&lt;h3 id=&#34;reconsider-the-format&#34;&gt;
+    &lt;a href=&#34;#reconsider-the-format&#34;&gt;#&lt;/a&gt;
+    Reconsider the format
+&lt;/h3&gt;&lt;p&gt;Concerning the format of the session, I feel that there is a lot of room for experimentation. Generally, I like sticking to the 5 steps that I have thoroughly described in my &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/driving-fruitful-retrospectives&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;driving fruitful retrospectives&lt;/a&gt; post, but there are quite a few factors that should be considered.&lt;/p&gt;
+&lt;p&gt;Some exercises are not suitable for a team that is not colocated. For instance, there is no meaning running the &lt;em&gt;park bench&lt;/em&gt; exercise on a remote session. The advantages of such an exercise derive from the mobility within the room, the high energy level and the playful format. I believe that attempting to run a variation of this exercise during a remote session would backfire. So, I would propose picking exercises that suite collaboration from distance.&lt;/p&gt;
+&lt;p&gt;Also, perhaps one might notice that an exercise takes considerably more time when performed remotely than when run on the spot. That&amp;rsquo;s reasonable as communication is harder and synchronization might require more time. I would suggest to always keep that in mind and, perhaps, adjust the session&amp;rsquo;s schedule.&lt;/p&gt;
+&lt;h2 id=&#34;facilitation&#34;&gt;
+    &lt;a href=&#34;#facilitation&#34;&gt;#&lt;/a&gt;
+    Facilitation
+&lt;/h2&gt;&lt;p&gt;As far as facilitation is concerned most of the things that apply in colocated retrospectives, apply to remote ones too. Therefore, I will not repeat the thoughts that I have expressed in &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/driving-fruitful-retrospectives&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;driving fruitful retrospectives&lt;/a&gt; (such as how to deal with silent members or members that dominate the conversation), but there are a few points worth discussing.&lt;/p&gt;
+&lt;p&gt;These thoughts assume that the facilitator is acting as a scrum master. The case the facilitator wears two hats, the one of the scrum master and the one of the member of the development team is outside of the scope of this blog post.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I usually wear these two hats and I believe that driving a retrospective is perhaps the most challenging part of this dual role.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;make-yourself-invisible&#34;&gt;
+    &lt;a href=&#34;#make-yourself-invisible&#34;&gt;#&lt;/a&gt;
+    Make yourself invisible
+&lt;/h3&gt;&lt;p&gt;As always, try to make the team forget that you are even there. At all times, keep in mind that the scrum master is needed to help the team work meaningfully during the session. Try to &lt;em&gt;be a servant leader&lt;/em&gt;. When needed, remind the team that you are &lt;em&gt;not the protagonist&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;For instance, I sometimes find that team members address me when commenting on sticky notes. This is a mini &lt;em&gt;alarm&lt;/em&gt; for me. Usually, when I am physically present, I point to the rest of the team. This gets the job done and does not interrupt the team member. However, when being remote, I have no option but to interrupt her. It is one of the last things I want to do, but having someone addressing me is a signal I take very seriously. The retrospective is being derailed and I should take action.&lt;/p&gt;
+&lt;p&gt;As a second example, when team members are called to come up with input and &amp;ldquo;stick it to the wall&amp;rdquo;, they sometimes look for the facilitator to impose an order or the process. Take extra care to be &amp;ldquo;absent&amp;rdquo; at that point. This is easier to achieve when being remote. Just stay silent and let them &lt;em&gt;self-organize&lt;/em&gt;. They will do it. Remember that silence is gold in this case. If it gets uncomfortable, just keep on staying silent. Someone will break the silence and the team will eventually function on its own.&lt;/p&gt;
+&lt;p&gt;I could go on with a dozen examples, but I believe that the message is clear. Facilitate the session as a servant leader and fly below the radar as much as possible.&lt;/p&gt;
+&lt;h3 id=&#34;consider-breaking-the-ice&#34;&gt;
+    &lt;a href=&#34;#consider-breaking-the-ice&#34;&gt;#&lt;/a&gt;
+    Consider breaking the ice
+&lt;/h3&gt;&lt;p&gt;Being physically present in a room follows that people have already talked to each other before the start of the session. Perhaps they just went out to get a cup of coffee or they were discussing in their offices, after the sprint review. However, this is obviously not the case in a remote session.&lt;/p&gt;
+&lt;p&gt;Keep in mind that people need to feel comfortable before entering a session, let alone a retrospective. Breaking the ice can go a long way in this case. Instead of directly jumping to setting the stage and starting the retrospective, consider having some small talk first. Anything ranging from the weather and sports to the sprint review that just took place will do. Just make sure that people feel relaxed and ready to chat.&lt;/p&gt;
+&lt;h3 id=&#34;make-sure-everyone-contributes&#34;&gt;
+    &lt;a href=&#34;#make-sure-everyone-contributes&#34;&gt;#&lt;/a&gt;
+    Make sure everyone contributes
+&lt;/h3&gt;&lt;p&gt;Every individual has a unique personality. Chances are that in a scrum team the spectrum of these personalities is going to be very broad. Naturally, some team members will open up more easily than others. However, it is crucial for the success of the retrospective to have everyone contributing. Unfortunately, it is easier for a closed person to &amp;ldquo;hide&amp;rdquo; and remain a spectator during a remote retrospective than during a colocated one. This is a problem that requires attention and very careful manoeuvring from the scrum master. Remember, that failing to address this can lead to losing a great part of the value of the session.&lt;/p&gt;
+&lt;p&gt;Initially, make sure than during the &lt;em&gt;set the stage&lt;/em&gt; step, everyone speaks and seems engaged and comfortable to contribute. Then, I would propose to choose the exercises very carefully. Prefer the ones that work in a round-robin fashion over the ones the require initiative form individuals. For instance, it is more likely to have  everyone contributing in an &lt;em&gt;I like - I wish&lt;/em&gt; kind of exercise, during which all members are required to speak at their own turn than in a &lt;em&gt;5-why analysis&lt;/em&gt;. During the latter, the same people could be asking and answering the questions throughout the whole exercise. Lastly, if nothing works and you notice that people remain passive, try to stimulate them. Ask them for their opinion on the matter or if they have something else to contribute that is not already heard.&lt;/p&gt;
+&lt;p&gt;In any case, this matter requires very delicate moves. Try hard not to be intrusive. When people feel judgement is being passed on them, they might feel offended and distance themselves even more. At all times, keep in mind that &lt;em&gt;empathy is a key scrum master quality&lt;/em&gt;. Try to get into their shoes and do the best to help them and the team.&lt;/p&gt;
+&lt;h2 id=&#34;follow-up&#34;&gt;
+    &lt;a href=&#34;#follow-up&#34;&gt;#&lt;/a&gt;
+    Follow-up
+&lt;/h2&gt;&lt;p&gt;After a fruitful session, a lot of ideas have been expressed and heard, a lot of discussions have taken place and a few action items have been produced as an outcome. It&amp;rsquo;s always a good idea to &lt;em&gt;follow-up the session&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Perhaps an email or even just a slack message will do. Just make sure that the retrospective is summarized and the action items are clear. This will create a sense of a completed work to the team and will emphasize the importance of following up on the work done during the retrospective. After all, the retrospective, apart from a summary of the sprint that just finished, is also the very last action on it.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;Running a retrospective for a geographically distributed team is very different from running one for a colocated team. However, with the proper care and organization, it can be as fruitful. Focusing on engagement is crucial for the success of the session. It&amp;rsquo;s easier for people to remain &amp;ldquo;hidden&amp;rdquo; when being remote and technical issues may add unexpected obstacles. A good real-time collaboration tool and a wise selection of exercises and format can be extremely beneficial to the outcome of the session. As in colocated sessions, facilitation is the key to a successful and fruitful retrospective.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Driving fruitful retrospectives</title>
+        <link>//localhost:1313/driving-fruitful-retrospectives/</link>
+        <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/driving-fruitful-retrospectives/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/fruitful_retros.jpg" alt="Featured image of post Driving fruitful retrospectives" /&gt;&lt;p&gt;How many times have you found yourself engaged in a retrospective, wondering why do you lose all this time? How many times have you committed to action items that no one ever dealt with in any way? How many times have you caught your team or yourself discussing the same issues again and again thinking that this will not be the last time?&lt;/p&gt;
+&lt;p&gt;Retrospectives are very hard-to-drive meetings. The hurdles to overcome are countless. Team members that will not open up, team members that dominate the conversation, inability to identify root causes, lack of commitment to action items, frustration and politics, just to name a few. Sometimes the Jocker (Scrum Master) has to display a great arsenal to keep all of these under control and - above all - meaningful.&lt;/p&gt;
+&lt;p&gt;My intention in this blog post is to share part of the knowledge, experience and lessons learned by driving retrospectives. Despite mainly referring to people facilitating these sessions (Scrum Masters), I believe that all members of a scrum team could benefit by it. Throughout this post, I will be referring to sprint retrospectives, but these principles, more or less apply to all kinds of retrospectives (release retrospectives, departmental retrospectives etc).&lt;/p&gt;
+&lt;h2 id=&#34;the-goal&#34;&gt;
+    &lt;a href=&#34;#the-goal&#34;&gt;#&lt;/a&gt;
+    The Goal
+&lt;/h2&gt;&lt;p&gt;Before we even begin talking about how to carry out successful retrospectives, let&amp;rsquo;s think for a moment why we have them in the first place. This meeting is a key part of the ever ending &lt;em&gt;inspect and adapt&lt;/em&gt; loop. It&amp;rsquo;s the team&amp;rsquo;s official slot reserved for thinking what we did during the last sprint and how could we improve it.&lt;/p&gt;
+&lt;p&gt;Bear in mind that this is the &lt;em&gt;last resort&lt;/em&gt; for improvement. The proper moment is &lt;em&gt;any&lt;/em&gt; moment. As soon as we know that something could be improved, we should try to improve it right away. When you come across any pain point, don&amp;rsquo;t forget that &lt;strong&gt;the retrospective is now!&lt;/strong&gt; However, this runs the great risk of never prioritizing and never doing it and therefore, the sprint retrospective is there to force us to work on these issues.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The goal of a retrospective is to produce action items&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;structure&#34;&gt;
+    &lt;a href=&#34;#structure&#34;&gt;#&lt;/a&gt;
+    Structure
+&lt;/h2&gt;&lt;p&gt;One of the great pitfalls to be avoided is not preparing a retrospective before facilitating it. Structure and preparation are &lt;strong&gt;key&lt;/strong&gt; to the success of the retrospective and there is a reason for it. Team members often get emotional or carried away when engaged in retrospective conversations (they are supposed to after all) and it can be very easy to lose sight of the goal and spend the session in a meaningless way.&lt;/p&gt;
+&lt;p&gt;Always make sure that you know &lt;strong&gt;exactly&lt;/strong&gt; how the session unfolds relative to the schedule. Is it going too slow? Are we spending too much time on this topic? How far behind are we? Can we cover it and in which way? &lt;em&gt;Always make sure that there is enough time to reach to action items.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In an ideal situation, a mature team should be able to walk into the retrospective and just share their thoughts, drive the discussion to conclusions and action items, commit on working on them and move on with the following sprint. However, since this is barely realistic, I always use exercises to put the team in the right context and help them focus on identifying &lt;em&gt;strengths&lt;/em&gt; and &lt;em&gt;weaknesses&lt;/em&gt;. An excellent source of exercises is &lt;a class=&#34;link&#34; href=&#34;https://retromat.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;retromat&lt;/a&gt;. In the vast majority of the retrospectives I have facilitated, I have broken the structure down to the following five sections.&lt;/p&gt;
+&lt;h3 id=&#34;set-the-stage&#34;&gt;
+    &lt;a href=&#34;#set-the-stage&#34;&gt;#&lt;/a&gt;
+    Set the stage
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Usually, 5-10 minutes for a 90-minute retrospective, depending on the team size&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Take the time to communicate the purpose of the session and the schedule. It may sound redundant, but it will help the team members orient themselves during the retrospective and focus on the task in hand for the following period of time.&lt;/p&gt;
+&lt;p&gt;Usually, I ask for a very brief check-in phrase or input (e.g. describe the previous sprint in 3 words). Simplistic as it may sound, keep in mind that there may be people in the room that are hard to open up. As Scrum Masters, we should always make sure that every team member feels comfortable to speak and is engaged in the team exercise. This is what I focus on during this short phase. &lt;strong&gt;Get everyone onboard for what&amp;rsquo;s about to follow&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;gather-data&#34;&gt;
+    &lt;a href=&#34;#gather-data&#34;&gt;#&lt;/a&gt;
+    Gather data
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the time to identify &lt;em&gt;what went wrong&lt;/em&gt; (or could just be improved) and &lt;em&gt;what did the team do well&lt;/em&gt; (this is also very important).&lt;/p&gt;
+&lt;p&gt;Use an exercise that focuses on &lt;strong&gt;plain facts&lt;/strong&gt;. Ask for both negative and positive facts. As it is important to amend any problematic areas, it is equally important to preserve the good habits. Preferably, before discussing, allow the team some time to silently think and jot down a few things on sticky notes, in order to avoid affecting each other&amp;rsquo;s thought in this part. If necessary, you may feed the team by mentioning one or two defective ares that you recognized during the sprint, prior to the exercise, to get them going and accelerate results, but be very careful &lt;em&gt;not to guide them&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This is an extremely important step, as it will feed the rest of the retrospective with data. If the team fails to come up with the right issues here, it is almost inevitable that the real issues will remain untouched, no matter how great the effort in the rest of the session.&lt;/p&gt;
+&lt;h3 id=&#34;generate-insights&#34;&gt;
+    &lt;a href=&#34;#generate-insights&#34;&gt;#&lt;/a&gt;
+    Generate insights
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Having identified the major pain points in the previous step, it&amp;rsquo;s time to address them. The point of this step is to come up with potential solutions to these pain points, but &lt;em&gt;do not neglect to preserve the good habits&lt;/em&gt; as well.&lt;/p&gt;
+&lt;p&gt;Pick an exercise to help the team interpret the data gathered from the previous step and &lt;em&gt;come up with action items&lt;/em&gt; to both address the problems and preserve the good habits. Usually, I avoid a lot of conversation and interaction up to this point to keep the process of gathering the data impartial, but this is the point to &lt;em&gt;allow collaboration to kick in&lt;/em&gt; (e.g. working in pairs or have a lot of conversation). Make sure the team members are interacting in a productive way. If the items from the previous step are too many, ask the team to prioritize them and work the list top to bottom until the allocated time (or the list) runs out. Ideally, by the end of this step a list with ideas (solutions to problems, things to start/stop/continue doing etc) is composed and lies visible to the team (e.g. sticky notes on the wall, whiteboard etc).&lt;/p&gt;
+&lt;p&gt;Always keep in mind that this is the very heart of the retrospective. Tension may be caused, strong arguments may take place. This is healthy and desired, but always make sure that the situation is under control and is actually going somewhere. As a Scrum Master, make sure that personal attacks are avoided, only productive arguments are hold and the team mainly deals with items that is actually empowered to change.&lt;/p&gt;
+&lt;h3 id=&#34;decide-what-to-do&#34;&gt;
+    &lt;a href=&#34;#decide-what-to-do&#34;&gt;#&lt;/a&gt;
+    Decide what to do
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Usually, 20-25 minutes for a 90-minute retrospective, depending on the team size&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Presumably, most of the hard work is over. A list of action items is in the team&amp;rsquo;s hands. What is left is to decide on a reasonable amount of action items to work on the upcoming sprint.&lt;/p&gt;
+&lt;p&gt;In this step, I always like using exercises that foster collaboration (and conversation) and create clear, unambiguous results. For instance, an &lt;a class=&#34;link&#34; href=&#34;https://retromat.org/en/?id=88&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;impediments cup&lt;/a&gt; facilitates &lt;em&gt;prioritizing action items&lt;/em&gt;, creating a &lt;em&gt;clear result&lt;/em&gt; and &lt;em&gt;engage in discussion&lt;/em&gt; while doing so.&lt;/p&gt;
+&lt;p&gt;Basically, this is a matter of prioritization. All action items are useful, but the team has to commit to a reasonable number of them. This depends on a lot of factors (size of the team, difficulty of the action item, sprint length etc). Make sure that the decisions are taken collaboratively (but not chase after consent, as it can kill the retrospective) and the reasons for them are clear to the team. Additionally, be very careful not to use a process that creates winners and losers, as this can hurt morale.&lt;/p&gt;
+&lt;h3 id=&#34;close-the-retrospective&#34;&gt;
+    &lt;a href=&#34;#close-the-retrospective&#34;&gt;#&lt;/a&gt;
+    Close the retrospective
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Usually, 5-10 minutes for a 90-minute retrospective, depending on the team size&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This step can be used to both &lt;em&gt;get feedback on the retrospective&lt;/em&gt; and &lt;em&gt;close the session in a light tone&lt;/em&gt;. It&amp;rsquo;s very likely that as problems surfaced, people opened up, things got tense and there were disagreements. This was very desired indeed, but as the session draws to a close, the point is to leave all these behind, keep all the hard work and close in a good mood in order to begin the next sprint.&lt;/p&gt;
+&lt;p&gt;Any very brief exercise will do for this part. Just make sure that as you achieve the above-mentioned goal, you&amp;rsquo;re not tiring an already exhausted team. Preferably, choose a fun and invigorating exercise.&lt;/p&gt;
+&lt;h2 id=&#34;smart-action-items&#34;&gt;
+    &lt;a href=&#34;#smart-action-items&#34;&gt;#&lt;/a&gt;
+    SMART action items
+&lt;/h2&gt;&lt;p&gt;Perhaps the biggest pitfall for a retrospective is to come up with action items that are not &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/SMART_criteria&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SMART&lt;/a&gt;. There is a huge difference between &lt;em&gt;action items&lt;/em&gt; and &lt;em&gt;wishful thinking&lt;/em&gt;. For instance, consider the following two outcomes of a team&amp;rsquo;s retrospective:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Improve collective ownership of the code.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Do you see the difference? For an action item to be meaningful, it has to be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Specific&lt;/li&gt;
+&lt;li&gt;Measurable&lt;/li&gt;
+&lt;li&gt;Agreed upon&lt;/li&gt;
+&lt;li&gt;Realistic&lt;/li&gt;
+&lt;li&gt;Trackable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dealing-with-silent-team-members&#34;&gt;
+    &lt;a href=&#34;#dealing-with-silent-team-members&#34;&gt;#&lt;/a&gt;
+    Dealing with silent team members
+&lt;/h2&gt;&lt;p&gt;Getting people to open up can be one of the trickiest tasks for a Scrum Master, but it constitutes a key ingredient for a fruitful retrospective. People may be quiet due to their personality or because they choose to remain silent for their own purposes. Both cases are difficult to handle, but each requires a different approach.&lt;/p&gt;
+&lt;p&gt;When dealing with team members that are shy or not very outgoing, remember to work hard with them while &lt;em&gt;setting the stage&lt;/em&gt;. Before leaving this step, make sure that they have shared something with the group. This will make them feel more engaged and will increase the probability that they will share more during the retrospective. If necessary, during the retrospective, explicitly ask them to comment on a topic, especially if you know that they have an opinion on the matter, but they are obviously reluctant to share it.&lt;/p&gt;
+&lt;p&gt;When people remain silent driven by politics, the spectrum of options is considerably narrowed down. What I feel is useful is to state once again that the purpose of this session is to improve as a team and in order to do so, sincere input and respect by everyone is a prerequisite. However, an individual who chooses to play his own game most likely will not change his path by such a speech. I would also suggest to drive the rest of the team to open her up.&lt;/p&gt;
+&lt;h2 id=&#34;dealing-with-team-members-that-dominate-the-conversation&#34;&gt;
+    &lt;a href=&#34;#dealing-with-team-members-that-dominate-the-conversation&#34;&gt;#&lt;/a&gt;
+    Dealing with team members that dominate the conversation
+&lt;/h2&gt;&lt;p&gt;On the other hand, having a team member that simply dominates all conversation is a definite disaster for the outcome of the retrospective. A team member may do so either wittingly or unwittingly. In any case, find a suitable point in her speech and &lt;em&gt;interrupt&lt;/em&gt; her. Make sure you are very polite, but firmly explain that this session cannot work like this and the team will lose sight of the goal in this manner. Strive to achieve that discussion is as evenly as possible distributed throughout the group and &lt;em&gt;all have a fair chance of expressing themselves&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This is not an easy situation to be in. No matter how polite you are, chances are that the person you interrupt will feel offended (even if she doesn&amp;rsquo;t show it), but do not yield to this thought. In the past, I have driven retrospectives that suffered for this exact reason, because I never summoned up the courage to interrupt this person. Hopefully, I&amp;rsquo;ve learned from my mistakes.&lt;/p&gt;
+&lt;h2 id=&#34;keep-the-conversation-productive&#34;&gt;
+    &lt;a href=&#34;#keep-the-conversation-productive&#34;&gt;#&lt;/a&gt;
+    Keep the conversation productive
+&lt;/h2&gt;&lt;p&gt;The moment the conversation is derailed, the retrospective is immediately jeopardized. Having team members aimlessly discussing instead of trying to reach to the root cause of problems and solve them can be a disaster. Personal attacks and conflicts can cause this. Make sure that you are very strict on this and put the team back on track as soon as you realize it. Additionally, discussing on items that are out of the team&amp;rsquo;s reach can also kill the retrospective. Make sure that you &lt;em&gt;spend no time on such topics&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A team that tends to frequently focus on items outside of its power is in danger of essentially wasting retrospective after retrospective dealing with issues that they will never be able to solve. Also, as they are convinced that an external factor is slowing them down, they run the risk of lowering their own morale and start feeling underprivileged. &lt;em&gt;Kill this as soon as you notice it&lt;/em&gt;. No matter how disastrous these external factors are, this is the time to focus on improving the internal team functioning. An excellent exercise to help you with this is &lt;a class=&#34;link&#34; href=&#34;https://retromat.org/en/?id=29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Circles &amp;amp; Soup&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;avoid-creating-a-routine&#34;&gt;
+    &lt;a href=&#34;#avoid-creating-a-routine&#34;&gt;#&lt;/a&gt;
+    Avoid creating a routine
+&lt;/h2&gt;&lt;p&gt;As soon as retrospective starts feeling like a routine, do something to disrupt this. During this session, we want team members to be creative and think outside of the box. A routine is the worst enemy of this.&lt;/p&gt;
+&lt;p&gt;Always strive to keep the team energized and keep the blood flowing. Use exercises that require standing up and walking in the room. Keep it playful.  If possible, change the room or the time the retrospective takes place. Whatever you do, &lt;em&gt;do not create a routine&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;Driving a retrospective is a very tricky business. However, retrospectives are key to the healthy functioning of an Agile team. Make sure to prepare beforehand and constantly keep in mind that the team should be after SMART action items. Don&amp;rsquo;t let it be derailed and the hard work is definitely going to pay off. Finally, never forget. &lt;em&gt;The retrospective is now&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;P.S. Feel free to share your thoughts or comment on mine. As always, I would very much love a nice, productive conversation on the topic.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

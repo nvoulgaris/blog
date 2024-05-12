@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A few days ago, right after my talk/demo on hands-on Test Driven Development (TDD) on the JHUG meetup, I noticed that a lot of conversation was about applying TDD in real world systems. Somehow people felt that it was great for a short demo or for implementing a small, algorithmic piece of code, but could not see how it could be applied to a greater scale. Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches.">
+<title>Comparing TDD flavours</title>
+
+<link rel='canonical' href='//localhost:1313/post/comparing-tdd-flavours/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Comparing TDD flavours">
+<meta property='og:description' content="A few days ago, right after my talk/demo on hands-on Test Driven Development (TDD) on the JHUG meetup, I noticed that a lot of conversation was about applying TDD in real world systems. Somehow people felt that it was great for a short demo or for implementing a small, algorithmic piece of code, but could not see how it could be applied to a greater scale. Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches.">
+<meta property='og:url' content='//localhost:1313/post/comparing-tdd-flavours/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='tdd' /><meta property='article:tag' content='xp' /><meta property='article:published_time' content='2019-03-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-03-25T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/tdd_flavours.jpg' />
+<meta name="twitter:title" content="Comparing TDD flavours">
+<meta name="twitter:description" content="A few days ago, right after my talk/demo on hands-on Test Driven Development (TDD) on the JHUG meetup, I noticed that a lot of conversation was about applying TDD in real world systems. Somehow people felt that it was great for a short demo or for implementing a small, algorithmic piece of code, but could not see how it could be applied to a greater scale. Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/tdd_flavours.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/page/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#classicist-chicago-school">Classicist (Chicago school)</a></li>
+    <li><a href="#outside-in-london-school">Outside-In (London school)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#classicist">Classicist</a>
+      <ul>
+        <li><a href="#strengths">Strengths</a></li>
+        <li><a href="#evolutionary-design">Evolutionary design</a></li>
+        <li><a href="#weaknesses">Weaknesses</a></li>
+      </ul>
+    </li>
+    <li><a href="#outside-in">Outside-In</a>
+      <ul>
+        <li><a href="#strengths-1">Strengths</a></li>
+        <li><a href="#weaknesses-1">Weaknesses</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/comparing-tdd-flavours/">
+                
+                    <img src="/img/posts/tdd_flavours.jpg" loading="lazy" alt="Featured image of post Comparing TDD flavours" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/comparing-tdd-flavours/">Comparing TDD flavours</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 25, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    13 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>A few days ago, right after my talk/demo on hands-on Test Driven Development (TDD) on the JHUG meetup, I noticed that a lot of conversation was about applying TDD in real world systems. Somehow people felt that it was great for a short demo or for implementing a small, algorithmic piece of code, but could not see how it could be applied to a greater scale.</p>
+<p>Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches. Timing couldn&rsquo;t be better. Having just finished watching an exceptionally good <a class="link" href="https://cleancoders.com/videos/comparativeDesign"  target="_blank" rel="noopener"
+    >clean coders series</a> on the comparison between the two TDD styles, I had already decided to blog about it.</p>
+<p>Therefore, after giving a very brief overview of the two approaches, I will attempt to describe their strengths and weaknesses according to my opinion.</p>
+<h1 id="overview-of-the-techniques">
+    <a href="#overview-of-the-techniques">#</a>
+    Overview of the techniques
+</h1><p>There is no way I can thoroughly describe the two approaches in such a short post, but this isn&rsquo;t the intention here anyway. However, I feel that a very brief overview would facilitate in understanding the points that I am about to make. There is plenty of sources online explaining in detail both techniques, so please, feel free to consult them prior to continuing if needed.</p>
+<h2 id="classicist-chicago-school">
+    <a href="#classicist-chicago-school">#</a>
+    Classicist (Chicago school)
+</h2><p>Classicist TDD requires that we lock ourselves in the red-green-refactor cycle, pushing requirements in the form of failing unit tests (red), implementing an increment to fulfill these requirements (green) and then working on structuring the code in a better way (refactor).</p>
+<p>This approach attempts to <em>minimize mocking</em> and most of the <em>design happens at the refactor step</em>, having already implemented a working increment.</p>
+<h2 id="outside-in-london-school">
+    <a href="#outside-in-london-school">#</a>
+    Outside-In (London school)
+</h2><p>Outside-In TDD uses a different approach. An extra step is inserted in the TDD cycle, the one of writing a failing <em>acceptance</em> test. So, we first focus on writing a failing acceptance test and then on locking ourselves in the above mentioned TDD cycle, for every class needed, until the requirement of this acceptance test is fulfilled. Focusing on one acceptance test at a time, we TDD our way from the outmost layer of the system (controller, queue consumer etc) all the way to the core (domain, database layer etc).</p>
+<p>Some principal differences with regard to the previous approach are that <em>mocking and stubbing are heavily used</em> and most of the <em>design decisions are made in the red state</em>, allowing for more minor adjustments in the refactor step.</p>
+<h1 id="where-i-stand">
+    <a href="#where-i-stand">#</a>
+    Where I stand
+</h1><p>It is reasonable for one to wonder whether I am biased on the topic or not. So, please allow me to clarify it before I proceed.</p>
+<p>In my early TDD steps, I was mainly influenced by Uncle Bob and therefore, I started off as a classicist TDDer. After a considerably big learning curve, I started to like TDD a lot, but I was not <em>thrilled</em> by it. I always felt that the technique was great, but its professional application was limited and the benefits not always tangible (at least in my mind).</p>
+<p>This changed radically the day I attended Sandro Mancuso&rsquo;s excellent <em>&ldquo;Crafted design&rdquo;</em> workshop. Despite my obvious shortcomings during the workshop, I loved the idea and I followed up hard and persisted until I was able to apply Outside-In TDD professionally and eventually transfer knowledge within my company and influence colleagues. I was finally thrilled and enthusiastic about applying TDD professionally and, frankly, ever since I did, I find it very hard to work in a different way. So, this is where I stand. <em>I love Outside-In TDD</em>.</p>
+<p>Having said that, I have come forward with my bias before delving into the topic on purpose. I wanted to state where I stand and clarify that I will <em>not</em> let it impede my judgement.</p>
+<h1 id="comparison">
+    <a href="#comparison">#</a>
+    Comparison
+</h1><p>Let me start by clarifying that the two TDD styles <em>are not mutually exclusive</em>. A skilled software engineer should ideally switch between the two, adapting to the situation in hand. However, I do feel that there are considerable strengths and weaknesses in each one and to the analysis of these is where I will focus for the rest of this post.</p>
+<h2 id="classicist">
+    <a href="#classicist">#</a>
+    Classicist
+</h2><h3 id="strengths">
+    <a href="#strengths">#</a>
+    Strengths
+</h3><h4 id="enables-refactoring-through-loose-coupling-and-contra-variant-structure">
+    <a href="#enables-refactoring-through-loose-coupling-and-contra-variant-structure">#</a>
+    Enables refactoring through loose coupling and contra-variant structure
+</h4><p>An undeniable, powerful advantage of classicist TDD is that tests are loosely coupled to production code. The lack of mocking (and therefore stubbing) leaves the tests with a minimum amount of knowledge of <em>how</em> is the production code achieving <em>what</em> it needs to achieve. This enables even bold refactorings, using the unit tests as a safety net throughout the process. After all, as already mentioned above, important design decisions are made in the refactor step in this approach.</p>
+<p>This refactoring ability is enhanced by the contra-variant structure of the code. Instead of having a test class per production class, the two structures are independent. This is achieved by testing public APIs, letting implementation details hide behind these APIs. This empowers refactoring even more, as even serious refactoring moves (like deleting whole classes for instance) would most likely not lead to broken tests.</p>
+<p>Remember that during refactoring we want a steady, fast-executing suite of tests to verify <strong>after every refactoring move</strong> that we indeed only <em>changed the structure</em> of the code and <em>not its behavior</em>. I have articulated my arguments on this on my <em>&ldquo;test behavior&rdquo;</em> <a class="link" href="https://nvoulgaris.com/test-behavior"  target="_blank" rel="noopener"
+    >post</a></p>
+<h4 id="delayed-design-decisions">
+    <a href="#delayed-design-decisions">#</a>
+    Delayed design decisions
+</h4><p>Another strong quality of the classicist TDD that I like a lot is that design decisions are delayed as much as possible (if only we all did more of this). This follows logically from the fact that we first make it work (red to green) and then we think about how to make it better, doing most of the design in the refactor step, as stated more than once earlier. Delaying design decisions is one of the qualities that makes us truly agile (as opposed to lots of sticky notes, but that is another post once again - see <a class="link" href="https://nvoulgaris.com/agile-code"  target="_blank" rel="noopener"
+    >agile code</a>).</p>
+<h3 id="evolutionary-design">
+    <a href="#evolutionary-design">#</a>
+    Evolutionary design
+</h3><p>In the classicist approach we start off small in terms of design and as we grow the code base to accommodate more requirements, we continuously refactor the code to adjust the design. This line of thought complements the delayed design decisions characteristic and binds excellently to the agile mindset. Together, they embrace the <a class="link" href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it"  target="_blank" rel="noopener"
+    >YAGNI</a> principle and therefore, premature design decisions and over-engineered solutions are avoided. Instead, at any given moment, the design reflects the current needs of the application.</p>
+<h3 id="weaknesses">
+    <a href="#weaknesses">#</a>
+    Weaknesses
+</h3><h4 id="reduced-test-readability">
+    <a href="#reduced-test-readability">#</a>
+    Reduced test readability
+</h4><p>I am a big fan of the triple A rule (Arrange-Act-Assert) and part of the reason is that the test reads like a state machine, fulfilling its <em>documentation</em> purpose. Ideally, I like 3-liner unit tests (one line for every stage), maximizing both <em>readability</em> and <em>communication of intent</em> (method extraction can help us make almost every unit test a 3-liner).</p>
+<p>With the classicist approach I find that tests tend to grow large quite often, with complicated setups and assertions, which in extreme cases can defeat the whole documentation purpose (there is the name of the test to partially save this). This was definitely one of the notes I made while watching the clean coders comparative case study video series. Uncle Bob&rsquo;s tests were lengthy.</p>
+<h4 id="complex-refactorings">
+    <a href="#complex-refactorings">#</a>
+    Complex refactorings
+</h4><p>Since we are trying to flesh out the whole system starting from its core logic, it is quite probable to find ourselves in a situation where a class, deep inside the core of the application, has too many responsibilities or its design is cumbersome. Such cases, sometimes require <em>drastic</em> refactoring moves.</p>
+<p>Complex refactorings are never pleasant and the more complex they are, the more the likelihood of breaking the tests increases. Usually, I find it much more preferable to apply small refactoring tweaks than tearing the whole system apart, while trying to keep my tests green.</p>
+<h4 id="treating-the-api-as-a-second-class-citizen">
+    <a href="#treating-the-api-as-a-second-class-citizen">#</a>
+    Treating the API as a second-class citizen
+</h4><p>Starting from the core logic of the application poses an extra problem. Thinking of the API is usually deferred until the implementation reaches it. One may argue that this is not a drawback, but we should always keep in mind when building a system that we do so <strong>only</strong> because someone else needs to use it. If we are writing a web service for instance, some client will consume this API, otherwise we wouldn&rsquo;t be writing it in the first place.</p>
+<p>Therefore, I regard this as a considerable problem. We are running the risk of over-engineering our solution, implementing logic that will not be used. Don&rsquo;t get me wrong here. Creating abstractions and achieving loose coupling between our HTTP layer and our domain is very much desired. I just find it really useful to begin my thinking from the API.</p>
+<p>I am really sitting on the fence regarding Uncle Bob&rsquo;s abstraction decisions on the clean coders comparative case study video series, leaning a little bit towards considering them premature and therefore potentially harmful.</p>
+<h2 id="outside-in">
+    <a href="#outside-in">#</a>
+    Outside-In
+</h2><h3 id="strengths-1">
+    <a href="#strengths-1">#</a>
+    Strengths
+</h3><h4 id="tdd-as-a-design-tool">
+    <a href="#tdd-as-a-design-tool">#</a>
+    TDD as a design tool
+</h4><p>One of the principal differences between the two approaches is in which state most of the design decisions are made. While in the classicist approach this is happening in the refactor state, in Outside-In the answer is the red state. When writing a failing unit test, we have to think ahead of ourselves and <em>design</em>. We have to decide <em>what are the collaborators of the class under test going to be</em> and <em>how is this class going to communicate with them (public API) to fulfill this business requirement (test)</em>. These are core design decisions and are made <em>before</em> the implementation. Of course, design can be refined in the refactor step, but usually, in a much more light way.</p>
+<p>Despite some objections on this (more on this later on), I love the way TDD is really used as a design tool. During the JHUG talk/demo we discussed on how TDD does not magically create good design by itself. TDD gives us the time and place to design and this is done brilliantly in the Outside-In style.</p>
+<h4 id="acceptance-tests-drive-the-architecture">
+    <a href="#acceptance-tests-drive-the-architecture">#</a>
+    Acceptance tests drive the architecture
+</h4><p>Earlier, I made the point how using the classicist approach can result in treating the API as a second-level citizen. I feel quite the opposite when using the Outside-In approach. Not only we start off with the HTTP layer, but the needs of this layer drive the rest of the implementation and architecture all the way to the classes deep inside in the domain. The whole system is built in a way that serves the clients&rsquo; needs and therefore its purpose. Of course, we are free (and in fact encouraged) to create the right abstractions and seal our implementation, without compromising our attention to the API.</p>
+<h4 id="adopting-the-clients-point-of-view">
+    <a href="#adopting-the-clients-point-of-view">#</a>
+    Adopting the client&rsquo;s point of view
+</h4><p>While running our inner TDD cycles we are very diligent in mocking all the dependencies of the class under test and put a lot of thought in the stubs that we will use. As mentioned earlier, this is in fact <em>design</em>. What I particularly like about this design method is that we always focus on the way the clients of these mocked classes will interact with them. We are designing their public API, allowing ourselves to <em>hide</em> the implementation details behind this public API when the time comes to implement this class.</p>
+<p>What is so brilliant about this though process is that we always approach a new class from the point of view of its clients. We first think what kind of <strong>behavior</strong> we would like this class to provide in order to fulfill which business requirements (tests).</p>
+<h4 id="test-readability">
+    <a href="#test-readability">#</a>
+    Test readability
+</h4><p>As opposed to the classicist approach, I love the way the tests read in Outside-In TDD. Arrange, act and assert are evidently separated, tests are relatively short and the intent is clearly expressed in a <em>state-machine</em> manner. Also, taking the <em>&ldquo;should&rdquo;</em> naming convention (which I <em>absolutely</em> love) into consideration, the executable documentation produced is all that one could ask for.</p>
+<h4 id="method-and-discipline">
+    <a href="#method-and-discipline">#</a>
+    Method and discipline
+</h4><p>I left for last what I perceive as a vague, less objective advantage. When writing code using the Outside-In TDD approach, I always feel that there is method and discipline in my work. I feel that I am working very <em>methodically</em>. It is almost as if I am following an algorithm, approaching the problems in layers, breaking it down in small pieces and knowing exactly what needs to be done next and where am I in the whole process at any given moment. The acceptance tests acts like a north star that will not let you get lost while running the inner TDD cycles. This is mainly due to the fact that the way they fail will lead me to the point I have to pick up the implementation from when finished implementing a class.</p>
+<p>I understand that this is utterly subjective, but I do not feel the same way when using the classicist approach. Throughout the clean coders comparative case study video series I always knew where Sandro was and what was missing for an API to be finished, but I always had to think harder when Uncle Bob was driving the implementation.</p>
+<h3 id="weaknesses-1">
+    <a href="#weaknesses-1">#</a>
+    Weaknesses
+</h3><h4 id="refactoring-limitations">
+    <a href="#refactoring-limitations">#</a>
+    Refactoring limitations
+</h4><p>Throughout my journey to understand and adopt the Outside-In TDD style, I always struggled with the refactoring limitations that are posed by following this technique. In a nutshell, the mocking and stubbing that are heavily used result in tight coupling between the production and test code, with severe implications to refactoring capabilities.</p>
+<p>This caused me great unease until I truly understood the <em>deviation in the philosophy</em> between the two approaches. In the classicist approach emphasis is first put on making it work and <em>then</em> on the structure of the code. Therefore, the room for refactoring in the refactor step is <em>created</em> because it is <em>needed</em>, given that this is where we largely shape the structure of the code. On the other hand, with the Outside-In approach, we focus on structure from the beginning, leaving less room for modifications in the refactor step since we <em>anticipate less major modifications</em>.</p>
+<p>It does take some time to truly understand this differentiation in the way of thinking, but as soon as one does get it, it&rsquo;s all very clear. In my perception, a profoundly uneasy state to be in is thinking in classicist terms (I will structure the code in the refactor step) when trying to apply Outside-In TDD.</p>
+<h4 id="not-suitable-for-algorithmic-code">
+    <a href="#not-suitable-for-algorithmic-code">#</a>
+    Not suitable for algorithmic code
+</h4><p>As this approach focuses on <em>dependencies</em> and <em>collaboration</em> between classes, is follows logically that it is not an ideal candidate for implementing an algorithmic piece of code. Usually, there are no collaborators in such a case and therefore this technique will be of limited use. Therefore, this constitutes a perfect example to demonstrate cases in which we should switch to a different TDD style, such as the classicist one.</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>TDD is a very handy tool to have in our arsenal and if we intend to be true <em>software craftspeople</em>, this arsenal better be mighty and better include both TDD styles. We ought to study and apply both of them and draw our own conclusions as to which one we favor in which situation and why.</p>
+<p>In my opinion, judging based on the problem in hand is crucial and ideally we should learn to switch between the two. Don&rsquo;t forget that in software engineering almost everything is a trade-off and working these trade-offs is what makes us better <em>professional</em> software engineers. There is no silver bullet for most problems and - despite personal preferences - TDD styles is not an exception.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/tdd/">Tdd</a>
+        
+            <a href="/tags/xp/">Xp</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/agile-code/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/todo.jpg" loading="lazy" data-key="" data-hash="/img/posts/todo.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Agile code</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

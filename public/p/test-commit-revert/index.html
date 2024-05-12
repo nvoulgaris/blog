@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="The test should pass now. Oh, it still fails. Why is that? I think I&rsquo;ve missed this edge case. I&rsquo;ll fix it by adding this line, here. Great, it passed, but another one fails now. That&rsquo;s weird. I guess that this line broke the other case. Never mind, I&rsquo;ll add this line too and this should fix both of them. Oh, now I&rsquo;ve broken a bunch of them. Have you ever been in a situation like this?">
+<title>Test &amp;&amp; commit || revert</title>
+
+<link rel='canonical' href='//localhost:1313/p/test-commit-revert/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Test && commit || revert">
+<meta property='og:description' content="The test should pass now. Oh, it still fails. Why is that? I think I&rsquo;ve missed this edge case. I&rsquo;ll fix it by adding this line, here. Great, it passed, but another one fails now. That&rsquo;s weird. I guess that this line broke the other case. Never mind, I&rsquo;ll add this line too and this should fix both of them. Oh, now I&rsquo;ve broken a bunch of them. Have you ever been in a situation like this?">
+<meta property='og:url' content='//localhost:1313/p/test-commit-revert/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='tcr' /><meta property='article:published_time' content='2021-03-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-10T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/tcr.jpg' />
+<meta name="twitter:title" content="Test && commit || revert">
+<meta name="twitter:description" content="The test should pass now. Oh, it still fails. Why is that? I think I&rsquo;ve missed this edge case. I&rsquo;ll fix it by adding this line, here. Great, it passed, but another one fails now. That&rsquo;s weird. I guess that this line broke the other case. Never mind, I&rsquo;ll add this line too and this should fix both of them. Oh, now I&rsquo;ve broken a bunch of them. Have you ever been in a situation like this?"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/tcr.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#baby-steps">Baby steps</a></li>
+    <li><a href="#gamification">Gamification</a></li>
+    <li><a href="#improves-refactoring">Improves refactoring</a></li>
+    <li><a href="#a-tool-for-understanding-legacy-code">A tool for understanding legacy code</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#losing-stacktraces-and-test-output">Losing stacktraces and test output</a></li>
+    <li><a href="#commit-messages">Commit messages</a></li>
+    <li><a href="#frustration">Frustration</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#reverting-tests">Reverting tests</a></li>
+    <li><a href="#what-happens-with-pushing">What happens with pushing</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                Xp
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/test-commit-revert/">
+                
+                    <img src="/img/posts/tcr.jpg" loading="lazy" alt="Featured image of post Test &amp;&amp; commit || revert" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/test-commit-revert/">Test &amp;&amp; commit || revert</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 10, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    11 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>The test should pass now. Oh, it still fails. Why is that? I think I&rsquo;ve missed this edge case. I&rsquo;ll fix it by adding this line, here. Great, it passed, but another one fails now. That&rsquo;s weird. I guess that this line broke the other case. Never mind, I&rsquo;ll add this line too and this should fix both of them. Oh, now I&rsquo;ve broken a bunch of them.</p>
+<p>Have you ever been in a situation like this? Do you relate to the train of thoughts? How long did it take you to get all the tests to pass? How did you feel when they finally passed? Creative, energized and ready to continue or relieved, exhausted and ready to take a break or call it a day? What if you had <em>reverted</em> the change as soon as it made a test fail and approached the problem from a different angle?</p>
+<p>This is one of the key ideas behind <em>test &amp;&amp; commit || revert</em> (TCR), a programming workflow born during a Kent Beck workshop (and also attributed to Oddmund Strømme, Lars Barlindhaug, and Ole Johannessen). In this blog post, I will try to provide an overview of TCR.</p>
+<p><em>Before we delve into it, let me add a small disclaimer. I have only scratched the surface of TCR. I have only used it in playground projects, with the sole purpose of understanding it. I have not used it in production code and I am definitely not advocating for it in this post. The intention of the post is to let you know that TCR is a thing and merely present some of its trade-offs that I have discovered.</em></p>
+<h1 id="the-main-idea">
+    <a href="#the-main-idea">#</a>
+    The main idea
+</h1><p>During any typical programming workflow, we run the tests a lot. We definitely do so before committing the code. So, the idea behind TCR is that we should commit <em>every</em> time the tests pass. But there&rsquo;s a catch. If we do commit every time the tests pass, we should also revert every time the tests fail. It&rsquo;s simple but profound and powerful.</p>
+<p>Applying these two constraints locks us in a cycle. Exactly like TDD does, just with a different cycle. Since a failing test automatically reverts the code, there is no red state. We always keep the tests passing and we always find ourselves in the green state, the only state there is.</p>
+<figure><img src="/img/posts/tcr_cycle.jpeg"
+    alt="source: https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864"><figcaption>
+      <p>source: <a class="link" href="https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864"  target="_blank" rel="noopener"
+    >https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864</a></p>
+    </figcaption>
+</figure>
+
+<h1 id="why-should-i-try-it">
+    <a href="#why-should-i-try-it">#</a>
+    Why should I try it
+</h1><p>Now, I understand that TCR may sound extreme (to say the least). I can already hear the objections. <em>&ldquo;But I will be losing code&rdquo;. &ldquo;But I love the red state&rdquo;. &ldquo;But it sounds so frustrating&rdquo;. &ldquo;But why would I want to do that?&rdquo;</em>. These were also <em>my first thoughts</em>. So, let&rsquo;s try to understand what do we stand to gain from giving TCR a chance.</p>
+<h2 id="baby-steps">
+    <a href="#baby-steps">#</a>
+    Baby steps
+</h2><p>If there was a single lesson to be learned from practising TCR it would be the following:</p>
+<blockquote>
+<p>The only way to go fast, it to go well</p>
+</blockquote>
+<p>This is a quote from Uncle Bob, which has shaped my way of thinking around writing code like few others.</p>
+<p>The core idea behind TCR is moving in small steps. Moving in baby steps. Tiny steps. Small enough to be sure that they keep the tests passing. Small enough not to risk losing a bunch of code if a test fails. The philosophy is <em>&ldquo;what is the next, small, steady step that I can take towards my goal?&rdquo;</em>.</p>
+<p>Moving forwards in small, seemingly insignificant steps can be surprisingly more beneficial than going back and forth.</p>
+<h2 id="gamification">
+    <a href="#gamification">#</a>
+    Gamification
+</h2><p>Practice TCR for 10 minutes and you can&rsquo;t help but notice the gamification element. Causing a test to fail feels like making a mistake in a video game and having to start over again. Gamification makes us have fun. And when we have fun we tend to be more creative and we tend to come up with better solutions (this is just my intuition, it is not backed by any study that I know of). Of course, this coin has two sides, but we will discuss this in-depth later on.</p>
+<h2 id="improves-refactoring">
+    <a href="#improves-refactoring">#</a>
+    Improves refactoring
+</h2><p>Refactoring a piece of code takes discipline. It requires a series of small, confident steps. It requires keeping the tests green at all times. The truth is that, even with the aid of the IDE&rsquo;s automated refactoring options, this is challenging.</p>
+<p>I find that TCR can be immensely helpful during the refactoring process. Any modification that breaks the tests gets automatically reverted. Therefore, by definition, all refactoring moves keep the tests green.</p>
+<p>But there&rsquo;s more in it. Refactoring moves that break the tests get reverted. They do not <em>&ldquo;survive&rdquo;</em> into commits. Only the ones that keep the tests passing <em>&ldquo;survive&rdquo;</em>. They get committed and eventually pushed and merged. This rings a bell, doesn&rsquo;t it? This sounds a lot like a <em>natural selection process for refactoring moves</em>. Just the ones that display useful qualities (keep the tests passing) make it into commits. The accumulation of the effects of this continuous feedback is bound to make us more skilled in the long run. Let&rsquo;s not get too carried away with the metaphor, but I strongly believe that applying TCR when refactoring can really improve our refactoring skills.</p>
+<h2 id="a-tool-for-understanding-legacy-code">
+    <a href="#a-tool-for-understanding-legacy-code">#</a>
+    A tool for understanding legacy code
+</h2><p>TCR works wonderfully well as a <em>learning tool</em>. Assuming that we have a piece of legacy code that we want to understand. It&rsquo;s natural that we start making assumptions when we read the code. Suppose we fire up the TCR script and express these assumptions as unit tests. If the assumption is correct, the test passes and we just learned for sure that the code does what we thought it did. In case the assumption was incorrect, the test fails and disappears. We learned what the code does not do. So, we just learned again.</p>
+<p>This is like orally applying specification by example in a conversation with the author of the code. Except that the author might even be in a different company now. Except that there is way less room for a misunderstanding, as the specification is written in code. Except that we get to keep a comprehensive test suite when we are done.</p>
+<p>I learned about this fascinating technique when I came across this <a class="link" href="https://www.youtube.com/watch?v=FFzHOyFeovE"  target="_blank" rel="noopener"
+    >video</a>, which illustrates it wonderfully.</p>
+<h1 id="downsides">
+    <a href="#downsides">#</a>
+    Downsides
+</h1><p>Having listed some advantages, let&rsquo;s also have a look at some inconveniencies that come with the TCR.</p>
+<h2 id="losing-stacktraces-and-test-output">
+    <a href="#losing-stacktraces-and-test-output">#</a>
+    Losing stacktraces and test output
+</h2><p>I feel that one downside is too obvious to ignore. This is losing the stacktrace of a failed test. It&rsquo;s natural. When a test fails, we want to understand why it failed. However, since the tests get reverted automatically, the stacktrace disappears.</p>
+<p>Perhaps there are ways around the issue, by carefully configuring the test command you use, but it was the very first thing that annoyed me when a test failed when I wasn&rsquo;t expecting it.</p>
+<p>This does not stop on stacktraces though. The test output in general is gone with the reverted code. It first bothered me when I used Spock&rsquo;s <code>@Unroll</code> feature and a single case failed.</p>
+<p>Unconvenient as it might be, this is part of the process. TCR urges you to approach the problem from a <em>different angle</em>, or maybe opt for a <em>smaller step</em>. Debugging a failed test completely defeats the purpose.</p>
+<h2 id="commit-messages">
+    <a href="#commit-messages">#</a>
+    Commit messages
+</h2><p>It should be obvious that practising TCR can easily create tens of tiny commits. Actually, it should do exactly that when done right. So, the questions that naturally follow are <em>&ldquo;what do I do with all those commits?&rdquo;</em> and <em>&ldquo;what about the commit messages?&rdquo;</em>.</p>
+<p>These can be addressed in a number of ways. For instance, my preferred method is to add a default commit message (e.g. &ldquo;WIP&rdquo;). Then, when I reached the point in which I would originally commit if I was not using TCR, I would squash all these, tiny, WIP commits into a single one and reword it. Apart from this, there are other methods that would also work, like using the <code>git diff</code> list as the commit message.</p>
+<p>Nevertheless, this constitutes a problem that should be solved and, one way or another, it&rsquo;s an overhead.</p>
+<h2 id="frustration">
+    <a href="#frustration">#</a>
+    Frustration
+</h2><p>The alter ego of the above-mentioned gamification aspect is the irritation that TCR can cause you. The rational first reaction to witnessing the code you&rsquo;ve been writing over the past few minutes (or seconds) magically disappearing in front of your eyes is frustration. Sometimes even anger. While gamification can make one more creative, frustration can lead to bad-tempered decisions and hasty solutions.</p>
+<p>Unfortunately, this can lead to a vicious cycle. The more the code gets reverted, the worse your mood gets, which leads to more mistakes, which leads to the code getting reverted even more. Quite ironically, this is a <em>good</em> feature of TCR, because if you find yourself having your code reverted (say) 10 times in a row, perhaps that&rsquo;s the best sign that you need to take a break.</p>
+<p>In any case, I feel that this is perhaps the most interesting trade-off that TCR has to offer. The balance between having fun and feeling angry and disappointed is crucial. In other words, for TCR to be effective, sticking to the essence is key. And the essence is aiming for <em>baby steps</em>.</p>
+<h1 id="open-questions">
+    <a href="#open-questions">#</a>
+    Open questions
+</h1><p>A programming workflow it&rsquo;s open to customization and experimentation by its nature. TCR, being fairly new (created in 2018), leaves plenty of room for both. Let&rsquo;s examine some of the aspects that remain open.</p>
+<h2 id="reverting-tests">
+    <a href="#reverting-tests">#</a>
+    Reverting tests
+</h2><p>Writing a test only to have it reverted because it failed can be discouraging. Especially for people with a strong TDD background, who have worked hard to install the habit of writing a failing unit test first. This can be particularly disturbing for them. Maybe this is the reason why a variation suggests that the tests should not get reverted as part of the TCR process. In other words, when a test fails, the production code should get reverted, but not the tests.</p>
+<p>I strongly believe that different approaches may work better for different people. TCR is a tool. It&rsquo;s merely means to an end and not an end in itself. So, I have deliberately chosen to include this topic in the open questions. I believe that either approach will work. So, some people will choose to revert the tests along with the production code and some people will not do so.</p>
+<h2 id="what-happens-with-pushing">
+    <a href="#what-happens-with-pushing">#</a>
+    What happens with pushing
+</h2><p>We have already discussed the issue with the numerous, tiny commits, but when does the code get pushed during this workflow? Again, this is a matter of choice. Manually pushing after a bunch of small commits will work fine. Exactly like automatically pushing along with every tiny commit. The former diminishes the sense of <em>&ldquo;continuous delivery&rdquo;</em> that comes with TCR while the latter most likely requires a rebase and force push. The issue with the commit messages has to be resolved in either case. So, again, I would suggest customizing it to your preference.</p>
+<h1 id="setting-up-the-environment-for-tcr">
+    <a href="#setting-up-the-environment-for-tcr">#</a>
+    Setting up the environment for TCR
+</h1><p>Practising TCR requires a little bit of setup. There should be an automated way to observe the source files and detect changes, run the tests and, depending on the outcome of the tests, either commit or revert the code. There are various ways in which this can be achieved. Personally, I used the following bash scripts:</p>
+<ul>
+<li>a <code>watch.sh</code> script that observes the source code, detects changes on it and triggers the TCR script.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  inotifywait -r -e modify src
+</span></span><span style="display:flex;"><span>  ./tcr.sh
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>the <code>tcr.sh</code> script, that holds the base logic of TCR:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/test.sh&#34;</span>
+</span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/commit.sh&#34;</span>
+</span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/revert.sh&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">&amp;&amp;</span> commit <span style="color:#f92672">||</span> revert
+</span></span></code></pre></div><ul>
+<li>the <code>test.sh</code> script, which executes the unit tests</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> test<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Testing changes...&#34;</span>
+</span></span><span style="display:flex;"><span>  ./gradlew test
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>the <code>commit.sh</code> script</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> commit<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Committing and pushing changes&#34;</span>
+</span></span><span style="display:flex;"><span>  git add . <span style="color:#f92672">&amp;&amp;</span> git commit -m <span style="color:#e6db74">&#34;WIP&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>and the <code>revert.sh</code> script</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> revert<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Reverting changes&#34;</span>
+</span></span><span style="display:flex;"><span>  git checkout .
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>I have created a <a class="link" href="https://github.com/nvoulgaris/tcrPlayground"  target="_blank" rel="noopener"
+    >playground github repository</a>. It is set up for Kotlin and Spock and serves me for experimenting with TCR, but feel free to either grab the bash scripts or fork the repository and use it to play with TCR.</p>
+<h1 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h1><p>TCR provides some exciting and fresh ideas. It focuses on small, steady steps, which accumulate to create progress. It gamifies programming and, among other things, it can improve refactoring and work as a tool for understanding legacy code.</p>
+<p>There are disadvantages to be considered, such as losing the stacktraces and output of failed tests, dealing with countless tiny commits and dealing with frustration. There are also a lot of open questions, like whether or not tests should get reverted along with the production code or when should the code be pushed.</p>
+<p>TCR sounds extreme, but I am sure that people were thinking exactly the same about TDD when it first came out.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/tcr/">Tcr</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

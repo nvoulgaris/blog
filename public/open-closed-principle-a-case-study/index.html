@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Understanding the meaning of open for extension, but closed for modification">
+<title>Open-Closed principle: a case study</title>
+
+<link rel='canonical' href='//localhost:1313/open-closed-principle-a-case-study/'>
+
+<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Open-Closed principle: a case study">
+<meta property='og:description' content="Understanding the meaning of open for extension, but closed for modification">
+<meta property='og:url' content='//localhost:1313/open-closed-principle-a-case-study/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='software design' /><meta property='article:published_time' content='2019-07-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-14T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/open_closed.jpg' />
+<meta name="twitter:title" content="Open-Closed principle: a case study">
+<meta name="twitter:description" content="Understanding the meaning of open for extension, but closed for modification"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/open_closed.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114060129-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-case-study">A case study</a>
+      <ul>
+        <li><a href="#the-problem">The problem</a></li>
+        <li><a href="#a-first-implementation">A first implementation</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-open-closed-principle">The Open-Closed Principle</a></li>
+    <li><a href="#ocp-compliant-validation">OCP compliant validation</a></li>
+    <li><a href="#iterative-approach">Iterative approach</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+            <a href="/tags/pair-programming/" class="font_size_1">
+                Pair Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/open-closed-principle-a-case-study/">
+                
+                    <img src="/img/posts/open_closed.jpg" loading="lazy" alt="Featured image of post Open-Closed principle: a case study" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/open-closed-principle-a-case-study/">Open-Closed principle: a case study</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Understanding the meaning of open for extension, but closed for modification
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Have you ever come across of big ball of mud in the system that you work on? Have you ever wondered how it ended up like this? I bet that no one gets up in the morning and thinks <em>&ldquo;I will get to work to create a huge mess today&rdquo;</em>. However, there was at least one huge mess in the majority of the software projects I have worked on. What causes this?</p>
+<p>A typical scenario is that a piece of code starts off simple and innocent, but we always have to keep in mind the bigger picture. The architecture of the system. The code design. It is an integral part of our day to day work. Failing to pay attention to it, can start a chain reaction. One that leads to a big ball of mud.</p>
+<p>Let&rsquo;s use a simple case from a real world project and study the risks that we introduce by not thinking ahead and designing the code carefully.</p>
+<h2 id="a-case-study">
+    <a href="#a-case-study">#</a>
+    A case study
+</h2><p>Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe that a real case will enable us to apply the principles to a professional context, which is key to a better understanding. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts.</p>
+<h3 id="the-problem">
+    <a href="#the-problem">#</a>
+    The problem
+</h3><p>Let&rsquo;s assume that we work on an android application and the task in hand is the validation of a form, which the user should fill in. So, the form may contain fields for the user to fill in her name, phone, e-mail address, age, gender etc and before processing the information, we should validate that it is correct. In some cases validation may be redundant with the use of the appropriate UI elements (for instance, we should not validate gender if we use a radio button for it), but for some other cases (e.g. e-mail or phone number) we should definitely validate the user input.</p>
+<p>For the sake of simplicity, we will not occupy ourselves at all with android, the UI and the way that we collect the data. We assume that we already have a list of <code>View</code> objects (in android all UI elements derive from <code>View</code>). We further assume that all these objects have a tag, which we can retrieve using a <code>getter</code>, denoting the view&rsquo;s input type (e.g. <code>Email</code> or <code>Phone</code>) and a <code>getter</code> to retrieve the text of the view (in reality things are a bit more complicated, but we make these assumptions because the point of this post is not to delve into android UI details).</p>
+<p>Therefore, all we have to do is to implement a module that receives this list of <code>View</code> objects and validates the input data that they hold.</p>
+<h3 id="a-first-implementation">
+    <a href="#a-first-implementation">#</a>
+    A first implementation
+</h3><p>This sounds like a reasonably straightforward task and agile teaches us that we should go with the simplest thing working. Therefore, a first implementation of the solution could look like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (View view : formViews) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (view.<span style="color:#a6e22e">getTag</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Email&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Apply email validation logic</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (view.<span style="color:#a6e22e">getTag</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Phone&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Apply phone validation logic</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now, this is a very succint piece of code and if we care enough to extract some methods for the <code>if</code> block conditions, it could even be readable and retain the same level of abstraction.</p>
+<p>However, there are things that we should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?</p>
+<h3 id="architecture">
+    <a href="#architecture">#</a>
+    Architecture
+</h3><p>Let&rsquo;s not fool ourselves, we&rsquo;ve all written code like this (at least I know that I have), but as we grow more experienced, we should identify shortcomings and take the pains to address them.</p>
+<p>Apart from some minor issues, like the fact that we should extract some constants from these magic strings and the ones that we mentioned above (extracting methods for the the <code>if</code> block conditions etc), which are easy to amend and would not cost that much in the long run even if we neglected them, there is a serious concern in this piece of code.</p>
+<p>Let&rsquo;s think for a moment what would happen if a new field was added to the form. A field which did not exist before and therefore for which we hadn&rsquo;t implemented any validation logic. Say a postcode field. How would we add support for this new field in our existing code?</p>
+<p>Most probably we would add an extra <code>else if</code> block to handle the case of the postcode. However, that means that we would be <em>modifying</em> the existing code to <em>add</em> an extra feature. This sounds like an <em>oxymoron</em>, doesn&rsquo;t it? When we want to add a new feature, we should <em>add</em> some code and <em>not modify</em> the existing code.</p>
+<p>Of course, this case is simple and I bet you think <em>&ldquo;what could possibly go wrong with adding an extra <code>else if</code> block?&rdquo;</em>, but as we keep on adding more and more conditionals when requested to add a new field to a form, the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by <em>making a modification for one case, we accidentally break another case</em>. According to Uncle Bob, that is a sign of great significance. The system is exhibiting the symptom of <strong>fragility</strong>.</p>
+<p>Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftspeople, we should go to great lengths to avoid it. Therefore, let&rsquo;s examine how we could shield our code from such problems.</p>
+<h2 id="the-open-closed-principle">
+    <a href="#the-open-closed-principle">#</a>
+    The Open-Closed Principle
+</h2><p>The Open-Closed principle (OCP) is the O of Uncle Bob&rsquo;s SOLID principles (described in detail in <a class="link" href="https://www.goodreads.com/book/show/18043011-clean-architecture"  target="_blank" rel="noopener"
+    >Clean Architecture</a>). As formulated by Bertrand Meyer in <a class="link" href="https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;from_search=true"  target="_blank" rel="noopener"
+    >Object Oriented Software Construction</a>, it states that</p>
+<blockquote>
+<p>A software artifact should be open for extension but closed for modification.</p>
+</blockquote>
+<p>Contradictory as it may sound, there&rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should <em>add</em> some code instead of <em>modifying</em> the existing code.</p>
+<p>Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&rsquo;s apply it to the input validation problem, that we analyzed earlier.</p>
+<h2 id="ocp-compliant-validation">
+    <a href="#ocp-compliant-validation">#</a>
+    OCP compliant validation
+</h2><p>Let&rsquo;s keep in mind that the goal is to implement a validation module that can be extended without being modified. Let&rsquo;s try to design it in such a way that implementing the postcode validation cannot affect the existing validation logic.</p>
+<p>In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a set of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>formViews.<span style="color:#a6e22e">forEach</span>(view <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    ViewValidator validator <span style="color:#f92672">=</span> ViewValidatorFactory.<span style="color:#a6e22e">makeFor</span>(view);
+</span></span><span style="display:flex;"><span>    validator.<span style="color:#a6e22e">validate</span>(view.<span style="color:#a6e22e">getText</span>());
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>This reads like a nice algorithm. For every view, we get hold of an appropriate validator and apply its <code>validate()</code> method to the text that the view holds. Notice that we do not know <em>how</em> each specific field get validated. This is achieved by getting a <code>Validator</code> on runtime using the <code>ViewValidatorFactory</code>, but not knowing on compile time which one we will get on runtime. To achieve this, we need to create an interface like the following and have the factory returning objects deriving from this interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ViewValidator</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validate</span>(String input) <span style="color:#66d9ef">throws</span> ValidationException;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>and implement it for every specific field that we need to validate, as follows</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmailValidator</span> <span style="color:#66d9ef">implements</span> ViewValidator {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validate</span>(String input) <span style="color:#66d9ef">throws</span> ValidationException {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Actual email validation code omitted for brevity</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>and</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PhoneValidator</span> <span style="color:#66d9ef">implements</span> ViewValidator {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validate</span>(String input) <span style="color:#66d9ef">throws</span> ValidationException {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Actual phone validation code omitted for brevity</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now, all that&rsquo;s left to glue it all together is to implement the factory that creates the validators based on the view.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewValidatorFactory</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> ViewValidator <span style="color:#a6e22e">makeFor</span>(View view) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (view.<span style="color:#a6e22e">getTag</span>()) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Email&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> EmailValidator();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Phone&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> PhoneValidator();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> DefaultValidator();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This design is depicted below, in figure 1.1.</p>
+<figure><img src="/img/posts/ocp_before.png"
+    alt="Figure 1.1: Validation compliant to the Open-Closed Principle"><figcaption>
+      <p>Figure 1.1: Validation compliant to the Open-Closed Principle</p>
+    </figcaption>
+</figure>
+
+<p>The <code>ValidationService</code> has a transitive dependency to the <code>EmailValidator</code> and <code>PhoneValidator</code> (which is a shortcoming that we should amend using an abstract factory to apply the Dependency Inversion Principle) and therefore will be recompiled when we add a <code>PostcodeValidator</code>, but other than that (which is harmless unless we have an architectural boundary between the two modules) the source code of the <code>ValidationService</code> and the rest of the validators will remain untouched, which means that we have solved the fragility issue, by provisioning for the addition of new fields (and therefore validation logic for them) in the future. In other words, <em>there is no way to break the functionality of (e.g.) the <code>EmailValidator</code> by adding a <code>PostcodeValidator</code></em>.</p>
+<p>Indeed, Let&rsquo;s consider what is needed to add validation for the postcode now. All we have to do is to create a new derivative of the <code>ViewValidator</code>, the <code>PostcodeValidator</code> and apply a minimal modification to the factory, to be able to create one for the appropriate view. The change is depicted in figure 1.2, denoted with dotted rectangles and arrows.</p>
+<figure><img src="/img/posts/ocp_after.png"
+    alt="Figure 1.1: Adding a postcode validator to the existing implementation"><figcaption>
+      <p>Figure 1.2: Adding a postcode validator to the existing implementation</p>
+    </figcaption>
+</figure>
+
+<p>In this way, we manage to <em>extend</em> the behavior of <code>ValidationService</code> without <em>modifying</em> it.</p>
+<h2 id="iterative-approach">
+    <a href="#iterative-approach">#</a>
+    Iterative approach
+</h2><p>Of course, presenting the code in its final state, like I did, may lead to a reasonable question. Did it just pop magically into my mind? What if I can&rsquo;t think of the big picture all in once?</p>
+<p>As a matter of fact, that is neither the way I wrote it, nor the way I would consult anyone to go about writing it. On the contrary, I used an <strong>iterative approach</strong>. I started with a suite of tests that led me to the first implementation. Then I identified the problems and I felt dissatisfied with the implementation, which led me to refactoring. I used the suite of tests as a safety net and I started applying small modifications to the <em>structure</em> of the code, making sure that I did not break the tests after every such modification. With every change, I amended something, which got me closer to what I had in mind as a goal (an open-closed validation module).</p>
+<p>There is no need to think of everything upfront. In fact, there is no need to think of <em>anything</em> upfront. Just get a working piece of code, as simply as you can, but don&rsquo;t stop there. Don&rsquo;t be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsperson would.</p>
+<h2 id="conclusion">
+    <a href="#conclusion">#</a>
+    Conclusion
+</h2><p>Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftspeople, we should train ourselves to identifying downsides and merits of architectures and code design decisions and <em>even more importantly</em>, take pains to address them.</p>
+<p>Violating the Open-Closed Principle may seem harmless, but as the code base grows it can turn out to be an insurmountable obstacle to the project&rsquo;s sustainability. There is no such thing as a perfect architecture, that can shield our code from every potential future change, but provisioning for reasonable changes and structuring the code respectively is part of our job, rather than nice-to-have.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/software-design/">Software Design</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/how-getters-and-setters-harm-encapsulation/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/encapsulation.jpg" loading="lazy" data-key="" data-hash="/img/posts/encapsulation.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">How getters and setters harm encapsulation</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/test-behavior/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/writing.jpg" loading="lazy" data-key="" data-hash="/img/posts/writing.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Test behavior</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/designing-a-restful-shopping-cart/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/shopping_cart.jpg" loading="lazy" data-key="" data-hash="/img/posts/shopping_cart.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Designing a RESTful shopping cart</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2024 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

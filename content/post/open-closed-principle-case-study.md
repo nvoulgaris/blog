@@ -1,9 +1,10 @@
----
-title: "Open-Closed principle: a case study"
-date: "2019-07-14"
-tags: [software design]
-image: img/posts/open_closed.jpg
----
++++
+title = "Open-Closed principle: a case study"
+date = "2019-07-14"
+tags = ["software design"]
+image = "img/posts/open_closed.jpg"
+description = "Understanding the meaning of open for extension, but closed for modification"
++++
 
 Have you ever come across of big ball of mud in the system that you work on? Have you ever wondered how it ended up like this? I bet that no one gets up in the morning and thinks *"I will get to work to create a huge mess today"*. However, there was at least one huge mess in the majority of the software projects I have worked on. What causes this?
 
@@ -11,11 +12,11 @@ A typical scenario is that a piece of code starts off simple and innocent, but w
 
 Let's use a simple case from a real world project and study the risks that we introduce by not thinking ahead and designing the code carefully.
 
-# A case study
+## A case study
 
 Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe that a real case will enable us to apply the principles to a professional context, which is key to a better understanding. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts.
 
-## The problem
+### The problem
 
 Let's assume that we work on an android application and the task in hand is the validation of a form, which the user should fill in. So, the form may contain fields for the user to fill in her name, phone, e-mail address, age, gender etc and before processing the information, we should validate that it is correct. In some cases validation may be redundant with the use of the appropriate UI elements (for instance, we should not validate gender if we use a radio button for it), but for some other cases (e.g. e-mail or phone number) we should definitely validate the user input.
 
@@ -23,7 +24,7 @@ For the sake of simplicity, we will not occupy ourselves at all with android, th
 
 Therefore, all we have to do is to implement a module that receives this list of `View` objects and validates the input data that they hold.
 
-## A first implementation
+### A first implementation
 
 This sounds like a reasonably straightforward task and agile teaches us that we should go with the simplest thing working. Therefore, a first implementation of the solution could look like the following:
 
@@ -40,7 +41,7 @@ Now, this is a very succint piece of code and if we care enough to extract some 
 
 However, there are things that we should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?
 
-## Architecture
+### Architecture
 
 Let's not fool ourselves, we've all written code like this (at least I know that I have), but as we grow more experienced, we should identify shortcomings and take the pains to address them.
 
@@ -54,7 +55,7 @@ Of course, this case is simple and I bet you think *"what could possibly go wron
 
 Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftspeople, we should go to great lengths to avoid it. Therefore, let's examine how we could shield our code from such problems.
 
-# The Open-Closed Principle
+## The Open-Closed Principle
 
 The Open-Closed principle (OCP) is the O of Uncle Bob's SOLID principles (described in detail in [Clean Architecture](https://www.goodreads.com/book/show/18043011-clean-architecture)). As formulated by Bertrand Meyer in [Object Oriented Software Construction](https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&from_search=true), it states that
 
@@ -64,7 +65,7 @@ Contradictory as it may sound, there's a lot of wisdom in that sentence. Essenti
 
 Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let's apply it to the input validation problem, that we analyzed earlier.
 
-# OCP compliant validation
+## OCP compliant validation
 
 Let's keep in mind that the goal is to implement a validation module that can be extended without being modified. Let's try to design it in such a way that implementing the postcode validation cannot affect the existing validation logic.
 
@@ -137,7 +138,7 @@ Indeed, Let's consider what is needed to add validation for the postcode now. Al
 
 In this way, we manage to *extend* the behavior of `ValidationService` without *modifying* it.
 
-# Iterative approach
+## Iterative approach
 
 Of course, presenting the code in its final state, like I did, may lead to a reasonable question. Did it just pop magically into my mind? What if I can't think of the big picture all in once?
 
@@ -145,7 +146,7 @@ As a matter of fact, that is neither the way I wrote it, nor the way I would con
 
 There is no need to think of everything upfront. In fact, there is no need to think of *anything* upfront. Just get a working piece of code, as simply as you can, but don't stop there. Don't be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsperson would.
 
-# Conclusion
+## Conclusion
 
 Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftspeople, we should train ourselves to identifying downsides and merits of architectures and code design decisions and *even more importantly*, take pains to address them.
 
