@@ -45,7 +45,7 @@ params:
 
 services:
     googleAnalytics:
-        id: UA-114060129-1
+        id: G-7643KK7Q6D
 
 permalinks:
     post: /:slug/
