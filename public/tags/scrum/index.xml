@@ -16,13 +16,9 @@
         <description>&lt;img src="//localhost:1313/img/posts/a_different_way_to_run_the_daily_scrum.jpg" alt="Featured image of post A different way to run the daily scrum" /&gt;&lt;p&gt;Have you ever felt that the daily scrum offers no value? That we are wasting some precious time and getting everybody tired at the same time?&lt;/p&gt;
 &lt;p&gt;I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run and share an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.&lt;/p&gt;
 &lt;p&gt;Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don&amp;rsquo;t remember if this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.&lt;/p&gt;
-&lt;h2 id=&#34;symptoms&#34;&gt;
-    &lt;a href=&#34;#symptoms&#34;&gt;#&lt;/a&gt;
-    Symptoms
+&lt;h2 id=&#34;symptoms&#34;&gt;Symptoms
 &lt;/h2&gt;&lt;p&gt;Before changing anything, we have to learn to identify the cases that call for change. For this purpose, I have listed some symptoms that I find to be good indicators. Let&amp;rsquo;s go over them.&lt;/p&gt;
-&lt;h3 id=&#34;no-collaboration&#34;&gt;
-    &lt;a href=&#34;#no-collaboration&#34;&gt;#&lt;/a&gt;
-    No collaboration
+&lt;h3 id=&#34;no-collaboration&#34;&gt;No collaboration
 &lt;/h3&gt;&lt;p&gt;During the daily scrum, team members share their input, but no fruitful communication takes place. To better understand this, let&amp;rsquo;s think of the following hypothetical daily scrum situations:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -33,35 +29,22 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Mark is sharing the exact same input in both cases, but notice how the work progresses in the second situation. In the first case, the team is not collaborating.&lt;/p&gt;
-&lt;h3 id=&#34;monologue&#34;&gt;
-    &lt;a href=&#34;#monologue&#34;&gt;#&lt;/a&gt;
-    Monologue
+&lt;h3 id=&#34;monologue&#34;&gt;Monologue
 &lt;/h3&gt;&lt;p&gt;As mentioned above, the daily scrum is all about collaboration. If people are only speaking when their turn is up, how are they collaborating? Instead, a healthy team should be syncing and planning during the session. We should be hearing things like &amp;ldquo;Shall I use the test environment to test this?&amp;rdquo;, &amp;ldquo;I will release after the scrum. Do you want me to wait for this to be merged too?&amp;rdquo;, &amp;ldquo;Shall I merge this to your branch or to develop?&amp;rdquo;, &amp;ldquo;Do you need any help with this or shall I pick something up from the To-Dos?&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;People not being fully engaged, being indifferent and &lt;em&gt;only talking when their turn is up&lt;/em&gt; is a sign that clearly shows that the session is dysfunctional.&lt;/p&gt;
-&lt;h3 id=&#34;no-planning-ahead&#34;&gt;
-    &lt;a href=&#34;#no-planning-ahead&#34;&gt;#&lt;/a&gt;
-    No planning ahead
+&lt;h3 id=&#34;no-planning-ahead&#34;&gt;No planning ahead
 &lt;/h3&gt;&lt;p&gt;The daily scrum is supposed to be a &lt;em&gt;planning session&lt;/em&gt;. Not a reporting session. Yes, we share the latest developments, but we do so in order to &lt;em&gt;plan the next 24 hours&lt;/em&gt;. Try to keep track of the planning/reporting ratio. If it decreases, it is a very bad sign. Of course, this cannot be easily measured, but keep an eye on it and try to draw some conclusions.&lt;/p&gt;
-&lt;h3 id=&#34;stuck-pbis&#34;&gt;
-    &lt;a href=&#34;#stuck-pbis&#34;&gt;#&lt;/a&gt;
-    Stuck PBIs
+&lt;h3 id=&#34;stuck-pbis&#34;&gt;Stuck PBIs
 &lt;/h3&gt;&lt;p&gt;In scrum, we are supposed to be delivering value fast. It doesn&amp;rsquo;t make sense to have a bunch of PBIs stuck at the &amp;ldquo;Review&amp;rdquo; swimlane for 3 days and picking up new work instead of reviewing the open PRs. The daily scrum is the time and place to make these decisions if they are not made during the day.&lt;/p&gt;
 &lt;p&gt;Bottlenecks in the sprint board can be an indication of poor daily scrums. Of course, the root cause may be different here, but when we see jammed swimlanes we ought to think of the daily scrum too.&lt;/p&gt;
-&lt;h3 id=&#34;my-pbi&#34;&gt;
-    &lt;a href=&#34;#my-pbi&#34;&gt;#&lt;/a&gt;
-    My PBI
+&lt;h3 id=&#34;my-pbi&#34;&gt;My PBI
 &lt;/h3&gt;&lt;p&gt;Often you may hear people use phrases like &amp;ldquo;Yesterday, I finished the implementation in my PBI&amp;rdquo;. This is a highly problematic situation, as this single phrase implies that the team members are not thinking of the sprint&amp;rsquo;s work in a collective way. They work in an isolated way and this can impede their understanding of success.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Completing &amp;ldquo;my&amp;rdquo; PBI while my teammate struggles doesn&amp;rsquo;t make the sprint a success&lt;/em&gt;. This doesn&amp;rsquo;t mean that the team members are selfish. All I am trying to say is that software engineering is a team sport and it takes effort to deeply understand this and change your day-to-day work habits accordingly.&lt;/p&gt;
-&lt;h2 id=&#34;another-way&#34;&gt;
-    &lt;a href=&#34;#another-way&#34;&gt;#&lt;/a&gt;
-    Another way
+&lt;h2 id=&#34;another-way&#34;&gt;Another way
 &lt;/h2&gt;&lt;p&gt;The typical format most teams that I know of use is the &amp;ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&amp;rdquo;. I usually call this the &amp;ldquo;per-person&amp;rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;overview&#34;&gt;
-    &lt;a href=&#34;#overview&#34;&gt;#&lt;/a&gt;
-    Overview
+&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;overview&#34;&gt;Overview
 &lt;/h3&gt;&lt;p&gt;An alternative to the &amp;ldquo;per-person&amp;rdquo; format would be the &amp;ldquo;per-PBI&amp;rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&amp;ldquo;Done&amp;rdquo; swimlane).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s use an example to understand it better. Assuming that the team&amp;rsquo;s sprint backlog is the following:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/sprint_board.png&#34;
@@ -73,42 +56,24 @@
 &lt;p&gt;The next step would be the &amp;ldquo;Review&amp;rdquo; swimlane, in which the team needs to ensure that the PBIs do not remain idle for review if there is the capacity from team members to review them. They could decide who gets to review what and share more context if needed. Priorities could be defined if time and/or capacity do not suffice for all the PBIs. Again, the focus would be on how to move these PBI to &amp;ldquo;Merged&amp;rdquo; within the next 24 hours.&lt;/p&gt;
 &lt;p&gt;Then, they would briefly discuss the &amp;ldquo;In Progress&amp;rdquo; PBIs, sharing progress and impediments and making clarifications if needed. The last step would be to talk about starting new PBIs in the next 24 hours.&lt;/p&gt;
 &lt;p&gt;Finally, there can be some time to share anything that needs to be shared and wasn&amp;rsquo;t already covered.&lt;/p&gt;
-&lt;h3 id=&#34;advantages&#34;&gt;
-    &lt;a href=&#34;#advantages&#34;&gt;#&lt;/a&gt;
-    Advantages
-&lt;/h3&gt;&lt;h4 id=&#34;reduced-lead-time&#34;&gt;
-    &lt;a href=&#34;#reduced-lead-time&#34;&gt;#&lt;/a&gt;
-    Reduced lead time
+&lt;h3 id=&#34;advantages&#34;&gt;Advantages
+&lt;/h3&gt;&lt;h4 id=&#34;reduced-lead-time&#34;&gt;Reduced lead time
 &lt;/h4&gt;&lt;p&gt;This format focuses on getting things done and delivering value. It&amp;rsquo;s all about what needs to be done within the next 24 hours to move this PBI to the next swimlane. Inevitably, this prioritizes closing the open PBIs over opening new ones. As we have already discussed in the &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/limiting-work-in-progress-in-scrum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;em&gt;Limiting work in progress&lt;/em&gt;&lt;/a&gt; post, this reduces the team&amp;rsquo;s lead time.&lt;/p&gt;
-&lt;h4 id=&#34;focus-shifts-to-planning&#34;&gt;
-    &lt;a href=&#34;#focus-shifts-to-planning&#34;&gt;#&lt;/a&gt;
-    Focus shifts to planning
+&lt;h4 id=&#34;focus-shifts-to-planning&#34;&gt;Focus shifts to planning
 &lt;/h4&gt;&lt;p&gt;Instead of discouraging interruptions while other team members are sharing their input, this format welcomes their contribution. Fostering dialogue in this way shifts the focus from reporting to planning. Team members communicate more and it&amp;rsquo;s all about moving the ticket to the right, instead of plainly sharing yesterday&amp;rsquo;s actions.&lt;/p&gt;
-&lt;h4 id=&#34;teamwork-mentality&#34;&gt;
-    &lt;a href=&#34;#teamwork-mentality&#34;&gt;#&lt;/a&gt;
-    Teamwork mentality
+&lt;h4 id=&#34;teamwork-mentality&#34;&gt;Teamwork mentality
 &lt;/h4&gt;&lt;p&gt;Furthermore, the transition from monologue to an intensely collaborative format builds stronger team relationships and a teamwork mentality. The team learns to function as a unit, as opposed to a set of individuals. They learn to cooperate and they understand that great results take more than an individual writing code. There is no &amp;ldquo;my PBI&amp;rdquo; anymore. There is &amp;ldquo;our work&amp;rdquo;.&lt;/p&gt;
-&lt;h3 id=&#34;considerations&#34;&gt;
-    &lt;a href=&#34;#considerations&#34;&gt;#&lt;/a&gt;
-    Considerations
-&lt;/h3&gt;&lt;h4 id=&#34;longer-daily-scrums&#34;&gt;
-    &lt;a href=&#34;#longer-daily-scrums&#34;&gt;#&lt;/a&gt;
-    Longer daily scrums
+&lt;h3 id=&#34;considerations&#34;&gt;Considerations
+&lt;/h3&gt;&lt;h4 id=&#34;longer-daily-scrums&#34;&gt;Longer daily scrums
 &lt;/h4&gt;&lt;p&gt;From my personal experience, I&amp;rsquo;ve noticed that the session sometimes tends to last longer with this format. This is a result of the increased dialogue. However, there can be a number of root causes behind this.&lt;/p&gt;
 &lt;p&gt;The first thing that should come into our minds is whether there are too many open PBIs. If yes, the team should focus on closing some of them before starting to work on new ones. It could also show that the team is getting dragged into long conversations, which could be kept shorter. Finally, maybe the team &lt;em&gt;needs&lt;/em&gt; this extra time. Personally, I wouldn&amp;rsquo;t mind a slightly longer daily scrum so long as the conversation is fruitful and meaningful.&lt;/p&gt;
-&lt;h4 id=&#34;people-feel-left-out&#34;&gt;
-    &lt;a href=&#34;#people-feel-left-out&#34;&gt;#&lt;/a&gt;
-    People feel left out
+&lt;h4 id=&#34;people-feel-left-out&#34;&gt;People feel left out
 &lt;/h4&gt;&lt;p&gt;Also, people whose work is not directly visible on the board (e.g. designers and product owners) could start to feel left out with this format. My advice would be to encourage them to contribute whenever needed in the conversation and to use the time at the end of the session to share their input if it wasn&amp;rsquo;t already shared.&lt;/p&gt;
-&lt;h2 id=&#34;own-the-process&#34;&gt;
-    &lt;a href=&#34;#own-the-process&#34;&gt;#&lt;/a&gt;
-    Own the process
+&lt;h2 id=&#34;own-the-process&#34;&gt;Own the process
 &lt;/h2&gt;&lt;p&gt;Having shared this technique, which I have successfully used, it is important to understand that &lt;strong&gt;every team is different&lt;/strong&gt;. Just because it worked for a team it doesn&amp;rsquo;t mean that it will also work for another one. Dogmatically applying a solution that worked for another team and expecting results goes against the very nature of the agile mindset.&lt;/p&gt;
 &lt;p&gt;I would not advise against applying this format, but rather use it as a starting point. Call it an experiment and remember to evaluate this experiment. Then tweak it and run another experiment. Evaluate this one too. Then tweak it again. Chances are that the result that works for your team is different than the one I described. Maybe slightly different, maybe radically different. The point is to understand that the &lt;strong&gt;process is here to serve us&lt;/strong&gt; and not the other way around. If it is not working, then change it to something that works. Make it your own.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;The daily scrum is a pivotal event that can make all the difference between a successful and a failed sprint. Often, it gets executed in a formalistic way, which offers no real value. There are a number of symptoms that can help us identify a dysfunctional daily scrum session, such as lack of planning for the next 24 hours, jammed swimlanes and people not engaging in conversation during the session.&lt;/p&gt;
 &lt;p&gt;A different way to run the session can prove beneficial. I have successfully used what I call the &amp;ldquo;per-PBI&amp;rdquo; format to run daily scrums and I feel that it offers a series of advantages, such as reduced lead time and improved team cohesion. Along with it come some downsides, such as certain roles feeling left out and increased duration of the session.&lt;/p&gt;
 &lt;p&gt;No matter if we choose the &amp;ldquo;per-PBI&amp;rdquo; format or not, the responsibility of identifying the dysfunction and taking action to improve the situation lies with us, the software engineering team. So, I would strongly advise experimenting with different formats and tweaking the process until it serves the team.&lt;/p&gt;
@@ -123,9 +88,7 @@
         <description>&lt;img src="//localhost:1313/img/posts/wip_limits.jpg" alt="Featured image of post Limiting work in progress in scrum" /&gt;&lt;p&gt;How would you identify bottlenecks in your team&amp;rsquo;s process? How would you surface them? How would you encourage the team to increase collaboration? How would you decrease lead times and increase the bus factor?&lt;/p&gt;
 &lt;p&gt;Working in an &lt;em&gt;Agile&lt;/em&gt; way is far from following a predefined set of rules. On the contrary, is all about &lt;em&gt;inspecting and adapting&lt;/em&gt;. It&amp;rsquo;s about finding what works best for the team and it is an &lt;em&gt;ever-ending&lt;/em&gt; process. This includes a lot of &lt;em&gt;experimentation&lt;/em&gt;. Adopting something new for a few days/weeks, evaluating its benefits and either keep it or discard it before you move on to the next experiment. A team not chasing continuous improvement cannot be &lt;em&gt;Agile&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;This post is all about experimenting with limiting work-in-progress (WIP). Applying WIP limits is a beautiful technique, originated in Kanban, but I believe it can be applied very effectively on &lt;em&gt;Scrum&lt;/em&gt; teams too. Before we analyze the technique though, let&amp;rsquo;s briefly go over the symptoms that may push a team towards experimenting with WIP limits in the first place.&lt;/p&gt;
-&lt;h2 id=&#34;symptoms&#34;&gt;
-    &lt;a href=&#34;#symptoms&#34;&gt;#&lt;/a&gt;
-    Symptoms
+&lt;h2 id=&#34;symptoms&#34;&gt;Symptoms
 &lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s imagine a &lt;em&gt;Scrum&lt;/em&gt; team consisting of five software engineers is in the middle of a two-week sprint. The first five stories &lt;em&gt;in-progress&lt;/em&gt; and the team is juggling among them, trying to advance all of them at the same time.&lt;/p&gt;
 &lt;p&gt;There is a number of issues that one could note in the above-mentioned situation. I would argue that the first one is the &lt;strong&gt;lack of focus&lt;/strong&gt;. Focus is one of the five &lt;em&gt;Scrum&lt;/em&gt; values. It is a quality that without it, &lt;em&gt;Scrum&lt;/em&gt; can never work. It is as simple as that. Although the team is focused on a macro-level (there is a two-week sprint with a well-defined sprint goal), the lack of focus on a micro-level is resounding.&lt;/p&gt;
 &lt;p&gt;Secondly, there is a &lt;strong&gt;total absence of priority&lt;/strong&gt;. The stories in a sprint board are sorted based on their priority. The higher the priority of the story, the higher on the board the story is. Trying to put this priority in words, it would be something in the following lines: &lt;em&gt;&amp;ldquo;if as a team we manage to get a single story done in the sprint, let this be the topmost one. If we get two stories done, let them be the first two ones&amp;rdquo;&lt;/em&gt; and so on and so forth. A team that is working on five stories in parallel does not honour the notion of priority and to some extent, it is missing part of the essence of &lt;em&gt;Scrum&lt;/em&gt; as a framework.&lt;/p&gt;
@@ -134,86 +97,56 @@
 &lt;p&gt;Lastly, this way of working inevitably leads to significantly &lt;strong&gt;small &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;bus factors&lt;/a&gt;&lt;/strong&gt;, usually to a bus factor of one or two. This impedes collective code ownership and in case an individual leaves the team, a knowledge gap is also created.&lt;/p&gt;
 &lt;p&gt;I could continue commenting on this situation, but I believe that I have made my point. So, (hopefully) agreeing that this is a problematic situation, let&amp;rsquo;s go over a technique that can mitigate it.&lt;/p&gt;
-&lt;h2 id=&#34;what-is-a-wip-limit&#34;&gt;
-    &lt;a href=&#34;#what-is-a-wip-limit&#34;&gt;#&lt;/a&gt;
-    What is a WIP limit
+&lt;h2 id=&#34;what-is-a-wip-limit&#34;&gt;What is a WIP limit
 &lt;/h2&gt;&lt;p&gt;Limiting work-in-progress is a very simple technique.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;So, if a team has a WIP limit of two stories, it can only work on two stories at the same time at any given moment. In order to start working on a third one, one of the two previously &lt;em&gt;in-progress&lt;/em&gt; has to be &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;It originates from Kanban and there it applies to tasks on the team&amp;rsquo;s Kanban board. In &lt;em&gt;Scrum&lt;/em&gt;, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of &lt;em&gt;in-progress&lt;/em&gt; may be adjusted according to the team&amp;rsquo;s needs. For instance, a story can be considered &lt;em&gt;in-progress&lt;/em&gt; until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.&lt;/p&gt;
-&lt;h3 id=&#34;can-this-be-applied-to-scrum&#34;&gt;
-    &lt;a href=&#34;#can-this-be-applied-to-scrum&#34;&gt;#&lt;/a&gt;
-    Can this be applied to scrum?
+&lt;h3 id=&#34;can-this-be-applied-to-scrum&#34;&gt;Can this be applied to scrum?
 &lt;/h3&gt;&lt;p&gt;It would be reasonable to wonder whether there would be any sense in applying such a technique to &lt;em&gt;Scrum&lt;/em&gt;, given that the work is bound by the sprint duration. One could argue that WIP limits in Kanban make sense because there is no such boundary.&lt;/p&gt;
 &lt;p&gt;However, considering all the above-mentioned symptoms, which could be more or less addressed by applying a WIP limit, I feel that it is meaningful. As a matter of fact, we have applied it in teams that I have been a part of with considerable success.&lt;/p&gt;
 &lt;p&gt;In case applying a Kanban technique to &lt;em&gt;Scrum&lt;/em&gt; feels like breaking the rules, let&amp;rsquo;s always keep in mind that being &lt;em&gt;Agile&lt;/em&gt; is all about the &lt;strong&gt;culture&lt;/strong&gt;. Blindly adopting a set of rules is a cargo cult mentality that leads nowhere. If you ask me, if WIP limits serve us, let&amp;rsquo;s use them.&lt;/p&gt;
-&lt;h2 id=&#34;wip-limit-benefits&#34;&gt;
-    &lt;a href=&#34;#wip-limit-benefits&#34;&gt;#&lt;/a&gt;
-    WIP limit benefits
+&lt;h2 id=&#34;wip-limit-benefits&#34;&gt;WIP limit benefits
 &lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s examine some of the benefits that a team would expect by applying WIP limits.&lt;/p&gt;
-&lt;h3 id=&#34;reduced-lead-time&#34;&gt;
-    &lt;a href=&#34;#reduced-lead-time&#34;&gt;#&lt;/a&gt;
-    Reduced lead time
+&lt;h3 id=&#34;reduced-lead-time&#34;&gt;Reduced lead time
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;Lead time&lt;/em&gt; is a metric, expressing the time elapsed between starting and completing an item of work.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s study again the hypothetical example of the &lt;em&gt;Scrum&lt;/em&gt; team of five software engineers in the middle of the sprint with five stories in-progress. Let&amp;rsquo;s also assume that the team manages to complete all five stories at the very last day of the sprint and that these were all the stories in this sprint. What is the lead time of the team?&lt;/p&gt;
 &lt;p&gt;Each of the five stories took nine days (the working days of a two-week sprint excluding the &lt;em&gt;Scrum&lt;/em&gt; events day) to complete, so the team&amp;rsquo;s average lead time is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s assume that the team had applied a WIP limit of two. This means that no more than two stories could be worked on parallel. The first two stories could perhaps be &lt;em&gt;done&lt;/em&gt; in the third and fourth day respectively. The next two stories could be completed in the seventh and eight days respectively and the last story could be completed on the very last day of the sprint. Let&amp;rsquo;s calculate again the team&amp;rsquo;s average lead time.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;These numbers are fictitious of course, but they are meant to illustrate the point. As a matter of fact, feel free to fiddle with the numbers and inspect the results. The result will always be less than nine. I feel that plugging some reasonable numbers in the formula will result in an average lead time &lt;em&gt;significantly below&lt;/em&gt; 9, like 5.4.&lt;/p&gt;
 &lt;p&gt;This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.&lt;/p&gt;
-&lt;h3 id=&#34;teamwork&#34;&gt;
-    &lt;a href=&#34;#teamwork&#34;&gt;#&lt;/a&gt;
-    Teamwork
+&lt;h3 id=&#34;teamwork&#34;&gt;Teamwork
 &lt;/h3&gt;&lt;p&gt;A WIP limit is essentially the application of a restriction. A restriction on the amount of work that can be concurrently undertaken. However, team members remain the same despite the restriction. Hence, the smaller the number of stories or tasks that can be simultaneously &lt;em&gt;in-progress&lt;/em&gt; the more the level of cooperation among the team members has to increase.&lt;/p&gt;
 &lt;p&gt;Think about it. In a very simplistic scenario, a team of two software engineers with a WIP limit of one would always pair (in the case where the WIP limit is applied to tasks) or - at least - work on the same story (in the case where the WIP limit is applied to stories). A team of - say - 5 software engineers with a WIP limit of four would mean that there should always be at least one pair. Reduce this to a WIP limit of three and the pairs become at 2 at all given moments.&lt;/p&gt;
 &lt;p&gt;Pairing is a more intense form of collaboration, but working on the same story is still more collaborative than two software engineers working on different stories. Given sufficient time, this restriction will strengthen the team bonds and will help build the right chemistry.&lt;/p&gt;
-&lt;h3 id=&#34;bus-factor&#34;&gt;
-    &lt;a href=&#34;#bus-factor&#34;&gt;#&lt;/a&gt;
-    Bus factor
+&lt;h3 id=&#34;bus-factor&#34;&gt;Bus factor
 &lt;/h3&gt;&lt;p&gt;Increased teamwork goes hand in hand with increased bus factors. I believe this is quite straightforward. The more often two or more people work on the same story, the more the parts of the code that more people will be familiar with. On the contrary, a team whose members tend to work alone on a story will end up with a codebase full of parts that only a single software engineer is familiar with.&lt;/p&gt;
-&lt;h3 id=&#34;identify-bottlenecks&#34;&gt;
-    &lt;a href=&#34;#identify-bottlenecks&#34;&gt;#&lt;/a&gt;
-    Identify bottlenecks
+&lt;h3 id=&#34;identify-bottlenecks&#34;&gt;Identify bottlenecks
 &lt;/h3&gt;&lt;p&gt;Applying a WIP limit is a tailor-made technique for surfacing bottlenecks in a team&amp;rsquo;s process. Let&amp;rsquo;s imagine a scenario in which a team uses the flow &lt;em&gt;&amp;ldquo;todo&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;doing&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;review&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;delivered&amp;rdquo;&lt;/em&gt; and then &lt;em&gt;&amp;ldquo;done&amp;rdquo;&lt;/em&gt;. It undertakes stories and when the code is written, the story is passed to the rest of the team for code review. The engineer(s) that worked on this story naturally grab the next one until this one gets reviewed. It is quite common for teams to end up with a pile of stories that should get reviewed towards the end of the sprint. This, of course, leads to rushed code reviews and a big bang release with a dozen features in it. This is a typical case of a &lt;em&gt;bottleneck in the process&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Now, let&amp;rsquo;s imagine that this team applies some WIP limits. Remember that these may span from one to several swimlanes. Let&amp;rsquo;s assume that the &lt;em&gt;&amp;ldquo;review&amp;rdquo;&lt;/em&gt; swimlane has a dedicated limit of three stories. When the third story gets in the lane the team should prioritize code reviewing these stories. Otherwise, no new stories can be propagated from &lt;em&gt;&amp;ldquo;doing&amp;rdquo;&lt;/em&gt; to &lt;em&gt;&amp;ldquo;review&amp;rdquo;&lt;/em&gt;. These stories will be reviewed and if the &lt;em&gt;&amp;ldquo;delivered&amp;rdquo;&lt;/em&gt; column has a respective limit, they will also get deployed to production and eventually reach &lt;em&gt;&amp;ldquo;done&amp;rdquo;&lt;/em&gt;, allowing space for more stories to be worked.&lt;/p&gt;
 &lt;p&gt;The application of the limit has not only made the problem apparent, but it has also provided a solution to it.&lt;/p&gt;
-&lt;h2 id=&#34;fine-tuning-the-limits&#34;&gt;
-    &lt;a href=&#34;#fine-tuning-the-limits&#34;&gt;#&lt;/a&gt;
-    Fine-tuning the limits
+&lt;h2 id=&#34;fine-tuning-the-limits&#34;&gt;Fine-tuning the limits
 &lt;/h2&gt;&lt;p&gt;Assuming that some symptoms are visible and the team feels that some WIP limits would be helpful, a natural question would be how can a team go about setting them. What are the right the numbers? How many swimlanes should a limit span?&lt;/p&gt;
-&lt;h3 id=&#34;avoid-multitasking&#34;&gt;
-    &lt;a href=&#34;#avoid-multitasking&#34;&gt;#&lt;/a&gt;
-    Avoid multitasking
+&lt;h3 id=&#34;avoid-multitasking&#34;&gt;Avoid multitasking
 &lt;/h3&gt;&lt;p&gt;I would propose that the first thing to avoid is multitasking. A WIP limit greater than the number of software engineers in the team would mean that people are encouraged to multitask. For instance, imagine a team of five software engineers with a WIP limit of 6.&lt;/p&gt;
 &lt;p&gt;Keep this in mind. In my opinion, if you are ready to set a WIP limit greater than the number of software engineers in the team, take a step back. Think the problem over again. Why do you want to do this? What do you expect to gain out of it?&lt;/p&gt;
-&lt;h3 id=&#34;not-too-high&#34;&gt;
-    &lt;a href=&#34;#not-too-high&#34;&gt;#&lt;/a&gt;
-    Not too high
+&lt;h3 id=&#34;not-too-high&#34;&gt;Not too high
 &lt;/h3&gt;&lt;p&gt;Building on this point, a WIP limit equal to the number of software engineers in the team would mean that no one can multitask, but on the other hand, pairing and collaboration are not encouraged. This kind of beats the purpose, because fostering collaboration is a key motive for using this technique.&lt;/p&gt;
 &lt;p&gt;The two above-mentioned strategies can work but, only as first steps and only in rare situations. For instance, if some team members are very reluctant about using WIP limits and yet the rest of the team feels that they would be beneficial, perhaps it&amp;rsquo;s a decent first step. However, I see very limited benefits besides these cases.&lt;/p&gt;
-&lt;h3 id=&#34;but-not-too-low-either&#34;&gt;
-    &lt;a href=&#34;#but-not-too-low-either&#34;&gt;#&lt;/a&gt;
-    But not too low either
+&lt;h3 id=&#34;but-not-too-low-either&#34;&gt;But not too low either
 &lt;/h3&gt;&lt;p&gt;On the other hand, a very restrictive WIP limit can have negative effects. Not every task and story is suitable for pairing or requires more than one person working on it. Also, pairing is great, but, as discussed in extensively in my &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pair programming post&lt;/a&gt;, it can be exhaustive. Setting a WIP limit of two in a team with four software engineers would automatically mean that the engineers should always work in pairs to honour this rule. If this is what you are after - always working in pair - by all means, go for it. However, pay a lot of attention to it. Such a restrictive limit may lead to people feeling that they are suffocating or it may just be counterproductive.&lt;/p&gt;
-&lt;h3 id=&#34;inspect-and-adapt&#34;&gt;
-    &lt;a href=&#34;#inspect-and-adapt&#34;&gt;#&lt;/a&gt;
-    Inspect and adapt
+&lt;h3 id=&#34;inspect-and-adapt&#34;&gt;Inspect and adapt
 &lt;/h3&gt;&lt;p&gt;Having said all these, we still haven&amp;rsquo;t answered the above-mentioned questions. Well, you might have guessed it. There is no &lt;em&gt;right&lt;/em&gt; answer. &lt;em&gt;There is no silver bullet&lt;/em&gt;. The very philosophy of &lt;em&gt;Agile&lt;/em&gt; suggests a totally different approach to &lt;em&gt;right&lt;/em&gt; answers and &lt;em&gt;silver bullets&lt;/em&gt;. &lt;em&gt;Scrum&lt;/em&gt; says &lt;em&gt;&amp;ldquo;inspect and adapt&amp;rdquo;&lt;/em&gt;. That is what I would suggest.&lt;/p&gt;
 &lt;p&gt;Start off with discussing the situation during the retrospective. Come up with the first iteration of a few WIP limits. Give it a go and watch what happens. Adjust it and repeat the process. This is an ever-ending-process. Keep shifting towards what works best for the team and always keep in mind that different things work on different teams.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Being &lt;em&gt;Agile&lt;/em&gt; means being after continuous improvement. This requires being able to read the symptoms and come up with experiments to help the team work better. Lack of focus, disrespect to priority, big bang releases and small bus factors are serious symptoms that should be dealt with.&lt;/p&gt;
 &lt;p&gt;Limiting work-in-progress can provide a great boost to the team, like reducing the average lead time, improving collaboration, increasing the bus factor, identifying bottlenecks and more. If a team exhibits these symptoms, applying some WIP limits could be an experiment worth considering.&lt;/p&gt;
 </description>
@@ -227,48 +160,31 @@
         <description>&lt;img src="//localhost:1313/img/posts/velocity.jpg" alt="Featured image of post Working the velocity of a scrum team" /&gt;&lt;p&gt;Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, &lt;em&gt;cool&lt;/em&gt; product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.&lt;/p&gt;
 &lt;p&gt;Among a lot of factors that have resulted to this, arguably the king of the problems is how people misunderstand the concept of the &lt;em&gt;velocity&lt;/em&gt; of a scrum team. Scrum Masters and Product Owners treat it as a productivity reporting tool, trying to make the development team &lt;em&gt;commit&lt;/em&gt; (we will discuss this &lt;em&gt;&amp;ldquo;commitment&amp;rdquo;&lt;/em&gt; issue in another post) to as high a number as possible, while the development team, feeling that they are judged by this number, struggle to increase it sprint by sprint. However, this is a &lt;strong&gt;fundamentally flawed&lt;/strong&gt; view.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I wish I could stress this even more. &lt;strong&gt;Velocity is not a productivity reporting tool!&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Since I - once again - started with what velocity &lt;em&gt;is not&lt;/em&gt;, let&amp;rsquo;s proceed in a more conventional way and talk about what velocity actually &lt;em&gt;is&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;inspect-and-adapt&#34;&gt;
-    &lt;a href=&#34;#inspect-and-adapt&#34;&gt;#&lt;/a&gt;
-    Inspect and adapt
+&lt;h2 id=&#34;inspect-and-adapt&#34;&gt;Inspect and adapt
 &lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s try to go back to the basics and essence of Scrum for a bit. In a nutshell, every couple of weeks (in reality this number ranges between 1 and 4 weeks, but for simplicity&amp;rsquo;s sake I will use 2 weeks for a sprint&amp;rsquo;s length throughout this post) the scrum team gathers with the stakeholders, reviewing their latest increment, inspecting the state of the product and refining the priorities. After this comes the retro and after the retro, the new sprint begins with a sprint planning session: the most important meeting in scrum.&lt;/p&gt;
 &lt;p&gt;Now the scrum team should take into consideration the outcome of the sprint review and retrospective in order to commit to a new sprint. A new sprint, which should accommodate the prioritized requirements of the product, as defined by the stakeholders, whose voice in this meeting is the Product Owner. Let&amp;rsquo;s think of this for a moment. How is the scrum team supposed to commit to a couple of week&amp;rsquo;s worth of work without having an &lt;strong&gt;estimate&lt;/strong&gt; on the amount of work they can deliver in this time?&lt;/p&gt;
-&lt;h2 id=&#34;sprint-planning&#34;&gt;
-    &lt;a href=&#34;#sprint-planning&#34;&gt;#&lt;/a&gt;
-    Sprint planning
+&lt;h2 id=&#34;sprint-planning&#34;&gt;Sprint planning
 &lt;/h2&gt;&lt;p&gt;In order to execute a sprint planning session meaningfully, there have to be two inputs: a &lt;strong&gt;refined Product Backlog&lt;/strong&gt; and the team&amp;rsquo;s calculated &lt;strong&gt;velocity&lt;/strong&gt; for the upcoming sprint. These will produce a single output: a &lt;strong&gt;sprint backlog&lt;/strong&gt;. The Scrum Master should see to this.&lt;/p&gt;
 &lt;p&gt;Now it is becoming visible that the team&amp;rsquo;s velocity is &lt;em&gt;key&lt;/em&gt; to deciding on how many and which Product Backlog Items should the scrum team work on the upcoming sprint. This is an &lt;em&gt;indication&lt;/em&gt;, which the team should &lt;em&gt;consult&lt;/em&gt; when asking questions like &lt;em&gt;&amp;ldquo;is this amount of work a reasonable chunk for the upcoming sprint? Is it too much? Should we work on more items&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;If it is reasonable for one to assume that the team is able to successfully work on more items than they actually put in the sprint backlog, then the team is &lt;strong&gt;undercommitting&lt;/strong&gt; and therefore failing to honor their role as &lt;em&gt;professional&lt;/em&gt; software engineers. If the team is clearly committing on a sprint that will most likely fail to deliver, it is &lt;strong&gt;overcommitting&lt;/strong&gt;, failing once again to honor their role as &lt;em&gt;professional&lt;/em&gt; software engineers, as they create expectations for the stakeholders that they will not be met.&lt;/p&gt;
 &lt;p&gt;This is exactly why velocity is &lt;strong&gt;critical&lt;/strong&gt; to the success of a sprint planning session and therefore to the success of the sprint. &lt;strong&gt;Velocity helps creating a sustainable pace&lt;/strong&gt;. This pace will neither burn the team out or leave it idle for too much. Additionally, it provides &lt;em&gt;confidence&lt;/em&gt; to the development team to estimate their upcoming work in &lt;em&gt;reasonable chunks&lt;/em&gt;. Chunks that they can actually deliver, therefore causing the &lt;em&gt;trust&lt;/em&gt; of the stakeholders in the development team to increase.&lt;/p&gt;
-&lt;h2 id=&#34;calculating-the-teams-velocity&#34;&gt;
-    &lt;a href=&#34;#calculating-the-teams-velocity&#34;&gt;#&lt;/a&gt;
-    Calculating the team&amp;rsquo;s velocity
+&lt;h2 id=&#34;calculating-the-teams-velocity&#34;&gt;Calculating the team&amp;rsquo;s velocity
 &lt;/h2&gt;&lt;p&gt;Now, having said all these, I hope that it is clear that monitoring the team&amp;rsquo;s velocity is very very important, but &lt;em&gt;who&lt;/em&gt; actually is responsible for this and &lt;em&gt;how&lt;/em&gt; can one do a good job on it? After all, no one can predict the future and the work that a group of people will produce in two weeks time seems quite hard to get right.&lt;/p&gt;
-&lt;h3 id=&#34;who&#34;&gt;
-    &lt;a href=&#34;#who&#34;&gt;#&lt;/a&gt;
-    Who
-&lt;/h3&gt;&lt;h4 id=&#34;the-scrum-masters-role&#34;&gt;
-    &lt;a href=&#34;#the-scrum-masters-role&#34;&gt;#&lt;/a&gt;
-    The Scrum Master&amp;rsquo;s role
+&lt;h3 id=&#34;who&#34;&gt;Who
+&lt;/h3&gt;&lt;h4 id=&#34;the-scrum-masters-role&#34;&gt;The Scrum Master&amp;rsquo;s role
 &lt;/h4&gt;&lt;p&gt;The Scrum Master is sometimes called the &lt;em&gt;joker&lt;/em&gt; and part of the reason is that she has a lot of balls in the air at any given moment. One of these is that she is responsible for monitoring the team&amp;rsquo;s velocity and coming up with reasonable calculations for upcoming sprints as input in the sprint planning sessions.&lt;/p&gt;
-&lt;h4 id=&#34;who-else-needs-to-know&#34;&gt;
-    &lt;a href=&#34;#who-else-needs-to-know&#34;&gt;#&lt;/a&gt;
-    Who else needs to know
+&lt;h4 id=&#34;who-else-needs-to-know&#34;&gt;Who else needs to know
 &lt;/h4&gt;&lt;p&gt;I once was working in a company that used to start the sprint reviews with the following phrase: &amp;ldquo;Our estimated velocity for the past sprint was &amp;hellip; and our actual velocity was &amp;hellip;&amp;rdquo;. I &lt;strong&gt;completely disagree&lt;/strong&gt; with this (I had stated it a number of times)! Velocity is a piece of information that, in my opinion, concerns solely the scrum team members (perhaps excluding very few cases).&lt;/p&gt;
 &lt;p&gt;The stakeholders definitely need &lt;strong&gt;not&lt;/strong&gt; know the velocity of the team. They only need to know that the team is maturing and &lt;em&gt;can be trusted&lt;/em&gt; in their estimates. Otherwise, this would only enforce the view that the development team&amp;rsquo;s productivity is being judged by their velocity (at least in their eyes).&lt;/p&gt;
 &lt;p&gt;The Product Owner should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter.&lt;/p&gt;
 &lt;p&gt;The development team should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter either.&lt;/p&gt;
-&lt;h3 id=&#34;how&#34;&gt;
-    &lt;a href=&#34;#how&#34;&gt;#&lt;/a&gt;
-    How
+&lt;h3 id=&#34;how&#34;&gt;How
 &lt;/h3&gt;&lt;p&gt;Estimating the velocity of a scrum team for the upcoming sprint is not a straightforward task. Estimation by itself is not an easy task anyway. Needless to say, there is no silver bullet for it. But the good news is that there doesn&amp;rsquo;t have to be one. We&amp;rsquo;re not after a precise, infallible estimation. We&amp;rsquo;re after creating rhythm, building confidence and trust.&lt;/p&gt;
 &lt;p&gt;A number of techniques are being daily applied by different Scrum Masters in different teams. None is right. None is wrong. Let me try to describe a technique that I have used for quite a long time and I find it useful.&lt;/p&gt;
-&lt;h4 id=&#34;one-technique&#34;&gt;
-    &lt;a href=&#34;#one-technique&#34;&gt;#&lt;/a&gt;
-    One technique
+&lt;h4 id=&#34;one-technique&#34;&gt;One technique
 &lt;/h4&gt;&lt;p&gt;In the heart of the technique lie statistical calculations based on empirical data. A number of factors that affect the estimated velocity, are literally plugged into an formula that produces the magic number. The factors are listed and explained below:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Team members&lt;/strong&gt;: The number of members of the development team. Do not confuse this with the number of members of the scrum team, which will be different if either the Scrum Master or the Product Owner do not contribute to writing code.&lt;/li&gt;
@@ -279,16 +195,13 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Actual work days&lt;/strong&gt; is produced by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Focus factor&lt;/strong&gt; is a bit more complicated. Basically, the piece of information that we want to take into consideration is the degree in which the team estimations match the actual work done. The reason for using more than one past sprints is that as teams change, as they mature they go through different phases. These affect their focus factor. For instance, as a new team member is integrated with the team, one would expect the focus factor to have an slightly increasing trend. The focus factor for a single sprint is provided by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Finally, the formula producing the estimated velocity for the upcoming sprint is the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;I usually use the average focus factor of the last 3 sprints (x = 3), but feel free to use any number of sprints that works for you&lt;/em&gt;&lt;/p&gt;
@@ -301,17 +214,11 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Probably a couple of very reasonable questions have already formed into your mind, like &lt;em&gt;&amp;ldquo;What do we do on the first sprint, with no previous data existing yet?&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;ldquo;What if a new member joins the team?&amp;rdquo;&lt;/em&gt;. Let&amp;rsquo;s discuss these both.&lt;/p&gt;
-&lt;h4 id=&#34;first-sprint&#34;&gt;
-    &lt;a href=&#34;#first-sprint&#34;&gt;#&lt;/a&gt;
-    First sprint
+&lt;h4 id=&#34;first-sprint&#34;&gt;First sprint
 &lt;/h4&gt;&lt;p&gt;A very challenging period to estimate a team&amp;rsquo;s velocity is right after the team is formed. After all, there are no previous data whatsoever. There is no silver bullet for this problem either, but I would propose the following method: make sure that for the first few sprints the team bluntly &lt;strong&gt;overcommits&lt;/strong&gt;. Not slightly overcommitting, but estimate a profoundly unreasonable amount of work. Explain to the team that this is happening for precise reasons and no one is expecting them to deliver this mountain of work. Protect them from destroying their morale! Now, over the first sprints (I believe roughly 3 will suffice), the current ability of the team will become clear. When confident, stop this and use a proper method for calculating the velocity, like the one described above.&lt;/p&gt;
-&lt;h4 id=&#34;new-team-member&#34;&gt;
-    &lt;a href=&#34;#new-team-member&#34;&gt;#&lt;/a&gt;
-    New team member
+&lt;h4 id=&#34;new-team-member&#34;&gt;New team member
 &lt;/h4&gt;&lt;p&gt;A usually confusing case is when a new software engineer joins the development team. Intuition suggests that the team&amp;rsquo;s velocity should increase. After all, there is one more engineer now, right? This is true, but in the long term. On the contrary, over the first few sprints, it is more likely that velocity will drop. Obviously, the new engineer, no matter how skillful, is not going to be productive right away. To make matters worse, the current engineers will have to both spend time on her orientation and keep on carrying out their regular work. This leaves them with less time to do the latter. Therefore, the most likely scenario is that velocity will drop slightly for the first few sprints and then gradually catch up and probably exceed the previous numbers (of course this also depends on how the new team will glue together, but this is another post).&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Perceiving velocity as a productivity reporting tool is &lt;strong&gt;flat-out wrong&lt;/strong&gt;. Productivity is measured indeed, but not for reporting. Just for internal use within the team. Use it to create a sustainable pace, to help the team deliver on a steady basis, create trust and mature the team. The actual method for calculating the velocity for upcoming sprints does not matter. There are loads of techniques out there. Either pick one or create your own. Just make sure that you use it in the right way and it helps the team.&lt;/p&gt;
 </description>
         </item>
@@ -326,13 +233,11 @@
 &lt;p&gt;Before we endeavor to address the topic, let&amp;rsquo;s take a step back and think a little bit of &lt;em&gt;Agile&lt;/em&gt;. Why do all these people and companies favor Agile over waterfall? After all, waterfall was used for so many successful projects. This can be a surprisingly hard to answer question for a lot of people.&lt;/p&gt;
 &lt;p&gt;In my opinion, the key benefit is the establishment of a &lt;strong&gt;short feedback loop&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Agile suggests that we leave behind the old days when the requirements were specified all upfront and the developers worked isolated for a few months only to deliver software needing change. A very short loop is established, allowing for a small chunk of software to be produced, inspected by the stakeholders, adapt to their feedback and repeat the cycle. &lt;strong&gt;Indefinitely.&lt;/strong&gt; &lt;em&gt;The illusion of the end state is eliminated.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This radical process modification requires profound changes in the heart of our work. Potentially, the most common pitfall is to change the process, but continue writing code in exactly the same way. A lot of companies, perhaps unwittingly, opt for only changing the process, starting walking down a road that is doomed to lead to failure. The scrum master enters here, forced to distance herself from solely the process and look at the bigger picture.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Of course, quality cannot be measured, but there are disciplines that lead to it. Pair programming, test driven development (TDD), refactoring and code reviews among others, bring a set of very important advantages like collective code ownership, improved code design, living documentation (tests) and automated regression test suites (more on this on &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/agile-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Agile code&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Returning to the original question, in my opinion, technical background is a critical skill for a scrum master. Things are rarely black or white, but how is a scrum master coming from (say) a business school able to deeply understand the importance of TDD? Why would she value pair programming against the common belief that it slows the team down? How is she in a position to understand the significance and implications of deploying on production or how much does a defect cost and how it should be prioritized and treated by the team?&lt;/p&gt;

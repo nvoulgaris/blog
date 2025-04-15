@@ -16,53 +16,36 @@
         <description>&lt;img src="//localhost:1313/img/posts/code_coverage.jpg" alt="Featured image of post How much code coverage should I have?" /&gt;&lt;p&gt;One of the most disturbing questions I often get refers to the percentage of the code that should be covered by unit tests. This is a perfectly fine question coming from a fairly inexperienced developer, but it troubles me greatly in virtually any other case. However, what urged me to write this post is that I gradually become aware of more and more organizations that actually impose rules on this metric. Rules like &amp;ldquo;the project &lt;em&gt;must&lt;/em&gt; have 90% code coverage&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Now, there is a number of issues with this kind of approach. What if we get a 99% code coverage and we keep on getting bugs regularly? Does this 99% reflect code quality? Is it wise to impose rules on the developers, forcing them to reach a certain number on the metric? Can one write a suite of tests that cover all the code, but essentially test &lt;em&gt;nothing&lt;/em&gt;? Is this meaningful? and more importantly, &lt;strong&gt;why&lt;/strong&gt; are we testing in the first place?&lt;/p&gt;
 &lt;p&gt;Before we delve into the topic, let me clarify the following: practicing TDD as a discipline means that code coverage should approach 100% (but never quite reach it actually). However, since this post does not refer only to TDDers and even applying TDD won&amp;rsquo;t result in a 100% code coverage (one can easily understand this taking into consideration configuration files, Data Transfer Objects etc), I would like to take a more pragmatic view and discuss on the mentality behind all these.&lt;/p&gt;
-&lt;h2 id=&#34;example&#34;&gt;
-    &lt;a href=&#34;#example&#34;&gt;#&lt;/a&gt;
-    Example
+&lt;h2 id=&#34;example&#34;&gt;Example
 &lt;/h2&gt;&lt;p&gt;Allow me to begin with an example that will help us understand the nature of the problem in hand. Let&amp;rsquo;s consider the following, very simplistic function that performs division between two integers (it&amp;rsquo;s hardly reasonable to assume that anyone would need such a function, but let&amp;rsquo;s consider it for the sake of the argument).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; b;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How many tests should we write for this function? Which tests should these be? It&amp;rsquo;s fairly obvious that a single test would result in a 100% code coverage for this one-liner. Is this sufficient? Now let&amp;rsquo;s take a step back and reflect for a moment.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;A state would be a = 1 and b = 1. A second state would be a = 1 and b = 2 and so forth. Therefore, the combinations of all the possible values of variables &lt;code&gt;a&lt;/code&gt; (the numerator) and &lt;code&gt;b&lt;/code&gt; (the denominator) gives us the answer. Assuming that &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are both java integers, each can take a bit over 4 billion values. Therefore, the states that this piece of code can be in are 4.000.000.000 squared!&lt;/p&gt;
 &lt;p&gt;Hopefully, by now, my point is illustrated. &lt;em&gt;It&amp;rsquo;s very easy to reach 100% code coverage and yet, we have tested only 1 out of 4.000.000.000 squared states&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;meaningful-testing&#34;&gt;
-    &lt;a href=&#34;#meaningful-testing&#34;&gt;#&lt;/a&gt;
-    Meaningful testing
+&lt;h2 id=&#34;meaningful-testing&#34;&gt;Meaningful testing
 &lt;/h2&gt;&lt;p&gt;Having understood the problem, what should one do? Opt for trying to test each and every state is clearly not only insanity, but very wasteful too. On the other hand, staying rest assured with the impressing 100% code coverage, created by the first test, is clearly not the right option either, since, clearly, a very problematic set of states remain untested: the ones when &lt;code&gt;b&lt;/code&gt; (the denominator) is equal to 0.&lt;/p&gt;
 &lt;p&gt;Enter on of the most important virtues of unit testing: &lt;em&gt;meaningfulness&lt;/em&gt;. Coming back to the previously asked questions, I believe that testing a couple &amp;ldquo;regular&amp;rdquo; cases and one with the denominator equal to 0 (I guess, expecting an &lt;code&gt;ArithmeticException&lt;/code&gt; to be thrown) makes sense and is probably what most software engineers would do.&lt;/p&gt;
 &lt;p&gt;However, consider our choice of tests. Can anyone actually &lt;em&gt;prove&lt;/em&gt; that these tests suffice to cover this piece of code? Is there a &lt;em&gt;mathematical formula&lt;/em&gt; that can produce this set of tests as the &lt;em&gt;right&lt;/em&gt; answer to the question of how many and which tests should we write? Absolutely &lt;strong&gt;no&lt;/strong&gt;. Can it be the case that we were actually careless and have missed a bug after all? Absolutely &lt;strong&gt;yes&lt;/strong&gt;. This is nothing more than a &lt;em&gt;sensible&lt;/em&gt; result, a &lt;strong&gt;meaningful&lt;/strong&gt; suite of tests for this piece of code.&lt;/p&gt;
 &lt;p&gt;Of course, this example, being very simplistic, leaves almost no room for error. However, one can understand that in real world situations the margin for error is significantly increased and being meaningful in choosing the test cases takes a whole lot more importance. However, meaningful testing is not a quality some developers are born with and some other are destined to never possess. It&amp;rsquo;s mainly built through trial and error and derives from experience. So, perhaps, next time you face a bug, take a moment to think why it wasn&amp;rsquo;t covered with a unit test in the first place (by the way, also never forget to add that unit test, but this is another topic).&lt;/p&gt;
-&lt;h2 id=&#34;avoid-meaningless-tests&#34;&gt;
-    &lt;a href=&#34;#avoid-meaningless-tests&#34;&gt;#&lt;/a&gt;
-    Avoid meaningless tests
+&lt;h2 id=&#34;avoid-meaningless-tests&#34;&gt;Avoid meaningless tests
 &lt;/h2&gt;&lt;p&gt;Quite often, the very constraint on a code coverage number can be very harmful. People tend to forget &lt;em&gt;why&lt;/em&gt; are they testing and start writing tests just to satisfy the numbers. Junior developers get the wrong stimulae, which shape their careers in the wrong way.&lt;/p&gt;
 &lt;p&gt;Meaningless tests, tests that test &lt;em&gt;nothing&lt;/em&gt; become part of the regression suite, polluting the project in a unique way. They may &lt;em&gt;fail frequently&lt;/em&gt;, causing the developers to &lt;em&gt;ignore&lt;/em&gt; them, causing a total lack of trust in the test suite, or, even worse, they may be &lt;em&gt;green all the time&lt;/em&gt;, even when a defect is introduced to the system. In either way, credibility in the test suite is lost, refactoring becomes harder and harder and eventually the project rots.&lt;/p&gt;
-&lt;h2 id=&#34;follow-the-trend&#34;&gt;
-    &lt;a href=&#34;#follow-the-trend&#34;&gt;#&lt;/a&gt;
-    Follow the trend
+&lt;h2 id=&#34;follow-the-trend&#34;&gt;Follow the trend
 &lt;/h2&gt;&lt;p&gt;Coming back to the situations where organizations enforce specific code coverage numbers - I hope that by now the fundamental problems that lie with this approach have become apparent - what would a sensible policy be? We&amp;rsquo;re not actually suggesting that code coverage is totally useless, right? Of course not. On the contrary, it can be immensely valuable.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How should it be used then?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;How should it be used then?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This constitutes ground for experimentation and I would very much like to hear anyone&amp;rsquo;s views on the matter. For now, let me describe an approach that I find useful. Start monitoring the code coverage and create a trend line metric for it. Make sure that, before merging a merge request, the line does not drop. If it does so, kindly ask the author to amend this, before merging the code. This can even constitute a condition in the team&amp;rsquo;s DoD. I believe that a lot of CI tools will provide plug-ins that help implement this policy (personally, I have used Jenkins and JaCoCo).&lt;/p&gt;
-&lt;h2 id=&#34;untested-code&#34;&gt;
-    &lt;a href=&#34;#untested-code&#34;&gt;#&lt;/a&gt;
-    Untested code
+&lt;h2 id=&#34;untested-code&#34;&gt;Untested code
 &lt;/h2&gt;&lt;p&gt;Instead of missing the point and start chasing after numbers just for the sake of it, use code coverage as what it really is: a &lt;em&gt;tool&lt;/em&gt;. Make sure you go thoroughly over the report (tools like JaCoCo produce an extremely detailed report) on a regular basis. This can point out quite a few interesting things, such as untested parts of the code. Identify them and act on them. Perhaps a pattern will become visible. Find the problem and address it.&lt;/p&gt;
-&lt;h2 id=&#34;quality-testing&#34;&gt;
-    &lt;a href=&#34;#quality-testing&#34;&gt;#&lt;/a&gt;
-    Quality testing
+&lt;h2 id=&#34;quality-testing&#34;&gt;Quality testing
 &lt;/h2&gt;&lt;p&gt;Getting fixated on the code coverage number will harm both the developers and the project they&amp;rsquo;re working on in the long run. Instead of it, try to create a culture that focuses on quality testing. Make sure that the right tests are being written, the engineers start to gradually &lt;strong&gt;trust&lt;/strong&gt; their test suite, enabling them to refactor the code as often as they find useful and bugs that slip into production become less and less. At all times, remember that:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Code coverage is a great &lt;strong&gt;tool&lt;/strong&gt;, but use it wisely. Stay clear from useless, arbitrary rules and constraints. Oppose yourself to them, no matter who imposed them, with grounds. Raise the coverage as high as possible, but as a result of responsible, meaningful, quality testing and think hard on any poorly tested (or even untested) areas. Focus on the ability to &lt;strong&gt;refactor using tests as a safety net&lt;/strong&gt; and &lt;strong&gt;catching bugs&lt;/strong&gt; as early as possible. As always, forget about the rules. Stick to the essence.&lt;/p&gt;
 </description>
         </item>

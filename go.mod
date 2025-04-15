@@ -1,5 +1,5 @@
 module github.com/nvoulgaris/blog
 
-go 1.22
+go 1.24
 
-require github.com/CaiJimmy/hugo-theme-stack/v3 v3.25.0 // indirect
+require github.com/CaiJimmy/hugo-theme-stack/v3 v3.30.0

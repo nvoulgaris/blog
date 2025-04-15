@@ -16,23 +16,18 @@
         <description>&lt;img src="//localhost:1313/img/posts/pair_programming.jpg" alt="Featured image of post Pair programming: making the whole greater than the sum of its parts" /&gt;&lt;p&gt;When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side?&lt;/p&gt;
 &lt;p&gt;Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a &lt;em&gt;team sport&lt;/em&gt;. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.&lt;/p&gt;
 &lt;p&gt;In the following of this post, I will try to articulate my thoughts on pair programming, which I believe is an empowering practice and a skill that builds successful teams.&lt;/p&gt;
-&lt;h2 id=&#34;what-is-it&#34;&gt;
-    &lt;a href=&#34;#what-is-it&#34;&gt;#&lt;/a&gt;
-    What is it
+&lt;h2 id=&#34;what-is-it&#34;&gt;What is it
 &lt;/h2&gt;&lt;p&gt;Pair programming is an extreme programming (XP) practice. According to Kent Beck&amp;rsquo;s book, &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;em&gt;&amp;ldquo;Extreme Programming Explained: Embrace Change&amp;rdquo;&lt;/em&gt;&lt;/a&gt; it is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the &lt;em&gt;driver&lt;/em&gt; and the &lt;em&gt;navigator&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;driver&lt;/strong&gt; is writing the code, focusing on the task in hand and in the micro view of the code.&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;navigator&lt;/strong&gt; is constantly reviewing the code being written by the driver, is looking for logic problems and bugs and is thinking ahead of the architecture and design of the system, focusing on the macro view of the code.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Now, having decided to pair, how do you go about doing it?&lt;/p&gt;
-&lt;h2 id=&#34;how-to-pair-program&#34;&gt;
-    &lt;a href=&#34;#how-to-pair-program&#34;&gt;#&lt;/a&gt;
-    How to pair program
+&lt;h2 id=&#34;how-to-pair-program&#34;&gt;How to pair program
 &lt;/h2&gt;&lt;p&gt;Before thinking about roles and pieces of code, my advice is to focus on the setup. I find it critical that the screen is positioned in the &lt;strong&gt;center&lt;/strong&gt; of the desk and &lt;em&gt;both participants have equal access to it&lt;/em&gt;. Otherwise, you are running the risk of creating a situation in which one participant feels like a &amp;ldquo;guest&amp;rdquo; in the other&amp;rsquo;s office, instead of an equal collaborator.&lt;/p&gt;
 &lt;p&gt;Having taken care of the screen&amp;rsquo;s position, the second most important point, in my opinion, is having &lt;em&gt;two keyboards&lt;/em&gt;, if possible. This contradicts the above-mentioned definition of pair programming, which talks about one keyboard, but I believe it is very important to &lt;em&gt;remove the psychological barrier of actually having to &amp;ldquo;grab&amp;rdquo; the keyboard to contribute&lt;/em&gt; one line of code when needed.&lt;/p&gt;
 &lt;p&gt;With the setup in place, let&amp;rsquo;s focus on the process. I would suggest making sure that you &lt;strong&gt;swap roles frequently&lt;/strong&gt;. This ensures that both participants stay engaged and focused and that their minds work on both the micro and macro view of the code. Having the same driver for a lot of time can end up with the navigator feeling marginalized and disengaged. There is no &amp;ldquo;right&amp;rdquo; amount of time, but, out of personal experience, I would suggest swapping every few minutes. Of course, this is totally subjective and the pair should experiment and find what works best for it.&lt;/p&gt;
@@ -40,48 +35,27 @@
 &lt;p&gt;Apart from roles, make sure to also &lt;em&gt;switch pairs frequently&lt;/em&gt;. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&amp;rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a &lt;em&gt;soft swap&lt;/em&gt; and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a &lt;em&gt;hard swap&lt;/em&gt;, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.&lt;/p&gt;
 &lt;p&gt;Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice &lt;em&gt;watching&lt;/em&gt; the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;why-bother&#34;&gt;
-    &lt;a href=&#34;#why-bother&#34;&gt;#&lt;/a&gt;
-    Why bother
+&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;why-bother&#34;&gt;Why bother
 &lt;/h2&gt;&lt;p&gt;Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&amp;rsquo;s talk a little bit about the benefits of pair programming.&lt;/p&gt;
-&lt;h3 id=&#34;the-sum-is-greater-than-the-parts&#34;&gt;
-    &lt;a href=&#34;#the-sum-is-greater-than-the-parts&#34;&gt;#&lt;/a&gt;
-    The sum is greater than the parts
+&lt;h3 id=&#34;the-sum-is-greater-than-the-parts&#34;&gt;The sum is greater than the parts
 &lt;/h3&gt;&lt;p&gt;Pair programming is a powerful technique when you need to tackle a very difficult problem. The reason is that, empirically, &lt;em&gt;the quality of the work that is being produced by the pair is higher&lt;/em&gt; than the one of the work that each team member would produce on her own. I know that it sounds strange and is indeed very counter-intuitive, but, surprisingly, I have found it to be true every single time that I have paired on a difficult task. When done right, the level of concentration is unprecedented and two minds, deeply focusing on the same problem, can produce extremely high-quality work.&lt;/p&gt;
-&lt;h3 id=&#34;collective-code-ownership&#34;&gt;
-    &lt;a href=&#34;#collective-code-ownership&#34;&gt;#&lt;/a&gt;
-    Collective code ownership
+&lt;h3 id=&#34;collective-code-ownership&#34;&gt;Collective code ownership
 &lt;/h3&gt;&lt;p&gt;The more a team is practicing pair programming, the more it &lt;strong&gt;increases collective code ownership&lt;/strong&gt;. When an individual writes a piece of code and then the team reviews it, inevitably, the author is implicitly perceived as the &lt;em&gt;&amp;ldquo;owner&amp;rdquo;&lt;/em&gt; of this piece of code. Apart from increased collective code ownership, which is a vital quality for an agile team, pairing defaults the &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Bus_factor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;bus factor&lt;/a&gt; to 2.&lt;/p&gt;
-&lt;h3 id=&#34;code-is-reviewed-automatically&#34;&gt;
-    &lt;a href=&#34;#code-is-reviewed-automatically&#34;&gt;#&lt;/a&gt;
-    Code is reviewed automatically
+&lt;h3 id=&#34;code-is-reviewed-automatically&#34;&gt;Code is reviewed automatically
 &lt;/h3&gt;&lt;p&gt;One of the greater benefits of pair programming is that the &lt;em&gt;code is reviewed automatically&lt;/em&gt;, as it gets constantly reviewed by the navigator while is being typed by the driver. Taking into consideration that roles are swapped frequently, essentially the code is reviewed by the pair. Additionally, it is reviewed in a more active way, &lt;em&gt;driven by conversation and modifications&lt;/em&gt;, instead of passively and silently reading a pull request without the author of the code being present to initiate a conversation. As a matter of fact, it is so well reviewed that it can be checked in and merged right away, although I would advise against it and I would propose to open a pull request, have the rest of team have a look at it as well as have the pair take a more distant look after the work is done.&lt;/p&gt;
-&lt;h3 id=&#34;increased-collaboration&#34;&gt;
-    &lt;a href=&#34;#increased-collaboration&#34;&gt;#&lt;/a&gt;
-    Increased collaboration
+&lt;h3 id=&#34;increased-collaboration&#34;&gt;Increased collaboration
 &lt;/h3&gt;&lt;p&gt;Gone are the days that software was produced by individual sitting in their cubicles, working as isolated as possible. Nowadays, it is well understood that great software is delivered by great teams. Therefore, we focus our energy a lot into building great teams. Honestly, I can&amp;rsquo;t think of a more catalytic action to this than having two people working together, on the same problem. Personally, as a scrum master, I always encouraged the team to work in pairs as much as they can.&lt;/p&gt;
-&lt;h3 id=&#34;learning-opportunity&#34;&gt;
-    &lt;a href=&#34;#learning-opportunity&#34;&gt;#&lt;/a&gt;
-    Learning opportunity
+&lt;h3 id=&#34;learning-opportunity&#34;&gt;Learning opportunity
 &lt;/h3&gt;&lt;p&gt;People say that code reviews are a great learning opportunity. I can&amp;rsquo;t even begin to describe what a wonderful learning opportunity pair programming is. Honestly, I don&amp;rsquo;t remember pairing without &lt;em&gt;sharing knowledge&lt;/em&gt;. Sometimes sharing great software design ideas. Sometimes learning a keyboard shortcut or a small IDE feature. There&amp;rsquo;s always knowledge sharing during pair programming.&lt;/p&gt;
-&lt;h3 id=&#34;more-difficult-to-cut-corners&#34;&gt;
-    &lt;a href=&#34;#more-difficult-to-cut-corners&#34;&gt;#&lt;/a&gt;
-    More difficult to cut corners
+&lt;h3 id=&#34;more-difficult-to-cut-corners&#34;&gt;More difficult to cut corners
 &lt;/h3&gt;&lt;p&gt;We do get tired when writing code. Especially, when solving hard problems. These are the moments when we get more prone to cutting corners. &lt;em&gt;&amp;ldquo;Let&amp;rsquo;s skip this unit test&amp;rdquo;&lt;/em&gt;. &lt;em&gt;&amp;ldquo;I could improve this, but let&amp;rsquo;s leave it like this for now and I&amp;rsquo;ll refactor in the future&amp;rdquo;&lt;/em&gt;. We&amp;rsquo;ve all been there and it is quite natural when we grow really tired. We still know the right thing to do, but we lack the &lt;em&gt;discipline&lt;/em&gt; to do it at this given moment. When working in pairs, cutting corners is more difficult. Usually, either the navigator will &amp;ldquo;push&amp;rdquo; towards the right direction or the driver will feel less at liberty to opt for a dirty solution.&lt;/p&gt;
-&lt;h3 id=&#34;less-distractions&#34;&gt;
-    &lt;a href=&#34;#less-distractions&#34;&gt;#&lt;/a&gt;
-    Less distractions
+&lt;h3 id=&#34;less-distractions&#34;&gt;Less distractions
 &lt;/h3&gt;&lt;p&gt;A software engineer works focused on a task, having built a mental diagram and his colleague asks &amp;ldquo;have you had lunch?&amp;rdquo;. Suddenly, the mental diagram is gone and 15 minutes are required to reconstruct it. Sounds familiar? Writing code requires extreme concentration and we all know that interrupting a software engineer while writing code is a huge &amp;ldquo;no-no&amp;rdquo; (especially when wearing headphones). Fortunately, working in pairs decreases interruptions a lot. People usually think twice before interrupting a pair.&lt;/p&gt;
-&lt;h3 id=&#34;onboard-a-new-team-member&#34;&gt;
-    &lt;a href=&#34;#onboard-a-new-team-member&#34;&gt;#&lt;/a&gt;
-    Onboard a new team member
+&lt;h3 id=&#34;onboard-a-new-team-member&#34;&gt;Onboard a new team member
 &lt;/h3&gt;&lt;p&gt;Do you remember your last onboarding-a-company experience? How long did it take you to become fully enabled and how did you go about achieving it? Personally, I believe that working on a task and asking questions when stuck is a suboptimal approach. I find that pairing with a teammate is an excellent onboarding technique. As a matter of fact, I believe that pair programming is tailored made for onboarding new members. knowledge sharing is flowing in an unprecedented pace (both domain/business and technical) and there&amp;rsquo;s also a deliverable coming out of the process.&lt;/p&gt;
-&lt;h2 id=&#34;when-to-pair&#34;&gt;
-    &lt;a href=&#34;#when-to-pair&#34;&gt;#&lt;/a&gt;
-    When to pair
+&lt;h2 id=&#34;when-to-pair&#34;&gt;When to pair
 &lt;/h2&gt;&lt;p&gt;Of course, as with most practices, pair programming is not a silver bullet and we should be cautious &lt;em&gt;when&lt;/em&gt; or for &lt;em&gt;how long&lt;/em&gt; we practice it. As I mentioned above, there are teams out there that pair by default. There are also teams that pair only when no individual can solve the problem on her own. I personally feel that there are limits and each individual (and team) has to know when to pair and for how long to pair. Don&amp;rsquo;t get me wrong. Perhaps always pairing is what works for you. I just argue that this is not the case for everyone. So, I would suggest to feel free to pair at any given moment, but try hard to pair in the following situations:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -92,21 +66,15 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;While knowing when it to pair is important, we should also know when &lt;strong&gt;not&lt;/strong&gt; to pair. So, I would discourage pairing when &lt;strong&gt;solving trivial problems.&lt;/strong&gt; If you find yourself having to change a configuration or implement a fairly simple feature, that barely requires any design at all, pairing would be an overkill in my opinion. This is because there would be no important decisions to be made or serious hurdles to overcome and putting two minds in this problems just seems wasteful to me.&lt;/p&gt;
-&lt;h2 id=&#34;how-much-should-we-pair-for&#34;&gt;
-    &lt;a href=&#34;#how-much-should-we-pair-for&#34;&gt;#&lt;/a&gt;
-    How much should we pair for
+&lt;h2 id=&#34;how-much-should-we-pair-for&#34;&gt;How much should we pair for
 &lt;/h2&gt;&lt;p&gt;So, knowing when to pair is important, exactly as is knowing &lt;em&gt;when to stop&lt;/em&gt;. Allow me to stress once more that there are no rules on these matters and I strongly feel that conclusions should be drawn &lt;strong&gt;empirically&lt;/strong&gt; and always remain open to adjustments as the team matures. Therefore, below I outline my personal findings.&lt;/p&gt;
 &lt;p&gt;Something to always keep in mind is that writing code in pairs is &lt;em&gt;exhausting&lt;/em&gt;. It requires a tremendous level of concentration, exactly like individual programming does, plus a lot of energy devoted to interacting with your partner. After a few hours of pairing, it grows increasingly harder to keep producing high-quality work, which is the goal after all. So, I have come to believe that I should stop pairing when I feel like this. For me, this usually means that I should not pair for  more than a few hours a day. However, this conclusion is totally &lt;em&gt;empirical&lt;/em&gt;. Once again, there are teams out there that pair by default. So, I would strongly recommend that each team (or pair) experiments until it finds its balance and that best works for it.&lt;/p&gt;
 &lt;p&gt;If you do practice pair programming though, I would suggest that you do it on a &lt;em&gt;frequent basis&lt;/em&gt;, every day if possible.&lt;/p&gt;
-&lt;h2 id=&#34;pairing-remotely&#34;&gt;
-    &lt;a href=&#34;#pairing-remotely&#34;&gt;#&lt;/a&gt;
-    Pairing remotely
+&lt;h2 id=&#34;pairing-remotely&#34;&gt;Pairing remotely
 &lt;/h2&gt;&lt;p&gt;Remote work has evolved in an integral part of software engineering teams. I used to think that pair programming would be very difficult (if not impossible) to do when the team members do not share the same physical space. After all, this technique is heavily based on the benefits of direct communication and interaction. I recently gave it a try nonetheless, and the results were remarkable. Not only it worked, but the outcome was of excellent quality.&lt;/p&gt;
 &lt;p&gt;Retrospectively, I gave it some thought and tried to understand &lt;em&gt;why&lt;/em&gt; it worked in such a great way. I realized, that neither communication nor interaction is negatively affected when using modern technology in the right way. Online call and remote control tools allow us to work seamlessly on the same machine. Besides, each participant is comfortably sitting before her dedicated screen and keyboard, without even feeling that her personal space is invaded, which might be the case when first adopting pair programming in person.&lt;/p&gt;
 &lt;p&gt;I would strongly recommend to give remote pair programming a go and the results might astound you, just as they did me.&lt;/p&gt;
-&lt;h2 id=&#34;challenges&#34;&gt;
-    &lt;a href=&#34;#challenges&#34;&gt;#&lt;/a&gt;
-    Challenges
+&lt;h2 id=&#34;challenges&#34;&gt;Challenges
 &lt;/h2&gt;&lt;p&gt;As with every new practice, there are going to be hurdles to overcome when adopting it. Below, I have outlined the ones, which I think are the most common ones and my suggested approaches to tackle them.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -119,9 +87,7 @@
 &lt;p&gt;&lt;strong&gt;Lack of communication:&lt;/strong&gt; Always remember that the key in pair programming is &lt;em&gt;communication&lt;/em&gt;. This is what makes the sum greater than the parts and this is what drives everything throughout the whole process. So, make sure that you &lt;em&gt;embrace communication&lt;/em&gt; at all times when pairing. If you realize that you are not communicating and interacting enough with your partner, try to stimulate it. Think out loud, contemplate on decisions that you make, ask questions and try to keep the feedback between the two of you flowing at all times. When you feel that you don&amp;rsquo;t have the energy for this, take a short break, or stop pairing for the moment being. After all, if there isn&amp;rsquo;t enough energy for communication, how can there be enough energy to produce high-quality software?&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Pair programming is a truly powerful technique. It brings high-quality results, increased levels of collaboration, collective code ownership and loads of other benefits. Studying the technique is important in order to apply it correctly to gain all these benefits. As responsible, professional software engineers, we should empirically find out when of for how long to use it in order to maximize the advantages for our team. Working remotely not only does not hinder pair programming but, with the right tools, it can leverage the merits. Finally, don&amp;rsquo;t be discouraged by challenges. As always, they will present themselves, but they can be overcome.&lt;/p&gt;
 </description>
         </item>
@@ -135,118 +101,68 @@
 &lt;p&gt;Conversation quickly shifted to Outside-In TDD and I decided to try and organize my thoughts concerning the two approaches. Timing couldn&amp;rsquo;t be better. Having just finished watching an exceptionally good &lt;a class=&#34;link&#34; href=&#34;https://cleancoders.com/videos/comparativeDesign&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;clean coders series&lt;/a&gt; on the comparison between the two TDD styles, I had already decided to blog about it.&lt;/p&gt;
 &lt;p&gt;Therefore, after giving a very brief overview of the two approaches, I will attempt to describe their strengths and weaknesses according to my opinion.&lt;/p&gt;
-&lt;h2 id=&#34;overview-of-the-techniques&#34;&gt;
-    &lt;a href=&#34;#overview-of-the-techniques&#34;&gt;#&lt;/a&gt;
-    Overview of the techniques
+&lt;h2 id=&#34;overview-of-the-techniques&#34;&gt;Overview of the techniques
 &lt;/h2&gt;&lt;p&gt;There is no way I can thoroughly describe the two approaches in such a short post, but this isn&amp;rsquo;t the intention here anyway. However, I feel that a very brief overview would facilitate in understanding the points that I am about to make. There is plenty of sources online explaining in detail both techniques, so please, feel free to consult them prior to continuing if needed.&lt;/p&gt;
-&lt;h3 id=&#34;classicist-chicago-school&#34;&gt;
-    &lt;a href=&#34;#classicist-chicago-school&#34;&gt;#&lt;/a&gt;
-    Classicist (Chicago school)
+&lt;h3 id=&#34;classicist-chicago-school&#34;&gt;Classicist (Chicago school)
 &lt;/h3&gt;&lt;p&gt;Classicist TDD requires that we lock ourselves in the red-green-refactor cycle, pushing requirements in the form of failing unit tests (red), implementing an increment to fulfill these requirements (green) and then working on structuring the code in a better way (refactor).&lt;/p&gt;
 &lt;p&gt;This approach attempts to &lt;em&gt;minimize mocking&lt;/em&gt; and most of the &lt;em&gt;design happens at the refactor step&lt;/em&gt;, having already implemented a working increment.&lt;/p&gt;
-&lt;h3 id=&#34;outside-in-london-school&#34;&gt;
-    &lt;a href=&#34;#outside-in-london-school&#34;&gt;#&lt;/a&gt;
-    Outside-In (London school)
+&lt;h3 id=&#34;outside-in-london-school&#34;&gt;Outside-In (London school)
 &lt;/h3&gt;&lt;p&gt;Outside-In TDD uses a different approach. An extra step is inserted in the TDD cycle, the one of writing a failing &lt;em&gt;acceptance&lt;/em&gt; test. So, we first focus on writing a failing acceptance test and then on locking ourselves in the above mentioned TDD cycle, for every class needed, until the requirement of this acceptance test is fulfilled. Focusing on one acceptance test at a time, we TDD our way from the outmost layer of the system (controller, queue consumer etc) all the way to the core (domain, database layer etc).&lt;/p&gt;
 &lt;p&gt;Some principal differences with regard to the previous approach are that &lt;em&gt;mocking and stubbing are heavily used&lt;/em&gt; and most of the &lt;em&gt;design decisions are made in the red state&lt;/em&gt;, allowing for more minor adjustments in the refactor step.&lt;/p&gt;
-&lt;h2 id=&#34;where-i-stand&#34;&gt;
-    &lt;a href=&#34;#where-i-stand&#34;&gt;#&lt;/a&gt;
-    Where I stand
+&lt;h2 id=&#34;where-i-stand&#34;&gt;Where I stand
 &lt;/h2&gt;&lt;p&gt;It is reasonable for one to wonder whether I am biased on the topic or not. So, please allow me to clarify it before I proceed.&lt;/p&gt;
 &lt;p&gt;In my early TDD steps, I was mainly influenced by Uncle Bob and therefore, I started off as a classicist TDDer. After a considerably big learning curve, I started to like TDD a lot, but I was not &lt;em&gt;thrilled&lt;/em&gt; by it. I always felt that the technique was great, but its professional application was limited and the benefits not always tangible (at least in my mind).&lt;/p&gt;
 &lt;p&gt;This changed radically the day I attended Sandro Mancuso&amp;rsquo;s excellent &lt;em&gt;&amp;ldquo;Crafted design&amp;rdquo;&lt;/em&gt; workshop. Despite my obvious shortcomings during the workshop, I loved the idea and I followed up hard and persisted until I was able to apply Outside-In TDD professionally and eventually transfer knowledge within my company and influence colleagues. I was finally thrilled and enthusiastic about applying TDD professionally and, frankly, ever since I did, I find it very hard to work in a different way. So, this is where I stand. &lt;em&gt;I love Outside-In TDD&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Having said that, I have come forward with my bias before delving into the topic on purpose. I wanted to state where I stand and clarify that I will &lt;em&gt;not&lt;/em&gt; let it impede my judgement.&lt;/p&gt;
-&lt;h2 id=&#34;comparison&#34;&gt;
-    &lt;a href=&#34;#comparison&#34;&gt;#&lt;/a&gt;
-    Comparison
+&lt;h2 id=&#34;comparison&#34;&gt;Comparison
 &lt;/h2&gt;&lt;p&gt;Let me start by clarifying that the two TDD styles &lt;em&gt;are not mutually exclusive&lt;/em&gt;. A skilled software engineer should ideally switch between the two, adapting to the situation in hand. However, I do feel that there are considerable strengths and weaknesses in each one and to the analysis of these is where I will focus for the rest of this post.&lt;/p&gt;
-&lt;h3 id=&#34;classicist&#34;&gt;
-    &lt;a href=&#34;#classicist&#34;&gt;#&lt;/a&gt;
-    Classicist
-&lt;/h3&gt;&lt;h4 id=&#34;strengths&#34;&gt;
-    &lt;a href=&#34;#strengths&#34;&gt;#&lt;/a&gt;
-    Strengths
-&lt;/h4&gt;&lt;h5 id=&#34;enables-refactoring-through-loose-coupling-and-contra-variant-structure&#34;&gt;
-    &lt;a href=&#34;#enables-refactoring-through-loose-coupling-and-contra-variant-structure&#34;&gt;#&lt;/a&gt;
-    Enables refactoring through loose coupling and contra-variant structure
+&lt;h3 id=&#34;classicist&#34;&gt;Classicist
+&lt;/h3&gt;&lt;h4 id=&#34;strengths&#34;&gt;Strengths
+&lt;/h4&gt;&lt;h5 id=&#34;enables-refactoring-through-loose-coupling-and-contra-variant-structure&#34;&gt;Enables refactoring through loose coupling and contra-variant structure
 &lt;/h5&gt;&lt;p&gt;An undeniable, powerful advantage of classicist TDD is that tests are loosely coupled to production code. The lack of mocking (and therefore stubbing) leaves the tests with a minimum amount of knowledge of &lt;em&gt;how&lt;/em&gt; is the production code achieving &lt;em&gt;what&lt;/em&gt; it needs to achieve. This enables even bold refactorings, using the unit tests as a safety net throughout the process. After all, as already mentioned above, important design decisions are made in the refactor step in this approach.&lt;/p&gt;
 &lt;p&gt;This refactoring ability is enhanced by the contra-variant structure of the code. Instead of having a test class per production class, the two structures are independent. This is achieved by testing public APIs, letting implementation details hide behind these APIs. This empowers refactoring even more, as even serious refactoring moves (like deleting whole classes for instance) would most likely not lead to broken tests.&lt;/p&gt;
 &lt;p&gt;Remember that during refactoring we want a steady, fast-executing suite of tests to verify &lt;strong&gt;after every refactoring move&lt;/strong&gt; that we indeed only &lt;em&gt;changed the structure&lt;/em&gt; of the code and &lt;em&gt;not its behavior&lt;/em&gt;. I have articulated my arguments on this on my &lt;em&gt;&amp;ldquo;test behavior&amp;rdquo;&lt;/em&gt; &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/test-behavior&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;post&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&#34;delayed-design-decisions&#34;&gt;
-    &lt;a href=&#34;#delayed-design-decisions&#34;&gt;#&lt;/a&gt;
-    Delayed design decisions
+&lt;h5 id=&#34;delayed-design-decisions&#34;&gt;Delayed design decisions
 &lt;/h5&gt;&lt;p&gt;Another strong quality of the classicist TDD that I like a lot is that design decisions are delayed as much as possible (if only we all did more of this). This follows logically from the fact that we first make it work (red to green) and then we think about how to make it better, doing most of the design in the refactor step, as stated more than once earlier. Delaying design decisions is one of the qualities that makes us truly agile (as opposed to lots of sticky notes, but that is another post once again - see &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/agile-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;agile code&lt;/a&gt;).&lt;/p&gt;
-&lt;h4 id=&#34;evolutionary-design&#34;&gt;
-    &lt;a href=&#34;#evolutionary-design&#34;&gt;#&lt;/a&gt;
-    Evolutionary design
+&lt;h4 id=&#34;evolutionary-design&#34;&gt;Evolutionary design
 &lt;/h4&gt;&lt;p&gt;In the classicist approach we start off small in terms of design and as we grow the code base to accommodate more requirements, we continuously refactor the code to adjust the design. This line of thought complements the delayed design decisions characteristic and binds excellently to the agile mindset. Together, they embrace the &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;YAGNI&lt;/a&gt; principle and therefore, premature design decisions and over-engineered solutions are avoided. Instead, at any given moment, the design reflects the current needs of the application.&lt;/p&gt;
-&lt;h4 id=&#34;weaknesses&#34;&gt;
-    &lt;a href=&#34;#weaknesses&#34;&gt;#&lt;/a&gt;
-    Weaknesses
-&lt;/h4&gt;&lt;h5 id=&#34;reduced-test-readability&#34;&gt;
-    &lt;a href=&#34;#reduced-test-readability&#34;&gt;#&lt;/a&gt;
-    Reduced test readability
+&lt;h4 id=&#34;weaknesses&#34;&gt;Weaknesses
+&lt;/h4&gt;&lt;h5 id=&#34;reduced-test-readability&#34;&gt;Reduced test readability
 &lt;/h5&gt;&lt;p&gt;I am a big fan of the triple A rule (Arrange-Act-Assert) and part of the reason is that the test reads like a state machine, fulfilling its &lt;em&gt;documentation&lt;/em&gt; purpose. Ideally, I like 3-liner unit tests (one line for every stage), maximizing both &lt;em&gt;readability&lt;/em&gt; and &lt;em&gt;communication of intent&lt;/em&gt; (method extraction can help us make almost every unit test a 3-liner).&lt;/p&gt;
 &lt;p&gt;With the classicist approach I find that tests tend to grow large quite often, with complicated setups and assertions, which in extreme cases can defeat the whole documentation purpose (there is the name of the test to partially save this). This was definitely one of the notes I made while watching the clean coders comparative case study video series. Uncle Bob&amp;rsquo;s tests were lengthy.&lt;/p&gt;
-&lt;h5 id=&#34;complex-refactorings&#34;&gt;
-    &lt;a href=&#34;#complex-refactorings&#34;&gt;#&lt;/a&gt;
-    Complex refactorings
+&lt;h5 id=&#34;complex-refactorings&#34;&gt;Complex refactorings
 &lt;/h5&gt;&lt;p&gt;Since we are trying to flesh out the whole system starting from its core logic, it is quite probable to find ourselves in a situation where a class, deep inside the core of the application, has too many responsibilities or its design is cumbersome. Such cases, sometimes require &lt;em&gt;drastic&lt;/em&gt; refactoring moves.&lt;/p&gt;
 &lt;p&gt;Complex refactorings are never pleasant and the more complex they are, the more the likelihood of breaking the tests increases. Usually, I find it much more preferable to apply small refactoring tweaks than tearing the whole system apart, while trying to keep my tests green.&lt;/p&gt;
-&lt;h5 id=&#34;treating-the-api-as-a-second-class-citizen&#34;&gt;
-    &lt;a href=&#34;#treating-the-api-as-a-second-class-citizen&#34;&gt;#&lt;/a&gt;
-    Treating the API as a second-class citizen
+&lt;h5 id=&#34;treating-the-api-as-a-second-class-citizen&#34;&gt;Treating the API as a second-class citizen
 &lt;/h5&gt;&lt;p&gt;Starting from the core logic of the application poses an extra problem. Thinking of the API is usually deferred until the implementation reaches it. One may argue that this is not a drawback, but we should always keep in mind when building a system that we do so &lt;strong&gt;only&lt;/strong&gt; because someone else needs to use it. If we are writing a web service for instance, some client will consume this API, otherwise we wouldn&amp;rsquo;t be writing it in the first place.&lt;/p&gt;
 &lt;p&gt;Therefore, I regard this as a considerable problem. We are running the risk of over-engineering our solution, implementing logic that will not be used. Don&amp;rsquo;t get me wrong here. Creating abstractions and achieving loose coupling between our HTTP layer and our domain is very much desired. I just find it really useful to begin my thinking from the API.&lt;/p&gt;
 &lt;p&gt;I am really sitting on the fence regarding Uncle Bob&amp;rsquo;s abstraction decisions on the clean coders comparative case study video series, leaning a little bit towards considering them premature and therefore potentially harmful.&lt;/p&gt;
-&lt;h3 id=&#34;outside-in&#34;&gt;
-    &lt;a href=&#34;#outside-in&#34;&gt;#&lt;/a&gt;
-    Outside-In
-&lt;/h3&gt;&lt;h4 id=&#34;strengths-1&#34;&gt;
-    &lt;a href=&#34;#strengths-1&#34;&gt;#&lt;/a&gt;
-    Strengths
-&lt;/h4&gt;&lt;h4 id=&#34;tdd-as-a-design-tool&#34;&gt;
-    &lt;a href=&#34;#tdd-as-a-design-tool&#34;&gt;#&lt;/a&gt;
-    TDD as a design tool
+&lt;h3 id=&#34;outside-in&#34;&gt;Outside-In
+&lt;/h3&gt;&lt;h4 id=&#34;strengths-1&#34;&gt;Strengths
+&lt;/h4&gt;&lt;h4 id=&#34;tdd-as-a-design-tool&#34;&gt;TDD as a design tool
 &lt;/h4&gt;&lt;p&gt;One of the principal differences between the two approaches is in which state most of the design decisions are made. While in the classicist approach this is happening in the refactor state, in Outside-In the answer is the red state. When writing a failing unit test, we have to think ahead of ourselves and &lt;em&gt;design&lt;/em&gt;. We have to decide &lt;em&gt;what are the collaborators of the class under test going to be&lt;/em&gt; and &lt;em&gt;how is this class going to communicate with them (public API) to fulfill this business requirement (test)&lt;/em&gt;. These are core design decisions and are made &lt;em&gt;before&lt;/em&gt; the implementation. Of course, design can be refined in the refactor step, but usually, in a much more light way.&lt;/p&gt;
 &lt;p&gt;Despite some objections on this (more on this later on), I love the way TDD is really used as a design tool. During the JHUG talk/demo we discussed on how TDD does not magically create good design by itself. TDD gives us the time and place to design and this is done brilliantly in the Outside-In style.&lt;/p&gt;
-&lt;h5 id=&#34;acceptance-tests-drive-the-architecture&#34;&gt;
-    &lt;a href=&#34;#acceptance-tests-drive-the-architecture&#34;&gt;#&lt;/a&gt;
-    Acceptance tests drive the architecture
+&lt;h5 id=&#34;acceptance-tests-drive-the-architecture&#34;&gt;Acceptance tests drive the architecture
 &lt;/h5&gt;&lt;p&gt;Earlier, I made the point how using the classicist approach can result in treating the API as a second-level citizen. I feel quite the opposite when using the Outside-In approach. Not only we start off with the HTTP layer, but the needs of this layer drive the rest of the implementation and architecture all the way to the classes deep inside in the domain. The whole system is built in a way that serves the clients&amp;rsquo; needs and therefore its purpose. Of course, we are free (and in fact encouraged) to create the right abstractions and seal our implementation, without compromising our attention to the API.&lt;/p&gt;
-&lt;h5 id=&#34;adopting-the-clients-point-of-view&#34;&gt;
-    &lt;a href=&#34;#adopting-the-clients-point-of-view&#34;&gt;#&lt;/a&gt;
-    Adopting the client&amp;rsquo;s point of view
+&lt;h5 id=&#34;adopting-the-clients-point-of-view&#34;&gt;Adopting the client&amp;rsquo;s point of view
 &lt;/h5&gt;&lt;p&gt;While running our inner TDD cycles we are very diligent in mocking all the dependencies of the class under test and put a lot of thought in the stubs that we will use. As mentioned earlier, this is in fact &lt;em&gt;design&lt;/em&gt;. What I particularly like about this design method is that we always focus on the way the clients of these mocked classes will interact with them. We are designing their public API, allowing ourselves to &lt;em&gt;hide&lt;/em&gt; the implementation details behind this public API when the time comes to implement this class.&lt;/p&gt;
 &lt;p&gt;What is so brilliant about this though process is that we always approach a new class from the point of view of its clients. We first think what kind of &lt;strong&gt;behavior&lt;/strong&gt; we would like this class to provide in order to fulfill which business requirements (tests).&lt;/p&gt;
-&lt;h5 id=&#34;test-readability&#34;&gt;
-    &lt;a href=&#34;#test-readability&#34;&gt;#&lt;/a&gt;
-    Test readability
+&lt;h5 id=&#34;test-readability&#34;&gt;Test readability
 &lt;/h5&gt;&lt;p&gt;As opposed to the classicist approach, I love the way the tests read in Outside-In TDD. Arrange, act and assert are evidently separated, tests are relatively short and the intent is clearly expressed in a &lt;em&gt;state-machine&lt;/em&gt; manner. Also, taking the &lt;em&gt;&amp;ldquo;should&amp;rdquo;&lt;/em&gt; naming convention (which I &lt;em&gt;absolutely&lt;/em&gt; love) into consideration, the executable documentation produced is all that one could ask for.&lt;/p&gt;
-&lt;h5 id=&#34;method-and-discipline&#34;&gt;
-    &lt;a href=&#34;#method-and-discipline&#34;&gt;#&lt;/a&gt;
-    Method and discipline
+&lt;h5 id=&#34;method-and-discipline&#34;&gt;Method and discipline
 &lt;/h5&gt;&lt;p&gt;I left for last what I perceive as a vague, less objective advantage. When writing code using the Outside-In TDD approach, I always feel that there is method and discipline in my work. I feel that I am working very &lt;em&gt;methodically&lt;/em&gt;. It is almost as if I am following an algorithm, approaching the problems in layers, breaking it down in small pieces and knowing exactly what needs to be done next and where am I in the whole process at any given moment. The acceptance tests acts like a north star that will not let you get lost while running the inner TDD cycles. This is mainly due to the fact that the way they fail will lead me to the point I have to pick up the implementation from when finished implementing a class.&lt;/p&gt;
 &lt;p&gt;I understand that this is utterly subjective, but I do not feel the same way when using the classicist approach. Throughout the clean coders comparative case study video series I always knew where Sandro was and what was missing for an API to be finished, but I always had to think harder when Uncle Bob was driving the implementation.&lt;/p&gt;
-&lt;h4 id=&#34;weaknesses-1&#34;&gt;
-    &lt;a href=&#34;#weaknesses-1&#34;&gt;#&lt;/a&gt;
-    Weaknesses
-&lt;/h4&gt;&lt;h5 id=&#34;refactoring-limitations&#34;&gt;
-    &lt;a href=&#34;#refactoring-limitations&#34;&gt;#&lt;/a&gt;
-    Refactoring limitations
+&lt;h4 id=&#34;weaknesses-1&#34;&gt;Weaknesses
+&lt;/h4&gt;&lt;h5 id=&#34;refactoring-limitations&#34;&gt;Refactoring limitations
 &lt;/h5&gt;&lt;p&gt;Throughout my journey to understand and adopt the Outside-In TDD style, I always struggled with the refactoring limitations that are posed by following this technique. In a nutshell, the mocking and stubbing that are heavily used result in tight coupling between the production and test code, with severe implications to refactoring capabilities.&lt;/p&gt;
 &lt;p&gt;This caused me great unease until I truly understood the &lt;em&gt;deviation in the philosophy&lt;/em&gt; between the two approaches. In the classicist approach emphasis is first put on making it work and &lt;em&gt;then&lt;/em&gt; on the structure of the code. Therefore, the room for refactoring in the refactor step is &lt;em&gt;created&lt;/em&gt; because it is &lt;em&gt;needed&lt;/em&gt;, given that this is where we largely shape the structure of the code. On the other hand, with the Outside-In approach, we focus on structure from the beginning, leaving less room for modifications in the refactor step since we &lt;em&gt;anticipate less major modifications&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;It does take some time to truly understand this differentiation in the way of thinking, but as soon as one does get it, it&amp;rsquo;s all very clear. In my perception, a profoundly uneasy state to be in is thinking in classicist terms (I will structure the code in the refactor step) when trying to apply Outside-In TDD.&lt;/p&gt;
-&lt;h5 id=&#34;not-suitable-for-algorithmic-code&#34;&gt;
-    &lt;a href=&#34;#not-suitable-for-algorithmic-code&#34;&gt;#&lt;/a&gt;
-    Not suitable for algorithmic code
+&lt;h5 id=&#34;not-suitable-for-algorithmic-code&#34;&gt;Not suitable for algorithmic code
 &lt;/h5&gt;&lt;p&gt;As this approach focuses on &lt;em&gt;dependencies&lt;/em&gt; and &lt;em&gt;collaboration&lt;/em&gt; between classes, is follows logically that it is not an ideal candidate for implementing an algorithmic piece of code. Usually, there are no collaborators in such a case and therefore this technique will be of limited use. Therefore, this constitutes a perfect example to demonstrate cases in which we should switch to a different TDD style, such as the classicist one.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;TDD is a very handy tool to have in our arsenal and if we intend to be true &lt;em&gt;software craftspeople&lt;/em&gt;, this arsenal better be mighty and better include both TDD styles. We ought to study and apply both of them and draw our own conclusions as to which one we favor in which situation and why.&lt;/p&gt;
 &lt;p&gt;In my opinion, judging based on the problem in hand is crucial and ideally we should learn to switch between the two. Don&amp;rsquo;t forget that in software engineering almost everything is a trade-off and working these trade-offs is what makes us better &lt;em&gt;professional&lt;/em&gt; software engineers. There is no silver bullet for most problems and - despite personal preferences - TDD styles is not an exception.&lt;/p&gt;
 </description>
@@ -259,70 +175,48 @@
         <guid>//localhost:1313/agile-code/</guid>
         <description>&lt;img src="//localhost:1313/img/posts/todo.jpg" alt="Featured image of post Agile code" /&gt;&lt;p&gt;During Christmas, just a few days before I decided to take up blogging, I was reading Sandro Mancuso&amp;rsquo;s excellent book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/18054154-software-craftsmanship&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Software Craftsmanship&lt;/a&gt;. I couldn&amp;rsquo;t help but agree (sometimes even out loud) when reading what Sandro describes as the Agile Hangover. How many companies decide to become &lt;em&gt;agile&lt;/em&gt; only to find their projects failing for the very same reasons that urged them to become &lt;em&gt;agile&lt;/em&gt; in the first place? What are the common characteristics of so many failed attempts? What is it that goes so wrong anyway?&lt;/p&gt;
-&lt;h2 id=&#34;what-is-agile-anyway&#34;&gt;
-    &lt;a href=&#34;#what-is-agile-anyway&#34;&gt;#&lt;/a&gt;
-    What is Agile anyway?
+&lt;h2 id=&#34;what-is-agile-anyway&#34;&gt;What is Agile anyway?
 &lt;/h2&gt;&lt;p&gt;&lt;em&gt;Agile&lt;/em&gt; is a notion so frequently used these days in the software engineering industry that has ended up being misunderstood. It would come as no surprise to me if one asked 5 people for the true meaning of this so called &lt;em&gt;agility&lt;/em&gt; and gathered 5 different answers. Let me endeavor to explain the way &lt;em&gt;I perceive agile&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Before &lt;em&gt;agile&lt;/em&gt;, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &amp;ldquo;lock&amp;rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?&lt;/p&gt;
 &lt;p&gt;In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the &lt;em&gt;Agile&lt;/em&gt; Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In my opinion, the key difference between the two approaches lies in the fact that &lt;em&gt;agile&lt;/em&gt; detaches the software from the illusion of the end state. There is no end state. There will never be one.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;making-a-company-agile&#34;&gt;
-    &lt;a href=&#34;#making-a-company-agile&#34;&gt;#&lt;/a&gt;
-    Making a company Agile
+&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;making-a-company-agile&#34;&gt;Making a company Agile
 &lt;/h2&gt;&lt;p&gt;Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become &lt;em&gt;agile&lt;/em&gt; needs to go through some extra filtering. Knowing &lt;em&gt;why&lt;/em&gt; should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Usually, companies that haven&amp;rsquo;t got into the trouble of clarifying these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt; prior to embarking on the transformation, find themselves hiring an &lt;em&gt;agile&lt;/em&gt; coach who is supposed to magically move his wand, speak the right words and&amp;hellip; boom! We&amp;rsquo;re &lt;em&gt;agile&lt;/em&gt; now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this &lt;em&gt;agile&lt;/em&gt; transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?&lt;/p&gt;
 &lt;p&gt;Don&amp;rsquo;t get me wrong here. Changing the process is valuable, but we should never forget that the process is a means to an end. The goal is the software! In order to reach the standards we want in software, we should first change the process, but making sure that all along this brings a mindset shifting too. Perhaps hiring an &lt;em&gt;agile&lt;/em&gt; coach was the correct move to make after all. However, he should be one with technical expertise, able to lead a mindset shifting, reflecting in the way that code is written in the company. As Albert Einstein would definitely point out, writing code in the same way and expecting different results just because we changed the process is pure insanity.&lt;/p&gt;
-&lt;h2 id=&#34;disciplines&#34;&gt;
-    &lt;a href=&#34;#disciplines&#34;&gt;#&lt;/a&gt;
-    Disciplines
+&lt;h2 id=&#34;disciplines&#34;&gt;Disciplines
 &lt;/h2&gt;&lt;p&gt;During his keynote speech on Agile Greece Summit 2017, Uncle Bob (Robert Martin) talked about a set of disciplines that every developer should follow in order to seal our profession as best as possible from future misfortunes. He even gave us an oath. I will not give you any oath, but I would like to focus on a set of disciplines. Specifically, I would like to shift our attention to the disciplines that will improve the quality of our code. However, before we talk about quality, we should first make sure that we understand it.&lt;/p&gt;
 &lt;p&gt;Quality is a very hard to understand notion. What is quality after all? Can one measure it? In my humble opinion, despite the fact that quality is not a tangible entity there are signs that one can notice and know that the situation is improving (happier customers, decreasing maintenance cost, faster features development, less bugs in production just to name a few). I believe that in order to start noticing these sings, we should strive to adhere to a set of disciplines. Extreme programming (XP) comes with a powerful arsenal of practices that can get us on the right track. Let&amp;rsquo;s briefly go over a few:&lt;/p&gt;
-&lt;h3 id=&#34;pair-programming&#34;&gt;
-    &lt;a href=&#34;#pair-programming&#34;&gt;#&lt;/a&gt;
-    Pair programming
+&lt;h3 id=&#34;pair-programming&#34;&gt;Pair programming
 &lt;/h3&gt;&lt;p&gt;If practiced right, it can be one of the most valuable assets of a development team. How many times have you heard a phrase like &lt;em&gt;&amp;ldquo;We have to modify and redeploy the payment module, but Chris is the owner of it and he&amp;rsquo;s out of office today, snorkeling on the reef.&amp;rdquo;&lt;/em&gt;? Well, I guess we could either equip Chris with a waterproof mobile or struggle for &lt;strong&gt;collective ownership&lt;/strong&gt; on our code.&lt;/p&gt;
 &lt;p&gt;Pair programming guarantees this result, along with a series of benefits like &lt;strong&gt;improved code design, team cohesion, mentoring and fewer interruptions&lt;/strong&gt;. Unfortunately, people tend to just sit next to each other and believe that they are practicing pair programming. So, if you do practice it, make sure you do it right. Do you share a common keyboard? Does one focus on the big picture, reviewing every line that the other is typing? Do you trade roles frequently? Perhaps you play &lt;a class=&#34;link&#34; href=&#34;http://wiki.c2.com/?PairProgrammingPingPongPattern&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ping pong&lt;/a&gt;? Do you learn from each other? How often do you switch pairs?&lt;/p&gt;
-&lt;h3 id=&#34;test-driven-development&#34;&gt;
-    &lt;a href=&#34;#test-driven-development&#34;&gt;#&lt;/a&gt;
-    Test Driven Development
+&lt;h3 id=&#34;test-driven-development&#34;&gt;Test Driven Development
 &lt;/h3&gt;&lt;p&gt;How can we be &lt;em&gt;agile&lt;/em&gt; if we don&amp;rsquo;t have an automated suite of tests? If, instead of having self-testing code, manual work is needed to verify that the system behaves as expected? If there is not a single button to verify the whole application and sign it off for production? If testing the whole system requires hours? How &lt;em&gt;agile&lt;/em&gt; can we be then?&lt;/p&gt;
 &lt;p&gt;TDD is a workflow that emphasizes on making us write &lt;strong&gt;the best code that we can write&lt;/strong&gt; (by constantly asking &lt;em&gt;&amp;ldquo;can you make it better?&amp;rdquo;&lt;/em&gt;&amp;quot;). If practiced right, it encourages &lt;strong&gt;better design&lt;/strong&gt; (more cohesive and loosely coupled components), provides &lt;strong&gt;documentation&lt;/strong&gt; (via executable examples, a.k.a. tests) and, when done with a feature, the &lt;strong&gt;automated regression test suite&lt;/strong&gt; comes for free.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As if the above mentioned are not sufficient, I could never stress enough the importance of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Shift_left_testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;left shift&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;continuous-integration&#34;&gt;
-    &lt;a href=&#34;#continuous-integration&#34;&gt;#&lt;/a&gt;
-    Continuous integration
+    &gt;left shift&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous integration
 &lt;/h3&gt;&lt;p&gt;How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? &lt;em&gt;We should always be working on the latest version of  the code&lt;/em&gt;. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more &lt;em&gt;professional&lt;/em&gt; way.&lt;/p&gt;
-&lt;h3 id=&#34;code-review&#34;&gt;
-    &lt;a href=&#34;#code-review&#34;&gt;#&lt;/a&gt;
-    Code review
+&lt;h3 id=&#34;code-review&#34;&gt;Code review
 &lt;/h3&gt;&lt;p&gt;At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&amp;rsquo;s benefit.&lt;/p&gt;
 &lt;p&gt;Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, &lt;strong&gt;review in essence!&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.&lt;/p&gt;
-&lt;h3 id=&#34;refactoring&#34;&gt;
-    &lt;a href=&#34;#refactoring&#34;&gt;#&lt;/a&gt;
-    Refactoring
+&lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;Martin Fowler, in his wonderful book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;, explains that before adding a new feature to our system, we should first ask ourselves if the current design of the system is ready to accommodate this new feature. If not, &lt;em&gt;we should refactor it&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Create a suite of tests to act as a safety net, change the system in small steps (keeping the tests green in all steps) and make sure that the value of the software increases (other software engineers understand the code, maintenance is easier and development of new features is faster). Keep on doing so &lt;em&gt;mercilessly&lt;/em&gt;, until the code meets the requirements.&lt;/p&gt;
 &lt;p&gt;Martin Fowler&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;book&lt;/a&gt; is an excellent read and despite being written around the time that the Agile Manifesto was being formed, the ideas in the book are remarkably relevant.&lt;/p&gt;
 &lt;p&gt;These techniques and practices are a few among many, and to go through them all exhaustively would be beyond the scope of this blog post. However, it is vital to understand that they are not an end in itself. The goal is to go out there and experiment with them. Study them and challenge them, but eventually pick the ones that enable us to improve the quality of the software that we produce. Adopt them and use them wisely.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Being &lt;em&gt;agile&lt;/em&gt; is trendy. This is not a bad thing on its own. Deciding to become &lt;em&gt;agile&lt;/em&gt; just because it is trendy is truly one of the worst decisions an organization can make. We should investigate and understand the fundamental aspects that it touches before we decide to undergo such a radical transformation. Understanding that software does not have an end state is fundamental. On the contrary, it is like a living organization. It will keep on changing and we will constantly have to reform and reshape it to meet the ever changing business needs. As a matter of fact, the better it meets these needs, the more it will have to change (more feature requests, more traffic etc).&lt;/p&gt;
 &lt;p&gt;Becoming &lt;em&gt;agile&lt;/em&gt; can be a great leap, but in order for it to be successful, we have to apply the changes deep down to the heart of our organization and not only to its skin. We have to change the mindset of the people and the way we write code. We have to write code in a way that embraces change, in the same way our shiny new process does. We have to go out there and search for the practices that best suit our needs, apply them, learn and start over.&lt;/p&gt;
 </description>

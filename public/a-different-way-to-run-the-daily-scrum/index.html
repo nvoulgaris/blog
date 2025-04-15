@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/a-different-way-to-run-the-daily-scrum/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="A different way to run the daily scrum">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="A different way to run the daily scrum">
 <meta property='og:description' content="Moving off the beaten track in the daily scrum can trade formality for value">
 <meta property='og:url' content='//localhost:1313/a-different-way-to-run-the-daily-scrum/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/a_different_way_to_run_the_daily_scrum.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -393,6 +395,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -407,10 +413,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -496,13 +498,9 @@ if (!doNotTrack) {
     <p>Have you ever felt that the daily scrum offers no value? That we are wasting some precious time and getting everybody tired at the same time?</p>
 <p>I decided to write this blog post, in order to challenge the formalistic way in which the daily scrum is often run and share an alternative format for it. I have been using this format for over 3 years now. I had to find myself as a new team member to an existing team to notice how useful it has been and to remember that it is not the default way to go.</p>
 <p>Our daily scrum was exhibiting some dysfunctional symptoms back then and we decided to adopt this approach as an experiment. It turned out so successful that we never changed it - although we tweaked it a few times. Today, I don&rsquo;t remember if this technique was based on something I read at the time or not. Feel free to point me to any references that deserve credit in the comments section.</p>
-<h2 id="symptoms">
-    <a href="#symptoms">#</a>
-    Symptoms
+<h2 id="symptoms">Symptoms
 </h2><p>Before changing anything, we have to learn to identify the cases that call for change. For this purpose, I have listed some symptoms that I find to be good indicators. Let&rsquo;s go over them.</p>
-<h3 id="no-collaboration">
-    <a href="#no-collaboration">#</a>
-    No collaboration
+<h3 id="no-collaboration">No collaboration
 </h3><p>During the daily scrum, team members share their input, but no fruitful communication takes place. To better understand this, let&rsquo;s think of the following hypothetical daily scrum situations:</p>
 <ul>
 <li>
@@ -513,35 +511,22 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>Mark is sharing the exact same input in both cases, but notice how the work progresses in the second situation. In the first case, the team is not collaborating.</p>
-<h3 id="monologue">
-    <a href="#monologue">#</a>
-    Monologue
+<h3 id="monologue">Monologue
 </h3><p>As mentioned above, the daily scrum is all about collaboration. If people are only speaking when their turn is up, how are they collaborating? Instead, a healthy team should be syncing and planning during the session. We should be hearing things like &ldquo;Shall I use the test environment to test this?&rdquo;, &ldquo;I will release after the scrum. Do you want me to wait for this to be merged too?&rdquo;, &ldquo;Shall I merge this to your branch or to develop?&rdquo;, &ldquo;Do you need any help with this or shall I pick something up from the To-Dos?&rdquo;.</p>
 <p>People not being fully engaged, being indifferent and <em>only talking when their turn is up</em> is a sign that clearly shows that the session is dysfunctional.</p>
-<h3 id="no-planning-ahead">
-    <a href="#no-planning-ahead">#</a>
-    No planning ahead
+<h3 id="no-planning-ahead">No planning ahead
 </h3><p>The daily scrum is supposed to be a <em>planning session</em>. Not a reporting session. Yes, we share the latest developments, but we do so in order to <em>plan the next 24 hours</em>. Try to keep track of the planning/reporting ratio. If it decreases, it is a very bad sign. Of course, this cannot be easily measured, but keep an eye on it and try to draw some conclusions.</p>
-<h3 id="stuck-pbis">
-    <a href="#stuck-pbis">#</a>
-    Stuck PBIs
+<h3 id="stuck-pbis">Stuck PBIs
 </h3><p>In scrum, we are supposed to be delivering value fast. It doesn&rsquo;t make sense to have a bunch of PBIs stuck at the &ldquo;Review&rdquo; swimlane for 3 days and picking up new work instead of reviewing the open PRs. The daily scrum is the time and place to make these decisions if they are not made during the day.</p>
 <p>Bottlenecks in the sprint board can be an indication of poor daily scrums. Of course, the root cause may be different here, but when we see jammed swimlanes we ought to think of the daily scrum too.</p>
-<h3 id="my-pbi">
-    <a href="#my-pbi">#</a>
-    My PBI
+<h3 id="my-pbi">My PBI
 </h3><p>Often you may hear people use phrases like &ldquo;Yesterday, I finished the implementation in my PBI&rdquo;. This is a highly problematic situation, as this single phrase implies that the team members are not thinking of the sprint&rsquo;s work in a collective way. They work in an isolated way and this can impede their understanding of success.</p>
 <p><em>Completing &ldquo;my&rdquo; PBI while my teammate struggles doesn&rsquo;t make the sprint a success</em>. This doesn&rsquo;t mean that the team members are selfish. All I am trying to say is that software engineering is a team sport and it takes effort to deeply understand this and change your day-to-day work habits accordingly.</p>
-<h2 id="another-way">
-    <a href="#another-way">#</a>
-    Another way
+<h2 id="another-way">Another way
 </h2><p>The typical format most teams that I know of use is the &ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&rdquo;. I usually call this the &ldquo;per-person&rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:</p>
 <blockquote>
-<p>The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.</p>
-</blockquote>
-<h3 id="overview">
-    <a href="#overview">#</a>
-    Overview
+<p>The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.</p></blockquote>
+<h3 id="overview">Overview
 </h3><p>An alternative to the &ldquo;per-person&rdquo; format would be the &ldquo;per-PBI&rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&ldquo;Done&rdquo; swimlane).</p>
 <p>Let&rsquo;s use an example to understand it better. Assuming that the team&rsquo;s sprint backlog is the following:</p>
 <figure><img src="/img/posts/sprint_board.png"
@@ -553,42 +538,24 @@ if (!doNotTrack) {
 <p>The next step would be the &ldquo;Review&rdquo; swimlane, in which the team needs to ensure that the PBIs do not remain idle for review if there is the capacity from team members to review them. They could decide who gets to review what and share more context if needed. Priorities could be defined if time and/or capacity do not suffice for all the PBIs. Again, the focus would be on how to move these PBI to &ldquo;Merged&rdquo; within the next 24 hours.</p>
 <p>Then, they would briefly discuss the &ldquo;In Progress&rdquo; PBIs, sharing progress and impediments and making clarifications if needed. The last step would be to talk about starting new PBIs in the next 24 hours.</p>
 <p>Finally, there can be some time to share anything that needs to be shared and wasn&rsquo;t already covered.</p>
-<h3 id="advantages">
-    <a href="#advantages">#</a>
-    Advantages
-</h3><h4 id="reduced-lead-time">
-    <a href="#reduced-lead-time">#</a>
-    Reduced lead time
+<h3 id="advantages">Advantages
+</h3><h4 id="reduced-lead-time">Reduced lead time
 </h4><p>This format focuses on getting things done and delivering value. It&rsquo;s all about what needs to be done within the next 24 hours to move this PBI to the next swimlane. Inevitably, this prioritizes closing the open PBIs over opening new ones. As we have already discussed in the <a class="link" href="https://nvoulgaris.com/limiting-work-in-progress-in-scrum"  target="_blank" rel="noopener"
     ><em>Limiting work in progress</em></a> post, this reduces the team&rsquo;s lead time.</p>
-<h4 id="focus-shifts-to-planning">
-    <a href="#focus-shifts-to-planning">#</a>
-    Focus shifts to planning
+<h4 id="focus-shifts-to-planning">Focus shifts to planning
 </h4><p>Instead of discouraging interruptions while other team members are sharing their input, this format welcomes their contribution. Fostering dialogue in this way shifts the focus from reporting to planning. Team members communicate more and it&rsquo;s all about moving the ticket to the right, instead of plainly sharing yesterday&rsquo;s actions.</p>
-<h4 id="teamwork-mentality">
-    <a href="#teamwork-mentality">#</a>
-    Teamwork mentality
+<h4 id="teamwork-mentality">Teamwork mentality
 </h4><p>Furthermore, the transition from monologue to an intensely collaborative format builds stronger team relationships and a teamwork mentality. The team learns to function as a unit, as opposed to a set of individuals. They learn to cooperate and they understand that great results take more than an individual writing code. There is no &ldquo;my PBI&rdquo; anymore. There is &ldquo;our work&rdquo;.</p>
-<h3 id="considerations">
-    <a href="#considerations">#</a>
-    Considerations
-</h3><h4 id="longer-daily-scrums">
-    <a href="#longer-daily-scrums">#</a>
-    Longer daily scrums
+<h3 id="considerations">Considerations
+</h3><h4 id="longer-daily-scrums">Longer daily scrums
 </h4><p>From my personal experience, I&rsquo;ve noticed that the session sometimes tends to last longer with this format. This is a result of the increased dialogue. However, there can be a number of root causes behind this.</p>
 <p>The first thing that should come into our minds is whether there are too many open PBIs. If yes, the team should focus on closing some of them before starting to work on new ones. It could also show that the team is getting dragged into long conversations, which could be kept shorter. Finally, maybe the team <em>needs</em> this extra time. Personally, I wouldn&rsquo;t mind a slightly longer daily scrum so long as the conversation is fruitful and meaningful.</p>
-<h4 id="people-feel-left-out">
-    <a href="#people-feel-left-out">#</a>
-    People feel left out
+<h4 id="people-feel-left-out">People feel left out
 </h4><p>Also, people whose work is not directly visible on the board (e.g. designers and product owners) could start to feel left out with this format. My advice would be to encourage them to contribute whenever needed in the conversation and to use the time at the end of the session to share their input if it wasn&rsquo;t already shared.</p>
-<h2 id="own-the-process">
-    <a href="#own-the-process">#</a>
-    Own the process
+<h2 id="own-the-process">Own the process
 </h2><p>Having shared this technique, which I have successfully used, it is important to understand that <strong>every team is different</strong>. Just because it worked for a team it doesn&rsquo;t mean that it will also work for another one. Dogmatically applying a solution that worked for another team and expecting results goes against the very nature of the agile mindset.</p>
 <p>I would not advise against applying this format, but rather use it as a starting point. Call it an experiment and remember to evaluate this experiment. Then tweak it and run another experiment. Evaluate this one too. Then tweak it again. Chances are that the result that works for your team is different than the one I described. Maybe slightly different, maybe radically different. The point is to understand that the <strong>process is here to serve us</strong> and not the other way around. If it is not working, then change it to something that works. Make it your own.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>The daily scrum is a pivotal event that can make all the difference between a successful and a failed sprint. Often, it gets executed in a formalistic way, which offers no real value. There are a number of symptoms that can help us identify a dysfunctional daily scrum session, such as lack of planning for the next 24 hours, jammed swimlanes and people not engaging in conversation during the session.</p>
 <p>A different way to run the session can prove beneficial. I have successfully used what I call the &ldquo;per-PBI&rdquo; format to run daily scrums and I feel that it offers a series of advantages, such as reduced lead time and improved team cohesion. Along with it come some downsides, such as certain roles feeling left out and increased duration of the session.</p>
 <p>No matter if we choose the &ldquo;per-PBI&rdquo; format or not, the responsibility of identifying the dysfunction and taking action to improve the situation lies with us, the software engineering team. So, I would strongly advise experimenting with different formats and tweaking the process until it serves the team.</p>
@@ -724,6 +691,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -732,12 +716,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -826,7 +810,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

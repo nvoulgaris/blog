@@ -17,9 +17,7 @@
 &lt;p&gt;Have you ever been in a situation like this? Do you relate to the train of thoughts? How long did it take you to get all the tests to pass? How did you feel when they finally passed? Creative, energized and ready to continue or relieved, exhausted and ready to take a break or call it a day? What if you had &lt;em&gt;reverted&lt;/em&gt; the change as soon as it made a test fail and approached the problem from a different angle?&lt;/p&gt;
 &lt;p&gt;This is one of the key ideas behind &lt;em&gt;test &amp;amp;&amp;amp; commit || revert&lt;/em&gt; (TCR), a programming workflow born during a Kent Beck workshop (and also attributed to Oddmund Strømme, Lars Barlindhaug, and Ole Johannessen). In this blog post, I will try to provide an overview of TCR.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Before we delve into it, let me add a small disclaimer. I have only scratched the surface of TCR. I have only used it in playground projects, with the sole purpose of understanding it. I have not used it in production code and I am definitely not advocating for it in this post. The intention of the post is to let you know that TCR is a thing and merely present some of its trade-offs that I have discovered.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;the-main-idea&#34;&gt;
-    &lt;a href=&#34;#the-main-idea&#34;&gt;#&lt;/a&gt;
-    The main idea
+&lt;h2 id=&#34;the-main-idea&#34;&gt;The main idea
 &lt;/h2&gt;&lt;p&gt;During any typical programming workflow, we run the tests a lot. We definitely do so before committing the code. So, the idea behind TCR is that we should commit &lt;em&gt;every&lt;/em&gt; time the tests pass. But there&amp;rsquo;s a catch. If we do commit every time the tests pass, we should also revert every time the tests fail. It&amp;rsquo;s simple but profound and powerful.&lt;/p&gt;
 &lt;p&gt;Applying these two constraints locks us in a cycle. Exactly like TDD does, just with a different cycle. Since a failing test automatically reverts the code, there is no red state. We always keep the tests passing and we always find ourselves in the green state, the only state there is.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/tcr_cycle.jpeg&#34;
@@ -29,76 +27,49 @@
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;h2 id=&#34;why-should-i-try-it&#34;&gt;
-    &lt;a href=&#34;#why-should-i-try-it&#34;&gt;#&lt;/a&gt;
-    Why should I try it
+&lt;h2 id=&#34;why-should-i-try-it&#34;&gt;Why should I try it
 &lt;/h2&gt;&lt;p&gt;Now, I understand that TCR may sound extreme (to say the least). I can already hear the objections. &lt;em&gt;&amp;ldquo;But I will be losing code&amp;rdquo;. &amp;ldquo;But I love the red state&amp;rdquo;. &amp;ldquo;But it sounds so frustrating&amp;rdquo;. &amp;ldquo;But why would I want to do that?&amp;rdquo;&lt;/em&gt;. These were also &lt;em&gt;my first thoughts&lt;/em&gt;. So, let&amp;rsquo;s try to understand what do we stand to gain from giving TCR a chance.&lt;/p&gt;
-&lt;h3 id=&#34;baby-steps&#34;&gt;
-    &lt;a href=&#34;#baby-steps&#34;&gt;#&lt;/a&gt;
-    Baby steps
+&lt;h3 id=&#34;baby-steps&#34;&gt;Baby steps
 &lt;/h3&gt;&lt;p&gt;If there was a single lesson to be learned from practising TCR it would be the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The only way to go fast, it to go well&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The only way to go fast, it to go well&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This is a quote from Uncle Bob, which has shaped my way of thinking around writing code like few others.&lt;/p&gt;
 &lt;p&gt;The core idea behind TCR is moving in small steps. Moving in baby steps. Tiny steps. Small enough to be sure that they keep the tests passing. Small enough not to risk losing a bunch of code if a test fails. The philosophy is &lt;em&gt;&amp;ldquo;what is the next, small, steady step that I can take towards my goal?&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Moving forwards in small, seemingly insignificant steps can be surprisingly more beneficial than going back and forth.&lt;/p&gt;
-&lt;h3 id=&#34;gamification&#34;&gt;
-    &lt;a href=&#34;#gamification&#34;&gt;#&lt;/a&gt;
-    Gamification
+&lt;h3 id=&#34;gamification&#34;&gt;Gamification
 &lt;/h3&gt;&lt;p&gt;Practice TCR for 10 minutes and you can&amp;rsquo;t help but notice the gamification element. Causing a test to fail feels like making a mistake in a video game and having to start over again. Gamification makes us have fun. And when we have fun we tend to be more creative and we tend to come up with better solutions (this is just my intuition, it is not backed by any study that I know of). Of course, this coin has two sides, but we will discuss this in-depth later on.&lt;/p&gt;
-&lt;h3 id=&#34;improves-refactoring&#34;&gt;
-    &lt;a href=&#34;#improves-refactoring&#34;&gt;#&lt;/a&gt;
-    Improves refactoring
+&lt;h3 id=&#34;improves-refactoring&#34;&gt;Improves refactoring
 &lt;/h3&gt;&lt;p&gt;Refactoring a piece of code takes discipline. It requires a series of small, confident steps. It requires keeping the tests green at all times. The truth is that, even with the aid of the IDE&amp;rsquo;s automated refactoring options, this is challenging.&lt;/p&gt;
 &lt;p&gt;I find that TCR can be immensely helpful during the refactoring process. Any modification that breaks the tests gets automatically reverted. Therefore, by definition, all refactoring moves keep the tests green.&lt;/p&gt;
 &lt;p&gt;But there&amp;rsquo;s more in it. Refactoring moves that break the tests get reverted. They do not &lt;em&gt;&amp;ldquo;survive&amp;rdquo;&lt;/em&gt; into commits. Only the ones that keep the tests passing &lt;em&gt;&amp;ldquo;survive&amp;rdquo;&lt;/em&gt;. They get committed and eventually pushed and merged. This rings a bell, doesn&amp;rsquo;t it? This sounds a lot like a &lt;em&gt;natural selection process for refactoring moves&lt;/em&gt;. Just the ones that display useful qualities (keep the tests passing) make it into commits. The accumulation of the effects of this continuous feedback is bound to make us more skilled in the long run. Let&amp;rsquo;s not get too carried away with the metaphor, but I strongly believe that applying TCR when refactoring can really improve our refactoring skills.&lt;/p&gt;
-&lt;h3 id=&#34;a-tool-for-understanding-legacy-code&#34;&gt;
-    &lt;a href=&#34;#a-tool-for-understanding-legacy-code&#34;&gt;#&lt;/a&gt;
-    A tool for understanding legacy code
+&lt;h3 id=&#34;a-tool-for-understanding-legacy-code&#34;&gt;A tool for understanding legacy code
 &lt;/h3&gt;&lt;p&gt;TCR works wonderfully well as a &lt;em&gt;learning tool&lt;/em&gt;. Assuming that we have a piece of legacy code that we want to understand. It&amp;rsquo;s natural that we start making assumptions when we read the code. Suppose we fire up the TCR script and express these assumptions as unit tests. If the assumption is correct, the test passes and we just learned for sure that the code does what we thought it did. In case the assumption was incorrect, the test fails and disappears. We learned what the code does not do. So, we just learned again.&lt;/p&gt;
 &lt;p&gt;This is like orally applying specification by example in a conversation with the author of the code. Except that the author might even be in a different company now. Except that there is way less room for a misunderstanding, as the specification is written in code. Except that we get to keep a comprehensive test suite when we are done.&lt;/p&gt;
 &lt;p&gt;I learned about this fascinating technique when I came across this &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=FFzHOyFeovE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;video&lt;/a&gt;, which illustrates it wonderfully.&lt;/p&gt;
-&lt;h2 id=&#34;downsides&#34;&gt;
-    &lt;a href=&#34;#downsides&#34;&gt;#&lt;/a&gt;
-    Downsides
+&lt;h2 id=&#34;downsides&#34;&gt;Downsides
 &lt;/h2&gt;&lt;p&gt;Having listed some advantages, let&amp;rsquo;s also have a look at some inconveniencies that come with the TCR.&lt;/p&gt;
-&lt;h3 id=&#34;losing-stacktraces-and-test-output&#34;&gt;
-    &lt;a href=&#34;#losing-stacktraces-and-test-output&#34;&gt;#&lt;/a&gt;
-    Losing stacktraces and test output
+&lt;h3 id=&#34;losing-stacktraces-and-test-output&#34;&gt;Losing stacktraces and test output
 &lt;/h3&gt;&lt;p&gt;I feel that one downside is too obvious to ignore. This is losing the stacktrace of a failed test. It&amp;rsquo;s natural. When a test fails, we want to understand why it failed. However, since the tests get reverted automatically, the stacktrace disappears.&lt;/p&gt;
 &lt;p&gt;Perhaps there are ways around the issue, by carefully configuring the test command you use, but it was the very first thing that annoyed me when a test failed when I wasn&amp;rsquo;t expecting it.&lt;/p&gt;
 &lt;p&gt;This does not stop on stacktraces though. The test output in general is gone with the reverted code. It first bothered me when I used Spock&amp;rsquo;s &lt;code&gt;@Unroll&lt;/code&gt; feature and a single case failed.&lt;/p&gt;
 &lt;p&gt;Unconvenient as it might be, this is part of the process. TCR urges you to approach the problem from a &lt;em&gt;different angle&lt;/em&gt;, or maybe opt for a &lt;em&gt;smaller step&lt;/em&gt;. Debugging a failed test completely defeats the purpose.&lt;/p&gt;
-&lt;h3 id=&#34;commit-messages&#34;&gt;
-    &lt;a href=&#34;#commit-messages&#34;&gt;#&lt;/a&gt;
-    Commit messages
+&lt;h3 id=&#34;commit-messages&#34;&gt;Commit messages
 &lt;/h3&gt;&lt;p&gt;It should be obvious that practising TCR can easily create tens of tiny commits. Actually, it should do exactly that when done right. So, the questions that naturally follow are &lt;em&gt;&amp;ldquo;what do I do with all those commits?&amp;rdquo;&lt;/em&gt; and &lt;em&gt;&amp;ldquo;what about the commit messages?&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;These can be addressed in a number of ways. For instance, my preferred method is to add a default commit message (e.g. &amp;ldquo;WIP&amp;rdquo;). Then, when I reached the point in which I would originally commit if I was not using TCR, I would squash all these, tiny, WIP commits into a single one and reword it. Apart from this, there are other methods that would also work, like using the &lt;code&gt;git diff&lt;/code&gt; list as the commit message.&lt;/p&gt;
 &lt;p&gt;Nevertheless, this constitutes a problem that should be solved and, one way or another, it&amp;rsquo;s an overhead.&lt;/p&gt;
-&lt;h3 id=&#34;frustration&#34;&gt;
-    &lt;a href=&#34;#frustration&#34;&gt;#&lt;/a&gt;
-    Frustration
+&lt;h3 id=&#34;frustration&#34;&gt;Frustration
 &lt;/h3&gt;&lt;p&gt;The alter ego of the above-mentioned gamification aspect is the irritation that TCR can cause you. The rational first reaction to witnessing the code you&amp;rsquo;ve been writing over the past few minutes (or seconds) magically disappearing in front of your eyes is frustration. Sometimes even anger. While gamification can make one more creative, frustration can lead to bad-tempered decisions and hasty solutions.&lt;/p&gt;
 &lt;p&gt;Unfortunately, this can lead to a vicious cycle. The more the code gets reverted, the worse your mood gets, which leads to more mistakes, which leads to the code getting reverted even more. Quite ironically, this is a &lt;em&gt;good&lt;/em&gt; feature of TCR, because if you find yourself having your code reverted (say) 10 times in a row, perhaps that&amp;rsquo;s the best sign that you need to take a break.&lt;/p&gt;
 &lt;p&gt;In any case, I feel that this is perhaps the most interesting trade-off that TCR has to offer. The balance between having fun and feeling angry and disappointed is crucial. In other words, for TCR to be effective, sticking to the essence is key. And the essence is aiming for &lt;em&gt;baby steps&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;open-questions&#34;&gt;
-    &lt;a href=&#34;#open-questions&#34;&gt;#&lt;/a&gt;
-    Open questions
+&lt;h2 id=&#34;open-questions&#34;&gt;Open questions
 &lt;/h2&gt;&lt;p&gt;A programming workflow it&amp;rsquo;s open to customization and experimentation by its nature. TCR, being fairly new (created in 2018), leaves plenty of room for both. Let&amp;rsquo;s examine some of the aspects that remain open.&lt;/p&gt;
-&lt;h3 id=&#34;reverting-tests&#34;&gt;
-    &lt;a href=&#34;#reverting-tests&#34;&gt;#&lt;/a&gt;
-    Reverting tests
+&lt;h3 id=&#34;reverting-tests&#34;&gt;Reverting tests
 &lt;/h3&gt;&lt;p&gt;Writing a test only to have it reverted because it failed can be discouraging. Especially for people with a strong TDD background, who have worked hard to install the habit of writing a failing unit test first. This can be particularly disturbing for them. Maybe this is the reason why a variation suggests that the tests should not get reverted as part of the TCR process. In other words, when a test fails, the production code should get reverted, but not the tests.&lt;/p&gt;
 &lt;p&gt;I strongly believe that different approaches may work better for different people. TCR is a tool. It&amp;rsquo;s merely means to an end and not an end in itself. So, I have deliberately chosen to include this topic in the open questions. I believe that either approach will work. So, some people will choose to revert the tests along with the production code and some people will not do so.&lt;/p&gt;
-&lt;h3 id=&#34;what-happens-with-pushing&#34;&gt;
-    &lt;a href=&#34;#what-happens-with-pushing&#34;&gt;#&lt;/a&gt;
-    What happens with pushing
+&lt;h3 id=&#34;what-happens-with-pushing&#34;&gt;What happens with pushing
 &lt;/h3&gt;&lt;p&gt;We have already discussed the issue with the numerous, tiny commits, but when does the code get pushed during this workflow? Again, this is a matter of choice. Manually pushing after a bunch of small commits will work fine. Exactly like automatically pushing along with every tiny commit. The former diminishes the sense of &lt;em&gt;&amp;ldquo;continuous delivery&amp;rdquo;&lt;/em&gt; that comes with TCR while the latter most likely requires a rebase and force push. The issue with the commit messages has to be resolved in either case. So, again, I would suggest customizing it to your preference.&lt;/p&gt;
-&lt;h2 id=&#34;setting-up-the-environment-for-tcr&#34;&gt;
-    &lt;a href=&#34;#setting-up-the-environment-for-tcr&#34;&gt;#&lt;/a&gt;
-    Setting up the environment for TCR
+&lt;h2 id=&#34;setting-up-the-environment-for-tcr&#34;&gt;Setting up the environment for TCR
 &lt;/h2&gt;&lt;p&gt;Practising TCR requires a little bit of setup. There should be an automated way to observe the source files and detect changes, run the tests and, depending on the outcome of the tests, either commit or revert the code. There are various ways in which this can be achieved. Personally, I used the following bash scripts:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;a &lt;code&gt;watch.sh&lt;/code&gt; script that observes the source code, detects changes on it and triggers the TCR script.&lt;/li&gt;
@@ -148,9 +119,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I have created a &lt;a class=&#34;link&#34; href=&#34;https://github.com/nvoulgaris/tcrPlayground&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;playground github repository&lt;/a&gt;. It is set up for Kotlin and Spock and serves me for experimenting with TCR, but feel free to either grab the bash scripts or fork the repository and use it to play with TCR.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;TCR provides some exciting and fresh ideas. It focuses on small, steady steps, which accumulate to create progress. It gamifies programming and, among other things, it can improve refactoring and work as a tool for understanding legacy code.&lt;/p&gt;
 &lt;p&gt;There are disadvantages to be considered, such as losing the stacktraces and output of failed tests, dealing with countless tiny commits and dealing with frustration. There are also a lot of open questions, like whether or not tests should get reverted along with the production code or when should the code be pushed.&lt;/p&gt;
 &lt;p&gt;TCR sounds extreme, but I am sure that people were thinking exactly the same about TDD when it first came out.&lt;/p&gt;

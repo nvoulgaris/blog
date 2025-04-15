@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/unit-testing-best-practices/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Unit testing best practices">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Unit testing best practices">
 <meta property='og:description' content="Taking unit tests to the next level">
 <meta property='og:url' content='//localhost:1313/unit-testing-best-practices/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/test_board.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -386,6 +388,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -400,10 +406,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -490,23 +492,16 @@ if (!doNotTrack) {
     >Tripsta</a>, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have.</p>
 <p>It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests <strong>are not</strong>.</p>
 <blockquote>
-<p>Tests are not nice to have</p>
-</blockquote>
+<p>Tests are not nice to have</p></blockquote>
 <blockquote>
-<p>Tests are not negotiable</p>
-</blockquote>
+<p>Tests are not negotiable</p></blockquote>
 <p>When I hear phrases like <em>&ldquo;If we have time, we&rsquo;ll write some tests too&rdquo;</em> or <em>&ldquo;It costs 13 story points, but since there is no time, we can  make it 8 if we don&rsquo;t write tests&rdquo;</em> I want to quit my job and sell greengrocery for a living. Tests should be an integral part of writing software.</p>
 <p>I could use a lot of lines talking about the necessity of writing unit tests, the benefits they provide and how they should be an integral part of the software development process instead of just a verification layer (<em>hint: TDD</em>),  but that is another blog post on its own. So, let&rsquo;s delve into a handful of best practices which I have come to value over the years.</p>
-<h2 id="best-practices">
-    <a href="#best-practices">#</a>
-    Best practices
-</h2><h3 id="naming">
-    <a href="#naming">#</a>
-    Naming
+<h2 id="best-practices">Best practices
+</h2><h3 id="naming">Naming
 </h3><p>Some people are bad at naming. Some other (such as me) are terrible at it. In any case, taking the time to come up with a proper name for everything in our code <em>is worth it</em>. Regardless of how much time we need. Uncle Bob (Robert Martin) likes to say <em>&ldquo;with code, we do more reading than writing, by a huge factor. Which of those operations should be made efficient?&rdquo;</em> Naming <strong>matters</strong>!! If I were to give you a single piece of advice on naming, it would be the following:</p>
 <blockquote>
-<p>Write the tests you&rsquo;d want to read</p>
-</blockquote>
+<p>Write the tests you&rsquo;d want to read</p></blockquote>
 <p>Before stop writing a test and moving to the production code, ask yourself these two questions:</p>
 <ul>
 <li>Does the test clearly express its behavior?</li>
@@ -514,8 +509,7 @@ if (!doNotTrack) {
 </ul>
 <p>Usually, a developer that struggles to come up with a proper name will settle for a mediocre one, that does not express behavior properly, or even a bad one, which is hard to understand and misleads its reader.</p>
 <blockquote>
-<p>Tests should be a documentation of the module&rsquo;s behavior?</p>
-</blockquote>
+<p>Tests should be a documentation of the module&rsquo;s behavior?</p></blockquote>
 <p>Whenever we come across a piece of code that we did not write, we want to be able to read its test suite and figure out what this piece of code does. So, take the time (however much you need) to name your tests (and the variables and functions in them) as best as you can and when you come across a mediocre or a bad name, <em>change it to something better</em> (leaving the code cleaner than you found it, as Uncle Bob would say).</p>
 <p>Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AccountTest</span> {
@@ -534,18 +528,13 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>So, my advice is to be restless. Scan our (rich) community over the Internet and do not be afraid to shift to new practices and techniques so long as you recognize the value they offer.</p>
-<h3 id="isolation">
-    <a href="#isolation">#</a>
-    Isolation
+<h3 id="isolation">Isolation
 </h3><p>This whole point I want to make on isolation can be summarized in the following sentence:</p>
 <blockquote>
-<p>Tests should leave the system in the state that they found it</p>
-</blockquote>
+<p>Tests should leave the system in the state that they found it</p></blockquote>
 <p>The last thing that we would like to face is 10 failing tests as a result of a single failure that dragged the following 9 tests with it. When we see x tests failing, we should know that there are exactly x problems with the system. Whenever a test is failing, it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately (by its name and the failure).</p>
 <p>In order to achieve this, we should ensure that our test, even when it fails, will restore the system to the exact situation it found it and it won&rsquo;t leave it dirty. Each test should not know and care if another one run before it (let alone if it failed or not).</p>
-<h3 id="watch-the-test-fail">
-    <a href="#watch-the-test-fail">#</a>
-    Watch the test fail
+<h3 id="watch-the-test-fail">Watch the test fail
 </h3><p>When should we stop writing the test and start writing the production code? That is a surprisingly hard to answer question for a lot of people when I give the training. Take a minute and think about it before reading further on. There are a couple of questions I like asking myself before I stop writing the test.</p>
 <ul>
 <li>
@@ -558,9 +547,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Expected: 1
 </span></span><span style="display:flex;"><span>Got: 0
 </span></span></code></pre></div><p>I forced myself in a debugging session to figure out what was wrong. If only I had taken the time to make the diagnostics clear enough&hellip;</p>
-<h3 id="triple-a">
-    <a href="#triple-a">#</a>
-    Triple A
+<h3 id="triple-a">Triple A
 </h3><p>When it comes to designing our unit tests, I strongly recommend that the backbone of the structure should be based on <em>Arrange - Act - Assert</em> (aka AAA). This is a very simple yet solid technique, consisting of the following three steps:</p>
 <ul>
 <li>
@@ -590,13 +577,10 @@ if (!doNotTrack) {
 <li><em>Code smells</em> in the test become easier to spot (e.g. a series of <em>act-assert</em> steps - more on this on the <em>single assertion</em> section)</li>
 <li><em>Discourages overengineering</em> a test by focusing on the the absolutely needed steps to write it.</li>
 </ul>
-<h3 id="single-assertion">
-    <a href="#single-assertion">#</a>
-    Single assertion
+<h3 id="single-assertion">Single assertion
 </h3><p>How many assertions should a test have? The answer should always be <em>one</em>. What message is a red bar sending to us? That something is wrong in the system. Which is our reflex move? To find out what is this. This is exactly why we want our tests to be shouting out loud the reason for their failure. If a test fails, we should know, just by reading its name, what the problem is. How can this happen if a test fails for multiple reasons though?</p>
 <blockquote>
-<p>Unit tests should fail for one and only one reason</p>
-</blockquote>
+<p>Unit tests should fail for one and only one reason</p></blockquote>
 <p>Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">calculatorShouldGeneratePositiveEvenIntegers</span>() {
@@ -615,9 +599,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>  assertThrows(ArithmeticException.<span style="color:#a6e22e">class</span>, divideByZero);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This test will both fail when calculator fails to divide correctly and when the error case of dividing by zero does not throw an <code>ArithmeticException</code>. Therefore, in essence, we want to avoid a series of <em>act-assert</em> sequences. A single act followed by more than one physical assertions is fine.</p>
-<h3 id="assert-first">
-    <a href="#assert-first">#</a>
-    Assert first
+<h3 id="assert-first">Assert first
 </h3><p><em>Assert first</em> is a technique described in Kent Beck&rsquo;s excellent book <a class="link" href="https://www.goodreads.com/book/show/387190.Test_Driven_Development"  target="_blank" rel="noopener"
     >Test Driven Development: By Example</a>. As counterintuitive as it may sound (and feel for someone not used to it), it comes with tons of advantages and it will become second nature given some time. The main idea lies in the fact that writing a test presents multiple problems. The two principal ones are <em>&ldquo;what is the right answer?&rdquo;</em> and <em>&ldquo;how am I going to check it&rdquo;</em>. Taking this bottom up approach helps us focus on the target and avoid overengineering the test.</p>
 <p>Coming back to the arrange - act - assert example, assuming that I have a business requirement that a booking without booking ID is invalid, and I am writing the booking validator logic, I may start as follows:</p>
@@ -642,9 +624,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>  assertThrows(InvalidBookingException.<span style="color:#a6e22e">class</span>, validateBooking);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Writing a test in this bottom - up fashion seems strange initially, I know. My suggestion would be to give it a shot, stick with it passed the uncomfortable denial phase (the <em>&ldquo;I want to write my tests like I&rsquo;m used to&rdquo;</em> phase), and it will pay off.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>I tried to share some knowledge and some techniques I use when writing unit tests, because I feel that the area is misunderstood. These are the most important topics I wanted to touch, but the list is far from exhaustive.</p>
 <p>Whichever the techniques we might use, let&rsquo;s always keep in mind that tests are an integral part of the system and therefore they should be designed and maintained. We should care for them and we should take the time to write the <em>right tests</em> in the <em>right way</em>.</p>
 <p><em>P.S. I would also love to cover the whole &ldquo;test state vs test behavior&rdquo; topic, but this post is already lengthy enough and this is a really long topic</em></p>
@@ -674,6 +654,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -682,12 +679,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -776,7 +773,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

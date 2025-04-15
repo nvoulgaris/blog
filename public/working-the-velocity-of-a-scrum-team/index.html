@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/working-the-velocity-of-a-scrum-team/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Working the velocity of a scrum team">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Working the velocity of a scrum team">
 <meta property='og:description' content="Helping teams make meaningful short-term projections">
 <meta property='og:url' content='//localhost:1313/working-the-velocity-of-a-scrum-team/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/velocity.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -384,6 +386,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -398,10 +404,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -487,48 +489,31 @@ if (!doNotTrack) {
     <p>Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, <em>cool</em> product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.</p>
 <p>Among a lot of factors that have resulted to this, arguably the king of the problems is how people misunderstand the concept of the <em>velocity</em> of a scrum team. Scrum Masters and Product Owners treat it as a productivity reporting tool, trying to make the development team <em>commit</em> (we will discuss this <em>&ldquo;commitment&rdquo;</em> issue in another post) to as high a number as possible, while the development team, feeling that they are judged by this number, struggle to increase it sprint by sprint. However, this is a <strong>fundamentally flawed</strong> view.</p>
 <blockquote>
-<p>Velocity is not a productivity reporting tool!</p>
-</blockquote>
+<p>Velocity is not a productivity reporting tool!</p></blockquote>
 <p>I wish I could stress this even more. <strong>Velocity is not a productivity reporting tool!</strong>.</p>
 <p>Since I - once again - started with what velocity <em>is not</em>, let&rsquo;s proceed in a more conventional way and talk about what velocity actually <em>is</em>.</p>
-<h2 id="inspect-and-adapt">
-    <a href="#inspect-and-adapt">#</a>
-    Inspect and adapt
+<h2 id="inspect-and-adapt">Inspect and adapt
 </h2><p>Let&rsquo;s try to go back to the basics and essence of Scrum for a bit. In a nutshell, every couple of weeks (in reality this number ranges between 1 and 4 weeks, but for simplicity&rsquo;s sake I will use 2 weeks for a sprint&rsquo;s length throughout this post) the scrum team gathers with the stakeholders, reviewing their latest increment, inspecting the state of the product and refining the priorities. After this comes the retro and after the retro, the new sprint begins with a sprint planning session: the most important meeting in scrum.</p>
 <p>Now the scrum team should take into consideration the outcome of the sprint review and retrospective in order to commit to a new sprint. A new sprint, which should accommodate the prioritized requirements of the product, as defined by the stakeholders, whose voice in this meeting is the Product Owner. Let&rsquo;s think of this for a moment. How is the scrum team supposed to commit to a couple of week&rsquo;s worth of work without having an <strong>estimate</strong> on the amount of work they can deliver in this time?</p>
-<h2 id="sprint-planning">
-    <a href="#sprint-planning">#</a>
-    Sprint planning
+<h2 id="sprint-planning">Sprint planning
 </h2><p>In order to execute a sprint planning session meaningfully, there have to be two inputs: a <strong>refined Product Backlog</strong> and the team&rsquo;s calculated <strong>velocity</strong> for the upcoming sprint. These will produce a single output: a <strong>sprint backlog</strong>. The Scrum Master should see to this.</p>
 <p>Now it is becoming visible that the team&rsquo;s velocity is <em>key</em> to deciding on how many and which Product Backlog Items should the scrum team work on the upcoming sprint. This is an <em>indication</em>, which the team should <em>consult</em> when asking questions like <em>&ldquo;is this amount of work a reasonable chunk for the upcoming sprint? Is it too much? Should we work on more items&rdquo;</em>.</p>
 <p>If it is reasonable for one to assume that the team is able to successfully work on more items than they actually put in the sprint backlog, then the team is <strong>undercommitting</strong> and therefore failing to honor their role as <em>professional</em> software engineers. If the team is clearly committing on a sprint that will most likely fail to deliver, it is <strong>overcommitting</strong>, failing once again to honor their role as <em>professional</em> software engineers, as they create expectations for the stakeholders that they will not be met.</p>
 <p>This is exactly why velocity is <strong>critical</strong> to the success of a sprint planning session and therefore to the success of the sprint. <strong>Velocity helps creating a sustainable pace</strong>. This pace will neither burn the team out or leave it idle for too much. Additionally, it provides <em>confidence</em> to the development team to estimate their upcoming work in <em>reasonable chunks</em>. Chunks that they can actually deliver, therefore causing the <em>trust</em> of the stakeholders in the development team to increase.</p>
-<h2 id="calculating-the-teams-velocity">
-    <a href="#calculating-the-teams-velocity">#</a>
-    Calculating the team&rsquo;s velocity
+<h2 id="calculating-the-teams-velocity">Calculating the team&rsquo;s velocity
 </h2><p>Now, having said all these, I hope that it is clear that monitoring the team&rsquo;s velocity is very very important, but <em>who</em> actually is responsible for this and <em>how</em> can one do a good job on it? After all, no one can predict the future and the work that a group of people will produce in two weeks time seems quite hard to get right.</p>
-<h3 id="who">
-    <a href="#who">#</a>
-    Who
-</h3><h4 id="the-scrum-masters-role">
-    <a href="#the-scrum-masters-role">#</a>
-    The Scrum Master&rsquo;s role
+<h3 id="who">Who
+</h3><h4 id="the-scrum-masters-role">The Scrum Master&rsquo;s role
 </h4><p>The Scrum Master is sometimes called the <em>joker</em> and part of the reason is that she has a lot of balls in the air at any given moment. One of these is that she is responsible for monitoring the team&rsquo;s velocity and coming up with reasonable calculations for upcoming sprints as input in the sprint planning sessions.</p>
-<h4 id="who-else-needs-to-know">
-    <a href="#who-else-needs-to-know">#</a>
-    Who else needs to know
+<h4 id="who-else-needs-to-know">Who else needs to know
 </h4><p>I once was working in a company that used to start the sprint reviews with the following phrase: &ldquo;Our estimated velocity for the past sprint was &hellip; and our actual velocity was &hellip;&rdquo;. I <strong>completely disagree</strong> with this (I had stated it a number of times)! Velocity is a piece of information that, in my opinion, concerns solely the scrum team members (perhaps excluding very few cases).</p>
 <p>The stakeholders definitely need <strong>not</strong> know the velocity of the team. They only need to know that the team is maturing and <em>can be trusted</em> in their estimates. Otherwise, this would only enforce the view that the development team&rsquo;s productivity is being judged by their velocity (at least in their eyes).</p>
 <p>The Product Owner should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter.</p>
 <p>The development team should learn the calculated number by the scrum master for the sprint planning purposes, but should not be concerned thereafter either.</p>
-<h3 id="how">
-    <a href="#how">#</a>
-    How
+<h3 id="how">How
 </h3><p>Estimating the velocity of a scrum team for the upcoming sprint is not a straightforward task. Estimation by itself is not an easy task anyway. Needless to say, there is no silver bullet for it. But the good news is that there doesn&rsquo;t have to be one. We&rsquo;re not after a precise, infallible estimation. We&rsquo;re after creating rhythm, building confidence and trust.</p>
 <p>A number of techniques are being daily applied by different Scrum Masters in different teams. None is right. None is wrong. Let me try to describe a technique that I have used for quite a long time and I find it useful.</p>
-<h4 id="one-technique">
-    <a href="#one-technique">#</a>
-    One technique
+<h4 id="one-technique">One technique
 </h4><p>In the heart of the technique lie statistical calculations based on empirical data. A number of factors that affect the estimated velocity, are literally plugged into an formula that produces the magic number. The factors are listed and explained below:</p>
 <ul>
 <li><strong>Team members</strong>: The number of members of the development team. Do not confuse this with the number of members of the scrum team, which will be different if either the Scrum Master or the Product Owner do not contribute to writing code.</li>
@@ -539,16 +524,13 @@ if (!doNotTrack) {
 </ul>
 <p><strong>Actual work days</strong> is produced by the following formula:</p>
 <blockquote>
-<p>(Team members * Sprint duration) - (Team members * No workdays) - Team holidays</p>
-</blockquote>
+<p>(Team members * Sprint duration) - (Team members * No workdays) - Team holidays</p></blockquote>
 <p><strong>Focus factor</strong> is a bit more complicated. Basically, the piece of information that we want to take into consideration is the degree in which the team estimations match the actual work done. The reason for using more than one past sprints is that as teams change, as they mature they go through different phases. These affect their focus factor. For instance, as a new team member is integrated with the team, one would expect the focus factor to have an slightly increasing trend. The focus factor for a single sprint is provided by the following formula:</p>
 <blockquote>
-<p>Actual velocity points / committed velocity points</p>
-</blockquote>
+<p>Actual velocity points / committed velocity points</p></blockquote>
 <p>Finally, the formula producing the estimated velocity for the upcoming sprint is the following:</p>
 <blockquote>
-<p>(Actual work days) * (average focus factor of the last x sprints)</p>
-</blockquote>
+<p>(Actual work days) * (average focus factor of the last x sprints)</p></blockquote>
 <ul>
 <li>
 <p><em>I usually use the average focus factor of the last 3 sprints (x = 3), but feel free to use any number of sprints that works for you</em></p>
@@ -561,17 +543,11 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>Probably a couple of very reasonable questions have already formed into your mind, like <em>&ldquo;What do we do on the first sprint, with no previous data existing yet?&rdquo;</em> or <em>&ldquo;What if a new member joins the team?&rdquo;</em>. Let&rsquo;s discuss these both.</p>
-<h4 id="first-sprint">
-    <a href="#first-sprint">#</a>
-    First sprint
+<h4 id="first-sprint">First sprint
 </h4><p>A very challenging period to estimate a team&rsquo;s velocity is right after the team is formed. After all, there are no previous data whatsoever. There is no silver bullet for this problem either, but I would propose the following method: make sure that for the first few sprints the team bluntly <strong>overcommits</strong>. Not slightly overcommitting, but estimate a profoundly unreasonable amount of work. Explain to the team that this is happening for precise reasons and no one is expecting them to deliver this mountain of work. Protect them from destroying their morale! Now, over the first sprints (I believe roughly 3 will suffice), the current ability of the team will become clear. When confident, stop this and use a proper method for calculating the velocity, like the one described above.</p>
-<h4 id="new-team-member">
-    <a href="#new-team-member">#</a>
-    New team member
+<h4 id="new-team-member">New team member
 </h4><p>A usually confusing case is when a new software engineer joins the development team. Intuition suggests that the team&rsquo;s velocity should increase. After all, there is one more engineer now, right? This is true, but in the long term. On the contrary, over the first few sprints, it is more likely that velocity will drop. Obviously, the new engineer, no matter how skillful, is not going to be productive right away. To make matters worse, the current engineers will have to both spend time on her orientation and keep on carrying out their regular work. This leaves them with less time to do the latter. Therefore, the most likely scenario is that velocity will drop slightly for the first few sprints and then gradually catch up and probably exceed the previous numbers (of course this also depends on how the new team will glue together, but this is another post).</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Perceiving velocity as a productivity reporting tool is <strong>flat-out wrong</strong>. Productivity is measured indeed, but not for reporting. Just for internal use within the team. Use it to create a sustainable pace, to help the team deliver on a steady basis, create trust and mature the team. The actual method for calculating the velocity for upcoming sprints does not matter. There are loads of techniques out there. Either pick one or create your own. Just make sure that you use it in the right way and it helps the team.</p>
 
 </section>
@@ -648,6 +624,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -656,12 +649,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -750,7 +743,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

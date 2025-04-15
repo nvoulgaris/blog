@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/agile-code/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Agile code">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Agile code">
 <meta property='og:description' content="Understanding the essence of agile software engineering, past the superficial process changes">
 <meta property='og:url' content='//localhost:1313/agile-code/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/todo.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -387,6 +389,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -401,10 +407,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -489,70 +491,48 @@ if (!doNotTrack) {
     
     <p>During Christmas, just a few days before I decided to take up blogging, I was reading Sandro Mancuso&rsquo;s excellent book <a class="link" href="https://www.goodreads.com/book/show/18054154-software-craftsmanship"  target="_blank" rel="noopener"
     >Software Craftsmanship</a>. I couldn&rsquo;t help but agree (sometimes even out loud) when reading what Sandro describes as the Agile Hangover. How many companies decide to become <em>agile</em> only to find their projects failing for the very same reasons that urged them to become <em>agile</em> in the first place? What are the common characteristics of so many failed attempts? What is it that goes so wrong anyway?</p>
-<h2 id="what-is-agile-anyway">
-    <a href="#what-is-agile-anyway">#</a>
-    What is Agile anyway?
+<h2 id="what-is-agile-anyway">What is Agile anyway?
 </h2><p><em>Agile</em> is a notion so frequently used these days in the software engineering industry that has ended up being misunderstood. It would come as no surprise to me if one asked 5 people for the true meaning of this so called <em>agility</em> and gathered 5 different answers. Let me endeavor to explain the way <em>I perceive agile</em>.</p>
 <p>Before <em>agile</em>, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &ldquo;lock&rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?</p>
 <p>In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the <em>Agile</em> Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.</p>
 <blockquote>
-<p>The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.</p>
-</blockquote>
+<p>The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.</p></blockquote>
 <p>In my opinion, the key difference between the two approaches lies in the fact that <em>agile</em> detaches the software from the illusion of the end state. There is no end state. There will never be one.</p>
 <blockquote>
-<p>As long as the business is live, the software lives and evolves with it.</p>
-</blockquote>
-<h2 id="making-a-company-agile">
-    <a href="#making-a-company-agile">#</a>
-    Making a company Agile
+<p>As long as the business is live, the software lives and evolves with it.</p></blockquote>
+<h2 id="making-a-company-agile">Making a company Agile
 </h2><p>Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become <em>agile</em> needs to go through some extra filtering. Knowing <em>why</em> should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these <em>why</em> and <em>what</em>.</p>
 <p>Usually, companies that haven&rsquo;t got into the trouble of clarifying these <em>why</em> and <em>what</em> prior to embarking on the transformation, find themselves hiring an <em>agile</em> coach who is supposed to magically move his wand, speak the right words and&hellip; boom! We&rsquo;re <em>agile</em> now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this <em>agile</em> transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?</p>
 <p>Don&rsquo;t get me wrong here. Changing the process is valuable, but we should never forget that the process is a means to an end. The goal is the software! In order to reach the standards we want in software, we should first change the process, but making sure that all along this brings a mindset shifting too. Perhaps hiring an <em>agile</em> coach was the correct move to make after all. However, he should be one with technical expertise, able to lead a mindset shifting, reflecting in the way that code is written in the company. As Albert Einstein would definitely point out, writing code in the same way and expecting different results just because we changed the process is pure insanity.</p>
-<h2 id="disciplines">
-    <a href="#disciplines">#</a>
-    Disciplines
+<h2 id="disciplines">Disciplines
 </h2><p>During his keynote speech on Agile Greece Summit 2017, Uncle Bob (Robert Martin) talked about a set of disciplines that every developer should follow in order to seal our profession as best as possible from future misfortunes. He even gave us an oath. I will not give you any oath, but I would like to focus on a set of disciplines. Specifically, I would like to shift our attention to the disciplines that will improve the quality of our code. However, before we talk about quality, we should first make sure that we understand it.</p>
 <p>Quality is a very hard to understand notion. What is quality after all? Can one measure it? In my humble opinion, despite the fact that quality is not a tangible entity there are signs that one can notice and know that the situation is improving (happier customers, decreasing maintenance cost, faster features development, less bugs in production just to name a few). I believe that in order to start noticing these sings, we should strive to adhere to a set of disciplines. Extreme programming (XP) comes with a powerful arsenal of practices that can get us on the right track. Let&rsquo;s briefly go over a few:</p>
-<h3 id="pair-programming">
-    <a href="#pair-programming">#</a>
-    Pair programming
+<h3 id="pair-programming">Pair programming
 </h3><p>If practiced right, it can be one of the most valuable assets of a development team. How many times have you heard a phrase like <em>&ldquo;We have to modify and redeploy the payment module, but Chris is the owner of it and he&rsquo;s out of office today, snorkeling on the reef.&rdquo;</em>? Well, I guess we could either equip Chris with a waterproof mobile or struggle for <strong>collective ownership</strong> on our code.</p>
 <p>Pair programming guarantees this result, along with a series of benefits like <strong>improved code design, team cohesion, mentoring and fewer interruptions</strong>. Unfortunately, people tend to just sit next to each other and believe that they are practicing pair programming. So, if you do practice it, make sure you do it right. Do you share a common keyboard? Does one focus on the big picture, reviewing every line that the other is typing? Do you trade roles frequently? Perhaps you play <a class="link" href="http://wiki.c2.com/?PairProgrammingPingPongPattern"  target="_blank" rel="noopener"
     >ping pong</a>? Do you learn from each other? How often do you switch pairs?</p>
-<h3 id="test-driven-development">
-    <a href="#test-driven-development">#</a>
-    Test Driven Development
+<h3 id="test-driven-development">Test Driven Development
 </h3><p>How can we be <em>agile</em> if we don&rsquo;t have an automated suite of tests? If, instead of having self-testing code, manual work is needed to verify that the system behaves as expected? If there is not a single button to verify the whole application and sign it off for production? If testing the whole system requires hours? How <em>agile</em> can we be then?</p>
 <p>TDD is a workflow that emphasizes on making us write <strong>the best code that we can write</strong> (by constantly asking <em>&ldquo;can you make it better?&rdquo;</em>&quot;). If practiced right, it encourages <strong>better design</strong> (more cohesive and loosely coupled components), provides <strong>documentation</strong> (via executable examples, a.k.a. tests) and, when done with a feature, the <strong>automated regression test suite</strong> comes for free.</p>
 <blockquote>
 <p>As if the above mentioned are not sufficient, I could never stress enough the importance of <a class="link" href="https://en.wikipedia.org/wiki/Shift_left_testing"  target="_blank" rel="noopener"
-    >left shift</a></p>
-</blockquote>
-<h3 id="continuous-integration">
-    <a href="#continuous-integration">#</a>
-    Continuous integration
+    >left shift</a></p></blockquote>
+<h3 id="continuous-integration">Continuous integration
 </h3><p>How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? <em>We should always be working on the latest version of  the code</em>. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more <em>professional</em> way.</p>
-<h3 id="code-review">
-    <a href="#code-review">#</a>
-    Code review
+<h3 id="code-review">Code review
 </h3><p>At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&rsquo;s benefit.</p>
 <p>Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, <strong>review in essence!</strong></p>
 <blockquote>
-<p>Challenge the code design, propose alternatives and work the trade-offs that they present themselves.</p>
-</blockquote>
+<p>Challenge the code design, propose alternatives and work the trade-offs that they present themselves.</p></blockquote>
 <p>Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.</p>
-<h3 id="refactoring">
-    <a href="#refactoring">#</a>
-    Refactoring
+<h3 id="refactoring">Refactoring
 </h3><p>Martin Fowler, in his wonderful book <a class="link" href="https://www.goodreads.com/book/show/44936.Refactoring"  target="_blank" rel="noopener"
     >Refactoring: Improving the Design of Existing Code</a>, explains that before adding a new feature to our system, we should first ask ourselves if the current design of the system is ready to accommodate this new feature. If not, <em>we should refactor it</em>.</p>
 <p>Create a suite of tests to act as a safety net, change the system in small steps (keeping the tests green in all steps) and make sure that the value of the software increases (other software engineers understand the code, maintenance is easier and development of new features is faster). Keep on doing so <em>mercilessly</em>, until the code meets the requirements.</p>
 <p>Martin Fowler&rsquo;s <a class="link" href="https://www.goodreads.com/book/show/44936.Refactoring"  target="_blank" rel="noopener"
     >book</a> is an excellent read and despite being written around the time that the Agile Manifesto was being formed, the ideas in the book are remarkably relevant.</p>
 <p>These techniques and practices are a few among many, and to go through them all exhaustively would be beyond the scope of this blog post. However, it is vital to understand that they are not an end in itself. The goal is to go out there and experiment with them. Study them and challenge them, but eventually pick the ones that enable us to improve the quality of the software that we produce. Adopt them and use them wisely.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Being <em>agile</em> is trendy. This is not a bad thing on its own. Deciding to become <em>agile</em> just because it is trendy is truly one of the worst decisions an organization can make. We should investigate and understand the fundamental aspects that it touches before we decide to undergo such a radical transformation. Understanding that software does not have an end state is fundamental. On the contrary, it is like a living organization. It will keep on changing and we will constantly have to reform and reshape it to meet the ever changing business needs. As a matter of fact, the better it meets these needs, the more it will have to change (more feature requests, more traffic etc).</p>
 <p>Becoming <em>agile</em> can be a great leap, but in order for it to be successful, we have to apply the changes deep down to the heart of our organization and not only to its skin. We have to change the mindset of the people and the way we write code. We have to write code in a way that embraces change, in the same way our shiny new process does. We have to go out there and search for the practices that best suit our needs, apply them, learn and start over.</p>
 
@@ -583,6 +563,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -591,12 +588,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -685,7 +682,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
