@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="The Blueprint for Graph Data access">
+<title>The Anatomy of a GraphQL Schema</title>
+
+<link rel='canonical' href='//localhost:1313/the-anatomy-of-a-graphql-schema/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="The Anatomy of a GraphQL Schema">
+<meta property='og:description' content="The Blueprint for Graph Data access">
+<meta property='og:url' content='//localhost:1313/the-anatomy-of-a-graphql-schema/'>
+<meta property='og:site_name' content='Nikos Voulgaris'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GraphQL' /><meta property='article:published_time' content='2024-07-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-14T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/graphql_schema.jpeg' />
+<meta name="twitter:title" content="The Anatomy of a GraphQL Schema">
+<meta name="twitter:description" content="The Blueprint for Graph Data access"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/graphql_schema.jpeg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="../../img/nv_author_icon.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="//localhost:1313/">Nikos Voulgaris</a></h1>
+            <h2 class="site-description">Challenge everything</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/nvoulgaris'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/nivoul'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/nikos-voulgaris-44455546'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/books' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Books</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/contact' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>Contact</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#types">Types</a>
+      <ul>
+        <li><a href="#objects">Objects</a></li>
+        <li><a href="#scalars">Scalars</a></li>
+        <li><a href="#enums">Enums</a></li>
+        <li><a href="#lists-and-non-null">Lists and Non-Null</a></li>
+      </ul>
+    </li>
+    <li><a href="#relationships">Relationships</a></li>
+    <li><a href="#root-types">Root types</a>
+      <ul>
+        <li><a href="#query">Query</a></li>
+        <li><a href="#mutation">Mutation</a></li>
+        <li><a href="#subscription">Subscription</a></li>
+      </ul>
+    </li>
+    <li><a href="#arguments">Arguments</a></li>
+    <li><a href="#input-types">Input types</a></li>
+    <li><a href="#interfaces-and-unions">Interfaces and Unions</a></li>
+    <li><a href="#directives">Directives</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
+        
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
+        
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
+        
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
+        
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+            <a href="/tags/functional-programming/" class="font_size_1">
+                Functional Programming
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/the-anatomy-of-a-graphql-schema/">
+                
+                    <img src="/img/posts/graphql_schema.jpeg" loading="lazy" alt="Featured image of post The Anatomy of a GraphQL Schema" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/the-anatomy-of-a-graphql-schema/">The Anatomy of a GraphQL Schema</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            The Blueprint for Graph Data access
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>One of the key features of GraphQL is that it is client-driven. The server provides access to a mesh of interconnected data and the client can navigate in it. The contract between the two parties, which defines the protocol for this data exchange, is a GraphQL schema.</p>
+<p>The GraphQL schema mechanism possesses some clever and powerful features, in order to support this elaborate communication. In this post, we will explore both the basic and a few advanced features.</p>
+<h2 id="types">Types
+</h2><h3 id="objects">Objects
+</h3><p>The objects represent the nodes of the graph. They are the primary building blocks of a GraphQL schema, as they define the structure of the data. An object definition also contains the fields of the object. The <code>type</code> keyword is used to define an object.</p>
+<p>The following schema snippet defines an object that represents a book entity.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Book</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="scalars">Scalars
+</h3><p>Scalar types are the primitive data types in GraphQL, and they are used to define the type of fields. GraphQL supports the following:</p>
+<ul>
+<li><code>String</code></li>
+<li><code>Int</code></li>
+<li><code>Float</code></li>
+<li><code>Boolean</code></li>
+<li><code>ID</code></li>
+</ul>
+<p>While these may cover the needs of a basic schema, it is easy to see that they don&rsquo;t suffice for more advanced use cases. For instance, there is no support for dates. However, this is easily solved, as GraphQL allows the definition of custom scalars. Regarding the schema, creating a custom scalar is as easy as defining it, using the keyword <code>scalar</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">scalar</span> <span style="color:#a6e22e">Date</span>
+</span></span></code></pre></div><p>Additional work is required in the application code though, to define how it should be serialized/deserialized etc.</p>
+<h3 id="enums">Enums
+</h3><p>Enums are inherently supported in GraphQL schema, just by using the <code>enum</code> keyword.</p>
+<p>As an example, let&rsquo;s define an enum to describe the type of a physical book.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">BookType</span> {
+</span></span><span style="display:flex;"><span>  PAPERBACK
+</span></span><span style="display:flex;"><span>  HARDCOVER
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="lists-and-non-null">Lists and Non-Null
+</h3><p>While objects, scalars and enums are the only kinds of types that can be defined in a GraphQL schema, there are also a few type modifiers that can be used with them.</p>
+<p>Nullability is explicitly declared, by the absence of the Non-Null, <code>!</code> modifier. So, <code>title: String</code> permits null values, whereas <code>title: String!</code> disallows them.</p>
+<p>The list modifier <code>[]</code> declares an array of the given types. So, for example, <code>books: [Book!]!</code> refer to a non-null list of non-null books.</p>
+<h2 id="relationships">Relationships
+</h2><p>As already explained, the objects represent the nodes of the graph. In addition to that, an object may refer to another object. These relationships define the edges of the graph and they may be either bidirectional or unidirectional.</p>
+<p>In the following example, types <code>Book</code> and <code>Author</code> are connected via a bidirectional relationship.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Author</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  name: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  books: [<span style="color:#a6e22e">Book</span>!]!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Book</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>  author: <span style="color:#a6e22e">Author</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To make this relationship unidirectional, either the <code>books</code> field could be removed from the <code>Author</code> type or the <code>author</code> field could be removed from the <code>Book</code> type.</p>
+<h2 id="root-types">Root types
+</h2><p>The root types are the entry points to the schema for the client. These (and only these) can be used to access the graph data. Read and write access points are segregated, making clear the intention behind each access point.</p>
+<h3 id="query">Query
+</h3><p>The <code>Query</code> type defines read-only operations.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
+</span></span><span style="display:flex;"><span>  books: [<span style="color:#a6e22e">Book</span>!]!
+</span></span><span style="display:flex;"><span>  book(id: <span style="color:#a6e22e">ID</span>!): <span style="color:#a6e22e">Book</span>
+</span></span><span style="display:flex;"><span>  authors: [<span style="color:#a6e22e">Author</span>!]!
+</span></span><span style="display:flex;"><span>  author(id: <span style="color:#a6e22e">ID</span>!): <span style="color:#a6e22e">Author</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>An example query would look as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">books</span> {
+</span></span><span style="display:flex;"><span>    id
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>    publishedYear
+</span></span><span style="display:flex;"><span>    author {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      name
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="mutation">Mutation
+</h3><p>The <code>Mutation</code> type is used to define operations that result in state modifications.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutation</span> {
+</span></span><span style="display:flex;"><span>  createBook(title: <span style="color:#a6e22e">String</span>!, authorId: <span style="color:#a6e22e">ID</span>!, publishedYear: <span style="color:#a6e22e">Int</span>): <span style="color:#a6e22e">Book</span>!
+</span></span><span style="display:flex;"><span>  createAuthor(name: <span style="color:#a6e22e">String</span>!): <span style="color:#a6e22e">Author</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>createBook</code> mutation could be used like that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">mutation</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">createBook</span>(title: <span style="color:#e6db74">&#34;GraphQL for Experts&#34;</span>, <span style="color:#a6e22e">authorId</span>: <span style="color:#e6db74">&#34;A1&#34;</span>, <span style="color:#a6e22e">publishedYear</span>: <span style="color:#a6e22e">2024</span>) {
+</span></span><span style="display:flex;"><span>    id
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>    publishedYear
+</span></span><span style="display:flex;"><span>    author {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      name
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="subscription">Subscription
+</h3><p>The third and last root type is the <code>Subscription</code> type, which is used to provide access to real-time updates on a specific type.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Subscription</span> {
+</span></span><span style="display:flex;"><span>  bookCreated: <span style="color:#a6e22e">Book</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Using the subscription would look as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">subscription</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bookCreated</span> {
+</span></span><span style="display:flex;"><span>    id
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>    publishedYear
+</span></span><span style="display:flex;"><span>    author {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      name
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="arguments">Arguments
+</h2><p>Arguments are inputs provided to fields within queries, mutations, or subscriptions to specify or filter/sort the data being requested or to perform actions with certain parameters.</p>
+<p>Assuming we wanted to provide a way for the client to filter the publications based on certain criteria, we could define the following arguments.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
+</span></span><span style="display:flex;"><span>  publications(keyword: <span style="color:#a6e22e">String</span>, publishedYear: <span style="color:#a6e22e">Int</span>, <span style="color:#66d9ef">type</span>: <span style="color:#a6e22e">String</span>): [<span style="color:#a6e22e">Publication</span>!]!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="input-types">Input types
+</h2><p>Input types are passed as arguments to mutations. They have to be defined individually. The <code>input</code> keyword is used to define them.</p>
+<p>For instance, if we wanted to avoid passing 3 separate arguments to the <code>createBook</code> mutation, we could define a <code>BookInput</code> instead.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutation</span> {
+</span></span><span style="display:flex;"><span>  createBook(<span style="color:#66d9ef">input</span>: <span style="color:#a6e22e">BookInput</span>!): <span style="color:#a6e22e">Book</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">input</span> BookInput {
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  authorId: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Input types resemble objects a lot. However, even if they are identical, their use is not interchangeable. An object cannot be passed as an argument to a mutation and an input cannot be defined as the return type of a query.</p>
+<h2 id="interfaces-and-unions">Interfaces and Unions
+</h2><p>Interfaces, similar to many Object-Oriented programming languages that support them, are abstract types that other types can implement.</p>
+<p>They are powerful for creating abstractions in a GraphQL schema. For instance, below we enrich the <code>Book</code> type by creating the <code>Publication</code> abstraction as well as two more derivatives of it; <code>Magazine</code> and <code>Newspaper</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Publication</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Book</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Publication</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>  author: <span style="color:#a6e22e">Author</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Magazine</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Publication</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>  issueNumber: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Newspaper</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Publication</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>  date: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
+</span></span><span style="display:flex;"><span>  publications: [<span style="color:#a6e22e">Publication</span>!]!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>What might seem as counter-intuitive, with respect to interfaces in some programming languages, is that common fields have to be defined both in the interface and in its derivative, making the schema a bit more verbose.</p>
+<p>A client could query this schema, always deserializing the common fields and conditionally deserializing the rest, as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">publications</span> {
+</span></span><span style="display:flex;"><span>    id
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>    publishedYear
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Book {
+</span></span><span style="display:flex;"><span>      author {
+</span></span><span style="display:flex;"><span>        name
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Magazine {
+</span></span><span style="display:flex;"><span>      issueNumber
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Newspaper {
+</span></span><span style="display:flex;"><span>      date
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Unions provide a similar solution, allowing a type to represent one of several other types.</p>
+<p>Assuming that <code>Book</code>, <code>Magazine</code> and <code>Newspaper</code> didn&rsquo;t have a common subset of fields, an interface could technically still be used, but a union would be a better tool for this schema definition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">union</span> <span style="color:#a6e22e">Publication</span> = Book | Magazine | Newspaper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
+</span></span><span style="display:flex;"><span>  publications: [<span style="color:#a6e22e">Publication</span>!]!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this case, the client deserializes all fields conditionally.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">publications</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Book {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      title
+</span></span><span style="display:flex;"><span>      publishedYear
+</span></span><span style="display:flex;"><span>      author {
+</span></span><span style="display:flex;"><span>        name
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Magazine {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      title
+</span></span><span style="display:flex;"><span>      publishedYear
+</span></span><span style="display:flex;"><span>      issueNumber
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span> <span style="color:#66d9ef">on</span> Newspaper {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      title
+</span></span><span style="display:flex;"><span>      publishedYear
+</span></span><span style="display:flex;"><span>      date
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="directives">Directives
+</h2><p>Directives are annotations, which can be used inside the schema, in order to provide additional functionality to the schema definition.</p>
+<p>A common use case is field deprecation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Author</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  name: <span style="color:#a6e22e">String</span>!
+</span></span><span style="display:flex;"><span>  books: [<span style="color:#a6e22e">Book</span>!]!
+</span></span><span style="display:flex;"><span>  bio: <span style="color:#a6e22e">String</span> <span style="color:#a6e22e">@deprecated</span>(reason: <span style="color:#e6db74">&#34;The field &#39;about&#39; should be used instead&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">about</span>: <span style="color:#a6e22e">String</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Custom directives can be used to provide validation logic. For example, the following, custom <code>@length</code> directive enforces a minimum and maximum length on a string field.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">directive</span> <span style="color:#a6e22e">@length</span>(min: <span style="color:#a6e22e">Int</span>, max: <span style="color:#a6e22e">Int</span>) <span style="color:#66d9ef">on</span> <span style="color:#66d9ef">FIELD_DEFINITION</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Book</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">Publication</span> {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#a6e22e">ID</span>!
+</span></span><span style="display:flex;"><span>  title: <span style="color:#a6e22e">String</span>! <span style="color:#a6e22e">@length</span>(min: <span style="color:#a6e22e">1</span>, max: <span style="color:#a6e22e">100</span>)
+</span></span><span style="display:flex;"><span>  publishedYear: <span style="color:#a6e22e">Int</span>!
+</span></span><span style="display:flex;"><span>  author: <span style="color:#a6e22e">Author</span>!
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Finally, directives can also be used on the client side, when issuing a query. A typical example is the <code>@include</code> directive, which dictates whether a certain field should be included in the response. An example would be the following.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> <span style="color:#a6e22e">GetBooks</span>($includePublishedYear: <span style="color:#a6e22e">Boolean</span>!) {
+</span></span><span style="display:flex;"><span>  books {
+</span></span><span style="display:flex;"><span>    id
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>    publishedYear <span style="color:#a6e22e">@include</span>(if: $includePublishedYear)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">author</span> {
+</span></span><span style="display:flex;"><span>      id
+</span></span><span style="display:flex;"><span>      name
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="conclusion">Conclusion
+</h2><p>A GraphQL schema is a powerful tool, which allows a client to navigate in a graph of data. The objects constitutes the nodes of the graph and the relationships among them define the edges. Read and write operations are explicitly separated, arguments provide filtering and sorting capabilities and directives attach additional functionality to the schema. Finally, elaborate abstractions are powered by  interfaces and unions.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/graphql/">GraphQL</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/graphql-introduction/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/img/posts/graphql_introduction.jpeg" loading="lazy" data-key="" data-hash="/img/posts/graphql_introduction.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GraphQL introduction</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2025 Nikos Voulgaris
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

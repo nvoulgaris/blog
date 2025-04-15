@@ -4,9 +4,11 @@ module:
     - path: github.com/CaiJimmy/hugo-theme-stack/v3
 
 languageCode: en-us
-paginate: 7
 title: Nikos Voulgaris
 copyright: Nikos Voulgaris
+
+pagination:
+  pagerSize: 7
 
 params:
   sidebar:

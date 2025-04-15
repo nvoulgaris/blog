@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/running-remote-retrospectives/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Running remote retrospectives">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Running remote retrospectives">
 <meta property='og:description' content="Unlocking remote engagement and collaboration">
 <meta property='og:url' content='//localhost:1313/running-remote-retrospectives/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/remote_retrospectives.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -396,6 +398,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -410,10 +416,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -501,74 +503,49 @@ if (!doNotTrack) {
 <p>My intention here is not to cover the fundamentals, such as the <em>goal</em> and the <em>structure</em> of the session. These are covered extensively in my <a class="link" href="https://nvoulgaris.com/driving-fruitful-retrospectives"  target="_blank" rel="noopener"
     >driving fruitful retrospectives</a> post. My aim is to complement that post with the special case of a geographically distributed team.</p>
 <p><em>Throughout this post, I will be referring to a fully remote team. Apart from this and the colocated team, there is also a third case, in which some of the team members are working remotely and some in the same location. I will not be covering the latter in this post.</em></p>
-<h2 id="engagement">
-    <a href="#engagement">#</a>
-    Engagement
+<h2 id="engagement">Engagement
 </h2><p>The primary goal of a scrum master remains the same whether the retrospective is taking place remotely or colocated. It is to make sure that <strong>all participants engage in the activity</strong>. This is a precondition. I cannot imagine a successful session that fails to meet this. When I drive retrospectives, this is the primary reason for which I use the <em>&ldquo;set the stage&rdquo;</em> step.</p>
 <p>We will discuss a few extra points on this topic further below, on the <em>facilitation</em> part, but the reason that I am mentioning it here is that being remote imposes a few extra difficulties. So, before even starting the session, I would propose to <em>focus on communication</em>.</p>
 <blockquote>
-<p>Without communication, there is no engagement and without engagement, there is no retrospective.</p>
-</blockquote>
+<p>Without communication, there is no engagement and without engagement, there is no retrospective.</p></blockquote>
 <p>Therefore I would propose to spend some time both during the preparation of the session and at the beginning of it to make sure that <em>people can be seen, heard and understood</em>.</p>
-<h3 id="use-the-camera">
-    <a href="#use-the-camera">#</a>
-    Use the camera
+<h3 id="use-the-camera">Use the camera
 </h3><p>Using the camera is a great tip for remotely working teams. I find it particularly important during the retrospective. It feels very different conversing with just a voice than with an individual who is located somewhere else. Context and a great deal of expressivity derives from our body language. A lot of our reactions are expressed via it, using facial expressions or hand gestures, without verbal communication. Take a moment to think of how much volume of information is missed when listening to someone without seeing him.</p>
 <p>These, missing pieces of information can make the difference between a constructive argument and one that leads to a dead end. These can also have a resounding effect on team bonding and chemistry in the long run. Personally, I always encourage geographically distributed teams to use their cameras as much as they can, but when it comes to the retrospective, I <em>insist</em> that everyone should use it.</p>
-<h3 id="make-sure-everyone-can-be-seen-and-heard">
-    <a href="#make-sure-everyone-can-be-seen-and-heard">#</a>
-    Make sure everyone can be seen and heard
+<h3 id="make-sure-everyone-can-be-seen-and-heard">Make sure everyone can be seen and heard
 </h3><p>Taking the time to make sure that everything is functioning properly before starting the retrospective is very important. <em>Has everybody said something. Is everyone&rsquo;s mic functioning as expected? Can everyone hear everybody else? Can everyone see everybody else?</em> Ask yourself these questions before starting.</p>
 <p>There is no point in starting a retrospective without resolving all sound and video problems. As a matter of fact, in case there is such a problem, the last thing the team wants is to be interrupted in the middle of an exercise to resolve a technical issue with somebody&rsquo;s mic or camera. The last thing a participant wants is to contribute to the conversation only to find out, after a few seconds, that no one heard him.</p>
-<h2 id="tools">
-    <a href="#tools">#</a>
-    Tools
+<h2 id="tools">Tools
 </h2><p>Being remote significantly restricts both the options on tools that can be used and the range of exercises that can be run. However, a wise choice on a collaboration tool and a careful selection of exercises can really boost the results of the session.</p>
-<h3 id="use-an-online-collaboration-tool">
-    <a href="#use-an-online-collaboration-tool">#</a>
-    Use an online collaboration tool
+<h3 id="use-an-online-collaboration-tool">Use an online collaboration tool
 </h3><p>Retrospectives are all about interaction. The participants should come up with ideas and add information to the session. In order for the data to be meaningful, they should be gathered, processed and the team should work on them. During a colocated session, the wall or a board is naturally used. During a remote retrospective, I would strongly suggest to use an online collaboration tool. There is no point in suggesting a specific one, as there are loads out there that are free and can get the job done. Just make sure that a group of people can simultaneously work on the same space and that the data are updated in real-time (there is no need to refresh in order to see an update). In my experience, the more playful the tool is, the more the participants enjoy the session, so I would suggest something with a sticky-note-on-the-wall look and feel and lots of colours.</p>
 <p>What I would caution one against is not to use any tool and host a blank session, with the participants just discussing without any common ground to work on.</p>
-<h3 id="reconsider-the-format">
-    <a href="#reconsider-the-format">#</a>
-    Reconsider the format
+<h3 id="reconsider-the-format">Reconsider the format
 </h3><p>Concerning the format of the session, I feel that there is a lot of room for experimentation. Generally, I like sticking to the 5 steps that I have thoroughly described in my <a class="link" href="https://nvoulgaris.com/driving-fruitful-retrospectives"  target="_blank" rel="noopener"
     >driving fruitful retrospectives</a> post, but there are quite a few factors that should be considered.</p>
 <p>Some exercises are not suitable for a team that is not colocated. For instance, there is no meaning running the <em>park bench</em> exercise on a remote session. The advantages of such an exercise derive from the mobility within the room, the high energy level and the playful format. I believe that attempting to run a variation of this exercise during a remote session would backfire. So, I would propose picking exercises that suite collaboration from distance.</p>
 <p>Also, perhaps one might notice that an exercise takes considerably more time when performed remotely than when run on the spot. That&rsquo;s reasonable as communication is harder and synchronization might require more time. I would suggest to always keep that in mind and, perhaps, adjust the session&rsquo;s schedule.</p>
-<h2 id="facilitation">
-    <a href="#facilitation">#</a>
-    Facilitation
+<h2 id="facilitation">Facilitation
 </h2><p>As far as facilitation is concerned most of the things that apply in colocated retrospectives, apply to remote ones too. Therefore, I will not repeat the thoughts that I have expressed in <a class="link" href="https://nvoulgaris.com/driving-fruitful-retrospectives"  target="_blank" rel="noopener"
     >driving fruitful retrospectives</a> (such as how to deal with silent members or members that dominate the conversation), but there are a few points worth discussing.</p>
 <p>These thoughts assume that the facilitator is acting as a scrum master. The case the facilitator wears two hats, the one of the scrum master and the one of the member of the development team is outside of the scope of this blog post.</p>
 <p><em>I usually wear these two hats and I believe that driving a retrospective is perhaps the most challenging part of this dual role.</em></p>
-<h3 id="make-yourself-invisible">
-    <a href="#make-yourself-invisible">#</a>
-    Make yourself invisible
+<h3 id="make-yourself-invisible">Make yourself invisible
 </h3><p>As always, try to make the team forget that you are even there. At all times, keep in mind that the scrum master is needed to help the team work meaningfully during the session. Try to <em>be a servant leader</em>. When needed, remind the team that you are <em>not the protagonist</em>.</p>
 <p>For instance, I sometimes find that team members address me when commenting on sticky notes. This is a mini <em>alarm</em> for me. Usually, when I am physically present, I point to the rest of the team. This gets the job done and does not interrupt the team member. However, when being remote, I have no option but to interrupt her. It is one of the last things I want to do, but having someone addressing me is a signal I take very seriously. The retrospective is being derailed and I should take action.</p>
 <p>As a second example, when team members are called to come up with input and &ldquo;stick it to the wall&rdquo;, they sometimes look for the facilitator to impose an order or the process. Take extra care to be &ldquo;absent&rdquo; at that point. This is easier to achieve when being remote. Just stay silent and let them <em>self-organize</em>. They will do it. Remember that silence is gold in this case. If it gets uncomfortable, just keep on staying silent. Someone will break the silence and the team will eventually function on its own.</p>
 <p>I could go on with a dozen examples, but I believe that the message is clear. Facilitate the session as a servant leader and fly below the radar as much as possible.</p>
-<h3 id="consider-breaking-the-ice">
-    <a href="#consider-breaking-the-ice">#</a>
-    Consider breaking the ice
+<h3 id="consider-breaking-the-ice">Consider breaking the ice
 </h3><p>Being physically present in a room follows that people have already talked to each other before the start of the session. Perhaps they just went out to get a cup of coffee or they were discussing in their offices, after the sprint review. However, this is obviously not the case in a remote session.</p>
 <p>Keep in mind that people need to feel comfortable before entering a session, let alone a retrospective. Breaking the ice can go a long way in this case. Instead of directly jumping to setting the stage and starting the retrospective, consider having some small talk first. Anything ranging from the weather and sports to the sprint review that just took place will do. Just make sure that people feel relaxed and ready to chat.</p>
-<h3 id="make-sure-everyone-contributes">
-    <a href="#make-sure-everyone-contributes">#</a>
-    Make sure everyone contributes
+<h3 id="make-sure-everyone-contributes">Make sure everyone contributes
 </h3><p>Every individual has a unique personality. Chances are that in a scrum team the spectrum of these personalities is going to be very broad. Naturally, some team members will open up more easily than others. However, it is crucial for the success of the retrospective to have everyone contributing. Unfortunately, it is easier for a closed person to &ldquo;hide&rdquo; and remain a spectator during a remote retrospective than during a colocated one. This is a problem that requires attention and very careful manoeuvring from the scrum master. Remember, that failing to address this can lead to losing a great part of the value of the session.</p>
 <p>Initially, make sure than during the <em>set the stage</em> step, everyone speaks and seems engaged and comfortable to contribute. Then, I would propose to choose the exercises very carefully. Prefer the ones that work in a round-robin fashion over the ones the require initiative form individuals. For instance, it is more likely to have  everyone contributing in an <em>I like - I wish</em> kind of exercise, during which all members are required to speak at their own turn than in a <em>5-why analysis</em>. During the latter, the same people could be asking and answering the questions throughout the whole exercise. Lastly, if nothing works and you notice that people remain passive, try to stimulate them. Ask them for their opinion on the matter or if they have something else to contribute that is not already heard.</p>
 <p>In any case, this matter requires very delicate moves. Try hard not to be intrusive. When people feel judgement is being passed on them, they might feel offended and distance themselves even more. At all times, keep in mind that <em>empathy is a key scrum master quality</em>. Try to get into their shoes and do the best to help them and the team.</p>
-<h2 id="follow-up">
-    <a href="#follow-up">#</a>
-    Follow-up
+<h2 id="follow-up">Follow-up
 </h2><p>After a fruitful session, a lot of ideas have been expressed and heard, a lot of discussions have taken place and a few action items have been produced as an outcome. It&rsquo;s always a good idea to <em>follow-up the session</em>.</p>
 <p>Perhaps an email or even just a slack message will do. Just make sure that the retrospective is summarized and the action items are clear. This will create a sense of a completed work to the team and will emphasize the importance of following up on the work done during the retrospective. After all, the retrospective, apart from a summary of the sprint that just finished, is also the very last action on it.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Running a retrospective for a geographically distributed team is very different from running one for a colocated team. However, with the proper care and organization, it can be as fruitful. Focusing on engagement is crucial for the success of the session. It&rsquo;s easier for people to remain &ldquo;hidden&rdquo; when being remote and technical issues may add unexpected obstacles. A good real-time collaboration tool and a wise selection of exercises and format can be extremely beneficial to the outcome of the session. As in colocated sessions, facilitation is the key to a successful and fruitful retrospective.</p>
 
 </section>
@@ -702,6 +679,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -710,12 +704,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -804,7 +798,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

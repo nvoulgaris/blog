@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/dealing-with-technical-debt-in-an-agile-environment/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Dealing with technical debt in an agile environment">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Dealing with technical debt in an agile environment">
 <meta property='og:description' content="Integrating technical debt work in scrum's cadence">
 <meta property='og:url' content='//localhost:1313/dealing-with-technical-debt-in-an-agile-environment/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/technical_debt.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -394,6 +396,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -408,10 +414,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -498,81 +500,52 @@ if (!doNotTrack) {
 <p>Eventually, the product resembles an iceberg. The stakeholders can only see the end result, the behavior of the system, the part of the iceberg that lies above the surface, unaware of what lies underneath it. However, the software engineers have the full picture. They know every aspect of the system and they understand the need to take some extra time to tide things up a bit more than usually once in a while.</p>
 <p>On the other hand, the stakeholders, happy with the current image above the surface, most likely will never request to devote effort (time and money) to get (what they perceive as) a perfectly working product to a better shape, especially in the short loops of agile software development, in which they expect tangible business value every few weeks.</p>
 <p>It seems like a dead end, but a truly professional team of software engineers should never allow themselves to result in such a situation. It&rsquo;s their <em>responsibility</em> to be proactive about it. Let&rsquo;s take things slow though and discuss a little bit about technical debt.</p>
-<h2 id="what-is-it">
-    <a href="#what-is-it">#</a>
-    What is it
+<h2 id="what-is-it">What is it
 </h2><p>The term technical debt refers to all the things in a code base that could (and should) be improved, but do not directly affect the behavior of the system. It&rsquo;s the things that the software engineers know should be done in a different, better way, but either chose to defer for the future or realized later on.</p>
 <blockquote>
-<p>Technical debt is code written today that requires more effort in the future</p>
-</blockquote>
+<p>Technical debt is code written today that requires more effort in the future</p></blockquote>
 <p>This resembles a lot a bank loan, in which an individual gets money today that require more money (initial amount plus interest) in the future to pay off, essentially creating debt.</p>
 <p>The term <em>technical debt</em> is a metaphor, referring to quick win software solutions that will slow development down in the future in order to pay the debt off. Also, since typically future amendments require more time than it would be originally required to provide a proper solution, the debt is accumulated and paid with interest. Not paying the debt usually results in loosing the product, as the code base eventually becomes either <em>unmaintainable</em> or <em>too expensive</em> to maintain.</p>
-<h2 id="where-does-it-come-from">
-    <a href="#where-does-it-come-from">#</a>
-    Where does it come from
+<h2 id="where-does-it-come-from">Where does it come from
 </h2><p>There ways in which technical debt can be created are numerous and very diverse. Some are easier to spot and even prevent, some are quite tricky and some are inevitable.</p>
-<h3 id="unprofessional-technical-debt">
-    <a href="#unprofessional-technical-debt">#</a>
-    Unprofessional technical debt
+<h3 id="unprofessional-technical-debt">Unprofessional technical debt
 </h3><p>An easy to spot (and, most importantly, prevent) way of creating technical debt is simply not taking the time to do our job in the right way. Every time we opt for a <em>hack</em>, a <em>quick-and-dirty</em> solution, a <em>workaround</em>, every time we <em>skip some unit tests</em> or <em>do not refactor</em> the code, we create debt. Every time we are sloppy with our work because someone says that <em>&ldquo;this is urgent&rdquo;</em> or <em>&ldquo;needs to be done by today&rdquo;</em> and we succumb to this pressure, we create future troubles for our team and our organization.</p>
 <blockquote>
-<p>Every time we cut corners, we create technical debt</p>
-</blockquote>
+<p>Every time we cut corners, we create technical debt</p></blockquote>
 <p>I am trying to put as much emphasis as I can to it and be harsh. Of course, coming up with a way to improve code or identify weaknesses is not only natural, but welcomed, especially as we become more mature. However, <em>wittingly</em> applying discounts - therefore creating this type of technical debt -  is, in my opinion, absolutely <strong>unprofessional</strong> and <strong>irresponsible</strong>. Deliberately undermining our code quality to reduce time to market is an approach that will come back to bite us in the future. Period.</p>
-<h3 id="outdated-design-technical-debt">
-    <a href="#outdated-design-technical-debt">#</a>
-    Outdated design technical debt
+<h3 id="outdated-design-technical-debt">Outdated design technical debt
 </h3><p>Sometimes we start off with simple and robust design and architecture for the initial requirements of the system, but as time goes by and increments are added, we fail to adjust the design and architecture in a proportional way. This phenomenon is more likely to occur when new developers join the team and do not fully understand the original design.</p>
 <p>While this can be prevented too (by taking the time to adjust the architecture as we develop the system) it is not unlikely at all that (even when applying frequent incremental refactorings) there will be a point in time when more drastic changes are needed.</p>
-<h3 id="software-grew-old-technical-debt">
-    <a href="#software-grew-old-technical-debt">#</a>
-    Software grew old technical debt
+<h3 id="software-grew-old-technical-debt">Software grew old technical debt
 </h3><p>Technology races forward in an astonishing pace these days and therefore we may find ourselves with a dependency that will become deprecated in the upcoming release (a database driver for instance). There is not much we can do about it and no one is to blame really. We should just take the time to keep our dependencies up to date. Of course, doing so <em>proactively</em> is much preferable to  waiting for a deprecation announcement.</p>
-<h2 id="there-will-always-be-technical-debt">
-    <a href="#there-will-always-be-technical-debt">#</a>
-    There will always be technical debt
+<h2 id="there-will-always-be-technical-debt">There will always be technical debt
 </h2><p>Of course, trying to always be technical debt free is simply <em>delusional</em>. Databases deprecate their old driver versions, systems grow enough to require that architecture should be revised and no matter how exceptionally we write a piece of code, as we grow more experienced and knowledgeable, we will always identify weakness and better ways to write it.</p>
 <blockquote>
-<p>If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.</p>
-</blockquote>
+<p>If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.</p></blockquote>
 <p>So, technical debt will present itself no matter how professional and diligent we are.</p>
-<h2 id="and-its-ok">
-    <a href="#and-its-ok">#</a>
-    And it&rsquo;s OK
+<h2 id="and-its-ok">And it&rsquo;s OK
 </h2><p>This is a fact and we have to accept it. After all, we should always bear in mind that the iterative nature of shipping software is built on the foundation of feedback. We solve the problem, we deliver the solution, get feedback on it and then try to improve it. Trying to ship a <em>perfect</em> product will result in a tail chase.</p>
 <p>Technical debt, comes hand in hand with agile products and innovation. Sometimes we have to prototype solutions. Most of the times we have to get a feature out quickly, just to get feedback and learn what the users really want (after all they usually don&rsquo;t know what they want either, until they have a prototype to play with). This will create technical debt and we have to find our peace with it and embrace it.</p>
 <p>Of course, this is fundamentally different from ignoring it and just letting the code rot. On the contrary, it is something that should be dealt with, because it costs. And <em>it costs a lot</em>.</p>
-<h2 id="how-costly-is-it">
-    <a href="#how-costly-is-it">#</a>
-    How costly is it
+<h2 id="how-costly-is-it">How costly is it
 </h2><p>A team or a product can be severely hurt by technical debt in multiple ways. Unfortunately, these problems tend to steadily grow under the radar and only become visible when it&rsquo;s too late. Let&rsquo;s discuss the ones I believe are the worst ones.</p>
-<h3 id="development-slows-down">
-    <a href="#development-slows-down">#</a>
-    Development slows down
+<h3 id="development-slows-down">Development slows down
 </h3><p>What happens to a system when the code slowly rots? As Uncle Bob explains, it is becoming difficult to change. A single modification ignites a chain reaction that causes a cascade of modifications in dependent modules. The system is resisting to change. It is becoming <em>rigid</em>.</p>
 <p>The more rigid a system becomes, the more development slows down. Gradually features  require more and more effort to be implemented. The stakeholders have to <strong>wait more to get value</strong> and <strong>features become more expensive</strong>.</p>
-<h3 id="reduced-quality">
-    <a href="#reduced-quality">#</a>
-    Reduced quality
+<h3 id="reduced-quality">Reduced quality
 </h3><p>To make matters worse, developing features in a rigid system is far more error prone. Introducing defects is more likely in a highly coupled, complicated, rotten design than in a clean, frequently refactored one. This is observed as <strong>reduced quality</strong>, which although cannot be measured, can be <em>felt</em> by the stakeholders. In extreme cases, this can even result in <strong>performance issues</strong>.</p>
-<h3 id="demoralization">
-    <a href="#demoralization">#</a>
-    Demoralization
+<h3 id="demoralization">Demoralization
 </h3><p>I saved the most sneaky and costly one for last. Chances are that a well taken care of piece of code will remain so and future software engineers that will touch it will go to great lengths to keep its quality high. On the other hand, sloppiness and low quality propagate tremendously fast within a code base. A badly written, poor quality, piece of code will most likely tempt the next software engineer to work on it to opt for a hack, or a quick-and-dirty solution. Andy Hunt and Dave Thomas use a great metaphor of <em>a broken window</em> to describe exactly this phenomenon in their book, <a class="link" href="https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer"  target="_blank" rel="noopener"
     >&ldquo;The Pragmatic Programmer&rdquo;</a>.</p>
 <p>The poorer the quality, the faster more and more technical debt will accumulate, <em>demoralizing</em> the team and rendering the code a nightmare for any software engineer. This is a typical situation, which, more often than not, results in the <strong>best people leaving</strong> the product (usually the company as well) and set off for new adventures. This is not only costly for the product, but for the organization as well.</p>
-<h2 id="how-to-deal-with-it">
-    <a href="#how-to-deal-with-it">#</a>
-    How to deal with it
+<h2 id="how-to-deal-with-it">How to deal with it
 </h2><p>Having said all these, how are we going to approach such a tricky situation? The stakeholders definitely will not ask us to take time to address technical debt.</p>
 <p>Mapping it to actual value can be a solution, but it usually turns out to be quite difficult. For instance, updating the database driver can improve the performance of the application, but how can we transform this into a measurable, well defined Product Backlog Item (PBI) that presents <em>business value</em>? How faster is the application going to be and how beneficial is this to the business anyway? Even if this can be achieved, how about refactoring to improve the application&rsquo;s design? There is no way we can present tangible business value out of it. <em>But it does reflect to business value in a shocking way.</em></p>
 <p>There are multiple approaches, but let me present you mine. I suggest to reserve a corner of your scrum board for technical debt. Have every team member that comes across technical debt, write a sticky note about it and stick it to this corner. Also, take some time to discuss about it with the rest of the team (perhaps in the upcoming daily scrum). During planning, take this debt corner into consideration. When asked to refine, estimate or plan a PBI that (even remotely) touches an area with technical debt, <em>include this debt sticky note in the PBI</em>.</p>
 <p>This method will not only make the team address technical debt in a proactive manner, dealing with it in the first chance, therefore keeping the code in a relatively good shape. It will also facilitate in working with the stakeholders to educate them on the value of software quality.</p>
 <p>The latter may sound minor in comparison to the former, but sometimes it is the greater good between the two. An educated group of stakeholders is more likely to support software engineers in doing their job the right way.</p>
 <p>Finally, this method ensures that problems will never pile up and cause troubles. If an area needs improvement, it will be improved on the next task that touches it. Therefore, a situation in which an issue is added on top of an already existing one, is ruled out by definition.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>The accumulation of technical debt is a very sneaky problem, present in almost every code base. Negligence will accelerate the process, but even the most diligent group of engineers will not avoid the problem. Therefore, we have to embrace its presence. However, it can prove immensely costly, not only drastically reducing code quality and productivity, but also driving the best engineers out out of the product. So, it should be addressed.</p>
 <p>Making it a part of our agile loop ensures that time will be taken to deal with it, people will become educated on it and it will be dealt with proactively. Regardless of the approach, letting technical debt accumulate and eventually cause serious problems to the product is not only a pity and wasteful, but also utterly unprofessional.</p>
 
@@ -688,6 +661,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -696,12 +686,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -790,7 +780,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

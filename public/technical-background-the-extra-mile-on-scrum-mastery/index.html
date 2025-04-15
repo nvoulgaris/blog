@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/technical-background-the-extra-mile-on-scrum-mastery/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Technical background: the extra mile on scrum mastery">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Technical background: the extra mile on scrum mastery">
 <meta property='og:description' content="Understanding how to truly help a team work in an agile way">
 <meta property='og:url' content='//localhost:1313/technical-background-the-extra-mile-on-scrum-mastery/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/extra_mile.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -352,6 +354,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -366,10 +372,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -457,13 +459,11 @@ if (!doNotTrack) {
 <p>Before we endeavor to address the topic, let&rsquo;s take a step back and think a little bit of <em>Agile</em>. Why do all these people and companies favor Agile over waterfall? After all, waterfall was used for so many successful projects. This can be a surprisingly hard to answer question for a lot of people.</p>
 <p>In my opinion, the key benefit is the establishment of a <strong>short feedback loop</strong>.</p>
 <blockquote>
-<p>Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. <em>The short feedback loop is an end in itself.</em></p>
-</blockquote>
+<p>Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. <em>The short feedback loop is an end in itself.</em></p></blockquote>
 <p>Agile suggests that we leave behind the old days when the requirements were specified all upfront and the developers worked isolated for a few months only to deliver software needing change. A very short loop is established, allowing for a small chunk of software to be produced, inspected by the stakeholders, adapt to their feedback and repeat the cycle. <strong>Indefinitely.</strong> <em>The illusion of the end state is eliminated.</em></p>
 <p>This radical process modification requires profound changes in the heart of our work. Potentially, the most common pitfall is to change the process, but continue writing code in exactly the same way. A lot of companies, perhaps unwittingly, opt for only changing the process, starting walking down a road that is doomed to lead to failure. The scrum master enters here, forced to distance herself from solely the process and look at the bigger picture.</p>
 <blockquote>
-<p>Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.</p>
-</blockquote>
+<p>Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.</p></blockquote>
 <p>Of course, quality cannot be measured, but there are disciplines that lead to it. Pair programming, test driven development (TDD), refactoring and code reviews among others, bring a set of very important advantages like collective code ownership, improved code design, living documentation (tests) and automated regression test suites (more on this on <a class="link" href="https://nvoulgaris.com/agile-code"  target="_blank" rel="noopener"
     >Agile code</a>).</p>
 <p>Returning to the original question, in my opinion, technical background is a critical skill for a scrum master. Things are rarely black or white, but how is a scrum master coming from (say) a business school able to deeply understand the importance of TDD? Why would she value pair programming against the common belief that it slows the team down? How is she in a position to understand the significance and implications of deploying on production or how much does a defect cost and how it should be prioritized and treated by the team?</p>
@@ -527,6 +527,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -535,12 +552,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -629,7 +646,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

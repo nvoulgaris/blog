@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/open-closed-principle-a-case-study/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Open-Closed principle: a case study">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Open-Closed principle: a case study">
 <meta property='og:description' content="Understanding the meaning of open for extension, but closed for modification">
 <meta property='og:url' content='//localhost:1313/open-closed-principle-a-case-study/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/open_closed.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -386,6 +388,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -400,10 +406,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -489,19 +491,13 @@ if (!doNotTrack) {
     <p>Have you ever come across of big ball of mud in the system that you work on? Have you ever wondered how it ended up like this? I bet that no one gets up in the morning and thinks <em>&ldquo;I will get to work to create a huge mess today&rdquo;</em>. However, there was at least one huge mess in the majority of the software projects I have worked on. What causes this?</p>
 <p>A typical scenario is that a piece of code starts off simple and innocent, but we always have to keep in mind the bigger picture. The architecture of the system. The code design. It is an integral part of our day to day work. Failing to pay attention to it, can start a chain reaction. One that leads to a big ball of mud.</p>
 <p>Let&rsquo;s use a simple case from a real world project and study the risks that we introduce by not thinking ahead and designing the code carefully.</p>
-<h2 id="a-case-study">
-    <a href="#a-case-study">#</a>
-    A case study
+<h2 id="a-case-study">A case study
 </h2><p>Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe that a real case will enable us to apply the principles to a professional context, which is key to a better understanding. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts.</p>
-<h3 id="the-problem">
-    <a href="#the-problem">#</a>
-    The problem
+<h3 id="the-problem">The problem
 </h3><p>Let&rsquo;s assume that we work on an android application and the task in hand is the validation of a form, which the user should fill in. So, the form may contain fields for the user to fill in her name, phone, e-mail address, age, gender etc and before processing the information, we should validate that it is correct. In some cases validation may be redundant with the use of the appropriate UI elements (for instance, we should not validate gender if we use a radio button for it), but for some other cases (e.g. e-mail or phone number) we should definitely validate the user input.</p>
 <p>For the sake of simplicity, we will not occupy ourselves at all with android, the UI and the way that we collect the data. We assume that we already have a list of <code>View</code> objects (in android all UI elements derive from <code>View</code>). We further assume that all these objects have a tag, which we can retrieve using a <code>getter</code>, denoting the view&rsquo;s input type (e.g. <code>Email</code> or <code>Phone</code>) and a <code>getter</code> to retrieve the text of the view (in reality things are a bit more complicated, but we make these assumptions because the point of this post is not to delve into android UI details).</p>
 <p>Therefore, all we have to do is to implement a module that receives this list of <code>View</code> objects and validates the input data that they hold.</p>
-<h3 id="a-first-implementation">
-    <a href="#a-first-implementation">#</a>
-    A first implementation
+<h3 id="a-first-implementation">A first implementation
 </h3><p>This sounds like a reasonably straightforward task and agile teaches us that we should go with the simplest thing working. Therefore, a first implementation of the solution could look like the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (View view : formViews) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (view.<span style="color:#a6e22e">getTag</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Email&#34;</span>)
@@ -511,29 +507,22 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Now, this is a very succint piece of code and if we care enough to extract some methods for the <code>if</code> block conditions, it could even be readable and retain the same level of abstraction.</p>
 <p>However, there are things that we should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?</p>
-<h3 id="architecture">
-    <a href="#architecture">#</a>
-    Architecture
+<h3 id="architecture">Architecture
 </h3><p>Let&rsquo;s not fool ourselves, we&rsquo;ve all written code like this (at least I know that I have), but as we grow more experienced, we should identify shortcomings and take the pains to address them.</p>
 <p>Apart from some minor issues, like the fact that we should extract some constants from these magic strings and the ones that we mentioned above (extracting methods for the the <code>if</code> block conditions etc), which are easy to amend and would not cost that much in the long run even if we neglected them, there is a serious concern in this piece of code.</p>
 <p>Let&rsquo;s think for a moment what would happen if a new field was added to the form. A field which did not exist before and therefore for which we hadn&rsquo;t implemented any validation logic. Say a postcode field. How would we add support for this new field in our existing code?</p>
 <p>Most probably we would add an extra <code>else if</code> block to handle the case of the postcode. However, that means that we would be <em>modifying</em> the existing code to <em>add</em> an extra feature. This sounds like an <em>oxymoron</em>, doesn&rsquo;t it? When we want to add a new feature, we should <em>add</em> some code and <em>not modify</em> the existing code.</p>
 <p>Of course, this case is simple and I bet you think <em>&ldquo;what could possibly go wrong with adding an extra <code>else if</code> block?&rdquo;</em>, but as we keep on adding more and more conditionals when requested to add a new field to a form, the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by <em>making a modification for one case, we accidentally break another case</em>. According to Uncle Bob, that is a sign of great significance. The system is exhibiting the symptom of <strong>fragility</strong>.</p>
 <p>Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftspeople, we should go to great lengths to avoid it. Therefore, let&rsquo;s examine how we could shield our code from such problems.</p>
-<h2 id="the-open-closed-principle">
-    <a href="#the-open-closed-principle">#</a>
-    The Open-Closed Principle
+<h2 id="the-open-closed-principle">The Open-Closed Principle
 </h2><p>The Open-Closed principle (OCP) is the O of Uncle Bob&rsquo;s SOLID principles (described in detail in <a class="link" href="https://www.goodreads.com/book/show/18043011-clean-architecture"  target="_blank" rel="noopener"
     >Clean Architecture</a>). As formulated by Bertrand Meyer in <a class="link" href="https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;from_search=true"  target="_blank" rel="noopener"
     >Object Oriented Software Construction</a>, it states that</p>
 <blockquote>
-<p>A software artifact should be open for extension but closed for modification.</p>
-</blockquote>
+<p>A software artifact should be open for extension but closed for modification.</p></blockquote>
 <p>Contradictory as it may sound, there&rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should <em>add</em> some code instead of <em>modifying</em> the existing code.</p>
 <p>Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&rsquo;s apply it to the input validation problem, that we analyzed earlier.</p>
-<h2 id="ocp-compliant-validation">
-    <a href="#ocp-compliant-validation">#</a>
-    OCP compliant validation
+<h2 id="ocp-compliant-validation">OCP compliant validation
 </h2><p>Let&rsquo;s keep in mind that the goal is to implement a validation module that can be extended without being modified. Let&rsquo;s try to design it in such a way that implementing the postcode validation cannot affect the existing validation logic.</p>
 <p>In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a set of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>formViews.<span style="color:#a6e22e">forEach</span>(view <span style="color:#f92672">-&gt;</span> {
@@ -589,15 +578,11 @@ if (!doNotTrack) {
 </figure>
 
 <p>In this way, we manage to <em>extend</em> the behavior of <code>ValidationService</code> without <em>modifying</em> it.</p>
-<h2 id="iterative-approach">
-    <a href="#iterative-approach">#</a>
-    Iterative approach
+<h2 id="iterative-approach">Iterative approach
 </h2><p>Of course, presenting the code in its final state, like I did, may lead to a reasonable question. Did it just pop magically into my mind? What if I can&rsquo;t think of the big picture all in once?</p>
 <p>As a matter of fact, that is neither the way I wrote it, nor the way I would consult anyone to go about writing it. On the contrary, I used an <strong>iterative approach</strong>. I started with a suite of tests that led me to the first implementation. Then I identified the problems and I felt dissatisfied with the implementation, which led me to refactoring. I used the suite of tests as a safety net and I started applying small modifications to the <em>structure</em> of the code, making sure that I did not break the tests after every such modification. With every change, I amended something, which got me closer to what I had in mind as a goal (an open-closed validation module).</p>
 <p>There is no need to think of everything upfront. In fact, there is no need to think of <em>anything</em> upfront. Just get a working piece of code, as simply as you can, but don&rsquo;t stop there. Don&rsquo;t be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsperson would.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftspeople, we should train ourselves to identifying downsides and merits of architectures and code design decisions and <em>even more importantly</em>, take pains to address them.</p>
 <p>Violating the Open-Closed Principle may seem harmless, but as the code base grows it can turn out to be an insurmountable obstacle to the project&rsquo;s sustainability. There is no such thing as a perfect architecture, that can shield our code from every potential future change, but provisioning for reasonable changes and structuring the code respectively is part of our job, rather than nice-to-have.</p>
 
@@ -692,6 +677,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -700,12 +702,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -794,7 +796,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

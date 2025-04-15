@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/agile-theater/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Agile theater">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Agile theater">
 <meta property='og:description' content="To work in a truly agile way, colourful sticky notes and standing up meetings won't help a lot. Creating feedback loops will.">
 <meta property='og:url' content='//localhost:1313/agile-theater/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/agile_theater.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -381,6 +383,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -395,10 +401,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -485,16 +487,13 @@ if (!doNotTrack) {
 <p>The misinterpretation of the philosophy of the agile manifesto combined with the creation of a number of frameworks, certifications and job titles has resulted in a chaotic situation. A situation which not only faces the exact same problems that led to the creation of the Agile manifesto in the first place, but which results in increased complexity and work. This is a direct consequence of people following dogmatically some obscure guidelines which they do not understand in the first place.</p>
 <p>If you are part of an agile organization, have you ever taken a step back to create distance between yourself and your work and reflected on how you do things in your organization? Is the Agile approach better than what you had before? If yes, why is it so? What adds <em>true value</em>? What has improved and in what way?</p>
 <p>These questions should be easy to answer, especially by anyone who is part of an organization that has spent enormous amounts of effort and money in a so-called, agile transformation, and yet, they prove astonishingly difficult. In this blog post, I will try to put in words what <em>I believe</em> the true Agile mindset is.</p>
-<h2 id="the-problem">
-    <a href="#the-problem">#</a>
-    The problem
+<h2 id="the-problem">The problem
 </h2><p>Before attempting to provide a solution, one has to really understand the problem. So, let&rsquo;s try to delve into it. Let&rsquo;s study the following, hypothetical case.</p>
 <p>A company decides to become Agile and use Scrum. An Agile coach is hired and the so-called Agile transformation begins. The offices are rearranged, new shiny boards are installed and Scrum Master and Product Owner roles are born and filled. Every two weeks a new sprint begins. Its goal is a chunk of the promised-to-the-client release in a few months time. People stand up for no more than 15 minutes a day, discussing their progress and coordinating. The walls are full of sticky notes describing tasks. The software engineers still write code in the exact same way they did before, but now in 2-week iterations. No other department has changed the way it works, apart from the engineering department.</p>
 <p>Now, I repeat that this is a hypothetical scenario, but to the extent of my knowledge, a very realistic and typical one. This <em>&ldquo;transformation&rdquo;</em> is doomed to fail. It is precisely this kind of <em>&ldquo;transformations&rdquo;</em> that have caused a lot of people to lose faith in the Agile way of working. This approach is fundamentally flawed. It completely misses the essence. It defeats the purpose. Situations like these are commonly described by the term <em>Agile theater</em>.</p>
 <p>Let&rsquo;s examine what&rsquo;s wrong with this approach. The core idea of the Agile mindset is that</p>
 <blockquote>
-<p>the people who need the software (stakeholders/users) collaborate closely with the people who make the software and they are able to adjust the course as often as needed</p>
-</blockquote>
+<p>the people who need the software (stakeholders/users) collaborate closely with the people who make the software and they are able to adjust the course as often as needed</p></blockquote>
 <p>We will discuss how this may be achieved later on, but first, let&rsquo;s understand why the above-mentioned changes do not serve this goal.</p>
 <ul>
 <li>
@@ -507,9 +506,7 @@ if (!doNotTrack) {
 <p>Everything <em>seems</em> Agile from the outside, but nothing is really changed. Hence the term <em>Agile theater</em>. There are neither hooks in the process nor the technical foundation required for constant inspection and adaption. Feedback is not flowing between the software engineers and the stakeholders/users.</p>
 </li>
 </ul>
-<h2 id="feedback-loops">
-    <a href="#feedback-loops">#</a>
-    Feedback loops
+<h2 id="feedback-loops">Feedback loops
 </h2><p>A truly agile way of working requires constant adaptations. Constant adaptations require a constant flow of feedback. Therefore, lots of feedback loops are needed. The shorter these loops are, the more adaptation they will allow for. The sooner one receives feedback on one&rsquo;s action, the easier it is to amend mistakes.</p>
 <p>A feedback loop may sound like a subtle concept, but if you think about it&rsquo;s <em>powerful</em> and it&rsquo;s everywhere:</p>
 <ul>
@@ -526,17 +523,13 @@ if (!doNotTrack) {
 <p>Code reviews are a feedback loop. Actually, it is the exact same loop with pair programming, except that it involves more people and the feedback flows <em>significantly slower</em>.</p>
 </li>
 </ul>
-<h2 id="enabling-inspection-and-adaptation">
-    <a href="#enabling-inspection-and-adaptation">#</a>
-    Enabling inspection and adaptation
+<h2 id="enabling-inspection-and-adaptation">Enabling inspection and adaptation
 </h2><p>Feedback loops are <em>enablers</em>. Remember, we need to adjust our course as often as needed based on feedback. How can we adapt the product to feedback if we don&rsquo;t get any from the stakeholders?</p>
 <p>Suppose we do get feedback on a regular basis. How can we utilize it if our technical practices do not support changing easily? The XP technical practices (TDD, pair programming, refactoring etc) enable software engineers to work in a way that expects frequent changes and - as discussed - they constitute feedback loops.</p>
 <p>For our feedback loops to be valuable, not only do they need to be in place, but we need to make sure that they are short as well. Getting feedback after a 6-month release, in order to plan the next one, technically is a feedback loop. Not one that can be useful in Agile environments though. Six months is an aeon on a typical market and it is almost impossible to meaningfully predict the needs imposed by the market in such a long period. The release features are doomed to become obsolete to some extent.</p>
 <p>A unit test suite that needs 15 minutes to run is technically a feedback loop, but again, not a useful one. There is no way an engineer can perform TDD using this test suit. The TDD cycle is going to be way too slow to be useful.</p>
 <p>To work in an Agile way we need to strive to <em>keep our feedback loops as short as possible</em>. We need to shrink them, so long as we keep them meaningful. The shorter the loop the quicker the feedback and therefore the adaptation.</p>
-<h2 id="scaffolding">
-    <a href="#scaffolding">#</a>
-    Scaffolding
+<h2 id="scaffolding">Scaffolding
 </h2><p>Now let&rsquo;s assume that we could do all these things. We could flip a magic switch and, starting from tomorrow, we could create more feedback loops, shorten them, use their feedback to adapt, embrace all XP technical practices etc.</p>
 <p>Why would it make sense to use an Agile framework then? Changes create discomfort. It&rsquo;s natural. Especially when they are radical and they concern the way we work every day. What would Scrum, Kanban, SAFe, LeSS, you-name-it provide that would justify this tremendous effort and energy needed to adopt them? Take a minute to reflect before proceeding.</p>
 <p>My answer would be a resounding <em>&ldquo;nothing&rdquo;</em>. If we already enjoy all the merits that these frameworks bring, why bother adopting them?</p>
@@ -545,19 +538,14 @@ if (!doNotTrack) {
 <p>Failing to throw them away and adjust the process in a way that suits our needs and work defeats the purpose. Frameworks are there to put us on the right track and not be blindly followed to the letter, in a ritualistic way. <em>Applying them dogmatically only implies a cargo cult mentality</em>. Doing things without understanding why and expecting certain results to just happen is precisely the definition of <em>cargo cult</em>.</p>
 <p>The Agile mindset is centered around autonomous teams, working in a self-organized manner. What are the chances that two autonomous, self-organized teams will need and use the exact same process to the letter?</p>
 <blockquote>
-<p>If a process is the same for everyone, it is not Agile</p>
-</blockquote>
+<p>If a process is the same for everyone, it is not Agile</p></blockquote>
 <p>Dogmatically following a framework (e.g. Scrum) to the letter results in everyone doing exactly the same.</p>
 <p>Don&rsquo;t get me wrong. The process that works best for you may be ridiculously close to Scrum (or Kanban etc). I only suggest that these frameworks need not be followed blindly to the letter.</p>
-<h2 id="never-stop-learning">
-    <a href="#never-stop-learning">#</a>
-    Never stop learning
+<h2 id="never-stop-learning">Never stop learning
 </h2><p>Being a Scrum Master myself, I&rsquo;ve fallen prey to the frameworks too. During my early days getting passed the Scrum Master training, if the daily stand-up was reaching the 16th minute, I thought that my whole professional world was falling apart. I felt obliged to make the team see that is <em>should</em> have been stopped earlier, even if the team wrapped up and finished the stand-up in a total of 16-17 minutes. It still felt wrong. I was myself a victim of the above-mentioned cargo cult mentality.</p>
 <p>However, thinking back, I find it quite reasonable. It&rsquo;s a natural step in the learning process. To master something one has to first understand it perfectly and know it inside out. One has to apply it and practise it a lot until one is able to decipher its true meaning and master the skill.</p>
 <p>Working with a team will not make you a Scrum Master / Product Owner / Agile Software engineer. A certification will <strong>definitely not</strong> make you one (and I own a certification too). Instead, go out in the industry and work with teams. Listen closely and try to help them. Take time to reflect and identify what works. Above all, never stop learning and be open to changing your mind or standpoint.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Almost 20 years ago a few people got together and tried to uncover better ways to make software. The message got lost in the way. The intention became misunderstood. The end result is a cargo cult mentality that follows rules blindly, creating more problems than it solves. Job titles and certifications are born, but these don&rsquo;t change the way software is being written.</p>
 <p>Agility is based on the idea of constant adaptation based on feedback. Feedback from the stakeholders, the users, the market, the code and our fellow software engineers. The way to get this is to establish feedback loops and make sure that they are short enough to have meaning and be helpful. These will enable constant inspection and adaptation.</p>
 <p>Agile frameworks are out there to put people on the right track and not to be followed religiously. They are tools and should be used to help us uncover <em>our</em> better ways of making software. As time goes by they should naturally give way to the process that works best for us. A continuous learning mentality will support this gradual transition.</p>
@@ -691,6 +679,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -699,12 +704,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -793,7 +798,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

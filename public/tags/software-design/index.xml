@@ -15,15 +15,11 @@
         <guid>//localhost:1313/software-design-with-lambda-expressions/</guid>
         <description>&lt;img src="//localhost:1313/img/posts/software_design_with_lambda_expressions.jpg" alt="Featured image of post Software design with lambda expressions" /&gt;&lt;p&gt;Lambda expressions are powerful and allow us to write concise, elegant, declarative code. A lot of people has already adopted them, mainly leveraging the power of streams in iterations, but lambda&amp;rsquo;s toolkit is far richer than that. This is why I decided to write this blog post and explore some aspects of how lambda expressions can prove useful in software design.&lt;/p&gt;
 &lt;p&gt;We will do this exploration via a real world case study in order to demonstrate how we can apply these principles in our everyday work.&lt;/p&gt;
-&lt;h2 id=&#34;the-case-study&#34;&gt;
-    &lt;a href=&#34;#the-case-study&#34;&gt;#&lt;/a&gt;
-    The case study
+&lt;h2 id=&#34;the-case-study&#34;&gt;The case study
 &lt;/h2&gt;&lt;p&gt;Instead of creating a new case study, from scratch, I decided to extend the one from my previous blog &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/open-closed-principle-a-case-study&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;post&lt;/a&gt;, in which we examined closely the problem of input validation. We assumed an android application that displays a form and we came up with a robust solution to validate the input of this form (leaving out android specifics on purpose and simplifying a bit to put emphasis on the right parts).&lt;/p&gt;
 &lt;p&gt;The key takeaway was that after drafting a first, working version of the code, we refactored our way to a much better crafted one. We applied the Open-Closed Principle so that we could extend the behavior of our validation module (e.g. add validation for new fields, such as a postcode field) without having to modify our existing validation code. In this way, we improved the design of our solution by making the code &lt;em&gt;less fragile&lt;/em&gt; and therefore &lt;em&gt;more maintainable&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;room-for-improvement&#34;&gt;
-    &lt;a href=&#34;#room-for-improvement&#34;&gt;#&lt;/a&gt;
-    Room for improvement
+&lt;h3 id=&#34;room-for-improvement&#34;&gt;Room for improvement
 &lt;/h3&gt;&lt;p&gt;However, in software, there is no such thing as a &lt;em&gt;perfect&lt;/em&gt; design and there never will be. There will always be things to improve. As responsible, professional software craftspeople, we should always study the pros and cons of our solutions and know their weaknesses and limitations and, as I always like to say, &lt;em&gt;work the trade-offs&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Considering the solution of the previous post, there is definitely room for improvement. First of all, as already mentioned in that post, we should apply the Dependency Inversion Principle to invert the dependencies between the &lt;code&gt;ValidationService&lt;/code&gt; and &lt;code&gt;EmailValidator&lt;/code&gt; and &lt;code&gt;PhoneValidator&lt;/code&gt; (currently there is a transitive dependency between them, while the former should not know about the latter). A second point of interest is the life cycle of the &lt;code&gt;ViewValidator&lt;/code&gt; object that we create. Please remember that we designed it to be used like this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;formViews.&lt;span style=&#34;color:#a6e22e&#34;&gt;forEach&lt;/span&gt;(view &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; {
@@ -33,9 +29,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Allow me to refresh our memory on a few basic points for this case study. We assumed that we have a list of &lt;code&gt;View&lt;/code&gt; objects (in android all UI elements derive from &lt;code&gt;View&lt;/code&gt;) and that all these objects have a tag, which we can retrieve using a &lt;code&gt;getter&lt;/code&gt;, denoting the view’s input type (e.g. &lt;code&gt;Email&lt;/code&gt; or &lt;code&gt;Phone&lt;/code&gt;) and a &lt;code&gt;getter&lt;/code&gt; to retrieve the text of the view.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this case we create a new instance of &lt;code&gt;ViewValidator&lt;/code&gt; for every view that we wish to validate. However, this does not come naturally from the design of the class. &lt;em&gt;We do not know it&lt;/em&gt;. We simply &lt;em&gt;assumed&lt;/em&gt; it. And these kind of assumptions can lead to a great deal of problems down the road. What if we have a bunch of similar views to validate (e.g. 3 e-mail fields)? Should we use the same instance for all 3 of them or is this instance disposable and we should create a fresh one for each validation? Well, the answer is that there is no way to know (unless, of course, we open the &lt;code&gt;ViewValidator&lt;/code&gt; source code and have a look ourselves). &lt;em&gt;The design of the class does not communicate its intent&lt;/em&gt; as far as the life cycle of the object is concerned.&lt;/p&gt;
 &lt;p&gt;This is clearly an issue that could - and perhaps should - be addressed. Thinking carefully about the architecture of the system (its design on a macro level) is essential, but taking the time to think through our micro level design (e.g. class design) is equally important.&lt;/p&gt;
-&lt;h2 id=&#34;the-loan-pattern&#34;&gt;
-    &lt;a href=&#34;#the-loan-pattern&#34;&gt;#&lt;/a&gt;
-    The loan pattern
+&lt;h2 id=&#34;the-loan-pattern&#34;&gt;The loan pattern
 &lt;/h2&gt;&lt;p&gt;Thankfully, there is a design pattern, which solves exactly this problem, in a &lt;em&gt;very elegant way&lt;/em&gt; and its name is the &lt;strong&gt;loan pattern&lt;/strong&gt;. I first came across it while reading Venkat Subramaniam&amp;rsquo;s excellent book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/17698629-functional-programming-in-java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Functional Programming in Java&lt;/a&gt;. Venkat does a wonderful job explaining this pattern as it naturally emerges while refactoring a real world piece of code and I suggest that you read it (see section &lt;em&gt;&amp;ldquo;Creating Fluent Interfaces Using Lambda Expressions&amp;rdquo;&lt;/em&gt;), but I will try to explain the basic points myself here.&lt;/p&gt;
 &lt;p&gt;Essentially, the pattern removes the responsibility of dealing with the object&amp;rsquo;s life cycle from the function that uses it. Instead, this responsibility lies with the class itself. In order to achieve this, we &lt;em&gt;create&lt;/em&gt; a resource and &lt;em&gt;pass&lt;/em&gt; it to the function. As soon as the function terminates, the resource is &lt;em&gt;destroyed&lt;/em&gt;.&lt;/p&gt;
@@ -45,9 +39,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The point is that whoever uses this piece of code does not have to worry about the life cycle of the &lt;code&gt;Validator&lt;/code&gt; object. An instance will be passed as an argument and destroyed as soon as the &lt;code&gt;validate()&lt;/code&gt; function terminates. This is where the name comes from. The &lt;code&gt;Validator&lt;/code&gt; object is &lt;em&gt;loaned&lt;/em&gt; to the function.&lt;/p&gt;
 &lt;p&gt;This is an incredibly &lt;em&gt;smart&lt;/em&gt; and &lt;em&gt;elegant&lt;/em&gt; solution to a very sneaky problem. Lambda expressions empower us to implement it. Let&amp;rsquo;s dive into the implementation.&lt;/p&gt;
-&lt;h2 id=&#34;applying-the-loan-pattern&#34;&gt;
-    &lt;a href=&#34;#applying-the-loan-pattern&#34;&gt;#&lt;/a&gt;
-    Applying the loan pattern
+&lt;h2 id=&#34;applying-the-loan-pattern&#34;&gt;Applying the loan pattern
 &lt;/h2&gt;&lt;p&gt;Assuming that the &lt;code&gt;Validator&lt;/code&gt; class is to be used as stated above, the obvious challenge would be to come up with a way to make use of the loaned resource in the &lt;code&gt;validate()&lt;/code&gt; function. This can be easily achieved with the &lt;code&gt;Consumer&lt;/code&gt; functional interface (&lt;code&gt;java.util.function.Consumer&lt;/code&gt;), which is designed to accept an object and execute a piece of code on it. So, redesigning our &lt;code&gt;Validator&lt;/code&gt; class like the following, would do the job.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Validator&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -138,9 +130,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it. We have implemented the loan pattern.&lt;/p&gt;
-&lt;h2 id=&#34;retrospective&#34;&gt;
-    &lt;a href=&#34;#retrospective&#34;&gt;#&lt;/a&gt;
-    Retrospective
+&lt;h2 id=&#34;retrospective&#34;&gt;Retrospective
 &lt;/h2&gt;&lt;p&gt;So, by this point you might be wondering if it is worthwhile to go through all this refactoring. Let&amp;rsquo;s take a step back and examine what we have achieved.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -157,9 +147,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As far as the form validation case study is concerned, it might worth it or it might not. To be honest, it doesn&amp;rsquo;t matter. I did take the trouble to do exactly this refactor (except in Kotlin) the first time that I had to enhance our validation feature after having read Venkat&amp;rsquo;s book, but that is up to each one of us. Once again, as software craftspeople it&amp;rsquo;s us that should work the trade-offs everyday and make the call. In any case, the key point is that &lt;em&gt;we can use functional interfaces and lambda expressions to produce elegant and robust software designs&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Lambda expressions allow us to write concise and declarative code, but they offer way more than that. They can be used as a &lt;em&gt;design tool&lt;/em&gt;. High order functions (functions that take functions as arguments) are a game changer and they can fundamentally alter our perceptions on architecture, design patterns and software design.&lt;/p&gt;
 &lt;p&gt;Refactoring to transfer the responsibility of managing a resource&amp;rsquo; s life cycle from the caller to the callee may be worthwhile or not, depending on the problem in hand. It is important knowing that we have the option and being able to make a call on a per case basis.&lt;/p&gt;
 </description>
@@ -173,19 +161,13 @@
         <description>&lt;img src="//localhost:1313/img/posts/open_closed.jpg" alt="Featured image of post Open-Closed principle: a case study" /&gt;&lt;p&gt;Have you ever come across of big ball of mud in the system that you work on? Have you ever wondered how it ended up like this? I bet that no one gets up in the morning and thinks &lt;em&gt;&amp;ldquo;I will get to work to create a huge mess today&amp;rdquo;&lt;/em&gt;. However, there was at least one huge mess in the majority of the software projects I have worked on. What causes this?&lt;/p&gt;
 &lt;p&gt;A typical scenario is that a piece of code starts off simple and innocent, but we always have to keep in mind the bigger picture. The architecture of the system. The code design. It is an integral part of our day to day work. Failing to pay attention to it, can start a chain reaction. One that leads to a big ball of mud.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s use a simple case from a real world project and study the risks that we introduce by not thinking ahead and designing the code carefully.&lt;/p&gt;
-&lt;h2 id=&#34;a-case-study&#34;&gt;
-    &lt;a href=&#34;#a-case-study&#34;&gt;#&lt;/a&gt;
-    A case study
+&lt;h2 id=&#34;a-case-study&#34;&gt;A case study
 &lt;/h2&gt;&lt;p&gt;Instead of creating an example around trivial, overused, fictitious domains, consisting of either shapes or animals, I believe that a real case will enable us to apply the principles to a professional context, which is key to a better understanding. This is why I chose to focus on a problem that I faced a while ago on work. Of course, I have simplified it quite a lot in order to remove noise and focus on the essential parts.&lt;/p&gt;
-&lt;h3 id=&#34;the-problem&#34;&gt;
-    &lt;a href=&#34;#the-problem&#34;&gt;#&lt;/a&gt;
-    The problem
+&lt;h3 id=&#34;the-problem&#34;&gt;The problem
 &lt;/h3&gt;&lt;p&gt;Let&amp;rsquo;s assume that we work on an android application and the task in hand is the validation of a form, which the user should fill in. So, the form may contain fields for the user to fill in her name, phone, e-mail address, age, gender etc and before processing the information, we should validate that it is correct. In some cases validation may be redundant with the use of the appropriate UI elements (for instance, we should not validate gender if we use a radio button for it), but for some other cases (e.g. e-mail or phone number) we should definitely validate the user input.&lt;/p&gt;
 &lt;p&gt;For the sake of simplicity, we will not occupy ourselves at all with android, the UI and the way that we collect the data. We assume that we already have a list of &lt;code&gt;View&lt;/code&gt; objects (in android all UI elements derive from &lt;code&gt;View&lt;/code&gt;). We further assume that all these objects have a tag, which we can retrieve using a &lt;code&gt;getter&lt;/code&gt;, denoting the view&amp;rsquo;s input type (e.g. &lt;code&gt;Email&lt;/code&gt; or &lt;code&gt;Phone&lt;/code&gt;) and a &lt;code&gt;getter&lt;/code&gt; to retrieve the text of the view (in reality things are a bit more complicated, but we make these assumptions because the point of this post is not to delve into android UI details).&lt;/p&gt;
 &lt;p&gt;Therefore, all we have to do is to implement a module that receives this list of &lt;code&gt;View&lt;/code&gt; objects and validates the input data that they hold.&lt;/p&gt;
-&lt;h3 id=&#34;a-first-implementation&#34;&gt;
-    &lt;a href=&#34;#a-first-implementation&#34;&gt;#&lt;/a&gt;
-    A first implementation
+&lt;h3 id=&#34;a-first-implementation&#34;&gt;A first implementation
 &lt;/h3&gt;&lt;p&gt;This sounds like a reasonably straightforward task and agile teaches us that we should go with the simplest thing working. Therefore, a first implementation of the solution could look like the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (View view : formViews) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (view.&lt;span style=&#34;color:#a6e22e&#34;&gt;getTag&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Email&amp;#34;&lt;/span&gt;)
@@ -195,29 +177,22 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, this is a very succint piece of code and if we care enough to extract some methods for the &lt;code&gt;if&lt;/code&gt; block conditions, it could even be readable and retain the same level of abstraction.&lt;/p&gt;
 &lt;p&gt;However, there are things that we should be dissatisfied with. Feel free to take some time to reflect before continue reading. Which could these issues be? What troubles you with this piece of code?&lt;/p&gt;
-&lt;h3 id=&#34;architecture&#34;&gt;
-    &lt;a href=&#34;#architecture&#34;&gt;#&lt;/a&gt;
-    Architecture
+&lt;h3 id=&#34;architecture&#34;&gt;Architecture
 &lt;/h3&gt;&lt;p&gt;Let&amp;rsquo;s not fool ourselves, we&amp;rsquo;ve all written code like this (at least I know that I have), but as we grow more experienced, we should identify shortcomings and take the pains to address them.&lt;/p&gt;
 &lt;p&gt;Apart from some minor issues, like the fact that we should extract some constants from these magic strings and the ones that we mentioned above (extracting methods for the the &lt;code&gt;if&lt;/code&gt; block conditions etc), which are easy to amend and would not cost that much in the long run even if we neglected them, there is a serious concern in this piece of code.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s think for a moment what would happen if a new field was added to the form. A field which did not exist before and therefore for which we hadn&amp;rsquo;t implemented any validation logic. Say a postcode field. How would we add support for this new field in our existing code?&lt;/p&gt;
 &lt;p&gt;Most probably we would add an extra &lt;code&gt;else if&lt;/code&gt; block to handle the case of the postcode. However, that means that we would be &lt;em&gt;modifying&lt;/em&gt; the existing code to &lt;em&gt;add&lt;/em&gt; an extra feature. This sounds like an &lt;em&gt;oxymoron&lt;/em&gt;, doesn&amp;rsquo;t it? When we want to add a new feature, we should &lt;em&gt;add&lt;/em&gt; some code and &lt;em&gt;not modify&lt;/em&gt; the existing code.&lt;/p&gt;
 &lt;p&gt;Of course, this case is simple and I bet you think &lt;em&gt;&amp;ldquo;what could possibly go wrong with adding an extra &lt;code&gt;else if&lt;/code&gt; block?&amp;rdquo;&lt;/em&gt;, but as we keep on adding more and more conditionals when requested to add a new field to a form, the code could grow quite complex. There could be functions that are used by more than one case, or even worse, there could be shared state. Perhaps we could reach to a point that by &lt;em&gt;making a modification for one case, we accidentally break another case&lt;/em&gt;. According to Uncle Bob, that is a sign of great significance. The system is exhibiting the symptom of &lt;strong&gt;fragility&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Adding support for a new feature and accidentally breaking an unrelated feature is a dreaded situation. As software craftspeople, we should go to great lengths to avoid it. Therefore, let&amp;rsquo;s examine how we could shield our code from such problems.&lt;/p&gt;
-&lt;h2 id=&#34;the-open-closed-principle&#34;&gt;
-    &lt;a href=&#34;#the-open-closed-principle&#34;&gt;#&lt;/a&gt;
-    The Open-Closed Principle
+&lt;h2 id=&#34;the-open-closed-principle&#34;&gt;The Open-Closed Principle
 &lt;/h2&gt;&lt;p&gt;The Open-Closed principle (OCP) is the O of Uncle Bob&amp;rsquo;s SOLID principles (described in detail in &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/18043011-clean-architecture&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Clean Architecture&lt;/a&gt;). As formulated by Bertrand Meyer in &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;amp;from_search=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Object Oriented Software Construction&lt;/a&gt;, it states that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Contradictory as it may sound, there&amp;rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should &lt;em&gt;add&lt;/em&gt; some code instead of &lt;em&gt;modifying&lt;/em&gt; the existing code.&lt;/p&gt;
 &lt;p&gt;Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&amp;rsquo;s apply it to the input validation problem, that we analyzed earlier.&lt;/p&gt;
-&lt;h2 id=&#34;ocp-compliant-validation&#34;&gt;
-    &lt;a href=&#34;#ocp-compliant-validation&#34;&gt;#&lt;/a&gt;
-    OCP compliant validation
+&lt;h2 id=&#34;ocp-compliant-validation&#34;&gt;OCP compliant validation
 &lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s keep in mind that the goal is to implement a validation module that can be extended without being modified. Let&amp;rsquo;s try to design it in such a way that implementing the postcode validation cannot affect the existing validation logic.&lt;/p&gt;
 &lt;p&gt;In order to achieve this, we should separate the high-level validation policy from the low level details. The former refers to the way we validate a set of data and the latter to the details of how we validate data for specific input fields (like e-mail, phone numbers and postcodes). Ideally, we would like the former to be agnostic to the latter, like the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;formViews.&lt;span style=&#34;color:#a6e22e&#34;&gt;forEach&lt;/span&gt;(view &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; {
@@ -273,15 +248,11 @@
 &lt;/figure&gt;
 
 &lt;p&gt;In this way, we manage to &lt;em&gt;extend&lt;/em&gt; the behavior of &lt;code&gt;ValidationService&lt;/code&gt; without &lt;em&gt;modifying&lt;/em&gt; it.&lt;/p&gt;
-&lt;h2 id=&#34;iterative-approach&#34;&gt;
-    &lt;a href=&#34;#iterative-approach&#34;&gt;#&lt;/a&gt;
-    Iterative approach
+&lt;h2 id=&#34;iterative-approach&#34;&gt;Iterative approach
 &lt;/h2&gt;&lt;p&gt;Of course, presenting the code in its final state, like I did, may lead to a reasonable question. Did it just pop magically into my mind? What if I can&amp;rsquo;t think of the big picture all in once?&lt;/p&gt;
 &lt;p&gt;As a matter of fact, that is neither the way I wrote it, nor the way I would consult anyone to go about writing it. On the contrary, I used an &lt;strong&gt;iterative approach&lt;/strong&gt;. I started with a suite of tests that led me to the first implementation. Then I identified the problems and I felt dissatisfied with the implementation, which led me to refactoring. I used the suite of tests as a safety net and I started applying small modifications to the &lt;em&gt;structure&lt;/em&gt; of the code, making sure that I did not break the tests after every such modification. With every change, I amended something, which got me closer to what I had in mind as a goal (an open-closed validation module).&lt;/p&gt;
 &lt;p&gt;There is no need to think of everything upfront. In fact, there is no need to think of &lt;em&gt;anything&lt;/em&gt; upfront. Just get a working piece of code, as simply as you can, but don&amp;rsquo;t stop there. Don&amp;rsquo;t be satisfied with it. Study it. Identify weaknesses and strengths and refactor to make it better. Refactoring is a mighty tool in our software design arsenal. Use it to shape the code the way a software craftsperson would.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Implementing a solution to a problem can be easy, especially for a relatively simple problem. What is hard is to distance ourselves from our solution and improve it. However, as software craftspeople, we should train ourselves to identifying downsides and merits of architectures and code design decisions and &lt;em&gt;even more importantly&lt;/em&gt;, take pains to address them.&lt;/p&gt;
 &lt;p&gt;Violating the Open-Closed Principle may seem harmless, but as the code base grows it can turn out to be an insurmountable obstacle to the project&amp;rsquo;s sustainability. There is no such thing as a perfect architecture, that can shield our code from every potential future change, but provisioning for reasonable changes and structuring the code respectively is part of our job, rather than nice-to-have.&lt;/p&gt;
 </description>
@@ -295,9 +266,7 @@
         <description>&lt;img src="//localhost:1313/img/posts/encapsulation.jpg" alt="Featured image of post How getters and setters harm encapsulation" /&gt;&lt;p&gt;Taking a step back and looking at something that you&amp;rsquo;ve been doing for years with a &lt;em&gt;fresh&lt;/em&gt; perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; from a different point of view.&lt;/p&gt;
 &lt;p&gt;During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; for granted. It was something I &lt;em&gt;had&lt;/em&gt; to do. Later on, I learned (although now I know that I did not fully understand at the time) about the notion of encapsulation and how these &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; are a key step to achieving it. It then made even more sense to &lt;em&gt;always&lt;/em&gt; code (or rather generate) them in every single POJO in my code.&lt;/p&gt;
 &lt;p&gt;So I did consistently, until I read a blog post that got me thinking and revisiting the whole concept of encapsulation in a fresh, unbiased way. Now, that I believe the dust has settled, I will try to communicate my thoughts on the matter in this post.&lt;/p&gt;
-&lt;h2 id=&#34;object-oriented-design&#34;&gt;
-    &lt;a href=&#34;#object-oriented-design&#34;&gt;#&lt;/a&gt;
-    Object-oriented design
+&lt;h2 id=&#34;object-oriented-design&#34;&gt;Object-oriented design
 &lt;/h2&gt;&lt;p&gt;It all starts with true object-oriented design. If one goes online looking for a definition and a brief description of Object-Oriented Programming (OOP), one will come across (among some wise stuff) all kinds of nonsense. They usually start with something like &lt;em&gt;&amp;ldquo;OOP is about modeling the real world&amp;hellip;&amp;rdquo;&lt;/em&gt;. Well, it&amp;rsquo;s not.&lt;/p&gt;
 &lt;p&gt;OOP is a design &lt;em&gt;philosophy&lt;/em&gt; according to which, a software system should consist of a set of &lt;em&gt;self sustainable&lt;/em&gt; objects and &lt;em&gt;messages&lt;/em&gt; that can be passed between these objects. Now, notice that the two key words here are &lt;em&gt;self sustainable&lt;/em&gt; and &lt;em&gt;messages&lt;/em&gt;. In other words, our objects should be:&lt;/p&gt;
 &lt;ul&gt;
@@ -305,21 +274,14 @@
 &lt;li&gt;their outside world (other objects) should have a way of telling them what they need them to do&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This is really straightforward. Let&amp;rsquo;s assume that we have an &lt;code&gt;AirCondition&lt;/code&gt; object. What we would like is to be able to &lt;strong&gt;tell&lt;/strong&gt; it to adjust the room temperature to (say) 25 degrees Celsius and for it to be able to do so. Notice that we are not interested in &lt;em&gt;how&lt;/em&gt; is it going to achieve this. All we want is to &lt;em&gt;command&lt;/em&gt; it and have the job done. Essentially, we are &lt;em&gt;sending a message&lt;/em&gt;. We are &lt;em&gt;delegating&lt;/em&gt; the task. Now, this brings us to the point that we can understand both what encapsulation is and why we need it.&lt;/p&gt;
-&lt;h2 id=&#34;encapsulation&#34;&gt;
-    &lt;a href=&#34;#encapsulation&#34;&gt;#&lt;/a&gt;
-    Encapsulation
+&lt;h2 id=&#34;encapsulation&#34;&gt;Encapsulation
 &lt;/h2&gt;&lt;p&gt;The gist behind the notion of encapsulation is that the &lt;em&gt;objects should not reveal their internals&lt;/em&gt; (implementation details) &lt;em&gt;to the outside world&lt;/em&gt; (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of &lt;em&gt;how&lt;/em&gt; they achieve the tasks that are &lt;em&gt;told&lt;/em&gt; to achieve it&amp;rsquo;s &lt;em&gt;their&lt;/em&gt; business and no one else&amp;rsquo;s.&lt;/p&gt;
 &lt;p&gt;In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&amp;rsquo;s state in order to perform the tasks that it&amp;rsquo;s told to perform.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;the-problem-with-getters-and-setters&#34;&gt;
-    &lt;a href=&#34;#the-problem-with-getters-and-setters&#34;&gt;#&lt;/a&gt;
-    The problem with getters and setters
+&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;the-problem-with-getters-and-setters&#34;&gt;The problem with getters and setters
 &lt;/h2&gt;&lt;p&gt;This is exactly where &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; enter the picture. Conventional wisdom has it that since the object&amp;rsquo;s properties are to remain &amp;ldquo;hidden&amp;rdquo;, they should be wrapped by a &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt; each, enabling the external world to &amp;ldquo;access&amp;rdquo; them, without learning about the object&amp;rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. &lt;em&gt;Does it make any sense at all?&lt;/em&gt; At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt;? Essentially we are messing with the object&amp;rsquo;s state in either case - which is quite overtly exposed to the public via these methods.&lt;/p&gt;
-&lt;h2 id=&#34;an-example&#34;&gt;
-    &lt;a href=&#34;#an-example&#34;&gt;#&lt;/a&gt;
-    An example
+&lt;h2 id=&#34;an-example&#34;&gt;An example
 &lt;/h2&gt;&lt;p&gt;In order to better illustrate the nature of this problem, let&amp;rsquo;s consider for a moment the &lt;code&gt;AirCondition&lt;/code&gt; class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (airCondition.&lt;span style=&#34;color:#a6e22e&#34;&gt;getTemperature&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 25) {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (airCondition.&lt;span style=&#34;color:#a6e22e&#34;&gt;getTemperature&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 25) {
@@ -333,34 +295,23 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, all we do is constantly manipulating the object&amp;rsquo;s state, essentially &lt;strong&gt;implementing the logic that it should possess&lt;/strong&gt;. We are &lt;em&gt;micromanaging&lt;/em&gt; the object. Instead, we should &lt;em&gt;trust&lt;/em&gt; it on knowing how to do its job. We keep on &lt;strong&gt;asking&lt;/strong&gt; about it&amp;rsquo;s state and then modify it instead of &lt;strong&gt;telling&lt;/strong&gt; it the end result that we wish. Conforming to OOP, all we need to do is to &lt;em&gt;send it a message&lt;/em&gt;, like the following&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;airCondition.&lt;span style=&#34;color:#a6e22e&#34;&gt;adjustTemperatureTo&lt;/span&gt;(25)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and it should get the job done, because it &lt;em&gt;knows&lt;/em&gt; how to actually do it. We shouldn&amp;rsquo;t even know if there is or there is not a property holding the current temperature, let alone query for it directly. This is part of the means the &lt;code&gt;AirCondition&lt;/code&gt; class could use to achieve its purposes, it&amp;rsquo;s subject to change at any given moment and its strictly &lt;strong&gt;its own business&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;tight-coupling&#34;&gt;
-    &lt;a href=&#34;#tight-coupling&#34;&gt;#&lt;/a&gt;
-    Tight coupling
+&lt;h2 id=&#34;tight-coupling&#34;&gt;Tight coupling
 &lt;/h2&gt;&lt;p&gt;We all know (at least in principle) that our classes should be &lt;em&gt;highly cohesive&lt;/em&gt; and &lt;em&gt;loosely coupled&lt;/em&gt;. The theory is great, but let&amp;rsquo;s consider how these guidelines (about coupling in particular) apply to this specific example.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s assume that we wish to refactor the &lt;code&gt;AirCondition&lt;/code&gt; class. Perhaps we would like to rename the &lt;code&gt;temperature&lt;/code&gt; variable to &lt;code&gt;currentTemperature&lt;/code&gt;. Performing this elementary refactoring move, would create a chain reaction, causing all the classes that depend upon it (its collaborators) to fail to compile and impose the need to refactor them too. Perhaps, some collaborators of these collaborators should be refactored as well and so forth.&lt;/p&gt;
 &lt;p&gt;This scenario illustrates perfectly the side effects of a design with tightly coupled classes. However, on the second, &lt;em&gt;imperative&lt;/em&gt; approach, the collaborators of the refactored, &lt;code&gt;AirCondition&lt;/code&gt; class would remain unaffected, agnostic to the modification. We can therefore conclude that &lt;em&gt;the imperative approach has led to a more loosely coupled design&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;tell-dont-ask&#34;&gt;
-    &lt;a href=&#34;#tell-dont-ask&#34;&gt;#&lt;/a&gt;
-    Tell, don&amp;rsquo;t ask
+&lt;h2 id=&#34;tell-dont-ask&#34;&gt;Tell, don&amp;rsquo;t ask
 &lt;/h2&gt;&lt;p&gt;Some of you might have already noticed that these ideas start to sound a lot like the &lt;em&gt;Tell, don&amp;rsquo;t ask&lt;/em&gt; principle (also known as &lt;em&gt;Law of Demeter&lt;/em&gt;). (In case you&amp;rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;a-story-and-a-lesson-learned&#34;&gt;
-    &lt;a href=&#34;#a-story-and-a-lesson-learned&#34;&gt;#&lt;/a&gt;
-    A story and a lesson learned
+&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;a-story-and-a-lesson-learned&#34;&gt;A story and a lesson learned
 &lt;/h2&gt;&lt;p&gt;Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&amp;rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.&lt;/p&gt;
 &lt;p&gt;At the end of the day, what difference would it make to use &lt;code&gt;airCondition.getTemperature()&lt;/code&gt; instead of &lt;code&gt;airCondition.temperature&lt;/code&gt;? Perhaps that is the reason why the designers of Kotlin decided to provide &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; by default, without even going into the trouble to code (generate) them or even call(!) them (in Kotlin &lt;code&gt;airCondition.temperature&lt;/code&gt; actually calls &lt;code&gt;airCondition.getTemperature()&lt;/code&gt; under the hood).&lt;/p&gt;
-&lt;h2 id=&#34;amending-the-situation&#34;&gt;
-    &lt;a href=&#34;#amending-the-situation&#34;&gt;#&lt;/a&gt;
-    Amending the situation
+&lt;h2 id=&#34;amending-the-situation&#34;&gt;Amending the situation
 &lt;/h2&gt;&lt;p&gt;Assuming that the problem is clear, a reasonable question to ask would be what to do to amend it. A very helpful first step would be to stop writing &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; this very moment. This would surface cases that collaborators need access to another classe&amp;rsquo;s properties.&lt;/p&gt;
 &lt;p&gt;When you face such a situation, take a moment and reflect. &lt;em&gt;Do you really need to expose this property&lt;/em&gt;? Is there a better way to solve the problem? Perhaps, instead of exposing the property, a new method can be introduced in the object to receive the message that an operation needs to be performed. Exactly the operation that the collaborator who wanted access on the property was about to implement. &lt;em&gt;Whose responsibility is this operation&lt;/em&gt;?&lt;/p&gt;
 &lt;p&gt;Sometimes &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; will be needed, but I reckon that most of the times, different, better object-oriented solution will present themselves. This will gradually improve the design of the system you are working on.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Object-oriented design is all about passing messages between self sustainable objects and ecapsulation is a tool that can be immensely helpful on this task by resulting in loose coupling. On the other hand, letting our classes see deeply into the internal implementation of their collaborators, essentially results in tight coupling.&lt;/p&gt;
 &lt;p&gt;Wrapping class properties with &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; helps look deep inside the internals of other class. It provides a &lt;strong&gt;false&lt;/strong&gt; sense of encapsulation, but even worse, it pushes us towards treating classes as mere data structures and implementing the logic that these data serve in collaborators, defeating the very purpose of true object-oriented design.&lt;/p&gt;
 &lt;p&gt;Experiment by stop writing &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; instead and observe the side effects. I strongly believe that it will lead to a better design.&lt;/p&gt;
@@ -373,45 +324,30 @@
         
         <guid>//localhost:1313/test-behavior/</guid>
         <description>&lt;img src="//localhost:1313/img/posts/writing.jpg" alt="Featured image of post Test behavior" /&gt;&lt;p&gt;Over the years, I have identified a number of issues with the way most companies treat their tests. I have come to believe that the most important one is that test code is treated as a second class citizen. Developers usually opt for the cheap, quick-and-dirty solutions when it comes to writing (or maintaining) tests, not realizing their importance. However, test code has to be &lt;em&gt;designed&lt;/em&gt;, &lt;em&gt;reviewed&lt;/em&gt; and &lt;em&gt;refactored&lt;/em&gt;, exactly like production code. What we usually fail to realize is that the way we write tests reflects on the &lt;em&gt;quality&lt;/em&gt; of our production code, allows &lt;em&gt;bugs&lt;/em&gt; to creep in and drives &lt;em&gt;design&lt;/em&gt; decisions.&lt;/p&gt;
-&lt;h2 id=&#34;two-approaches&#34;&gt;
-    &lt;a href=&#34;#two-approaches&#34;&gt;#&lt;/a&gt;
-    Two approaches
+&lt;h2 id=&#34;two-approaches&#34;&gt;Two approaches
 &lt;/h2&gt;&lt;p&gt;In this post I will delve into the topic of &lt;em&gt;testing behavior&lt;/em&gt; as opposed to &lt;em&gt;testing implementation&lt;/em&gt;. So, let&amp;rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&amp;rsquo;re thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Testing for state on the other hand, means thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&amp;rsquo;s illustrate the two styles via a simplified example.&lt;/p&gt;
-&lt;h2 id=&#34;example&#34;&gt;
-    &lt;a href=&#34;#example&#34;&gt;#&lt;/a&gt;
-    Example
+&lt;h2 id=&#34;example&#34;&gt;Example
 &lt;/h2&gt;&lt;p&gt;Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A &lt;em&gt;test-implementation&lt;/em&gt; logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.&lt;/p&gt;
 &lt;p&gt;On the other hand, a &lt;em&gt;test-behavior&lt;/em&gt; mentality would probably result in executing the method and checking that the &lt;code&gt;send()&lt;/code&gt; method was executed in the e-mail service collaborator with the correct argument for the &lt;code&gt;subject&lt;/code&gt; parameter.&lt;/p&gt;
-&lt;h2 id=&#34;trade-offs&#34;&gt;
-    &lt;a href=&#34;#trade-offs&#34;&gt;#&lt;/a&gt;
-    Trade-offs
+&lt;h2 id=&#34;trade-offs&#34;&gt;Trade-offs
 &lt;/h2&gt;&lt;p&gt;We should always keep in mind that when it comes to software engineering, there is no silver bullet. A great part of our job is to recognize the trade-offs when they present themselves and decide responsibly, living with the consequences. Having said this, both approaches would work, leading to - most probably - different implementations and different ramifications when it comes to flexibility and maintenance.&lt;/p&gt;
-&lt;h3 id=&#34;refactoring&#34;&gt;
-    &lt;a href=&#34;#refactoring&#34;&gt;#&lt;/a&gt;
-    Refactoring
+&lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&amp;rsquo;re testing, allowing bugs to creep in the production code.&lt;/p&gt;
 &lt;p&gt;We may stay clear from this danger applying the &lt;em&gt;test-behavior&lt;/em&gt; logic. In this case, the tests do not &lt;em&gt;&amp;ldquo;see&amp;rdquo;&lt;/em&gt; the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.&lt;/p&gt;
-&lt;h3 id=&#34;ripple-effects&#34;&gt;
-    &lt;a href=&#34;#ripple-effects&#34;&gt;#&lt;/a&gt;
-    Ripple effects
+&lt;h3 id=&#34;ripple-effects&#34;&gt;Ripple effects
 &lt;/h3&gt;&lt;p&gt;In my blog post on &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/unit-testing-best-practices&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;unit testing best practices&lt;/a&gt; I referred to &lt;em&gt;isolation&lt;/em&gt; as key property of unit tests. I stated that if a test fails, &lt;em&gt;&amp;ldquo;it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately&amp;rdquo;&lt;/em&gt;. In this post I was referring to leaving the system in the state that we found it, but the isolation principle may be violated in other ways too.&lt;/p&gt;
 &lt;p&gt;When testing the implementation, we usually instantiate all the collaborators (dependencies) of the class we&amp;rsquo;re testing, whereas, when testing the behavior we tend to use &lt;strong&gt;test doubles&lt;/strong&gt;. A side effect of this is that if a bug lies in a collaborator of the class under test, its tests will remain unaffected in the latter approach, but will fail in the former, creating a &lt;strong&gt;ripple of failing tests&lt;/strong&gt;. Among other things, this will lead us into a debugging session in order to understand what is wrong with the system (as opposed to a finger pointing to the - carefully chosen - name of the failing test).&lt;/p&gt;
-&lt;h3 id=&#34;design-decisions&#34;&gt;
-    &lt;a href=&#34;#design-decisions&#34;&gt;#&lt;/a&gt;
-    Design decisions
+&lt;h3 id=&#34;design-decisions&#34;&gt;Design decisions
 &lt;/h3&gt;&lt;p&gt;As I have mentioned earlier in this post, &lt;em&gt;tests drive design decisions&lt;/em&gt;. This is an immensely important point, so let me repeat it. &lt;em&gt;Tests shape our production code&lt;/em&gt;. I am mostly referring to Test Driven Development here, but we should always refactor a piece of code that is difficult to test, irrelevant of &lt;em&gt;when&lt;/em&gt; the tests where written. Therefore, the tests affect the production code even if we don&amp;rsquo;t test-drive it.&lt;/p&gt;
 &lt;p&gt;Before we elaborate, let&amp;rsquo;s tale a step back to consider a basic unit testing tool: &lt;strong&gt;test doubles&lt;/strong&gt;. &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/author/show/193408.Gerard_Meszaros&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Gerard Meszaros&lt;/a&gt; uses this term to describe &lt;em&gt;an object that is used in place of a real object for testing purposes&lt;/em&gt;. Two test double types that we&amp;rsquo;re particularly interested in (for the purposes of this post) are the following:&lt;/p&gt;
@@ -431,9 +367,7 @@
 &lt;p&gt;These choices are utterly important. It is easy to understand that the more stubs we use, the more we couple our unit tests with our production code. This happens because, what we&amp;rsquo;re essentially saying when stubbing a class is &lt;em&gt;&amp;ldquo;when this method is called with these arguments, do this&amp;rdquo;&lt;/em&gt;. However, this method call is an implementation detail and should we wish to not call this method during a future refactoring, our unit test will fail (or at least will have to be refactored as well, in order to remove the unused stubbing).&lt;/p&gt;
 &lt;p&gt;In addition, a mockist TDDer will (via the usage of mocks instead of real objects) achieve a quite better (ideally perfect) isolation on the unit tests, as opposed to a classical TDDer, who will have to face a ripple of failing tests sooner or later.&lt;/p&gt;
 &lt;p&gt;One of the most important aspects of this topic though is that different choices (stubs instead of mocks, classical TDD instead of mockist TDD) will result in a totally different production code and a totally different code design. Therefore, &lt;strong&gt;favoring testing behavior will produce a totally different application&lt;/strong&gt;, with different trade-offs, different advantages and shortcomings and different code quality. Hence, I believe that it has become apparent by now (if it wasn&amp;rsquo;t already) that these are decisions that we have to thinking very carefully and take very seriously.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;My initial intention behind this blog post was to raise awareness. Test code should &lt;strong&gt;not&lt;/strong&gt; be treated as second class citizen. There are loads of crossroads, decisions and trade-offs out there and I hope that I have made clear that the ramifications are very significant. Favoring testing behavior brings along a series of side effects and in any case, it is a road that, should we decide to follow it, we should do so wittingly and with professionalism.&lt;/p&gt;
 </description>
         </item>
@@ -447,60 +381,32 @@
 &lt;p&gt;Adding to it, REST is a marvelous architecture (developed back in 2000 by Roy Fielding as part of his &lt;a class=&#34;link&#34; href=&#34;https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;doctoral dissertation&lt;/a&gt;). However, it is as misunderstood as beautiful. The web is packed of &amp;ldquo;RESTful&amp;rdquo; web services which are not so RESTful after all. The requirement to communicate with such a system can create previously unseen obstacles, making design very challenging. Furthermore, more often than not, the ecosystem in which a microservice is being developed, contains legacy system(s), which impose very difficult constraints to the design, usually leading to exceptions and inconsistencies, which usually lead to problems further down the road.&lt;/p&gt;
 &lt;p&gt;Among others, the above mentioned phenomena, can increase the degree of difficulty of designing a RESTful API for inter microservice communication. In this post, I will endeavor to share my journey and outcome of designing such an API.&lt;/p&gt;
-&lt;h2 id=&#34;the-case-study&#34;&gt;
-    &lt;a href=&#34;#the-case-study&#34;&gt;#&lt;/a&gt;
-    The case study
+&lt;h2 id=&#34;the-case-study&#34;&gt;The case study
 &lt;/h2&gt;&lt;p&gt;This example attempts to design an efficient, RESTful API as a solution to the problem of creating a microservice that is responsible for handling the lifecycle of a shopping cart.&lt;/p&gt;
-&lt;h3 id=&#34;assumptions&#34;&gt;
-    &lt;a href=&#34;#assumptions&#34;&gt;#&lt;/a&gt;
-    Assumptions
-&lt;/h3&gt;&lt;h4 id=&#34;authentication---authorization&#34;&gt;
-    &lt;a href=&#34;#authentication---authorization&#34;&gt;#&lt;/a&gt;
-    Authentication - Authorization
+&lt;h3 id=&#34;assumptions&#34;&gt;Assumptions
+&lt;/h3&gt;&lt;h4 id=&#34;authentication---authorization&#34;&gt;Authentication - Authorization
 &lt;/h4&gt;&lt;p&gt;Throughout this example we consider authentication - authorization functionality to exist and to be provided by a separate microservice. Therefore, a JWT token (or some other token) is supposedly provided by this microservice and included in the &lt;code&gt;Authorization&lt;/code&gt; header in all HTTP requests. In addition, we assume that authorization is not required for the HTTP request to list all available products.&lt;/p&gt;
-&lt;h4 id=&#34;requests---responses-body&#34;&gt;
-    &lt;a href=&#34;#requests---responses-body&#34;&gt;#&lt;/a&gt;
-    Requests - Responses body
+&lt;h4 id=&#34;requests---responses-body&#34;&gt;Requests - Responses body
 &lt;/h4&gt;&lt;p&gt;The body (as well as the headers) provided in the following HTTP requests and responses is an example which attempts to meaningfully demonstrate the essence of the argument and by no means are complete or fully functional. For instance, in the &lt;em&gt;list all products&lt;/em&gt; response, products are obviously not represented merely by their IDs and prices, but believing that this structure suffices to communicate the essence of the call, they are intentionally left partially complete.&lt;/p&gt;
-&lt;h4 id=&#34;api-design-decisions&#34;&gt;
-    &lt;a href=&#34;#api-design-decisions&#34;&gt;#&lt;/a&gt;
-    API Design decisions
+&lt;h4 id=&#34;api-design-decisions&#34;&gt;API Design decisions
 &lt;/h4&gt;&lt;p&gt;Throughout this post, &lt;strong&gt;API design&lt;/strong&gt; is on the spotlight. Neither &lt;em&gt;application design&lt;/em&gt;, nor &lt;em&gt;technological decisions&lt;/em&gt; (e.g. persistence layer technology) will not be covered since they do not constitute part of the &lt;em&gt;API design&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;making-some-decisions&#34;&gt;
-    &lt;a href=&#34;#making-some-decisions&#34;&gt;#&lt;/a&gt;
-    Making some decisions
-&lt;/h3&gt;&lt;h4 id=&#34;which-calls&#34;&gt;
-    &lt;a href=&#34;#which-calls&#34;&gt;#&lt;/a&gt;
-    Which calls
+&lt;h3 id=&#34;making-some-decisions&#34;&gt;Making some decisions
+&lt;/h3&gt;&lt;h4 id=&#34;which-calls&#34;&gt;Which calls
 &lt;/h4&gt;&lt;p&gt;Identifying the correct HTTP calls can be trickier than it actually sounds. My advice would be to approach the problem by carefully producing sequence diagrams to cover all the use cases of the new system. Given that we have them, we can proceed to identify the interaction the system will have with the rest of the systems and therefore define the endpoints and HTTP calls that cover these.&lt;/p&gt;
-&lt;h4 id=&#34;persisting-data&#34;&gt;
-    &lt;a href=&#34;#persisting-data&#34;&gt;#&lt;/a&gt;
-    Persisting data
+&lt;h4 id=&#34;persisting-data&#34;&gt;Persisting data
 &lt;/h4&gt;&lt;p&gt;A common misconception concerning REST is that one is not allowed to store any data in order to implement a RESTful web service. This is not quite true. Persisting data is perfectly fine as long as these data do not concern the &lt;em&gt;state&lt;/em&gt; of the client. So, persisting the cart data will not make you uncompliant with REST. In essence, what the architecture is trying to achieve is to make each request &lt;em&gt;independent of any sort of state&lt;/em&gt;. There lies a fundamental REST aspect: &lt;strong&gt;statelessness&lt;/strong&gt;. So, by all means, we go ahead and persist the cart data in our system.&lt;/p&gt;
-&lt;h4 id=&#34;eager-or-lazy-initialization&#34;&gt;
-    &lt;a href=&#34;#eager-or-lazy-initialization&#34;&gt;#&lt;/a&gt;
-    Eager or lazy initialization
+&lt;h4 id=&#34;eager-or-lazy-initialization&#34;&gt;Eager or lazy initialization
 &lt;/h4&gt;&lt;p&gt;An interesting decision we have to make is &lt;em&gt;when&lt;/em&gt; to initialize the sopping cart. There are two options: we either &lt;em&gt;lazily&lt;/em&gt; create the cart the first time we&amp;rsquo;re asked to put a product in it or we &lt;em&gt;eagerly&lt;/em&gt; create it with a separate call before we can put any products in it. In the first case, we use one less call, which sounds like a good thing and we do not create a shopping cart for a user that will never put anything in it. However, a small ambiguity is introduced in our &lt;em&gt;put a product in the cart&lt;/em&gt; call, since it will return &lt;code&gt;201 CREATED&lt;/code&gt; the first time it is called (as it will also create a resource - the shopping cart) and &lt;code&gt;200 OK&lt;/code&gt; for any subsequent call (since the shopping cart already exists and we&amp;rsquo;re just putting products in it). Although the first two pros seem quite strong, the final decision is to go with the latter approach for clarity reasons.&lt;/p&gt;
-&lt;h4 id=&#34;post-without-body&#34;&gt;
-    &lt;a href=&#34;#post-without-body&#34;&gt;#&lt;/a&gt;
-    POST without body
+&lt;h4 id=&#34;post-without-body&#34;&gt;POST without body
 &lt;/h4&gt;&lt;p&gt;Often we face a situation in which we wish to either create a resource or trigger an action, but there are no data to be submitted to the system. We might get tempted to use a &lt;code&gt;GET&lt;/code&gt; request, since the request will not have any body. However, we should not succumb to it. Using a &lt;code&gt;POST&lt;/code&gt; HTTP request (or a &lt;code&gt;PUT&lt;/code&gt; one, depending on the situation) without a body for these purposes is perfectly fine. Beware though that, in such cases, it is important to remember to include the &lt;code&gt;Content-Length&lt;/code&gt; header with value &lt;code&gt;0&lt;/code&gt;, since its absence may cause problems to proxies. This is demonstrated both in the request to create a shopping cart and in the one that triggers the checkout.&lt;/p&gt;
-&lt;h3 id=&#34;http-methods&#34;&gt;
-    &lt;a href=&#34;#http-methods&#34;&gt;#&lt;/a&gt;
-    HTTP methods
-&lt;/h3&gt;&lt;h4 id=&#34;list-all-products&#34;&gt;
-    &lt;a href=&#34;#list-all-products&#34;&gt;#&lt;/a&gt;
-    List all products
+&lt;h3 id=&#34;http-methods&#34;&gt;HTTP methods
+&lt;/h3&gt;&lt;h4 id=&#34;list-all-products&#34;&gt;List all products
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;GET&lt;/code&gt; HTTP request is sent to retrieve all the available products. A list of all available products is returned.&lt;/p&gt;
-&lt;h5 id=&#34;request&#34;&gt;
-    &lt;a href=&#34;#request&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /products
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response&#34;&gt;
-    &lt;a href=&#34;#response&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -523,38 +429,26 @@ Content-type: application/json
     }
   ]
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;create-a-shopping-cart&#34;&gt;
-    &lt;a href=&#34;#create-a-shopping-cart&#34;&gt;#&lt;/a&gt;
-    Create a shopping cart
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;create-a-shopping-cart&#34;&gt;Create a shopping cart
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request is sent. A shopping cart is created. The &lt;code&gt;Location&lt;/code&gt; header is used to link to the newly created resource (the cart) in order for the client to be able to access it without querying anew.&lt;/p&gt;
-&lt;h5 id=&#34;request-1&#34;&gt;
-    &lt;a href=&#34;#request-1&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-1&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
 Content-Length: 0
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-1&#34;&gt;
-    &lt;a href=&#34;#response-1&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-1&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;201 Created
 Content-type: application/json
 Location: /cart/{cart_id}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;put-a-product-in-the-cart&#34;&gt;
-    &lt;a href=&#34;#put-a-product-in-the-cart&#34;&gt;#&lt;/a&gt;
-    Put a product in the cart
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;put-a-product-in-the-cart&#34;&gt;Put a product in the cart
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request is used to put a product in the cart. The product is sent as part of the request body. The reply contains all cart data in order not to force the client to query again for it.&lt;/p&gt;
-&lt;h5 id=&#34;request-2&#34;&gt;
-    &lt;a href=&#34;#request-2&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-2&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart/{cart_id}
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-2&#34;&gt;
-    &lt;a href=&#34;#response-2&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-2&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -575,20 +469,14 @@ Content-type: application/json
     &amp;#34;currency&amp;#34;: EUR
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;get-cart-contents&#34;&gt;
-    &lt;a href=&#34;#get-cart-contents&#34;&gt;#&lt;/a&gt;
-    Get cart contents
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;get-cart-contents&#34;&gt;Get cart contents
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;GET&lt;/code&gt; HTTP request is used to fetch the contents of a shopping cart.&lt;/p&gt;
-&lt;h5 id=&#34;request-3&#34;&gt;
-    &lt;a href=&#34;#request-3&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-3&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /cart/{cart_id}
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-3&#34;&gt;
-    &lt;a href=&#34;#response-3&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-3&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -609,26 +497,18 @@ Content-type: application/json
     &amp;#34;currency&amp;#34;: EUR
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;checkout&#34;&gt;
-    &lt;a href=&#34;#checkout&#34;&gt;#&lt;/a&gt;
-    Checkout
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;checkout&#34;&gt;Checkout
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request will trigger the checkout action, buying all products currently withing this cart.&lt;/p&gt;
-&lt;h5 id=&#34;request-4&#34;&gt;
-    &lt;a href=&#34;#request-4&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-4&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart/{cart_id}/checkout
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
 Content-Length: 0
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-4&#34;&gt;
-    &lt;a href=&#34;#response-4&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-4&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Designing RESTful APIs is often misunderstood or poorly performed. However, REST is truly a gift, leveraging our systems architecture and using it right can prove gold for our microservices. As usually, there is not a single approach to the problem of designing a RESTful API, but it is worthwhile to think carefully of our decisions, challenge them and try hard to be compliant with the essence of this architecture. The benefits can be of immense value.&lt;/p&gt;
 </description>
         </item>

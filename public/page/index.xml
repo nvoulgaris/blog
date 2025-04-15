@@ -22,9 +22,7 @@
         
         <guid>//localhost:1313/books/</guid>
         <description>&lt;p&gt;Below you may find a list of books that &lt;em&gt;I have read&lt;/em&gt; and, believing that they are worth reading, &lt;em&gt;I recommend&lt;/em&gt; them. I will be updating this list as I read more books that should be added here.&lt;/p&gt;
-&lt;h3 id=&#34;software-designarchitecture&#34;&gt;
-    &lt;a href=&#34;#software-designarchitecture&#34;&gt;#&lt;/a&gt;
-    Software design/architecture
+&lt;h3 id=&#34;software-designarchitecture&#34;&gt;Software design/architecture
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/3735293-clean-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Clean Code: A Handbook of Agile Software Craftsmanship&lt;/a&gt;&lt;/li&gt;
@@ -35,18 +33,14 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/85041.Refactoring_to_Patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Refactoring to Patterns&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;test-driven-development-tdd&#34;&gt;
-    &lt;a href=&#34;#test-driven-development-tdd&#34;&gt;#&lt;/a&gt;
-    Test Driven Development (TDD)
+&lt;h3 id=&#34;test-driven-development-tdd&#34;&gt;Test Driven Development (TDD)
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/387190.Test_Driven_Development&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Test Driven Development: By Example&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Growing Object-Oriented Software, Guided by Tests&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;scrum&#34;&gt;
-    &lt;a href=&#34;#scrum&#34;&gt;#&lt;/a&gt;
-    Scrum
+&lt;h3 id=&#34;scrum&#34;&gt;Scrum
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/2455391.Scrum_and_XP_from_the_Trenches&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Scrum and XP from the Trenches&lt;/a&gt;&lt;/li&gt;
@@ -55,9 +49,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/17984584-the-people-s-scrum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The People&amp;rsquo;s Scrum: Agile Ideas for Revolutionary Transformation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;agilecoachingleadership&#34;&gt;
-    &lt;a href=&#34;#agilecoachingleadership&#34;&gt;#&lt;/a&gt;
-    Agile/Coaching/Leadership
+&lt;h3 id=&#34;agilecoachingleadership&#34;&gt;Agile/Coaching/Leadership
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/21343.The_Five_Dysfunctions_of_a_Team&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Five Dysfunctions of a Team: A Leadership Fable&lt;/a&gt;&lt;/li&gt;
@@ -68,9 +60,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4894.Who_Moved_My_Cheese_&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Who Moved My Cheese?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;behavioral&#34;&gt;
-    &lt;a href=&#34;#behavioral&#34;&gt;#&lt;/a&gt;
-    Behavioral
+&lt;h3 id=&#34;behavioral&#34;&gt;Behavioral
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/36045392-the-software-craftsman&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Software Craftsman: Professionalism, Pragmatism, Pride&lt;/a&gt;&lt;/li&gt;

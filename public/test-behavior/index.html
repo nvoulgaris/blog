@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/test-behavior/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Test behavior">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Test behavior">
 <meta property='og:description' content="Testing what is done vs how it's done">
 <meta property='og:url' content='//localhost:1313/test-behavior/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/writing.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -385,6 +387,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -399,10 +405,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -486,45 +488,30 @@ if (!doNotTrack) {
     
     
     <p>Over the years, I have identified a number of issues with the way most companies treat their tests. I have come to believe that the most important one is that test code is treated as a second class citizen. Developers usually opt for the cheap, quick-and-dirty solutions when it comes to writing (or maintaining) tests, not realizing their importance. However, test code has to be <em>designed</em>, <em>reviewed</em> and <em>refactored</em>, exactly like production code. What we usually fail to realize is that the way we write tests reflects on the <em>quality</em> of our production code, allows <em>bugs</em> to creep in and drives <em>design</em> decisions.</p>
-<h2 id="two-approaches">
-    <a href="#two-approaches">#</a>
-    Two approaches
+<h2 id="two-approaches">Two approaches
 </h2><p>In this post I will delve into the topic of <em>testing behavior</em> as opposed to <em>testing implementation</em>. So, let&rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&rsquo;re thinking:</p>
 <blockquote>
-<p>I want to verify that, under these circumstances, the result of an action is this</p>
-</blockquote>
+<p>I want to verify that, under these circumstances, the result of an action is this</p></blockquote>
 <p>Testing for state on the other hand, means thinking:</p>
 <blockquote>
-<p>I want to verify that, under these circumstances, these actions take place to reach to the result</p>
-</blockquote>
+<p>I want to verify that, under these circumstances, these actions take place to reach to the result</p></blockquote>
 <p>Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&rsquo;s illustrate the two styles via a simplified example.</p>
-<h2 id="example">
-    <a href="#example">#</a>
-    Example
+<h2 id="example">Example
 </h2><p>Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A <em>test-implementation</em> logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.</p>
 <p>On the other hand, a <em>test-behavior</em> mentality would probably result in executing the method and checking that the <code>send()</code> method was executed in the e-mail service collaborator with the correct argument for the <code>subject</code> parameter.</p>
-<h2 id="trade-offs">
-    <a href="#trade-offs">#</a>
-    Trade-offs
+<h2 id="trade-offs">Trade-offs
 </h2><p>We should always keep in mind that when it comes to software engineering, there is no silver bullet. A great part of our job is to recognize the trade-offs when they present themselves and decide responsibly, living with the consequences. Having said this, both approaches would work, leading to - most probably - different implementations and different ramifications when it comes to flexibility and maintenance.</p>
-<h3 id="refactoring">
-    <a href="#refactoring">#</a>
-    Refactoring
+<h3 id="refactoring">Refactoring
 </h3><p>One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.</p>
 <blockquote>
-<p>When refactoring a piece of code, we intend to alter its structure but <strong>not</strong> its behavior.</p>
-</blockquote>
+<p>When refactoring a piece of code, we intend to alter its structure but <strong>not</strong> its behavior.</p></blockquote>
 <p>In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&rsquo;re testing, allowing bugs to creep in the production code.</p>
 <p>We may stay clear from this danger applying the <em>test-behavior</em> logic. In this case, the tests do not <em>&ldquo;see&rdquo;</em> the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.</p>
-<h3 id="ripple-effects">
-    <a href="#ripple-effects">#</a>
-    Ripple effects
+<h3 id="ripple-effects">Ripple effects
 </h3><p>In my blog post on <a class="link" href="https://nvoulgaris.com/unit-testing-best-practices"  target="_blank" rel="noopener"
     >unit testing best practices</a> I referred to <em>isolation</em> as key property of unit tests. I stated that if a test fails, <em>&ldquo;it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately&rdquo;</em>. In this post I was referring to leaving the system in the state that we found it, but the isolation principle may be violated in other ways too.</p>
 <p>When testing the implementation, we usually instantiate all the collaborators (dependencies) of the class we&rsquo;re testing, whereas, when testing the behavior we tend to use <strong>test doubles</strong>. A side effect of this is that if a bug lies in a collaborator of the class under test, its tests will remain unaffected in the latter approach, but will fail in the former, creating a <strong>ripple of failing tests</strong>. Among other things, this will lead us into a debugging session in order to understand what is wrong with the system (as opposed to a finger pointing to the - carefully chosen - name of the failing test).</p>
-<h3 id="design-decisions">
-    <a href="#design-decisions">#</a>
-    Design decisions
+<h3 id="design-decisions">Design decisions
 </h3><p>As I have mentioned earlier in this post, <em>tests drive design decisions</em>. This is an immensely important point, so let me repeat it. <em>Tests shape our production code</em>. I am mostly referring to Test Driven Development here, but we should always refactor a piece of code that is difficult to test, irrelevant of <em>when</em> the tests where written. Therefore, the tests affect the production code even if we don&rsquo;t test-drive it.</p>
 <p>Before we elaborate, let&rsquo;s tale a step back to consider a basic unit testing tool: <strong>test doubles</strong>. <a class="link" href="https://www.goodreads.com/author/show/193408.Gerard_Meszaros"  target="_blank" rel="noopener"
     >Gerard Meszaros</a> uses this term to describe <em>an object that is used in place of a real object for testing purposes</em>. Two test double types that we&rsquo;re particularly interested in (for the purposes of this post) are the following:</p>
@@ -544,9 +531,7 @@ if (!doNotTrack) {
 <p>These choices are utterly important. It is easy to understand that the more stubs we use, the more we couple our unit tests with our production code. This happens because, what we&rsquo;re essentially saying when stubbing a class is <em>&ldquo;when this method is called with these arguments, do this&rdquo;</em>. However, this method call is an implementation detail and should we wish to not call this method during a future refactoring, our unit test will fail (or at least will have to be refactored as well, in order to remove the unused stubbing).</p>
 <p>In addition, a mockist TDDer will (via the usage of mocks instead of real objects) achieve a quite better (ideally perfect) isolation on the unit tests, as opposed to a classical TDDer, who will have to face a ripple of failing tests sooner or later.</p>
 <p>One of the most important aspects of this topic though is that different choices (stubs instead of mocks, classical TDD instead of mockist TDD) will result in a totally different production code and a totally different code design. Therefore, <strong>favoring testing behavior will produce a totally different application</strong>, with different trade-offs, different advantages and shortcomings and different code quality. Hence, I believe that it has become apparent by now (if it wasn&rsquo;t already) that these are decisions that we have to thinking very carefully and take very seriously.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>My initial intention behind this blog post was to raise awareness. Test code should <strong>not</strong> be treated as second class citizen. There are loads of crossroads, decisions and trade-offs out there and I hope that I have made clear that the ramifications are very significant. Favoring testing behavior brings along a series of side effects and in any case, it is a road that, should we decide to follow it, we should do so wittingly and with professionalism.</p>
 
 </section>
@@ -623,6 +608,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -631,12 +633,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -725,7 +727,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/how-getters-and-setters-harm-encapsulation/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="How getters and setters harm encapsulation">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="How getters and setters harm encapsulation">
 <meta property='og:description' content="Think twice before exposing the implementation details of a class">
 <meta property='og:url' content='//localhost:1313/how-getters-and-setters-harm-encapsulation/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/encapsulation.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -384,6 +386,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -398,10 +404,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -487,9 +489,7 @@ if (!doNotTrack) {
     <p>Taking a step back and looking at something that you&rsquo;ve been doing for years with a <em>fresh</em> perspective can lead to profound insights. I had an insight exactly like this a few months ago, when I decided to look at <code>getters</code> and <code>setters</code> from a different point of view.</p>
 <p>During my first steps as a software engineer, I learned about Plain Old Objects (POJOs for Java software engineers, like myself) and ever since it made sense in my head, I always took <code>getters</code> and <code>setters</code> for granted. It was something I <em>had</em> to do. Later on, I learned (although now I know that I did not fully understand at the time) about the notion of encapsulation and how these <code>getters</code> and <code>setters</code> are a key step to achieving it. It then made even more sense to <em>always</em> code (or rather generate) them in every single POJO in my code.</p>
 <p>So I did consistently, until I read a blog post that got me thinking and revisiting the whole concept of encapsulation in a fresh, unbiased way. Now, that I believe the dust has settled, I will try to communicate my thoughts on the matter in this post.</p>
-<h2 id="object-oriented-design">
-    <a href="#object-oriented-design">#</a>
-    Object-oriented design
+<h2 id="object-oriented-design">Object-oriented design
 </h2><p>It all starts with true object-oriented design. If one goes online looking for a definition and a brief description of Object-Oriented Programming (OOP), one will come across (among some wise stuff) all kinds of nonsense. They usually start with something like <em>&ldquo;OOP is about modeling the real world&hellip;&rdquo;</em>. Well, it&rsquo;s not.</p>
 <p>OOP is a design <em>philosophy</em> according to which, a software system should consist of a set of <em>self sustainable</em> objects and <em>messages</em> that can be passed between these objects. Now, notice that the two key words here are <em>self sustainable</em> and <em>messages</em>. In other words, our objects should be:</p>
 <ul>
@@ -497,21 +497,14 @@ if (!doNotTrack) {
 <li>their outside world (other objects) should have a way of telling them what they need them to do</li>
 </ul>
 <p>This is really straightforward. Let&rsquo;s assume that we have an <code>AirCondition</code> object. What we would like is to be able to <strong>tell</strong> it to adjust the room temperature to (say) 25 degrees Celsius and for it to be able to do so. Notice that we are not interested in <em>how</em> is it going to achieve this. All we want is to <em>command</em> it and have the job done. Essentially, we are <em>sending a message</em>. We are <em>delegating</em> the task. Now, this brings us to the point that we can understand both what encapsulation is and why we need it.</p>
-<h2 id="encapsulation">
-    <a href="#encapsulation">#</a>
-    Encapsulation
+<h2 id="encapsulation">Encapsulation
 </h2><p>The gist behind the notion of encapsulation is that the <em>objects should not reveal their internals</em> (implementation details) <em>to the outside world</em> (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of <em>how</em> they achieve the tasks that are <em>told</em> to achieve it&rsquo;s <em>their</em> business and no one else&rsquo;s.</p>
 <p>In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&rsquo;s state in order to perform the tasks that it&rsquo;s told to perform.</p>
 <blockquote>
-<p>Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.</p>
-</blockquote>
-<h2 id="the-problem-with-getters-and-setters">
-    <a href="#the-problem-with-getters-and-setters">#</a>
-    The problem with getters and setters
+<p>Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.</p></blockquote>
+<h2 id="the-problem-with-getters-and-setters">The problem with getters and setters
 </h2><p>This is exactly where <code>getters</code> and <code>setters</code> enter the picture. Conventional wisdom has it that since the object&rsquo;s properties are to remain &ldquo;hidden&rdquo;, they should be wrapped by a <code>getter</code> and <code>setter</code> each, enabling the external world to &ldquo;access&rdquo; them, without learning about the object&rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. <em>Does it make any sense at all?</em> At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper <code>getter</code> and <code>setter</code>? Essentially we are messing with the object&rsquo;s state in either case - which is quite overtly exposed to the public via these methods.</p>
-<h2 id="an-example">
-    <a href="#an-example">#</a>
-    An example
+<h2 id="an-example">An example
 </h2><p>In order to better illustrate the nature of this problem, let&rsquo;s consider for a moment the <code>AirCondition</code> class from above. Suppose our intention was to adjust the room temperature to 25 degrees Celsius. One could achieve this via the following piece of code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&gt;</span> 25) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (airCondition.<span style="color:#a6e22e">getTemperature</span>() <span style="color:#f92672">&gt;</span> 25) {
@@ -525,34 +518,23 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>However, all we do is constantly manipulating the object&rsquo;s state, essentially <strong>implementing the logic that it should possess</strong>. We are <em>micromanaging</em> the object. Instead, we should <em>trust</em> it on knowing how to do its job. We keep on <strong>asking</strong> about it&rsquo;s state and then modify it instead of <strong>telling</strong> it the end result that we wish. Conforming to OOP, all we need to do is to <em>send it a message</em>, like the following</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>airCondition.<span style="color:#a6e22e">adjustTemperatureTo</span>(25)
 </span></span></code></pre></div><p>and it should get the job done, because it <em>knows</em> how to actually do it. We shouldn&rsquo;t even know if there is or there is not a property holding the current temperature, let alone query for it directly. This is part of the means the <code>AirCondition</code> class could use to achieve its purposes, it&rsquo;s subject to change at any given moment and its strictly <strong>its own business</strong>.</p>
-<h2 id="tight-coupling">
-    <a href="#tight-coupling">#</a>
-    Tight coupling
+<h2 id="tight-coupling">Tight coupling
 </h2><p>We all know (at least in principle) that our classes should be <em>highly cohesive</em> and <em>loosely coupled</em>. The theory is great, but let&rsquo;s consider how these guidelines (about coupling in particular) apply to this specific example.</p>
 <p>Let&rsquo;s assume that we wish to refactor the <code>AirCondition</code> class. Perhaps we would like to rename the <code>temperature</code> variable to <code>currentTemperature</code>. Performing this elementary refactoring move, would create a chain reaction, causing all the classes that depend upon it (its collaborators) to fail to compile and impose the need to refactor them too. Perhaps, some collaborators of these collaborators should be refactored as well and so forth.</p>
 <p>This scenario illustrates perfectly the side effects of a design with tightly coupled classes. However, on the second, <em>imperative</em> approach, the collaborators of the refactored, <code>AirCondition</code> class would remain unaffected, agnostic to the modification. We can therefore conclude that <em>the imperative approach has led to a more loosely coupled design</em>.</p>
-<h2 id="tell-dont-ask">
-    <a href="#tell-dont-ask">#</a>
-    Tell, don&rsquo;t ask
+<h2 id="tell-dont-ask">Tell, don&rsquo;t ask
 </h2><p>Some of you might have already noticed that these ideas start to sound a lot like the <em>Tell, don&rsquo;t ask</em> principle (also known as <em>Law of Demeter</em>). (In case you&rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.</p>
 <blockquote>
-<p>Data and functionality that depends on these data belong in the same object</p>
-</blockquote>
-<h2 id="a-story-and-a-lesson-learned">
-    <a href="#a-story-and-a-lesson-learned">#</a>
-    A story and a lesson learned
+<p>Data and functionality that depends on these data belong in the same object</p></blockquote>
+<h2 id="a-story-and-a-lesson-learned">A story and a lesson learned
 </h2><p>Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with <code>getters</code> and <code>setters</code>.</p>
 <p>Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using <code>getters</code> and <code>setters</code> instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.</p>
 <p>At the end of the day, what difference would it make to use <code>airCondition.getTemperature()</code> instead of <code>airCondition.temperature</code>? Perhaps that is the reason why the designers of Kotlin decided to provide <code>getters</code> and <code>setters</code> by default, without even going into the trouble to code (generate) them or even call(!) them (in Kotlin <code>airCondition.temperature</code> actually calls <code>airCondition.getTemperature()</code> under the hood).</p>
-<h2 id="amending-the-situation">
-    <a href="#amending-the-situation">#</a>
-    Amending the situation
+<h2 id="amending-the-situation">Amending the situation
 </h2><p>Assuming that the problem is clear, a reasonable question to ask would be what to do to amend it. A very helpful first step would be to stop writing <code>getters</code> and <code>setters</code> this very moment. This would surface cases that collaborators need access to another classe&rsquo;s properties.</p>
 <p>When you face such a situation, take a moment and reflect. <em>Do you really need to expose this property</em>? Is there a better way to solve the problem? Perhaps, instead of exposing the property, a new method can be introduced in the object to receive the message that an operation needs to be performed. Exactly the operation that the collaborator who wanted access on the property was about to implement. <em>Whose responsibility is this operation</em>?</p>
 <p>Sometimes <code>getters</code> and <code>setters</code> will be needed, but I reckon that most of the times, different, better object-oriented solution will present themselves. This will gradually improve the design of the system you are working on.</p>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Object-oriented design is all about passing messages between self sustainable objects and ecapsulation is a tool that can be immensely helpful on this task by resulting in loose coupling. On the other hand, letting our classes see deeply into the internal implementation of their collaborators, essentially results in tight coupling.</p>
 <p>Wrapping class properties with <code>getters</code> and <code>setters</code> helps look deep inside the internals of other class. It provides a <strong>false</strong> sense of encapsulation, but even worse, it pushes us towards treating classes as mere data structures and implementing the logic that these data serve in collaborators, defeating the very purpose of true object-oriented design.</p>
 <p>Experiment by stop writing <code>getters</code> and <code>setters</code> instead and observe the side effects. I strongly believe that it will lead to a better design.</p>
@@ -631,6 +613,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -639,12 +638,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -733,7 +732,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

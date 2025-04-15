@@ -2,6 +2,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/graphql/</loc>
+    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/</loc>
+    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/post/</loc>
+    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/</loc>
+    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/the-anatomy-of-a-graphql-schema/</loc>
+    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/graphql-introduction/</loc>
+    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nvoulgaris.com//localhost:1313/a-different-way-to-run-the-daily-scrum/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url>
@@ -12,22 +42,7 @@
   </url>
   
   <url>
-    <loc>https://nvoulgaris.com//localhost:1313/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nvoulgaris.com//localhost:1313/post/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nvoulgaris.com//localhost:1313/tags/scrum/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nvoulgaris.com//localhost:1313/tags/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url>
   

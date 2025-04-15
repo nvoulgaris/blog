@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Rest on Nikos Voulgaris</title>
+        <title>REST on Nikos Voulgaris</title>
         <link>//localhost:1313/tags/rest/</link>
-        <description>Recent content in Rest on Nikos Voulgaris</description>
+        <description>Recent content in REST on Nikos Voulgaris</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Nikos Voulgaris</copyright>
@@ -17,60 +17,32 @@
 &lt;p&gt;Adding to it, REST is a marvelous architecture (developed back in 2000 by Roy Fielding as part of his &lt;a class=&#34;link&#34; href=&#34;https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;doctoral dissertation&lt;/a&gt;). However, it is as misunderstood as beautiful. The web is packed of &amp;ldquo;RESTful&amp;rdquo; web services which are not so RESTful after all. The requirement to communicate with such a system can create previously unseen obstacles, making design very challenging. Furthermore, more often than not, the ecosystem in which a microservice is being developed, contains legacy system(s), which impose very difficult constraints to the design, usually leading to exceptions and inconsistencies, which usually lead to problems further down the road.&lt;/p&gt;
 &lt;p&gt;Among others, the above mentioned phenomena, can increase the degree of difficulty of designing a RESTful API for inter microservice communication. In this post, I will endeavor to share my journey and outcome of designing such an API.&lt;/p&gt;
-&lt;h2 id=&#34;the-case-study&#34;&gt;
-    &lt;a href=&#34;#the-case-study&#34;&gt;#&lt;/a&gt;
-    The case study
+&lt;h2 id=&#34;the-case-study&#34;&gt;The case study
 &lt;/h2&gt;&lt;p&gt;This example attempts to design an efficient, RESTful API as a solution to the problem of creating a microservice that is responsible for handling the lifecycle of a shopping cart.&lt;/p&gt;
-&lt;h3 id=&#34;assumptions&#34;&gt;
-    &lt;a href=&#34;#assumptions&#34;&gt;#&lt;/a&gt;
-    Assumptions
-&lt;/h3&gt;&lt;h4 id=&#34;authentication---authorization&#34;&gt;
-    &lt;a href=&#34;#authentication---authorization&#34;&gt;#&lt;/a&gt;
-    Authentication - Authorization
+&lt;h3 id=&#34;assumptions&#34;&gt;Assumptions
+&lt;/h3&gt;&lt;h4 id=&#34;authentication---authorization&#34;&gt;Authentication - Authorization
 &lt;/h4&gt;&lt;p&gt;Throughout this example we consider authentication - authorization functionality to exist and to be provided by a separate microservice. Therefore, a JWT token (or some other token) is supposedly provided by this microservice and included in the &lt;code&gt;Authorization&lt;/code&gt; header in all HTTP requests. In addition, we assume that authorization is not required for the HTTP request to list all available products.&lt;/p&gt;
-&lt;h4 id=&#34;requests---responses-body&#34;&gt;
-    &lt;a href=&#34;#requests---responses-body&#34;&gt;#&lt;/a&gt;
-    Requests - Responses body
+&lt;h4 id=&#34;requests---responses-body&#34;&gt;Requests - Responses body
 &lt;/h4&gt;&lt;p&gt;The body (as well as the headers) provided in the following HTTP requests and responses is an example which attempts to meaningfully demonstrate the essence of the argument and by no means are complete or fully functional. For instance, in the &lt;em&gt;list all products&lt;/em&gt; response, products are obviously not represented merely by their IDs and prices, but believing that this structure suffices to communicate the essence of the call, they are intentionally left partially complete.&lt;/p&gt;
-&lt;h4 id=&#34;api-design-decisions&#34;&gt;
-    &lt;a href=&#34;#api-design-decisions&#34;&gt;#&lt;/a&gt;
-    API Design decisions
+&lt;h4 id=&#34;api-design-decisions&#34;&gt;API Design decisions
 &lt;/h4&gt;&lt;p&gt;Throughout this post, &lt;strong&gt;API design&lt;/strong&gt; is on the spotlight. Neither &lt;em&gt;application design&lt;/em&gt;, nor &lt;em&gt;technological decisions&lt;/em&gt; (e.g. persistence layer technology) will not be covered since they do not constitute part of the &lt;em&gt;API design&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;making-some-decisions&#34;&gt;
-    &lt;a href=&#34;#making-some-decisions&#34;&gt;#&lt;/a&gt;
-    Making some decisions
-&lt;/h3&gt;&lt;h4 id=&#34;which-calls&#34;&gt;
-    &lt;a href=&#34;#which-calls&#34;&gt;#&lt;/a&gt;
-    Which calls
+&lt;h3 id=&#34;making-some-decisions&#34;&gt;Making some decisions
+&lt;/h3&gt;&lt;h4 id=&#34;which-calls&#34;&gt;Which calls
 &lt;/h4&gt;&lt;p&gt;Identifying the correct HTTP calls can be trickier than it actually sounds. My advice would be to approach the problem by carefully producing sequence diagrams to cover all the use cases of the new system. Given that we have them, we can proceed to identify the interaction the system will have with the rest of the systems and therefore define the endpoints and HTTP calls that cover these.&lt;/p&gt;
-&lt;h4 id=&#34;persisting-data&#34;&gt;
-    &lt;a href=&#34;#persisting-data&#34;&gt;#&lt;/a&gt;
-    Persisting data
+&lt;h4 id=&#34;persisting-data&#34;&gt;Persisting data
 &lt;/h4&gt;&lt;p&gt;A common misconception concerning REST is that one is not allowed to store any data in order to implement a RESTful web service. This is not quite true. Persisting data is perfectly fine as long as these data do not concern the &lt;em&gt;state&lt;/em&gt; of the client. So, persisting the cart data will not make you uncompliant with REST. In essence, what the architecture is trying to achieve is to make each request &lt;em&gt;independent of any sort of state&lt;/em&gt;. There lies a fundamental REST aspect: &lt;strong&gt;statelessness&lt;/strong&gt;. So, by all means, we go ahead and persist the cart data in our system.&lt;/p&gt;
-&lt;h4 id=&#34;eager-or-lazy-initialization&#34;&gt;
-    &lt;a href=&#34;#eager-or-lazy-initialization&#34;&gt;#&lt;/a&gt;
-    Eager or lazy initialization
+&lt;h4 id=&#34;eager-or-lazy-initialization&#34;&gt;Eager or lazy initialization
 &lt;/h4&gt;&lt;p&gt;An interesting decision we have to make is &lt;em&gt;when&lt;/em&gt; to initialize the sopping cart. There are two options: we either &lt;em&gt;lazily&lt;/em&gt; create the cart the first time we&amp;rsquo;re asked to put a product in it or we &lt;em&gt;eagerly&lt;/em&gt; create it with a separate call before we can put any products in it. In the first case, we use one less call, which sounds like a good thing and we do not create a shopping cart for a user that will never put anything in it. However, a small ambiguity is introduced in our &lt;em&gt;put a product in the cart&lt;/em&gt; call, since it will return &lt;code&gt;201 CREATED&lt;/code&gt; the first time it is called (as it will also create a resource - the shopping cart) and &lt;code&gt;200 OK&lt;/code&gt; for any subsequent call (since the shopping cart already exists and we&amp;rsquo;re just putting products in it). Although the first two pros seem quite strong, the final decision is to go with the latter approach for clarity reasons.&lt;/p&gt;
-&lt;h4 id=&#34;post-without-body&#34;&gt;
-    &lt;a href=&#34;#post-without-body&#34;&gt;#&lt;/a&gt;
-    POST without body
+&lt;h4 id=&#34;post-without-body&#34;&gt;POST without body
 &lt;/h4&gt;&lt;p&gt;Often we face a situation in which we wish to either create a resource or trigger an action, but there are no data to be submitted to the system. We might get tempted to use a &lt;code&gt;GET&lt;/code&gt; request, since the request will not have any body. However, we should not succumb to it. Using a &lt;code&gt;POST&lt;/code&gt; HTTP request (or a &lt;code&gt;PUT&lt;/code&gt; one, depending on the situation) without a body for these purposes is perfectly fine. Beware though that, in such cases, it is important to remember to include the &lt;code&gt;Content-Length&lt;/code&gt; header with value &lt;code&gt;0&lt;/code&gt;, since its absence may cause problems to proxies. This is demonstrated both in the request to create a shopping cart and in the one that triggers the checkout.&lt;/p&gt;
-&lt;h3 id=&#34;http-methods&#34;&gt;
-    &lt;a href=&#34;#http-methods&#34;&gt;#&lt;/a&gt;
-    HTTP methods
-&lt;/h3&gt;&lt;h4 id=&#34;list-all-products&#34;&gt;
-    &lt;a href=&#34;#list-all-products&#34;&gt;#&lt;/a&gt;
-    List all products
+&lt;h3 id=&#34;http-methods&#34;&gt;HTTP methods
+&lt;/h3&gt;&lt;h4 id=&#34;list-all-products&#34;&gt;List all products
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;GET&lt;/code&gt; HTTP request is sent to retrieve all the available products. A list of all available products is returned.&lt;/p&gt;
-&lt;h5 id=&#34;request&#34;&gt;
-    &lt;a href=&#34;#request&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /products
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response&#34;&gt;
-    &lt;a href=&#34;#response&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -93,38 +65,26 @@ Content-type: application/json
     }
   ]
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;create-a-shopping-cart&#34;&gt;
-    &lt;a href=&#34;#create-a-shopping-cart&#34;&gt;#&lt;/a&gt;
-    Create a shopping cart
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;create-a-shopping-cart&#34;&gt;Create a shopping cart
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request is sent. A shopping cart is created. The &lt;code&gt;Location&lt;/code&gt; header is used to link to the newly created resource (the cart) in order for the client to be able to access it without querying anew.&lt;/p&gt;
-&lt;h5 id=&#34;request-1&#34;&gt;
-    &lt;a href=&#34;#request-1&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-1&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
 Content-Length: 0
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-1&#34;&gt;
-    &lt;a href=&#34;#response-1&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-1&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;201 Created
 Content-type: application/json
 Location: /cart/{cart_id}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;put-a-product-in-the-cart&#34;&gt;
-    &lt;a href=&#34;#put-a-product-in-the-cart&#34;&gt;#&lt;/a&gt;
-    Put a product in the cart
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;put-a-product-in-the-cart&#34;&gt;Put a product in the cart
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request is used to put a product in the cart. The product is sent as part of the request body. The reply contains all cart data in order not to force the client to query again for it.&lt;/p&gt;
-&lt;h5 id=&#34;request-2&#34;&gt;
-    &lt;a href=&#34;#request-2&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-2&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart/{cart_id}
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-2&#34;&gt;
-    &lt;a href=&#34;#response-2&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-2&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -145,20 +105,14 @@ Content-type: application/json
     &amp;#34;currency&amp;#34;: EUR
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;get-cart-contents&#34;&gt;
-    &lt;a href=&#34;#get-cart-contents&#34;&gt;#&lt;/a&gt;
-    Get cart contents
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;get-cart-contents&#34;&gt;Get cart contents
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;GET&lt;/code&gt; HTTP request is used to fetch the contents of a shopping cart.&lt;/p&gt;
-&lt;h5 id=&#34;request-3&#34;&gt;
-    &lt;a href=&#34;#request-3&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-3&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /cart/{cart_id}
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-3&#34;&gt;
-    &lt;a href=&#34;#response-3&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-3&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
@@ -179,26 +133,18 @@ Content-type: application/json
     &amp;#34;currency&amp;#34;: EUR
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;checkout&#34;&gt;
-    &lt;a href=&#34;#checkout&#34;&gt;#&lt;/a&gt;
-    Checkout
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;checkout&#34;&gt;Checkout
 &lt;/h4&gt;&lt;p&gt;A &lt;code&gt;POST&lt;/code&gt; HTTP request will trigger the checkout action, buying all products currently withing this cart.&lt;/p&gt;
-&lt;h5 id=&#34;request-4&#34;&gt;
-    &lt;a href=&#34;#request-4&#34;&gt;#&lt;/a&gt;
-    Request
+&lt;h5 id=&#34;request-4&#34;&gt;Request
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST /cart/{cart_id}/checkout
 Authorization: Bearer eyJhbGciOiNIUzI1JiIXVCJ9...TJVA95OrM7E20RMHrZDcEfxjoIZgeFONFh7HgQ
 Content-type: application/json
 Accept: application/json
 Content-Length: 0
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-4&#34;&gt;
-    &lt;a href=&#34;#response-4&#34;&gt;#&lt;/a&gt;
-    Response
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;response-4&#34;&gt;Response
 &lt;/h5&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;200 OK
 Content-type: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Designing RESTful APIs is often misunderstood or poorly performed. However, REST is truly a gift, leveraging our systems architecture and using it right can prove gold for our microservices. As usually, there is not a single approach to the problem of designing a RESTful API, but it is worthwhile to think carefully of our decisions, challenge them and try hard to be compliant with the essence of this architecture. The benefits can be of immense value.&lt;/p&gt;
 </description>
         </item>

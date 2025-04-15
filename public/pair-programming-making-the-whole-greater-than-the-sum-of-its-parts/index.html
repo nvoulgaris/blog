@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/'>
 
-<link rel="stylesheet" href="/scss/style.min.8e60baf4cd3fc55968717a6e39762f4d28ed7ef6007566b6c7970ad0fe907198.css"><meta property='og:title' content="Pair programming: making the whole greater than the sum of its parts">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Pair programming: making the whole greater than the sum of its parts">
 <meta property='og:description' content="The X factor for a truly high-performing team">
 <meta property='og:url' content='//localhost:1313/pair-programming-making-the-whole-greater-than-the-sum-of-its-parts/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -16,18 +16,20 @@
     <meta name="twitter:image" content='//localhost:1313/img/posts/pair_programming.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-114060129-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7643KK7Q6D');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -394,6 +396,10 @@ if (!doNotTrack) {
                 XP
             </a>
         
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
             <a href="/tags/retrospectives/" class="font_size_2">
                 Retrospectives
             </a>
@@ -408,10 +414,6 @@ if (!doNotTrack) {
         
             <a href="/tags/functional-programming/" class="font_size_1">
                 Functional Programming
-            </a>
-        
-            <a href="/tags/pair-programming/" class="font_size_1">
-                Pair Programming
             </a>
         
     </div>
@@ -497,23 +499,18 @@ if (!doNotTrack) {
     <p>When was the last time that you did some pair programming? How often do you practice it and why? Is it actually pair programming or is it just two people sitting side by side?</p>
 <p>Software engineering is a young and rapidly moving profession. Things have changed radically over the past few decades and we have to realize that it is a <em>team sport</em>. Great software is produced by great teams and I cannot imagine a team being great without members that are interacting a lot.</p>
 <p>In the following of this post, I will try to articulate my thoughts on pair programming, which I believe is an empowering practice and a skill that builds successful teams.</p>
-<h2 id="what-is-it">
-    <a href="#what-is-it">#</a>
-    What is it
+<h2 id="what-is-it">What is it
 </h2><p>Pair programming is an extreme programming (XP) practice. According to Kent Beck&rsquo;s book, <a class="link" href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained"  target="_blank" rel="noopener"
     ><em>&ldquo;Extreme Programming Explained: Embrace Change&rdquo;</em></a> it is</p>
 <blockquote>
-<p>A programming technique where two people program with one keyboard, one mouse, and one monitor</p>
-</blockquote>
+<p>A programming technique where two people program with one keyboard, one mouse, and one monitor</p></blockquote>
 <p>So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the <em>driver</em> and the <em>navigator</em>.</p>
 <ul>
 <li>The <strong>driver</strong> is writing the code, focusing on the task in hand and in the micro view of the code.</li>
 <li>The <strong>navigator</strong> is constantly reviewing the code being written by the driver, is looking for logic problems and bugs and is thinking ahead of the architecture and design of the system, focusing on the macro view of the code.</li>
 </ul>
 <p>Now, having decided to pair, how do you go about doing it?</p>
-<h2 id="how-to-pair-program">
-    <a href="#how-to-pair-program">#</a>
-    How to pair program
+<h2 id="how-to-pair-program">How to pair program
 </h2><p>Before thinking about roles and pieces of code, my advice is to focus on the setup. I find it critical that the screen is positioned in the <strong>center</strong> of the desk and <em>both participants have equal access to it</em>. Otherwise, you are running the risk of creating a situation in which one participant feels like a &ldquo;guest&rdquo; in the other&rsquo;s office, instead of an equal collaborator.</p>
 <p>Having taken care of the screen&rsquo;s position, the second most important point, in my opinion, is having <em>two keyboards</em>, if possible. This contradicts the above-mentioned definition of pair programming, which talks about one keyboard, but I believe it is very important to <em>remove the psychological barrier of actually having to &ldquo;grab&rdquo; the keyboard to contribute</em> one line of code when needed.</p>
 <p>With the setup in place, let&rsquo;s focus on the process. I would suggest making sure that you <strong>swap roles frequently</strong>. This ensures that both participants stay engaged and focused and that their minds work on both the micro and macro view of the code. Having the same driver for a lot of time can end up with the navigator feeling marginalized and disengaged. There is no &ldquo;right&rdquo; amount of time, but, out of personal experience, I would suggest swapping every few minutes. Of course, this is totally subjective and the pair should experiment and find what works best for it.</p>
@@ -521,48 +518,27 @@ if (!doNotTrack) {
 <p>Apart from roles, make sure to also <em>switch pairs frequently</em>. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a <em>soft swap</em> and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a <em>hard swap</em>, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.</p>
 <p>Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice <em>watching</em> the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that</p>
 <blockquote>
-<p>Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life</p>
-</blockquote>
-<h2 id="why-bother">
-    <a href="#why-bother">#</a>
-    Why bother
+<p>Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life</p></blockquote>
+<h2 id="why-bother">Why bother
 </h2><p>Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&rsquo;s talk a little bit about the benefits of pair programming.</p>
-<h3 id="the-sum-is-greater-than-the-parts">
-    <a href="#the-sum-is-greater-than-the-parts">#</a>
-    The sum is greater than the parts
+<h3 id="the-sum-is-greater-than-the-parts">The sum is greater than the parts
 </h3><p>Pair programming is a powerful technique when you need to tackle a very difficult problem. The reason is that, empirically, <em>the quality of the work that is being produced by the pair is higher</em> than the one of the work that each team member would produce on her own. I know that it sounds strange and is indeed very counter-intuitive, but, surprisingly, I have found it to be true every single time that I have paired on a difficult task. When done right, the level of concentration is unprecedented and two minds, deeply focusing on the same problem, can produce extremely high-quality work.</p>
-<h3 id="collective-code-ownership">
-    <a href="#collective-code-ownership">#</a>
-    Collective code ownership
+<h3 id="collective-code-ownership">Collective code ownership
 </h3><p>The more a team is practicing pair programming, the more it <strong>increases collective code ownership</strong>. When an individual writes a piece of code and then the team reviews it, inevitably, the author is implicitly perceived as the <em>&ldquo;owner&rdquo;</em> of this piece of code. Apart from increased collective code ownership, which is a vital quality for an agile team, pairing defaults the <a class="link" href="https://en.wikipedia.org/wiki/Bus_factor"  target="_blank" rel="noopener"
     >bus factor</a> to 2.</p>
-<h3 id="code-is-reviewed-automatically">
-    <a href="#code-is-reviewed-automatically">#</a>
-    Code is reviewed automatically
+<h3 id="code-is-reviewed-automatically">Code is reviewed automatically
 </h3><p>One of the greater benefits of pair programming is that the <em>code is reviewed automatically</em>, as it gets constantly reviewed by the navigator while is being typed by the driver. Taking into consideration that roles are swapped frequently, essentially the code is reviewed by the pair. Additionally, it is reviewed in a more active way, <em>driven by conversation and modifications</em>, instead of passively and silently reading a pull request without the author of the code being present to initiate a conversation. As a matter of fact, it is so well reviewed that it can be checked in and merged right away, although I would advise against it and I would propose to open a pull request, have the rest of team have a look at it as well as have the pair take a more distant look after the work is done.</p>
-<h3 id="increased-collaboration">
-    <a href="#increased-collaboration">#</a>
-    Increased collaboration
+<h3 id="increased-collaboration">Increased collaboration
 </h3><p>Gone are the days that software was produced by individual sitting in their cubicles, working as isolated as possible. Nowadays, it is well understood that great software is delivered by great teams. Therefore, we focus our energy a lot into building great teams. Honestly, I can&rsquo;t think of a more catalytic action to this than having two people working together, on the same problem. Personally, as a scrum master, I always encouraged the team to work in pairs as much as they can.</p>
-<h3 id="learning-opportunity">
-    <a href="#learning-opportunity">#</a>
-    Learning opportunity
+<h3 id="learning-opportunity">Learning opportunity
 </h3><p>People say that code reviews are a great learning opportunity. I can&rsquo;t even begin to describe what a wonderful learning opportunity pair programming is. Honestly, I don&rsquo;t remember pairing without <em>sharing knowledge</em>. Sometimes sharing great software design ideas. Sometimes learning a keyboard shortcut or a small IDE feature. There&rsquo;s always knowledge sharing during pair programming.</p>
-<h3 id="more-difficult-to-cut-corners">
-    <a href="#more-difficult-to-cut-corners">#</a>
-    More difficult to cut corners
+<h3 id="more-difficult-to-cut-corners">More difficult to cut corners
 </h3><p>We do get tired when writing code. Especially, when solving hard problems. These are the moments when we get more prone to cutting corners. <em>&ldquo;Let&rsquo;s skip this unit test&rdquo;</em>. <em>&ldquo;I could improve this, but let&rsquo;s leave it like this for now and I&rsquo;ll refactor in the future&rdquo;</em>. We&rsquo;ve all been there and it is quite natural when we grow really tired. We still know the right thing to do, but we lack the <em>discipline</em> to do it at this given moment. When working in pairs, cutting corners is more difficult. Usually, either the navigator will &ldquo;push&rdquo; towards the right direction or the driver will feel less at liberty to opt for a dirty solution.</p>
-<h3 id="less-distractions">
-    <a href="#less-distractions">#</a>
-    Less distractions
+<h3 id="less-distractions">Less distractions
 </h3><p>A software engineer works focused on a task, having built a mental diagram and his colleague asks &ldquo;have you had lunch?&rdquo;. Suddenly, the mental diagram is gone and 15 minutes are required to reconstruct it. Sounds familiar? Writing code requires extreme concentration and we all know that interrupting a software engineer while writing code is a huge &ldquo;no-no&rdquo; (especially when wearing headphones). Fortunately, working in pairs decreases interruptions a lot. People usually think twice before interrupting a pair.</p>
-<h3 id="onboard-a-new-team-member">
-    <a href="#onboard-a-new-team-member">#</a>
-    Onboard a new team member
+<h3 id="onboard-a-new-team-member">Onboard a new team member
 </h3><p>Do you remember your last onboarding-a-company experience? How long did it take you to become fully enabled and how did you go about achieving it? Personally, I believe that working on a task and asking questions when stuck is a suboptimal approach. I find that pairing with a teammate is an excellent onboarding technique. As a matter of fact, I believe that pair programming is tailored made for onboarding new members. knowledge sharing is flowing in an unprecedented pace (both domain/business and technical) and there&rsquo;s also a deliverable coming out of the process.</p>
-<h2 id="when-to-pair">
-    <a href="#when-to-pair">#</a>
-    When to pair
+<h2 id="when-to-pair">When to pair
 </h2><p>Of course, as with most practices, pair programming is not a silver bullet and we should be cautious <em>when</em> or for <em>how long</em> we practice it. As I mentioned above, there are teams out there that pair by default. There are also teams that pair only when no individual can solve the problem on her own. I personally feel that there are limits and each individual (and team) has to know when to pair and for how long to pair. Don&rsquo;t get me wrong. Perhaps always pairing is what works for you. I just argue that this is not the case for everyone. So, I would suggest to feel free to pair at any given moment, but try hard to pair in the following situations:</p>
 <ul>
 <li>
@@ -573,21 +549,15 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>While knowing when it to pair is important, we should also know when <strong>not</strong> to pair. So, I would discourage pairing when <strong>solving trivial problems.</strong> If you find yourself having to change a configuration or implement a fairly simple feature, that barely requires any design at all, pairing would be an overkill in my opinion. This is because there would be no important decisions to be made or serious hurdles to overcome and putting two minds in this problems just seems wasteful to me.</p>
-<h2 id="how-much-should-we-pair-for">
-    <a href="#how-much-should-we-pair-for">#</a>
-    How much should we pair for
+<h2 id="how-much-should-we-pair-for">How much should we pair for
 </h2><p>So, knowing when to pair is important, exactly as is knowing <em>when to stop</em>. Allow me to stress once more that there are no rules on these matters and I strongly feel that conclusions should be drawn <strong>empirically</strong> and always remain open to adjustments as the team matures. Therefore, below I outline my personal findings.</p>
 <p>Something to always keep in mind is that writing code in pairs is <em>exhausting</em>. It requires a tremendous level of concentration, exactly like individual programming does, plus a lot of energy devoted to interacting with your partner. After a few hours of pairing, it grows increasingly harder to keep producing high-quality work, which is the goal after all. So, I have come to believe that I should stop pairing when I feel like this. For me, this usually means that I should not pair for  more than a few hours a day. However, this conclusion is totally <em>empirical</em>. Once again, there are teams out there that pair by default. So, I would strongly recommend that each team (or pair) experiments until it finds its balance and that best works for it.</p>
 <p>If you do practice pair programming though, I would suggest that you do it on a <em>frequent basis</em>, every day if possible.</p>
-<h2 id="pairing-remotely">
-    <a href="#pairing-remotely">#</a>
-    Pairing remotely
+<h2 id="pairing-remotely">Pairing remotely
 </h2><p>Remote work has evolved in an integral part of software engineering teams. I used to think that pair programming would be very difficult (if not impossible) to do when the team members do not share the same physical space. After all, this technique is heavily based on the benefits of direct communication and interaction. I recently gave it a try nonetheless, and the results were remarkable. Not only it worked, but the outcome was of excellent quality.</p>
 <p>Retrospectively, I gave it some thought and tried to understand <em>why</em> it worked in such a great way. I realized, that neither communication nor interaction is negatively affected when using modern technology in the right way. Online call and remote control tools allow us to work seamlessly on the same machine. Besides, each participant is comfortably sitting before her dedicated screen and keyboard, without even feeling that her personal space is invaded, which might be the case when first adopting pair programming in person.</p>
 <p>I would strongly recommend to give remote pair programming a go and the results might astound you, just as they did me.</p>
-<h2 id="challenges">
-    <a href="#challenges">#</a>
-    Challenges
+<h2 id="challenges">Challenges
 </h2><p>As with every new practice, there are going to be hurdles to overcome when adopting it. Below, I have outlined the ones, which I think are the most common ones and my suggested approaches to tackle them.</p>
 <ul>
 <li>
@@ -600,9 +570,7 @@ if (!doNotTrack) {
 <p><strong>Lack of communication:</strong> Always remember that the key in pair programming is <em>communication</em>. This is what makes the sum greater than the parts and this is what drives everything throughout the whole process. So, make sure that you <em>embrace communication</em> at all times when pairing. If you realize that you are not communicating and interacting enough with your partner, try to stimulate it. Think out loud, contemplate on decisions that you make, ask questions and try to keep the feedback between the two of you flowing at all times. When you feel that you don&rsquo;t have the energy for this, take a short break, or stop pairing for the moment being. After all, if there isn&rsquo;t enough energy for communication, how can there be enough energy to produce high-quality software?</p>
 </li>
 </ul>
-<h2 id="conclusion">
-    <a href="#conclusion">#</a>
-    Conclusion
+<h2 id="conclusion">Conclusion
 </h2><p>Pair programming is a truly powerful technique. It brings high-quality results, increased levels of collaboration, collective code ownership and loads of other benefits. Studying the technique is important in order to apply it correctly to gain all these benefits. As responsible, professional software engineers, we should empirically find out when of for how long to use it in order to maximize the advantages for our team. Working remotely not only does not hinder pair programming but, with the right tools, it can leverage the merits. Finally, don&rsquo;t be discouraged by challenges. As always, they will present themselves, but they can be overcome.</p>
 
 </section>
@@ -679,6 +647,23 @@ if (!doNotTrack) {
      
     
         
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
     
 
     <footer class="site-footer">
@@ -687,12 +672,12 @@ if (!doNotTrack) {
         
             2018 - 
         
-        2024 Nikos Voulgaris
+        2025 Nikos Voulgaris
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -781,7 +766,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.f2f884c56e88ca44e1beaddd6848213310859cf04e903e60380da4faa2dcb8c8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

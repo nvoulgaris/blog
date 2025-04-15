@@ -15,15 +15,11 @@
         <guid>//localhost:1313/software-design-with-lambda-expressions/</guid>
         <description>&lt;img src="//localhost:1313/img/posts/software_design_with_lambda_expressions.jpg" alt="Featured image of post Software design with lambda expressions" /&gt;&lt;p&gt;Lambda expressions are powerful and allow us to write concise, elegant, declarative code. A lot of people has already adopted them, mainly leveraging the power of streams in iterations, but lambda&amp;rsquo;s toolkit is far richer than that. This is why I decided to write this blog post and explore some aspects of how lambda expressions can prove useful in software design.&lt;/p&gt;
 &lt;p&gt;We will do this exploration via a real world case study in order to demonstrate how we can apply these principles in our everyday work.&lt;/p&gt;
-&lt;h2 id=&#34;the-case-study&#34;&gt;
-    &lt;a href=&#34;#the-case-study&#34;&gt;#&lt;/a&gt;
-    The case study
+&lt;h2 id=&#34;the-case-study&#34;&gt;The case study
 &lt;/h2&gt;&lt;p&gt;Instead of creating a new case study, from scratch, I decided to extend the one from my previous blog &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/open-closed-principle-a-case-study&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;post&lt;/a&gt;, in which we examined closely the problem of input validation. We assumed an android application that displays a form and we came up with a robust solution to validate the input of this form (leaving out android specifics on purpose and simplifying a bit to put emphasis on the right parts).&lt;/p&gt;
 &lt;p&gt;The key takeaway was that after drafting a first, working version of the code, we refactored our way to a much better crafted one. We applied the Open-Closed Principle so that we could extend the behavior of our validation module (e.g. add validation for new fields, such as a postcode field) without having to modify our existing validation code. In this way, we improved the design of our solution by making the code &lt;em&gt;less fragile&lt;/em&gt; and therefore &lt;em&gt;more maintainable&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;room-for-improvement&#34;&gt;
-    &lt;a href=&#34;#room-for-improvement&#34;&gt;#&lt;/a&gt;
-    Room for improvement
+&lt;h3 id=&#34;room-for-improvement&#34;&gt;Room for improvement
 &lt;/h3&gt;&lt;p&gt;However, in software, there is no such thing as a &lt;em&gt;perfect&lt;/em&gt; design and there never will be. There will always be things to improve. As responsible, professional software craftspeople, we should always study the pros and cons of our solutions and know their weaknesses and limitations and, as I always like to say, &lt;em&gt;work the trade-offs&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Considering the solution of the previous post, there is definitely room for improvement. First of all, as already mentioned in that post, we should apply the Dependency Inversion Principle to invert the dependencies between the &lt;code&gt;ValidationService&lt;/code&gt; and &lt;code&gt;EmailValidator&lt;/code&gt; and &lt;code&gt;PhoneValidator&lt;/code&gt; (currently there is a transitive dependency between them, while the former should not know about the latter). A second point of interest is the life cycle of the &lt;code&gt;ViewValidator&lt;/code&gt; object that we create. Please remember that we designed it to be used like this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;formViews.&lt;span style=&#34;color:#a6e22e&#34;&gt;forEach&lt;/span&gt;(view &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; {
@@ -33,9 +29,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Allow me to refresh our memory on a few basic points for this case study. We assumed that we have a list of &lt;code&gt;View&lt;/code&gt; objects (in android all UI elements derive from &lt;code&gt;View&lt;/code&gt;) and that all these objects have a tag, which we can retrieve using a &lt;code&gt;getter&lt;/code&gt;, denoting the view’s input type (e.g. &lt;code&gt;Email&lt;/code&gt; or &lt;code&gt;Phone&lt;/code&gt;) and a &lt;code&gt;getter&lt;/code&gt; to retrieve the text of the view.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this case we create a new instance of &lt;code&gt;ViewValidator&lt;/code&gt; for every view that we wish to validate. However, this does not come naturally from the design of the class. &lt;em&gt;We do not know it&lt;/em&gt;. We simply &lt;em&gt;assumed&lt;/em&gt; it. And these kind of assumptions can lead to a great deal of problems down the road. What if we have a bunch of similar views to validate (e.g. 3 e-mail fields)? Should we use the same instance for all 3 of them or is this instance disposable and we should create a fresh one for each validation? Well, the answer is that there is no way to know (unless, of course, we open the &lt;code&gt;ViewValidator&lt;/code&gt; source code and have a look ourselves). &lt;em&gt;The design of the class does not communicate its intent&lt;/em&gt; as far as the life cycle of the object is concerned.&lt;/p&gt;
 &lt;p&gt;This is clearly an issue that could - and perhaps should - be addressed. Thinking carefully about the architecture of the system (its design on a macro level) is essential, but taking the time to think through our micro level design (e.g. class design) is equally important.&lt;/p&gt;
-&lt;h2 id=&#34;the-loan-pattern&#34;&gt;
-    &lt;a href=&#34;#the-loan-pattern&#34;&gt;#&lt;/a&gt;
-    The loan pattern
+&lt;h2 id=&#34;the-loan-pattern&#34;&gt;The loan pattern
 &lt;/h2&gt;&lt;p&gt;Thankfully, there is a design pattern, which solves exactly this problem, in a &lt;em&gt;very elegant way&lt;/em&gt; and its name is the &lt;strong&gt;loan pattern&lt;/strong&gt;. I first came across it while reading Venkat Subramaniam&amp;rsquo;s excellent book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/17698629-functional-programming-in-java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Functional Programming in Java&lt;/a&gt;. Venkat does a wonderful job explaining this pattern as it naturally emerges while refactoring a real world piece of code and I suggest that you read it (see section &lt;em&gt;&amp;ldquo;Creating Fluent Interfaces Using Lambda Expressions&amp;rdquo;&lt;/em&gt;), but I will try to explain the basic points myself here.&lt;/p&gt;
 &lt;p&gt;Essentially, the pattern removes the responsibility of dealing with the object&amp;rsquo;s life cycle from the function that uses it. Instead, this responsibility lies with the class itself. In order to achieve this, we &lt;em&gt;create&lt;/em&gt; a resource and &lt;em&gt;pass&lt;/em&gt; it to the function. As soon as the function terminates, the resource is &lt;em&gt;destroyed&lt;/em&gt;.&lt;/p&gt;
@@ -45,9 +39,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The point is that whoever uses this piece of code does not have to worry about the life cycle of the &lt;code&gt;Validator&lt;/code&gt; object. An instance will be passed as an argument and destroyed as soon as the &lt;code&gt;validate()&lt;/code&gt; function terminates. This is where the name comes from. The &lt;code&gt;Validator&lt;/code&gt; object is &lt;em&gt;loaned&lt;/em&gt; to the function.&lt;/p&gt;
 &lt;p&gt;This is an incredibly &lt;em&gt;smart&lt;/em&gt; and &lt;em&gt;elegant&lt;/em&gt; solution to a very sneaky problem. Lambda expressions empower us to implement it. Let&amp;rsquo;s dive into the implementation.&lt;/p&gt;
-&lt;h2 id=&#34;applying-the-loan-pattern&#34;&gt;
-    &lt;a href=&#34;#applying-the-loan-pattern&#34;&gt;#&lt;/a&gt;
-    Applying the loan pattern
+&lt;h2 id=&#34;applying-the-loan-pattern&#34;&gt;Applying the loan pattern
 &lt;/h2&gt;&lt;p&gt;Assuming that the &lt;code&gt;Validator&lt;/code&gt; class is to be used as stated above, the obvious challenge would be to come up with a way to make use of the loaned resource in the &lt;code&gt;validate()&lt;/code&gt; function. This can be easily achieved with the &lt;code&gt;Consumer&lt;/code&gt; functional interface (&lt;code&gt;java.util.function.Consumer&lt;/code&gt;), which is designed to accept an object and execute a piece of code on it. So, redesigning our &lt;code&gt;Validator&lt;/code&gt; class like the following, would do the job.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Validator&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -138,9 +130,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it. We have implemented the loan pattern.&lt;/p&gt;
-&lt;h2 id=&#34;retrospective&#34;&gt;
-    &lt;a href=&#34;#retrospective&#34;&gt;#&lt;/a&gt;
-    Retrospective
+&lt;h2 id=&#34;retrospective&#34;&gt;Retrospective
 &lt;/h2&gt;&lt;p&gt;So, by this point you might be wondering if it is worthwhile to go through all this refactoring. Let&amp;rsquo;s take a step back and examine what we have achieved.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -157,9 +147,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As far as the form validation case study is concerned, it might worth it or it might not. To be honest, it doesn&amp;rsquo;t matter. I did take the trouble to do exactly this refactor (except in Kotlin) the first time that I had to enhance our validation feature after having read Venkat&amp;rsquo;s book, but that is up to each one of us. Once again, as software craftspeople it&amp;rsquo;s us that should work the trade-offs everyday and make the call. In any case, the key point is that &lt;em&gt;we can use functional interfaces and lambda expressions to produce elegant and robust software designs&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;
-    &lt;a href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
-    Conclusion
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Lambda expressions allow us to write concise and declarative code, but they offer way more than that. They can be used as a &lt;em&gt;design tool&lt;/em&gt;. High order functions (functions that take functions as arguments) are a game changer and they can fundamentally alter our perceptions on architecture, design patterns and software design.&lt;/p&gt;
 &lt;p&gt;Refactoring to transfer the responsibility of managing a resource&amp;rsquo; s life cycle from the caller to the callee may be worthwhile or not, depending on the problem in hand. It is important knowing that we have the option and being able to make a call on a per case basis.&lt;/p&gt;
 </description>
