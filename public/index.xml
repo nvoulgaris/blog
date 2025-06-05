@@ -1913,6 +1913,13 @@ Content-type: application/json
         
         <guid>//localhost:1313/books/</guid>
         <description>&lt;p&gt;Below you may find a list of books that &lt;em&gt;I have read&lt;/em&gt; and, believing that they are worth reading, &lt;em&gt;I recommend&lt;/em&gt; them. I will be updating this list as I read more books that should be added here.&lt;/p&gt;
+&lt;h3 id=&#34;system-design&#34;&gt;System design
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/54109255-system-design-interview-an-insider-s-guide&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;System Design Interview – An insider&amp;rsquo;s guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/60631342-system-design-interview-an-insider-s-guide&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;System Design Interview – An Insider&amp;rsquo;s Guide: Volume 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;software-designarchitecture&#34;&gt;Software design/architecture
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/3735293-clean-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1923,8 +1930,19 @@ Content-type: application/json
     &gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/85041.Refactoring_to_Patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Refactoring to Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/60791878-clean-mobile-architecture&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clean Mobile Architecture&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;test-driven-development-tdd&#34;&gt;Test Driven Development (TDD)
+&lt;h3 id=&#34;engineering-management&#34;&gt;Engineering management
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/33369254-the-manager-s-path&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Manager&amp;rsquo;s Path: A Guide for Tech Leaders Navigating Growth and Change&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/208904928-radical-candor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Radical Candor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/51718082-no-rules-rules&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;No Rules Rules: Netflix and the Culture of Reinvention&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;test-driven-development&#34;&gt;Test Driven Development
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/387190.Test_Driven_Development&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Test Driven Development: By Example&lt;/a&gt;&lt;/li&gt;
@@ -1940,15 +1958,17 @@ Content-type: application/json
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/17984584-the-people-s-scrum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The People&amp;rsquo;s Scrum: Agile Ideas for Revolutionary Transformation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;agilecoachingleadership&#34;&gt;Agile/Coaching/Leadership
+&lt;h3 id=&#34;leadership&#34;&gt;Leadership
 &lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/56481725-staff-engineer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Staff Engineer: Leadership Beyond the Management Track&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/7141296-drive&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Drive: The Surprising Truth About What Motivates Us&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/21343.The_Five_Dysfunctions_of_a_Team&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Five Dysfunctions of a Team: A Leadership Fable&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/19093884-our-iceberg-is-melting&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Our Iceberg is Melting: Changing and Succeeding Under Any Conditions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/16158522-eleven-rings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Eleven Rings: The Soul of Success&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4894.Who_Moved_My_Cheese_&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4894.Who_Moved_My_Cheese&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Who Moved My Cheese?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;behavioral&#34;&gt;Behavioral
@@ -1960,6 +1980,7 @@ Content-type: application/json
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Pragmatic Programmer: From Journeyman to Master&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;(Last update: Jun 5, 2025)&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
