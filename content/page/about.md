@@ -7,8 +7,10 @@ title = "About me"
 type = "page"
 
 +++
-I am a professional software engineer and scrum master, passionate about clean code and software craftsmanship and true believer in the original intents of Agile. I am particularly interested in software design and Extreme Programming practices and I am really fascinated by Test Driven Development (especially the Outside-In technique). I strongly believe in the power of the community worldwide and therefore, I love to share my knowledge and broaden my horizons.
+I'm a professional software engineer with over 12 years of industry experience. I'm passionate about clean code, software craftsmanship, and building systems that are both elegant and maintainable. I firmly believe in the power of global developer communities, which is why I enjoy sharing knowledge and continuously learning from others.
 
-I am currently employed at [Blueground](https://www.theblueground.com/), contributing as a software engineer in a scrum team. In the past, I have worked in organizations ranging from [Nokia](https://www.nokia.com/) and [Tripsta](http://www.tripsta.com/) to small startup companies, having the opportunity to work on a broad spectrum of software projects and business domains like telecommunications, travel and health.
+Throughout my career, I've held various roles — including Staff Software Engineer and Engineering Manager — at companies of all sizes. From global organizations like [Nokia](https://www.nokia.com), to tech-driven scale-ups like [Blueground](https://www.theblueground.com), and fast-moving startups, I've had the chance to work across a wide range of software projects and business domains, including telecommunications (4G networks), travel, healthcare, and real estate.
 
-During the day, I write software. During the night, I present in radio, DJ, study Italian, travel, read lots of books, (used to) play basketball and I would do more if only I could extend the 24 hours...
+Outside of software development, I enjoy traveling and experiencing different cultures, reading (not just technical books), exploring the world of wine, and — more recently — diving into photography.
+
+*(Last update: Jun 5, 2025)*
