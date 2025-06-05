@@ -66,7 +66,7 @@ menu:
       params: 
         icon: search
     - name: About Me
-      url: /about
+      url: /about-me
       weight: -70
       params:
         icon: user
