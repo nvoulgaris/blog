@@ -1,6 +1,5 @@
 +++
 comments = false
-date = "2018-01-21"
 noauthor = true
 share = false
 title = "Books"
@@ -53,5 +52,3 @@ Below you may find a list of books that *I have read* and, believing that they a
 * [The Software Craftsman: Professionalism, Pragmatism, Pride](https://www.goodreads.com/book/show/36045392-the-software-craftsman)
 * [The Clean Coder: A Code of Conduct for Professional Programmers](https://www.goodreads.com/book/show/10284614-the-clean-coder)
 * [The Pragmatic Programmer: From Journeyman to Master](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)
-
-*(Last update: Jun 5, 2025)*

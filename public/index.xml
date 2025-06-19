@@ -1907,9 +1907,76 @@ Content-type: application/json
 </description>
         </item>
         <item>
+        <title>Agile code</title>
+        <link>//localhost:1313/agile-code/</link>
+        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/agile-code/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/todo.jpg" alt="Featured image of post Agile code" /&gt;&lt;p&gt;During Christmas, just a few days before I decided to take up blogging, I was reading Sandro Mancuso&amp;rsquo;s excellent book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/18054154-software-craftsmanship&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Software Craftsmanship&lt;/a&gt;. I couldn&amp;rsquo;t help but agree (sometimes even out loud) when reading what Sandro describes as the Agile Hangover. How many companies decide to become &lt;em&gt;agile&lt;/em&gt; only to find their projects failing for the very same reasons that urged them to become &lt;em&gt;agile&lt;/em&gt; in the first place? What are the common characteristics of so many failed attempts? What is it that goes so wrong anyway?&lt;/p&gt;
+&lt;h2 id=&#34;what-is-agile-anyway&#34;&gt;What is Agile anyway?
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Agile&lt;/em&gt; is a notion so frequently used these days in the software engineering industry that has ended up being misunderstood. It would come as no surprise to me if one asked 5 people for the true meaning of this so called &lt;em&gt;agility&lt;/em&gt; and gathered 5 different answers. Let me endeavor to explain the way &lt;em&gt;I perceive agile&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Before &lt;em&gt;agile&lt;/em&gt;, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &amp;ldquo;lock&amp;rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?&lt;/p&gt;
+&lt;p&gt;In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the &lt;em&gt;Agile&lt;/em&gt; Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;In my opinion, the key difference between the two approaches lies in the fact that &lt;em&gt;agile&lt;/em&gt; detaches the software from the illusion of the end state. There is no end state. There will never be one.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;making-a-company-agile&#34;&gt;Making a company Agile
+&lt;/h2&gt;&lt;p&gt;Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become &lt;em&gt;agile&lt;/em&gt; needs to go through some extra filtering. Knowing &lt;em&gt;why&lt;/em&gt; should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Usually, companies that haven&amp;rsquo;t got into the trouble of clarifying these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt; prior to embarking on the transformation, find themselves hiring an &lt;em&gt;agile&lt;/em&gt; coach who is supposed to magically move his wand, speak the right words and&amp;hellip; boom! We&amp;rsquo;re &lt;em&gt;agile&lt;/em&gt; now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this &lt;em&gt;agile&lt;/em&gt; transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t get me wrong here. Changing the process is valuable, but we should never forget that the process is a means to an end. The goal is the software! In order to reach the standards we want in software, we should first change the process, but making sure that all along this brings a mindset shifting too. Perhaps hiring an &lt;em&gt;agile&lt;/em&gt; coach was the correct move to make after all. However, he should be one with technical expertise, able to lead a mindset shifting, reflecting in the way that code is written in the company. As Albert Einstein would definitely point out, writing code in the same way and expecting different results just because we changed the process is pure insanity.&lt;/p&gt;
+&lt;h2 id=&#34;disciplines&#34;&gt;Disciplines
+&lt;/h2&gt;&lt;p&gt;During his keynote speech on Agile Greece Summit 2017, Uncle Bob (Robert Martin) talked about a set of disciplines that every developer should follow in order to seal our profession as best as possible from future misfortunes. He even gave us an oath. I will not give you any oath, but I would like to focus on a set of disciplines. Specifically, I would like to shift our attention to the disciplines that will improve the quality of our code. However, before we talk about quality, we should first make sure that we understand it.&lt;/p&gt;
+&lt;p&gt;Quality is a very hard to understand notion. What is quality after all? Can one measure it? In my humble opinion, despite the fact that quality is not a tangible entity there are signs that one can notice and know that the situation is improving (happier customers, decreasing maintenance cost, faster features development, less bugs in production just to name a few). I believe that in order to start noticing these sings, we should strive to adhere to a set of disciplines. Extreme programming (XP) comes with a powerful arsenal of practices that can get us on the right track. Let&amp;rsquo;s briefly go over a few:&lt;/p&gt;
+&lt;h3 id=&#34;pair-programming&#34;&gt;Pair programming
+&lt;/h3&gt;&lt;p&gt;If practiced right, it can be one of the most valuable assets of a development team. How many times have you heard a phrase like &lt;em&gt;&amp;ldquo;We have to modify and redeploy the payment module, but Chris is the owner of it and he&amp;rsquo;s out of office today, snorkeling on the reef.&amp;rdquo;&lt;/em&gt;? Well, I guess we could either equip Chris with a waterproof mobile or struggle for &lt;strong&gt;collective ownership&lt;/strong&gt; on our code.&lt;/p&gt;
+&lt;p&gt;Pair programming guarantees this result, along with a series of benefits like &lt;strong&gt;improved code design, team cohesion, mentoring and fewer interruptions&lt;/strong&gt;. Unfortunately, people tend to just sit next to each other and believe that they are practicing pair programming. So, if you do practice it, make sure you do it right. Do you share a common keyboard? Does one focus on the big picture, reviewing every line that the other is typing? Do you trade roles frequently? Perhaps you play &lt;a class=&#34;link&#34; href=&#34;http://wiki.c2.com/?PairProgrammingPingPongPattern&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ping pong&lt;/a&gt;? Do you learn from each other? How often do you switch pairs?&lt;/p&gt;
+&lt;h3 id=&#34;test-driven-development&#34;&gt;Test Driven Development
+&lt;/h3&gt;&lt;p&gt;How can we be &lt;em&gt;agile&lt;/em&gt; if we don&amp;rsquo;t have an automated suite of tests? If, instead of having self-testing code, manual work is needed to verify that the system behaves as expected? If there is not a single button to verify the whole application and sign it off for production? If testing the whole system requires hours? How &lt;em&gt;agile&lt;/em&gt; can we be then?&lt;/p&gt;
+&lt;p&gt;TDD is a workflow that emphasizes on making us write &lt;strong&gt;the best code that we can write&lt;/strong&gt; (by constantly asking &lt;em&gt;&amp;ldquo;can you make it better?&amp;rdquo;&lt;/em&gt;&amp;quot;). If practiced right, it encourages &lt;strong&gt;better design&lt;/strong&gt; (more cohesive and loosely coupled components), provides &lt;strong&gt;documentation&lt;/strong&gt; (via executable examples, a.k.a. tests) and, when done with a feature, the &lt;strong&gt;automated regression test suite&lt;/strong&gt; comes for free.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As if the above mentioned are not sufficient, I could never stress enough the importance of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Shift_left_testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;left shift&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous integration
+&lt;/h3&gt;&lt;p&gt;How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? &lt;em&gt;We should always be working on the latest version of  the code&lt;/em&gt;. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more &lt;em&gt;professional&lt;/em&gt; way.&lt;/p&gt;
+&lt;h3 id=&#34;code-review&#34;&gt;Code review
+&lt;/h3&gt;&lt;p&gt;At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&amp;rsquo;s benefit.&lt;/p&gt;
+&lt;p&gt;Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, &lt;strong&gt;review in essence!&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.&lt;/p&gt;
+&lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
+&lt;/h3&gt;&lt;p&gt;Martin Fowler, in his wonderful book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;, explains that before adding a new feature to our system, we should first ask ourselves if the current design of the system is ready to accommodate this new feature. If not, &lt;em&gt;we should refactor it&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Create a suite of tests to act as a safety net, change the system in small steps (keeping the tests green in all steps) and make sure that the value of the software increases (other software engineers understand the code, maintenance is easier and development of new features is faster). Keep on doing so &lt;em&gt;mercilessly&lt;/em&gt;, until the code meets the requirements.&lt;/p&gt;
+&lt;p&gt;Martin Fowler&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;book&lt;/a&gt; is an excellent read and despite being written around the time that the Agile Manifesto was being formed, the ideas in the book are remarkably relevant.&lt;/p&gt;
+&lt;p&gt;These techniques and practices are a few among many, and to go through them all exhaustively would be beyond the scope of this blog post. However, it is vital to understand that they are not an end in itself. The goal is to go out there and experiment with them. Study them and challenge them, but eventually pick the ones that enable us to improve the quality of the software that we produce. Adopt them and use them wisely.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
+&lt;/h2&gt;&lt;p&gt;Being &lt;em&gt;agile&lt;/em&gt; is trendy. This is not a bad thing on its own. Deciding to become &lt;em&gt;agile&lt;/em&gt; just because it is trendy is truly one of the worst decisions an organization can make. We should investigate and understand the fundamental aspects that it touches before we decide to undergo such a radical transformation. Understanding that software does not have an end state is fundamental. On the contrary, it is like a living organization. It will keep on changing and we will constantly have to reform and reshape it to meet the ever changing business needs. As a matter of fact, the better it meets these needs, the more it will have to change (more feature requests, more traffic etc).&lt;/p&gt;
+&lt;p&gt;Becoming &lt;em&gt;agile&lt;/em&gt; can be a great leap, but in order for it to be successful, we have to apply the changes deep down to the heart of our organization and not only to its skin. We have to change the mindset of the people and the way we write code. We have to write code in a way that embraces change, in the same way our shiny new process does. We have to go out there and search for the practices that best suit our needs, apply them, learn and start over.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>About me</title>
+        <link>//localhost:1313/about-me/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/about-me/</guid>
+        <description>&lt;p&gt;I&amp;rsquo;m a professional software engineer with over 12 years of industry experience. I&amp;rsquo;m passionate about clean code, software craftsmanship, and building systems that are both elegant and maintainable. I firmly believe in the power of global developer communities, which is why I enjoy sharing knowledge and continuously learning from others.&lt;/p&gt;
+&lt;p&gt;Throughout my career, I&amp;rsquo;ve held various roles — including Staff Software Engineer and Engineering Manager — at companies of all sizes. From global organizations like &lt;a class=&#34;link&#34; href=&#34;https://www.nokia.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nokia&lt;/a&gt;, to tech-driven scale-ups like &lt;a class=&#34;link&#34; href=&#34;https://www.theblueground.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blueground&lt;/a&gt;, and fast-moving startups, I&amp;rsquo;ve had the chance to work across a wide range of software projects and business domains, including telecommunications (4G networks), travel, healthcare, and real estate.&lt;/p&gt;
+&lt;p&gt;Outside of software development, I enjoy traveling and experiencing different cultures, reading (not just technical books), exploring the world of wine, and — more recently — diving into photography.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Books</title>
         <link>//localhost:1313/books/</link>
-        <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>//localhost:1313/books/</guid>
         <description>&lt;p&gt;Below you may find a list of books that &lt;em&gt;I have read&lt;/em&gt; and, believing that they are worth reading, &lt;em&gt;I recommend&lt;/em&gt; them. I will be updating this list as I read more books that should be added here.&lt;/p&gt;
@@ -1980,81 +2047,12 @@ Content-type: application/json
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Pragmatic Programmer: From Journeyman to Master&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;(Last update: Jun 5, 2025)&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>About me</title>
-        <link>//localhost:1313/about-me/</link>
-        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
-        
-        <guid>//localhost:1313/about-me/</guid>
-        <description>&lt;p&gt;I&amp;rsquo;m a professional software engineer with over 12 years of industry experience. I&amp;rsquo;m passionate about clean code, software craftsmanship, and building systems that are both elegant and maintainable. I firmly believe in the power of global developer communities, which is why I enjoy sharing knowledge and continuously learning from others.&lt;/p&gt;
-&lt;p&gt;Throughout my career, I&amp;rsquo;ve held various roles — including Staff Software Engineer and Engineering Manager — at companies of all sizes. From global organizations like &lt;a class=&#34;link&#34; href=&#34;https://www.nokia.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Nokia&lt;/a&gt;, to tech-driven scale-ups like &lt;a class=&#34;link&#34; href=&#34;https://www.theblueground.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Blueground&lt;/a&gt;, and fast-moving startups, I&amp;rsquo;ve had the chance to work across a wide range of software projects and business domains, including telecommunications (4G networks), travel, healthcare, and real estate.&lt;/p&gt;
-&lt;p&gt;Outside of software development, I enjoy traveling and experiencing different cultures, reading (not just technical books), exploring the world of wine, and — more recently — diving into photography.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Last update: Jun 5, 2025)&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Agile code</title>
-        <link>//localhost:1313/agile-code/</link>
-        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
-        
-        <guid>//localhost:1313/agile-code/</guid>
-        <description>&lt;img src="//localhost:1313/img/posts/todo.jpg" alt="Featured image of post Agile code" /&gt;&lt;p&gt;During Christmas, just a few days before I decided to take up blogging, I was reading Sandro Mancuso&amp;rsquo;s excellent book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/18054154-software-craftsmanship&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Software Craftsmanship&lt;/a&gt;. I couldn&amp;rsquo;t help but agree (sometimes even out loud) when reading what Sandro describes as the Agile Hangover. How many companies decide to become &lt;em&gt;agile&lt;/em&gt; only to find their projects failing for the very same reasons that urged them to become &lt;em&gt;agile&lt;/em&gt; in the first place? What are the common characteristics of so many failed attempts? What is it that goes so wrong anyway?&lt;/p&gt;
-&lt;h2 id=&#34;what-is-agile-anyway&#34;&gt;What is Agile anyway?
-&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Agile&lt;/em&gt; is a notion so frequently used these days in the software engineering industry that has ended up being misunderstood. It would come as no surprise to me if one asked 5 people for the true meaning of this so called &lt;em&gt;agility&lt;/em&gt; and gathered 5 different answers. Let me endeavor to explain the way &lt;em&gt;I perceive agile&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Before &lt;em&gt;agile&lt;/em&gt;, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &amp;ldquo;lock&amp;rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?&lt;/p&gt;
-&lt;p&gt;In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the &lt;em&gt;Agile&lt;/em&gt; Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;In my opinion, the key difference between the two approaches lies in the fact that &lt;em&gt;agile&lt;/em&gt; detaches the software from the illusion of the end state. There is no end state. There will never be one.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h2 id=&#34;making-a-company-agile&#34;&gt;Making a company Agile
-&lt;/h2&gt;&lt;p&gt;Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become &lt;em&gt;agile&lt;/em&gt; needs to go through some extra filtering. Knowing &lt;em&gt;why&lt;/em&gt; should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Usually, companies that haven&amp;rsquo;t got into the trouble of clarifying these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt; prior to embarking on the transformation, find themselves hiring an &lt;em&gt;agile&lt;/em&gt; coach who is supposed to magically move his wand, speak the right words and&amp;hellip; boom! We&amp;rsquo;re &lt;em&gt;agile&lt;/em&gt; now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this &lt;em&gt;agile&lt;/em&gt; transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?&lt;/p&gt;
-&lt;p&gt;Don&amp;rsquo;t get me wrong here. Changing the process is valuable, but we should never forget that the process is a means to an end. The goal is the software! In order to reach the standards we want in software, we should first change the process, but making sure that all along this brings a mindset shifting too. Perhaps hiring an &lt;em&gt;agile&lt;/em&gt; coach was the correct move to make after all. However, he should be one with technical expertise, able to lead a mindset shifting, reflecting in the way that code is written in the company. As Albert Einstein would definitely point out, writing code in the same way and expecting different results just because we changed the process is pure insanity.&lt;/p&gt;
-&lt;h2 id=&#34;disciplines&#34;&gt;Disciplines
-&lt;/h2&gt;&lt;p&gt;During his keynote speech on Agile Greece Summit 2017, Uncle Bob (Robert Martin) talked about a set of disciplines that every developer should follow in order to seal our profession as best as possible from future misfortunes. He even gave us an oath. I will not give you any oath, but I would like to focus on a set of disciplines. Specifically, I would like to shift our attention to the disciplines that will improve the quality of our code. However, before we talk about quality, we should first make sure that we understand it.&lt;/p&gt;
-&lt;p&gt;Quality is a very hard to understand notion. What is quality after all? Can one measure it? In my humble opinion, despite the fact that quality is not a tangible entity there are signs that one can notice and know that the situation is improving (happier customers, decreasing maintenance cost, faster features development, less bugs in production just to name a few). I believe that in order to start noticing these sings, we should strive to adhere to a set of disciplines. Extreme programming (XP) comes with a powerful arsenal of practices that can get us on the right track. Let&amp;rsquo;s briefly go over a few:&lt;/p&gt;
-&lt;h3 id=&#34;pair-programming&#34;&gt;Pair programming
-&lt;/h3&gt;&lt;p&gt;If practiced right, it can be one of the most valuable assets of a development team. How many times have you heard a phrase like &lt;em&gt;&amp;ldquo;We have to modify and redeploy the payment module, but Chris is the owner of it and he&amp;rsquo;s out of office today, snorkeling on the reef.&amp;rdquo;&lt;/em&gt;? Well, I guess we could either equip Chris with a waterproof mobile or struggle for &lt;strong&gt;collective ownership&lt;/strong&gt; on our code.&lt;/p&gt;
-&lt;p&gt;Pair programming guarantees this result, along with a series of benefits like &lt;strong&gt;improved code design, team cohesion, mentoring and fewer interruptions&lt;/strong&gt;. Unfortunately, people tend to just sit next to each other and believe that they are practicing pair programming. So, if you do practice it, make sure you do it right. Do you share a common keyboard? Does one focus on the big picture, reviewing every line that the other is typing? Do you trade roles frequently? Perhaps you play &lt;a class=&#34;link&#34; href=&#34;http://wiki.c2.com/?PairProgrammingPingPongPattern&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ping pong&lt;/a&gt;? Do you learn from each other? How often do you switch pairs?&lt;/p&gt;
-&lt;h3 id=&#34;test-driven-development&#34;&gt;Test Driven Development
-&lt;/h3&gt;&lt;p&gt;How can we be &lt;em&gt;agile&lt;/em&gt; if we don&amp;rsquo;t have an automated suite of tests? If, instead of having self-testing code, manual work is needed to verify that the system behaves as expected? If there is not a single button to verify the whole application and sign it off for production? If testing the whole system requires hours? How &lt;em&gt;agile&lt;/em&gt; can we be then?&lt;/p&gt;
-&lt;p&gt;TDD is a workflow that emphasizes on making us write &lt;strong&gt;the best code that we can write&lt;/strong&gt; (by constantly asking &lt;em&gt;&amp;ldquo;can you make it better?&amp;rdquo;&lt;/em&gt;&amp;quot;). If practiced right, it encourages &lt;strong&gt;better design&lt;/strong&gt; (more cohesive and loosely coupled components), provides &lt;strong&gt;documentation&lt;/strong&gt; (via executable examples, a.k.a. tests) and, when done with a feature, the &lt;strong&gt;automated regression test suite&lt;/strong&gt; comes for free.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;As if the above mentioned are not sufficient, I could never stress enough the importance of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Shift_left_testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;left shift&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous integration
-&lt;/h3&gt;&lt;p&gt;How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? &lt;em&gt;We should always be working on the latest version of  the code&lt;/em&gt;. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more &lt;em&gt;professional&lt;/em&gt; way.&lt;/p&gt;
-&lt;h3 id=&#34;code-review&#34;&gt;Code review
-&lt;/h3&gt;&lt;p&gt;At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&amp;rsquo;s benefit.&lt;/p&gt;
-&lt;p&gt;Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, &lt;strong&gt;review in essence!&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.&lt;/p&gt;
-&lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
-&lt;/h3&gt;&lt;p&gt;Martin Fowler, in his wonderful book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;, explains that before adding a new feature to our system, we should first ask ourselves if the current design of the system is ready to accommodate this new feature. If not, &lt;em&gt;we should refactor it&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Create a suite of tests to act as a safety net, change the system in small steps (keeping the tests green in all steps) and make sure that the value of the software increases (other software engineers understand the code, maintenance is easier and development of new features is faster). Keep on doing so &lt;em&gt;mercilessly&lt;/em&gt;, until the code meets the requirements.&lt;/p&gt;
-&lt;p&gt;Martin Fowler&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;book&lt;/a&gt; is an excellent read and despite being written around the time that the Agile Manifesto was being formed, the ideas in the book are remarkably relevant.&lt;/p&gt;
-&lt;p&gt;These techniques and practices are a few among many, and to go through them all exhaustively would be beyond the scope of this blog post. However, it is vital to understand that they are not an end in itself. The goal is to go out there and experiment with them. Study them and challenge them, but eventually pick the ones that enable us to improve the quality of the software that we produce. Adopt them and use them wisely.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
-&lt;/h2&gt;&lt;p&gt;Being &lt;em&gt;agile&lt;/em&gt; is trendy. This is not a bad thing on its own. Deciding to become &lt;em&gt;agile&lt;/em&gt; just because it is trendy is truly one of the worst decisions an organization can make. We should investigate and understand the fundamental aspects that it touches before we decide to undergo such a radical transformation. Understanding that software does not have an end state is fundamental. On the contrary, it is like a living organization. It will keep on changing and we will constantly have to reform and reshape it to meet the ever changing business needs. As a matter of fact, the better it meets these needs, the more it will have to change (more feature requests, more traffic etc).&lt;/p&gt;
-&lt;p&gt;Becoming &lt;em&gt;agile&lt;/em&gt; can be a great leap, but in order for it to be successful, we have to apply the changes deep down to the heart of our organization and not only to its skin. We have to change the mindset of the people and the way we write code. We have to write code in a way that embraces change, in the same way our shiny new process does. We have to go out there and search for the practices that best suit our needs, apply them, learn and start over.&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Contact</title>
         <link>//localhost:1313/contact/</link>
-        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>//localhost:1313/contact/</guid>
         <description>&lt;p&gt;I will be happy to share ideas and discuss on any topic. You may get in touch with me in any of the following ways:&lt;/p&gt;
@@ -2076,6 +2074,49 @@ Content-type: application/json
         
         <guid>//localhost:1313/search/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Test-Driven Development in Action — with AI</title>
+        <link>//localhost:1313/test-driven-development-in-action-with-ai/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/test-driven-development-in-action-with-ai/</guid>
+        <description>&lt;img src="//localhost:1313/img/tdd_udemy_course_image.png" alt="Featured image of post Test-Driven Development in Action — with AI" /&gt;&lt;p&gt;&lt;strong&gt;Build real-world software using TDD — and level up your development workflow with AI.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Test-Driven Development (TDD) is one of the most powerful practices in software engineering. But for many developers, it remains stuck in toy examples like Tic-Tac-Toe or FizzBuzz — far removed from the messy realities of production systems.&lt;/p&gt;
+&lt;p&gt;This course was created to bridge that gap.&lt;/p&gt;
+&lt;p&gt;Whether you&amp;rsquo;re a junior trying to get TDD right from the start, or a senior developer looking to take a more structured, maintainable approach to building software, this course will help you apply TDD confidently in real-world codebases.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;What you’ll learn:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Develop real-world applications from scratch using Test-Driven Development (TDD)&lt;/li&gt;
+&lt;li&gt;Design and test RESTful APIs using Outside-In TDD techniques&lt;/li&gt;
+&lt;li&gt;Use AI tools to boost productivity — while keeping full control of your process&lt;/li&gt;
+&lt;li&gt;Write maintainable, fast, deterministic, and isolated unit tests&lt;/li&gt;
+&lt;li&gt;Understand and apply core TDD principles in a practical and accessible way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;I created this course to distill over &lt;strong&gt;12 years of professional experience&lt;/strong&gt; into a practical and focused learning path — one that I wish existed when I was first learning TDD.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re ready to stop just &lt;em&gt;reading&lt;/em&gt; about TDD and start &lt;em&gt;using&lt;/em&gt; it effectively in real-world projects, this course is for you.&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 2rem 0;&#34;&gt;
+  &lt;a href=&#34;https://www.udemy.com/course/tdd-in-action-with-ai-from-fundamentals-to-production/?referralCode=959DC15A77B4BD968C3C&#34;
+     target=&#34;_blank&#34;
+     rel=&#34;noopener&#34;
+     style=&#34;
+       display: inline-block;
+       background-color: var(--accent-color);
+       color: var(--accent-color-text);
+       padding: 10px 40px;
+       border-radius: 6px;
+       text-decoration: none;
+       font-weight: bold;
+       font-size: 16px;
+       min-width: 250px;
+     &#34;&gt;
+    Enroll Now
+  &lt;/a&gt;
+&lt;/div&gt;
+
+</description>
         </item>
         
     </channel>

@@ -26,15 +26,24 @@ params:
     homepage:
       - type: search
       - type: tag-cloud
+      - type: udemy-course
         params:
           limit: 12
       - type: archives
     page:
       - type: search
       - type: toc
+      - type: udemy-course
       - type: tag-cloud
         params:
           limit: 10
+  udemy:
+    title: "TDD in Action with AI:"
+    subtitle: From Fundamentals to Production
+    description: Confidently apply Test-Driven Development in real-world codebases — and integrate AI tools to boost your productivity without sacrificing control.
+    image: ../../img/tdd_udemy_course_image.png
+    link: https://www.udemy.com/course/tdd-in-action-with-ai-from-fundamentals-to-production/?referralCode=959DC15A77B4BD968C3C
+    linkText: View on Udemy
   colorScheme:
     toggle: true
     default: auto
@@ -75,14 +84,19 @@ menu:
       weight: -60
       params:
         icon: tag
+    - name: My course
+      url: /test-driven-development-in-action-with-ai
+      weight: -50
+      params:
+        icon: link
     - name: Books
       url: /books
-      weight: -50
+      weight: -40
       params:
         icon: archives
     - name: Contact
       url: /contact
-      weight: -40
+      weight: -30
       params:
         icon: messages
   social:

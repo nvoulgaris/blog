@@ -16,9 +16,22 @@
         <description></description>
         </item>
         <item>
+        <title>About me</title>
+        <link>//localhost:1313/about-me/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/about-me/</guid>
+        <description>&lt;p&gt;I&amp;rsquo;m a professional software engineer with over 12 years of industry experience. I&amp;rsquo;m passionate about clean code, software craftsmanship, and building systems that are both elegant and maintainable. I firmly believe in the power of global developer communities, which is why I enjoy sharing knowledge and continuously learning from others.&lt;/p&gt;
+&lt;p&gt;Throughout my career, I&amp;rsquo;ve held various roles — including Staff Software Engineer and Engineering Manager — at companies of all sizes. From global organizations like &lt;a class=&#34;link&#34; href=&#34;https://www.nokia.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nokia&lt;/a&gt;, to tech-driven scale-ups like &lt;a class=&#34;link&#34; href=&#34;https://www.theblueground.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blueground&lt;/a&gt;, and fast-moving startups, I&amp;rsquo;ve had the chance to work across a wide range of software projects and business domains, including telecommunications (4G networks), travel, healthcare, and real estate.&lt;/p&gt;
+&lt;p&gt;Outside of software development, I enjoy traveling and experiencing different cultures, reading (not just technical books), exploring the world of wine, and — more recently — diving into photography.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Books</title>
         <link>//localhost:1313/books/</link>
-        <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>//localhost:1313/books/</guid>
         <description>&lt;p&gt;Below you may find a list of books that &lt;em&gt;I have read&lt;/em&gt; and, believing that they are worth reading, &lt;em&gt;I recommend&lt;/em&gt; them. I will be updating this list as I read more books that should be added here.&lt;/p&gt;
@@ -89,27 +102,12 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Pragmatic Programmer: From Journeyman to Master&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;(Last update: Jun 5, 2025)&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>About me</title>
-        <link>//localhost:1313/about-me/</link>
-        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
-        
-        <guid>//localhost:1313/about-me/</guid>
-        <description>&lt;p&gt;I&amp;rsquo;m a professional software engineer with over 12 years of industry experience. I&amp;rsquo;m passionate about clean code, software craftsmanship, and building systems that are both elegant and maintainable. I firmly believe in the power of global developer communities, which is why I enjoy sharing knowledge and continuously learning from others.&lt;/p&gt;
-&lt;p&gt;Throughout my career, I&amp;rsquo;ve held various roles — including Staff Software Engineer and Engineering Manager — at companies of all sizes. From global organizations like &lt;a class=&#34;link&#34; href=&#34;https://www.nokia.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Nokia&lt;/a&gt;, to tech-driven scale-ups like &lt;a class=&#34;link&#34; href=&#34;https://www.theblueground.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Blueground&lt;/a&gt;, and fast-moving startups, I&amp;rsquo;ve had the chance to work across a wide range of software projects and business domains, including telecommunications (4G networks), travel, healthcare, and real estate.&lt;/p&gt;
-&lt;p&gt;Outside of software development, I enjoy traveling and experiencing different cultures, reading (not just technical books), exploring the world of wine, and — more recently — diving into photography.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Last update: Jun 5, 2025)&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Contact</title>
         <link>//localhost:1313/contact/</link>
-        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>//localhost:1313/contact/</guid>
         <description>&lt;p&gt;I will be happy to share ideas and discuss on any topic. You may get in touch with me in any of the following ways:&lt;/p&gt;
@@ -131,6 +129,49 @@
         
         <guid>//localhost:1313/search/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Test-Driven Development in Action — with AI</title>
+        <link>//localhost:1313/test-driven-development-in-action-with-ai/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/test-driven-development-in-action-with-ai/</guid>
+        <description>&lt;img src="//localhost:1313/img/tdd_udemy_course_image.png" alt="Featured image of post Test-Driven Development in Action — with AI" /&gt;&lt;p&gt;&lt;strong&gt;Build real-world software using TDD — and level up your development workflow with AI.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Test-Driven Development (TDD) is one of the most powerful practices in software engineering. But for many developers, it remains stuck in toy examples like Tic-Tac-Toe or FizzBuzz — far removed from the messy realities of production systems.&lt;/p&gt;
+&lt;p&gt;This course was created to bridge that gap.&lt;/p&gt;
+&lt;p&gt;Whether you&amp;rsquo;re a junior trying to get TDD right from the start, or a senior developer looking to take a more structured, maintainable approach to building software, this course will help you apply TDD confidently in real-world codebases.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;What you’ll learn:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Develop real-world applications from scratch using Test-Driven Development (TDD)&lt;/li&gt;
+&lt;li&gt;Design and test RESTful APIs using Outside-In TDD techniques&lt;/li&gt;
+&lt;li&gt;Use AI tools to boost productivity — while keeping full control of your process&lt;/li&gt;
+&lt;li&gt;Write maintainable, fast, deterministic, and isolated unit tests&lt;/li&gt;
+&lt;li&gt;Understand and apply core TDD principles in a practical and accessible way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;I created this course to distill over &lt;strong&gt;12 years of professional experience&lt;/strong&gt; into a practical and focused learning path — one that I wish existed when I was first learning TDD.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re ready to stop just &lt;em&gt;reading&lt;/em&gt; about TDD and start &lt;em&gt;using&lt;/em&gt; it effectively in real-world projects, this course is for you.&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 2rem 0;&#34;&gt;
+  &lt;a href=&#34;https://www.udemy.com/course/tdd-in-action-with-ai-from-fundamentals-to-production/?referralCode=959DC15A77B4BD968C3C&#34;
+     target=&#34;_blank&#34;
+     rel=&#34;noopener&#34;
+     style=&#34;
+       display: inline-block;
+       background-color: var(--accent-color);
+       color: var(--accent-color-text);
+       padding: 10px 40px;
+       border-radius: 6px;
+       text-decoration: none;
+       font-weight: bold;
+       font-size: 16px;
+       min-width: 250px;
+     &#34;&gt;
+    Enroll Now
+  &lt;/a&gt;
+&lt;/div&gt;
+
+</description>
         </item>
         
     </channel>
