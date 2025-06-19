@@ -202,23 +202,16 @@
   </url>
   
   <url>
-    <loc>https://nvoulgaris.com//localhost:1313/books/</loc>
-    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nvoulgaris.com//localhost:1313/about-me/</loc>
-    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nvoulgaris.com//localhost:1313/agile-code/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nvoulgaris.com//localhost:1313/contact/</loc>
-    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+    <loc>https://nvoulgaris.com//localhost:1313/about-me/</loc>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/books/</loc>
   </url>
   
   <url>
@@ -226,7 +219,15 @@
   </url>
   
   <url>
+    <loc>https://nvoulgaris.com//localhost:1313/contact/</loc>
+  </url>
+  
+  <url>
     <loc>https://nvoulgaris.com//localhost:1313/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/test-driven-development-in-action-with-ai/</loc>
   </url>
   
 </urlset>
