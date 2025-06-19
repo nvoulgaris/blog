@@ -1,6 +1,5 @@
 +++
 comments = false
-date = "2018-01-20"
 noauthor = true
 share = false
 title = "Contact"
