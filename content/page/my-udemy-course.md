@@ -1,0 +1,34 @@
++++
+comments = false
+noauthor = true
+share = false
+title = "Test-Driven Development in Action — with AI"
+type = "page"
+image = "img/tdd_udemy_course_image.png"
+
++++
+**Build real-world software using TDD — and level up your development workflow with AI.**
+
+Test-Driven Development (TDD) is one of the most powerful practices in software engineering. But for many developers, it remains stuck in toy examples like Tic-Tac-Toe or FizzBuzz — far removed from the messy realities of production systems.
+
+This course was created to bridge that gap.
+
+Whether you're a junior trying to get TDD right from the start, or a senior developer looking to take a more structured, maintainable approach to building software, this course will help you apply TDD confidently in real-world codebases.
+
+---
+
+**What you’ll learn:**
+
+- Develop real-world applications from scratch using Test-Driven Development (TDD)
+- Design and test RESTful APIs using Outside-In TDD techniques
+- Use AI tools to boost productivity — while keeping full control of your process
+- Write maintainable, fast, deterministic, and isolated unit tests
+- Understand and apply core TDD principles in a practical and accessible way
+
+---
+
+I created this course to distill over **12 years of professional experience** into a practical and focused learning path — one that I wish existed when I was first learning TDD.
+
+If you're ready to stop just *reading* about TDD and start *using* it effectively in real-world projects, this course is for you.
+
+{{< button href="https://www.udemy.com/course/tdd-in-action-with-ai-from-fundamentals-to-production/?referralCode=959DC15A77B4BD968C3C" text="Enroll Now" >}}
