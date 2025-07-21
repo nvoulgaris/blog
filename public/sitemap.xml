@@ -2,22 +2,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://nvoulgaris.com//localhost:1313/tags/graphql/</loc>
-    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/ai/</loc>
+    <lastmod>2025-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://nvoulgaris.com//localhost:1313/</loc>
-    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://nvoulgaris.com//localhost:1313/post/</loc>
-    <lastmod>2024-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/should-ai-write-your-code/</loc>
+    <lastmod>2025-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://nvoulgaris.com//localhost:1313/tags/</loc>
+    <lastmod>2025-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/graphql/</loc>
     <lastmod>2024-07-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -224,6 +234,10 @@
   
   <url>
     <loc>https://nvoulgaris.com//localhost:1313/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://nvoulgaris.com//localhost:1313/tags/system-design/</loc>
   </url>
   
   <url>
