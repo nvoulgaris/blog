@@ -7,15 +7,194 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Nikos Voulgaris</copyright>
-        <lastBuildDate>Mon, 21 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 22 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Writing Effective AI Prompts</title>
+        <link>//localhost:1313/writing-effective-ai-prompts/</link>
+        <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/writing-effective-ai-prompts/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/writing_effective_ai_prompts.jpg" alt="Featured image of post Writing Effective AI Prompts" /&gt;&lt;p&gt;Who hasn’t spent hours going in circles with ChatGPT or Cursor, only to realize that doing the work ourselves would have been quicker and more satisfying? I’ve been there. It’s frustrating. &lt;em&gt;If only it could understand what I really want.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;But the problem isn’t the AI. It’s how we talk to it. LLMs are powerful tools and, like any tool, knowing how to use them makes the difference between crafting something wonderful and producing something unnatural. Thinking that the LLM &amp;ldquo;will understand&amp;rdquo; is a road that more often than not leads into long rabbit holes, hallucinations, and frustration. We need to understand how they work. Learning to prompt the LLM right is a skill that turns AI from a distraction into an accelerator.&lt;/p&gt;
+&lt;p&gt;So, let&amp;rsquo;s first understand how they work and then how we can trigger them to get what we want every time.&lt;/p&gt;
+&lt;h2 id=&#34;how-llms-work&#34;&gt;How LLMs work
+&lt;/h2&gt;&lt;p&gt;Large Language Models (LLMs) belong to the branch of generative AI. While &amp;ldquo;traditional&amp;rdquo; AI analyzes data and supports decision-making, generative AI creates new content, such as text, images, or code. LLMs in particular focus on language.&lt;/p&gt;
+&lt;p&gt;They are able to predict the next token (word or punctuation), working in a &lt;strong&gt;probabilistic way&lt;/strong&gt;. Given an input, they use a neural network to assign a probability to each token, and the one with the highest probability becomes the next token. It&amp;rsquo;s important to understand that they have &lt;strong&gt;no capacity for reasoning&lt;/strong&gt; and they do not work in a deterministic way.&lt;/p&gt;
+&lt;p&gt;Think of an LLM as an extremely advanced autocomplete engine. It doesn’t &lt;em&gt;understand&lt;/em&gt; your question. It predicts what a good answer might look like &lt;em&gt;based on patterns&lt;/em&gt; in its training data. That’s why how you ask matters more than what you ask. Your words shape the probabilities. Triggering the LLM in the correct way is key to producing the desired output.&lt;/p&gt;
+&lt;p&gt;Now that we know why LLMs behave this way, let’s see how we can guide them effectively.&lt;/p&gt;
+&lt;h2 id=&#34;prompting-techniques-the-basics&#34;&gt;Prompting Techniques: The Basics
+&lt;/h2&gt;&lt;p&gt;Before delving into specific prompting frameworks and examples, let&amp;rsquo;s briefly go over the basic prompting techniques as well as the tasks for which they are a good fit.&lt;/p&gt;
+&lt;h3 id=&#34;zero-shot-prompting&#34;&gt;Zero-shot prompting
+&lt;/h3&gt;&lt;p&gt;Zero-shot prompting is applied when asking the LLM to perform a task &lt;strong&gt;without providing any prior examples&lt;/strong&gt;. So, this relies solely on the model&amp;rsquo;s pre-existing knowledge to understand and complete the task. This technique can be a good fit for simple, straightforward tasks.&lt;/p&gt;
+&lt;h3 id=&#34;few-shot-prompting&#34;&gt;Few-shot prompting
+&lt;/h3&gt;&lt;p&gt;In this case, &lt;strong&gt;a few examples of the desired input-output are provided&lt;/strong&gt; within the prompt. These examples act as specifications, guiding the LLM and helping it understand both the task and the format of the input and output more quickly and more accurately. This is a useful technique when the task requires a specific output format or when it is too complex for a zero-shot prompt.&lt;/p&gt;
+&lt;h3 id=&#34;chain-of-thought-prompting&#34;&gt;Chain-of-thought prompting
+&lt;/h3&gt;&lt;p&gt;Chain-of-thought prompts encourage the LLM to &lt;strong&gt;show its work by thinking step-by-step&lt;/strong&gt; before providing an answer. They explicitly ask it to break down its reasoning process. This leads to more accurate and transparent outputs. This is ideal for complex problems that require multiple steps of reasoning.&lt;/p&gt;
+&lt;p&gt;These basic techniques are great building blocks, but if you want consistent, high-quality outputs, structured prompting frameworks take it a step further.&lt;/p&gt;
+&lt;h2 id=&#34;prompting-frameworks&#34;&gt;Prompting frameworks
+&lt;/h2&gt;&lt;p&gt;Now, let&amp;rsquo;s dive into specific prompting frameworks and the ideal use cases for each one.&lt;/p&gt;
+&lt;h3 id=&#34;rtf-role---task---format&#34;&gt;RTF (Role - Task - Format)
+&lt;/h3&gt;&lt;p&gt;I use RTF when I just want the model to “get in character” and give me something clean. You tell it who to be, what to do, and what the output should look like. It’s simple, but surprisingly powerful when you want predictable output.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Code writing, debugging, or documentation where you want clarity and structured output.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Role: Senior Java developer  
+Task: Write a unit test for a service that sends email notifications.
+Format: Provide only the Java code inside a code block.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;code-context--objective--details--expectations&#34;&gt;CODE (Context – Objective – Details – Expectations)
+&lt;/h3&gt;&lt;p&gt;This is what I use when I need to be crystal clear. It’s like writing a mini design doc before asking the LLM for help. You give it the background, the goal, the details, and what you expect at the end.&lt;/p&gt;
+&lt;p&gt;Perfect for when you need structured answers that actually fit your setup, not some generic solution from a random Stack Overflow thread.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Code writing for context-aware results that align tightly with the existing code.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Context: We’re building a REST API for a task management app using Spring Boot and Kotlin.  
+Objective: Generate a controller method for creating new tasks.  
+Details: The Task entity has title, description, and due date.  
+Expectations: Provide only the function and annotate it correctly for a POST endpoint.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;co-star-context---objective---style---tone---audience---response-format&#34;&gt;CO-STAR (Context - Objective - Style - Tone - Audience - Response format)
+&lt;/h3&gt;&lt;p&gt;This is basically your tone dial. If you’re writing docs or commit messages and want them to sound human, not robotic, this is your friend. You tell the model what the situation is, what you’re trying to achieve, and who’s reading it. It will match your voice surprisingly well.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Producing technical documentation, API specs, or explanations tailored to a specific audience.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Context: We’re adding a new message queue for background jobs.  
+Objective: Explain the architecture to a new backend hire.  
+Style: Conversational but technical.  
+Tone: Encouraging.  
+Audience: Junior backend developer.  
+Response format: Numbered bullet points.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;risen-role---instructions---steps---end-goal---narrowing&#34;&gt;RISEN (Role - Instructions - Steps - End goal - Narrowing)
+&lt;/h3&gt;&lt;p&gt;RISEN is what I reach for when I need the model to walk through something methodically, like setting up a CI pipeline or migrating a project. You define the role, the overall task, break it into steps, and tell it where to focus. It keeps the conversation grounded instead of spiraling into theory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Complex, multi-step engineering problems, such as setting up CI/CD or refactoring large codebases.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Role: DevOps engineer.  
+Instructions: Explain how to set up GitHub Actions to build and test a Kotlin multi-module project.  
+Steps: Provide them sequentially.  
+End goal: Fully automated CI pipeline.  
+Narrowing: Assume tests use JUnit 5 and Gradle.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;race-role---action---context---expectation&#34;&gt;RACE (Role - Action - Context - Expectation)
+&lt;/h3&gt;&lt;p&gt;RACE is my go-to for code reviews. You set the model’s role (say, “experienced reviewer”), tell it what kind of issues to look for, give it the context, and explain what format you want the feedback in. The output feels like a real teammate’s review, not a lecture.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Fast, direct code fixes or reviews without overloading with background details.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Role: Kotlin code reviewer.  
+Action: Identify potential NPE risks in this function.  
+Context: Function runs in a Spring Boot service with nullable database fields.  
+Expectation: List only the risky lines and a short fix.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;chain-of-thought-cot&#34;&gt;Chain of Thought (CoT)
+&lt;/h3&gt;&lt;p&gt;CoT is your “think out loud” mode. You literally tell the model: “Walk me through this step by step.” It’s brilliant for debugging or tricky logic, like having a second brain narrate its reasoning.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Problem-solving that requires reasoning, such as algorithm design or debugging some tricky logic.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Think step-by-step:  
+Given this recursive Kotlin function for DFS traversal, explain why it fails on cyclic graphs and how to fix it.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;tree-of-thoughts-tot&#34;&gt;Tree of Thoughts (ToT)
+&lt;/h3&gt;&lt;p&gt;ToT takes CoT up a notch. Instead of one straight line of thought, it branches out, exploring a few possible paths before settling on the best one. I like it for architecture decisions or design trade-offs where you want the AI to think in options, not absolutes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Exploring multiple design/implementation approaches before committing (e.g. for API design trade-offs or database schema planning). This is ideal for complex decision-making.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Explore different approaches:  
+We need to design a REST API for a booking system. List three possible resource structures, evaluate pros/cons for each, then recommend one.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;care-context---action---result---example&#34;&gt;CARE (Context - Action - Result - Example)
+&lt;/h3&gt;&lt;p&gt;CARE works great when you want the model to see what good looks like. You tell it what’s going on, what needs to happen, what the outcome should be, and then show it an example.&lt;/p&gt;
+&lt;p&gt;It’s like pair programming with a demo first.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Best suited to&lt;/strong&gt;: Teaching best practices or explaining patterns with examples.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Context: We’re migrating from Java to Kotlin in a Spring Boot app.  
+Action: Show how to replace anonymous classes with lambdas.  
+Result: Cleaner, idiomatic Kotlin.  
+Example: Provide a before/after code snippet.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once you start using these regularly, you’ll notice that they’re not rigid formulas. They’re just ways to steer the model’s attention. Pick one, tweak it, and make it yours.&lt;/p&gt;
+&lt;h2 id=&#34;reference-table&#34;&gt;Reference table
+&lt;/h2&gt;&lt;p&gt;To make it easier to pick the right one at a glance, here’s a summary comparing how each framework performs in typical software engineering tasks. It can be &lt;a class=&#34;link&#34; href=&#34;#reference-table&#34; &gt;bookmarked&lt;/a&gt; and used for quick referencing.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Framework&lt;/th&gt;
+          &lt;th&gt;Code Generation&lt;/th&gt;
+          &lt;th&gt;Debugging&lt;/th&gt;
+          &lt;th&gt;Architectural Design&lt;/th&gt;
+          &lt;th&gt;Documentation&lt;/th&gt;
+          &lt;th&gt;Strengths&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RTF&lt;/strong&gt; (Role • Task • Format)&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;Straightforward and reliable for focused coding tasks and clean outputs.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;CODE&lt;/strong&gt; (Context • Objective • Details • Expectations)&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;Excellent for precise, context-aware results that align tightly with your setup.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;CO-STAR&lt;/strong&gt; (Context • Objective • Style • Tone • Audience • Response format)&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;Best for documentation or explanations tailored to a specific tone or audience.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RISEN&lt;/strong&gt; (Role • Instructions • Steps • End goal • Narrowing)&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;Ideal for multi-step workflows like CI/CD setups, migrations, or structured tutorials.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RACE&lt;/strong&gt; (Role • Action • Context • Expectation)&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;Great for quick, focused reviews or targeted code fixes.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Chain of Thought (CoT)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;Encourages reasoning and transparency in problem-solving and debugging.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Tree of Thoughts (ToT)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;Explores and compares multiple design or implementation paths before deciding.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;CARE&lt;/strong&gt; (Context • Action • Result • Example)&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;Excellent for illustrating best practices and teaching with before/after examples.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;✅✅✅ = Excellent fit&lt;br&gt;
+✅✅ = Good fit&lt;br&gt;
+✅ = Somewhat suitable&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
+&lt;/h2&gt;&lt;p&gt;LLMs have already become an integral part of our day-to-day workflow. Learning how to best use them is quickly evolving into an invaluable skill for any software engineer. They do not think. They produce content based on pattern-matching and probabilities. So, the better we ask the question, the better the output will be.&lt;/p&gt;
+&lt;p&gt;Depending on the task, we can provide examples or we can ask the LLM to provide its reasoning process. Using the right framework can be a key difference between a prompt that got the job done versus one that threw us into a rabbit hole.&lt;/p&gt;
+&lt;p&gt;Next time you catch yourself fighting the AI, pause and reframe your prompt. You’ll be surprised how often that’s all it takes.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Should AI Write Your Code?</title>
         <link>//localhost:1313/should-ai-write-your-code/</link>
         <pubDate>Mon, 21 Jul 2025 00:00:00 +0000</pubDate>
         
         <guid>//localhost:1313/should-ai-write-your-code/</guid>
-        <description>&lt;img src="//localhost:1313/img/posts/should_ai_write_your_code.jpg" alt="Featured image of post Should AI Write Your Code?" /&gt;&lt;p&gt;Why should I spend 40 minutes implementing this when I can explain what I want to Cursor in 3 minutes and have it done immediately? That question crosses the minds of software engineers more and more each day. I know it crosses mine a lot lately. But what do you answer — and why?&lt;/p&gt;
+        <description>&lt;img src="//localhost:1313/img/posts/should_ai_write_your_code.jpg" alt="Featured image of post Should AI Write Your Code?" /&gt;&lt;p&gt;Why should I spend 40 minutes implementing this when I can explain what I want to Cursor in 3 minutes and have it done immediately? That question crosses the minds of software engineers more and more each day. I know it crosses mine a lot lately. But what do you answer and why?&lt;/p&gt;
 &lt;p&gt;How much should we use AI tools in software engineering? How do we know when to stop? What are the risks? What should we do with the code that they produce? Blindly check it in?&lt;/p&gt;
-&lt;p&gt;AI is clearly here to stay — and these are questions we need to answer sooner rather than later.&lt;/p&gt;
+&lt;p&gt;AI is clearly here to stay and these are questions we need to answer sooner rather than later.&lt;/p&gt;
 &lt;h2 id=&#34;the-ai-toolkit-for-software-engineers&#34;&gt;The AI toolkit for software engineers
 &lt;/h2&gt;&lt;p&gt;Before we answer these questions, let&amp;rsquo;s briefly outline the key tools for AI-assisted software engineering:&lt;/p&gt;
 &lt;ul&gt;
@@ -84,9 +263,9 @@
 &lt;p&gt;&lt;strong&gt;Implementing another identical feature&lt;/strong&gt;: Adding a simple feature (e.g. another CRUD endpoint) to an existing application, when an identical one already exists.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;With the right prompt, AI tools can often perform these tasks more efficiently — and faster — than a human engineer, leaving both a solid outcome and more quality time for the tasks that we&amp;rsquo;d better not leave to them.&lt;/p&gt;
+&lt;p&gt;With the right prompt, AI tools can often perform these tasks more efficiently - and faster - than a human engineer, leaving both a solid outcome and more quality time for the tasks that we&amp;rsquo;d better not leave to them.&lt;/p&gt;
 &lt;h2 id=&#34;where-it-struggles&#34;&gt;Where it struggles
-&lt;/h2&gt;&lt;p&gt;When the task at hand requires a &lt;strong&gt;solid understanding of context, careful trade-offs, or creative problem solving&lt;/strong&gt;, then things are different. In these cases — at least as of July 2025 — the output of AI tools might look reasonable at first glance, but scratching the surface we&amp;rsquo;ll often find wrong assumptions, missing edge cases, or decisions made without justification.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;When the task at hand requires a &lt;strong&gt;solid understanding of context, careful trade-offs, or creative problem solving&lt;/strong&gt;, then things are different. In these cases - at least as of July 2025 - the output of AI tools might look reasonable at first glance, but scratching the surface we&amp;rsquo;ll often find wrong assumptions, missing edge cases, or decisions made without justification.&lt;/p&gt;
 &lt;p&gt;These tasks are &lt;strong&gt;high-risk, ambiguous&lt;/strong&gt;, and often &lt;strong&gt;involve decisions that depend on domain knowledge or architectural constraints&lt;/strong&gt;. This can be mitigated by providing and gradually building the context for the tool, but it remains a far-from-ideal case to use AI tools to write the code. Let&amp;rsquo;s go over some examples:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -102,7 +281,7 @@
 &lt;p&gt;&lt;strong&gt;Security-critical or performance-sensitive code&lt;/strong&gt;: AI has no intuition for attack surfaces, memory constraints, or performance bottlenecks. These are areas where even experienced engineers need to treat carefully.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In short, AI is not a substitute for architectural thinking or deep product knowledge. It’s a great assistant, but a poor decision-maker. The moment a task requires understanding why — not just how — you’re better off taking the lead yourself.&lt;/p&gt;
+&lt;p&gt;In short, AI is not a substitute for architectural thinking or deep product knowledge. It’s a great assistant, but a poor decision-maker. The moment a task requires understanding why - not just how - you’re better off taking the lead yourself.&lt;/p&gt;
 &lt;h2 id=&#34;trust-but-verify&#34;&gt;Trust but verify
 &lt;/h2&gt;&lt;p&gt;No matter how simple the task may be or how competent this particular AI tool is in this type of task, we need to always review the outcome carefully. Every line of code that the AI tools produce should be reviewed twice as carefully as if it was written by a human software engineer. AI can make assumptions or omissions that a human wouldn&amp;rsquo;t make.&lt;/p&gt;
 &lt;p&gt;It might silently choose the wrong data structure, mishandle a boundary condition, or produce logic that only works in the happy path. And because the code often looks clean and plausible, it&amp;rsquo;s easy to overlook these flaws.&lt;/p&gt;
@@ -114,7 +293,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;Never ship code that you cannot understand!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It doesn&amp;rsquo;t matter whether the code came from AI, Stack Overflow, or a colleague. It doesn&amp;rsquo;t matter if the tests pass. It doesn&amp;rsquo;t matter if the tool has the best reputation. If you can&amp;rsquo;t explain what it does, why it works, and how it fits into the broader system, it shouldn&amp;rsquo;t be checked in.&lt;/p&gt;
-&lt;p&gt;AI tools can generate code that works — or at least appears to. But correctness is not the same as clarity. If you can&amp;rsquo;t walk someone through the logic or reason for its behavior under edge conditions, you&amp;rsquo;re taking a blind risk.&lt;/p&gt;
+&lt;p&gt;AI tools can generate code that works, or at least appears to. But correctness is not the same as clarity. If you can&amp;rsquo;t walk someone through the logic or reason for its behavior under edge conditions, you&amp;rsquo;re taking a blind risk.&lt;/p&gt;
 &lt;p&gt;This isn&amp;rsquo;t just about debugging or maintenance. It&amp;rsquo;s about ownership. Once the code is merged, it&amp;rsquo;s your responsibility. If it breaks or causes problems later, you can’t blame the tool.&lt;/p&gt;
 &lt;p&gt;When in doubt, take the time to understand it. If you can&amp;rsquo;t iterate until you reach a version that you fully understand. AI should make us faster, not careless.&lt;/p&gt;
 &lt;h2 id=&#34;common-pitfalls-and-how-to-avoid-them&#34;&gt;Common pitfalls and how to avoid them
@@ -124,7 +303,7 @@
 &lt;p&gt;&lt;strong&gt;Letting AI lead the design&lt;/strong&gt;: You should be acting like an architect and AI should be following your lead, not the other way around.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Not building enough context&lt;/strong&gt;: Poor output often comes from missing domain info, surrounding code, or constraints. Invest time in giving the tool the right context — and refine it as the session progresses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Not building enough context&lt;/strong&gt;: Poor output often comes from missing domain info, surrounding code, or constraints. Invest time in giving the tool the right context and refine it as the session progresses.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Writing lazy prompts&lt;/strong&gt;: The quality of the result is directly reflected in the quality of the prompt. Assuming that AI &amp;ldquo;will understand&amp;rdquo; is a fundamental mistake. Investing effort in writing a high-quality prompt always pays off. A follow-up post will dive deeper into this.&lt;/p&gt;
@@ -133,17 +312,17 @@
 &lt;p&gt;&lt;strong&gt;Overusing AI&lt;/strong&gt;: If the cost of reviewing the AI’s code is higher than writing it yourself, it’s probably better to just write it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Skipping tests or reviews&lt;/strong&gt;: “AI wrote it” is never a reason to skip your due diligence. If anything, this code deserves more scrutiny — not less.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Skipping tests or reviews&lt;/strong&gt;: “AI wrote it” is never a reason to skip your due diligence. If anything, this code deserves more scrutiny, not less.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Losing your engineering instincts&lt;/strong&gt;: Relying too heavily on AI can dull your ability to spot smells, catch subtle bugs, or reach for the right abstraction. Use AI to support your thinking — not to replace it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Losing your engineering instincts&lt;/strong&gt;: Relying too heavily on AI can dull your ability to spot smells, catch subtle bugs, or reach for the right abstraction. Use AI to support your thinking, not to replace it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Remember that the tools are getting better, but our responsibility as engineers stays the same.&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;AI is here to stay. A number of excellent AI-powered tools are at our disposal and not using them seems suboptimal. However, there&amp;rsquo;s a fine line. A line that we should always have in mind. There are things that AI thrives on, such as writing boilerplate code, scaffolding applications, writing docs and even adding whole simple features when similar ones are already implemented. However, there are also tasks that it wouldn&amp;rsquo;t be wise to trust them completely to an AI tool, such as implementing core business logic and making architectural decisions.&lt;/p&gt;
-&lt;p&gt;Delegating the right tasks to AI tools is smart, but it’s no silver bullet. Code should be reviewed, tested and - most importantly - fully understood. If it&amp;rsquo;s not, we are in dangerous waters, closer to wishful thinking than to professional software engineering. As we grow more experienced, we should learn to avoid common pitfalls, such as using poor prompts, not providing enough context to the tool and relying blindly on AI tools, without critical thinking. Let&amp;rsquo;s use these tools to make software engineering faster and better — not careless and untrustworthy.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Have you used Cursor, Copilot, or ChatGPT in your daily development? What worked—and what didn’t? Share your experience below.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Delegating the right tasks to AI tools is smart, but it’s no silver bullet. Code should be reviewed, tested and - most importantly - fully understood. If it&amp;rsquo;s not, we are in dangerous waters, closer to wishful thinking than to professional software engineering. As we grow more experienced, we should learn to avoid common pitfalls, such as using poor prompts, not providing enough context to the tool and relying blindly on AI tools, without critical thinking. Let&amp;rsquo;s use these tools to make software engineering faster and better, not careless and untrustworthy.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Have you used Cursor, Copilot, or ChatGPT in your daily development? What worked and what didn’t? Share your experience below.&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         
