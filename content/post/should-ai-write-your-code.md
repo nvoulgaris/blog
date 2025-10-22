@@ -3,14 +3,14 @@ title = "Should AI Write Your Code?"
 date = "2025-07-21"
 image = "img/posts/should_ai_write_your_code.jpg"
 tags = ["AI"]
-description = "When to trust it, when to override it — and how to stay a responsible engineer"
+description = "When to trust it, when to override it and how to stay a responsible engineer"
 +++
 
-Why should I spend 40 minutes implementing this when I can explain what I want to Cursor in 3 minutes and have it done immediately? That question crosses the minds of software engineers more and more each day. I know it crosses mine a lot lately. But what do you answer — and why?
+Why should I spend 40 minutes implementing this when I can explain what I want to Cursor in 3 minutes and have it done immediately? That question crosses the minds of software engineers more and more each day. I know it crosses mine a lot lately. But what do you answer and why?
 
 How much should we use AI tools in software engineering? How do we know when to stop? What are the risks? What should we do with the code that they produce? Blindly check it in?
 
-AI is clearly here to stay — and these are questions we need to answer sooner rather than later.
+AI is clearly here to stay and these are questions we need to answer sooner rather than later.
 
 ## The AI toolkit for software engineers
 
@@ -56,11 +56,11 @@ AI tools excel in areas that are predictable, repetitive, and well‑defined. Wh
 
 - **Implementing another identical feature**: Adding a simple feature (e.g. another CRUD endpoint) to an existing application, when an identical one already exists.
 
-With the right prompt, AI tools can often perform these tasks more efficiently — and faster — than a human engineer, leaving both a solid outcome and more quality time for the tasks that we'd better not leave to them.
+With the right prompt, AI tools can often perform these tasks more efficiently - and faster - than a human engineer, leaving both a solid outcome and more quality time for the tasks that we'd better not leave to them.
 
 ## Where it struggles
 
-When the task at hand requires a **solid understanding of context, careful trade-offs, or creative problem solving**, then things are different. In these cases — at least as of July 2025 — the output of AI tools might look reasonable at first glance, but scratching the surface we'll often find wrong assumptions, missing edge cases, or decisions made without justification.
+When the task at hand requires a **solid understanding of context, careful trade-offs, or creative problem solving**, then things are different. In these cases - at least as of July 2025 - the output of AI tools might look reasonable at first glance, but scratching the surface we'll often find wrong assumptions, missing edge cases, or decisions made without justification.
 
 These tasks are **high-risk, ambiguous**, and often **involve decisions that depend on domain knowledge or architectural constraints**. This can be mitigated by providing and gradually building the context for the tool, but it remains a far-from-ideal case to use AI tools to write the code. Let's go over some examples:
 
@@ -72,7 +72,7 @@ These tasks are **high-risk, ambiguous**, and often **involve decisions that dep
 
 - **Security-critical or performance-sensitive code**: AI has no intuition for attack surfaces, memory constraints, or performance bottlenecks. These are areas where even experienced engineers need to treat carefully.
 
-In short, AI is not a substitute for architectural thinking or deep product knowledge. It’s a great assistant, but a poor decision-maker. The moment a task requires understanding why — not just how — you’re better off taking the lead yourself.
+In short, AI is not a substitute for architectural thinking or deep product knowledge. It’s a great assistant, but a poor decision-maker. The moment a task requires understanding why - not just how - you’re better off taking the lead yourself.
 
 ## Trust but verify
 
@@ -94,7 +94,7 @@ In my opinion, there is a red line that should **never** be crossed.
 
 It doesn't matter whether the code came from AI, Stack Overflow, or a colleague. It doesn't matter if the tests pass. It doesn't matter if the tool has the best reputation. If you can't explain what it does, why it works, and how it fits into the broader system, it shouldn't be checked in.
 
-AI tools can generate code that works — or at least appears to. But correctness is not the same as clarity. If you can't walk someone through the logic or reason for its behavior under edge conditions, you're taking a blind risk.
+AI tools can generate code that works, or at least appears to. But correctness is not the same as clarity. If you can't walk someone through the logic or reason for its behavior under edge conditions, you're taking a blind risk.
 
 This isn't just about debugging or maintenance. It's about ownership. Once the code is merged, it's your responsibility. If it breaks or causes problems later, you can’t blame the tool.
 
@@ -106,15 +106,15 @@ Even with the best intentions, it's easy to fall into habits that undermine the 
 
 - **Letting AI lead the design**: You should be acting like an architect and AI should be following your lead, not the other way around.
 
-- **Not building enough context**: Poor output often comes from missing domain info, surrounding code, or constraints. Invest time in giving the tool the right context — and refine it as the session progresses.
+- **Not building enough context**: Poor output often comes from missing domain info, surrounding code, or constraints. Invest time in giving the tool the right context and refine it as the session progresses.
 
 - **Writing lazy prompts**: The quality of the result is directly reflected in the quality of the prompt. Assuming that AI "will understand" is a fundamental mistake. Investing effort in writing a high-quality prompt always pays off. A follow-up post will dive deeper into this.
 
 - **Overusing AI**: If the cost of reviewing the AI’s code is higher than writing it yourself, it’s probably better to just write it. 
 
-- **Skipping tests or reviews**: “AI wrote it” is never a reason to skip your due diligence. If anything, this code deserves more scrutiny — not less.
+- **Skipping tests or reviews**: “AI wrote it” is never a reason to skip your due diligence. If anything, this code deserves more scrutiny, not less.
 
-- **Losing your engineering instincts**: Relying too heavily on AI can dull your ability to spot smells, catch subtle bugs, or reach for the right abstraction. Use AI to support your thinking — not to replace it.
+- **Losing your engineering instincts**: Relying too heavily on AI can dull your ability to spot smells, catch subtle bugs, or reach for the right abstraction. Use AI to support your thinking, not to replace it.
 
 Remember that the tools are getting better, but our responsibility as engineers stays the same.
 
@@ -122,6 +122,6 @@ Remember that the tools are getting better, but our responsibility as engineers 
 
 AI is here to stay. A number of excellent AI-powered tools are at our disposal and not using them seems suboptimal. However, there's a fine line. A line that we should always have in mind. There are things that AI thrives on, such as writing boilerplate code, scaffolding applications, writing docs and even adding whole simple features when similar ones are already implemented. However, there are also tasks that it wouldn't be wise to trust them completely to an AI tool, such as implementing core business logic and making architectural decisions.
 
-Delegating the right tasks to AI tools is smart, but it’s no silver bullet. Code should be reviewed, tested and - most importantly - fully understood. If it's not, we are in dangerous waters, closer to wishful thinking than to professional software engineering. As we grow more experienced, we should learn to avoid common pitfalls, such as using poor prompts, not providing enough context to the tool and relying blindly on AI tools, without critical thinking. Let's use these tools to make software engineering faster and better — not careless and untrustworthy.
+Delegating the right tasks to AI tools is smart, but it’s no silver bullet. Code should be reviewed, tested and - most importantly - fully understood. If it's not, we are in dangerous waters, closer to wishful thinking than to professional software engineering. As we grow more experienced, we should learn to avoid common pitfalls, such as using poor prompts, not providing enough context to the tool and relying blindly on AI tools, without critical thinking. Let's use these tools to make software engineering faster and better, not careless and untrustworthy.
 
-*Have you used Cursor, Copilot, or ChatGPT in your daily development? What worked—and what didn’t? Share your experience below.*
+*Have you used Cursor, Copilot, or ChatGPT in your daily development? What worked and what didn’t? Share your experience below.*
