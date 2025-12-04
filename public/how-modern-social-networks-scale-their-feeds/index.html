@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.146.4"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Challenge everything">
-<title>Nikos Voulgaris</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Fanout-on-Write Explained">
+<title>How Modern Social Networks Scale Their Feeds</title>
 
-<link rel='canonical' href='//localhost:1313/'>
+<link rel='canonical' href='//localhost:1313/how-modern-social-networks-scale-their-feeds/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Nikos Voulgaris">
-<meta property='og:description' content="Challenge everything">
-<meta property='og:url' content='//localhost:1313/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="How Modern Social Networks Scale Their Feeds">
+<meta property='og:description' content="Fanout-on-Write Explained">
+<meta property='og:url' content='//localhost:1313/how-modern-social-networks-scale-their-feeds/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-12-04T00:00:00&#43;00:00 '/>
-<meta name="twitter:title" content="Nikos Voulgaris">
-<meta name="twitter:description" content="Challenge everything"><link rel="alternate" type="application/rss&#43;xml" href="//localhost:1313/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='system design' /><meta property='article:published_time' content='2025-12-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-04T00:00:00&#43;00:00'/><meta property='og:image' content='//localhost:1313/img/posts/scale_social_network_feeds.png' />
+<meta name="twitter:title" content="How Modern Social Networks Scale Their Feeds">
+<meta name="twitter:description" content="Fanout-on-Write Explained"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='//localhost:1313/img/posts/scale_social_network_feeds.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
@@ -31,7 +31,9 @@
         }
       </script>
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -332,63 +334,36 @@
             
         
             
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
 </svg>
 
 
 
-    </div>
-    <h2 class="widget-title section-title">Tags</h2>
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-scenario-requirements-of-a-modern-feed-system">The Scenario: Requirements of a Modern Feed System</a></li>
+    <li><a href="#naive-approach-fanout-on-read">Naive Approach: Fanout-on-Read</a></li>
+    <li><a href="#scalable-approach-fanout-on-write">Scalable Approach: Fanout-on-Write</a></li>
+    <li><a href="#special-case-celebrityhigh-fanout-users">Special Case: Celebrity/High-Fanout Users</a></li>
+    <li><a href="#beyond-social-media-where-else-is-this-used">Beyond Social Media: Where Else Is This Used?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
 
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/agile/" class="font_size_9">
-                Agile
-            </a>
-        
-            <a href="/tags/software-design/" class="font_size_5">
-                Software Design
-            </a>
-        
-            <a href="/tags/scrum/" class="font_size_4">
-                Scrum
-            </a>
-        
-            <a href="/tags/unit-testing/" class="font_size_3">
-                Unit-Testing
-            </a>
-        
-            <a href="/tags/xp/" class="font_size_3">
-                XP
-            </a>
-        
-            <a href="/tags/ai/" class="font_size_2">
-                AI
-            </a>
-        
-            <a href="/tags/graphql/" class="font_size_2">
-                GraphQL
-            </a>
-        
-            <a href="/tags/retrospectives/" class="font_size_2">
-                Retrospectives
-            </a>
-        
-            <a href="/tags/code-coverage/" class="font_size_1">
-                Code-Coverage
-            </a>
-        
-            <a href="/tags/encapsulation/" class="font_size_1">
-                Encapsulation
-            </a>
-        
-    </div>
-</section>
             
         
             
@@ -527,89 +502,70 @@
             
         
             
-                <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
 </svg>
 
 
 
-        </div>
-        <h2 class="widget-title section-title">Archives</h2>
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
 
+    <div class="tagCloud-tags">
         
+            <a href="/tags/agile/" class="font_size_9">
+                Agile
+            </a>
         
+            <a href="/tags/software-design/" class="font_size_5">
+                Software Design
+            </a>
         
+            <a href="/tags/scrum/" class="font_size_4">
+                Scrum
+            </a>
         
+            <a href="/tags/unit-testing/" class="font_size_3">
+                Unit-Testing
+            </a>
         
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2025">
-                        
-                            <span class="year">2025</span>
-                            <span class="count">3</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2024">
-                        
-                            <span class="year">2024</span>
-                            <span class="count">2</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2020">
-                        
-                            <span class="year">2020</span>
-                            <span class="count">3</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2019">
-                        
-                            <span class="year">More</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
+            <a href="/tags/xp/" class="font_size_3">
+                XP
+            </a>
+        
+            <a href="/tags/ai/" class="font_size_2">
+                AI
+            </a>
+        
+            <a href="/tags/graphql/" class="font_size_2">
+                GraphQL
+            </a>
+        
+            <a href="/tags/retrospectives/" class="font_size_2">
+                Retrospectives
+            </a>
+        
+            <a href="/tags/code-coverage/" class="font_size_1">
+                Code-Coverage
+            </a>
+        
+            <a href="/tags/encapsulation/" class="font_size_1">
+                Encapsulation
+            </a>
+        
+    </div>
+</section>
             
         
     </aside>
 
 
             <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="has-image">
+    <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
             <a href="/how-modern-social-networks-scale-their-feeds/">
@@ -677,462 +633,156 @@
 </div>
 
 </header>
-</article>
+
+    <section class="article-content">
+    
+    
+    <p>Serving a user’s timeline sounds like a simple problem: read some data and return it. But as a system grows, the constraints change. How do we design a feed that supports millions of users with low latency? How do we handle celebrity users with tens of millions of followers? And what would Instagram, TikTok, or X look like if they hadn’t solved these challenges?</p>
+<p><em>This post isn’t an attempt to reverse-engineer any specific platform. Instead, it’s an exploration of well-known architectural patterns used by systems that resemble modern social networks.</em></p>
+<h2 id="the-scenario-requirements-of-a-modern-feed-system">The Scenario: Requirements of a Modern Feed System
+</h2><p>First, let’s understand what we’re trying to build. When designing a system, we generally think in terms of:</p>
+<ul>
+<li><strong>Functional requirements:</strong> the core features of the system</li>
+<li><strong>Non-Functional requirements:</strong> the qualities and constraints of the system (e.g. security, performance, reliability)</li>
+</ul>
+<p>For a social media platform, a subset of the requirements might look like this:</p>
+<ul>
+<li>Functional requirements:
+<ul>
+<li>users should be able to create posts</li>
+<li>users should be able to see a timeline of posts from users that they follow</li>
+</ul>
+</li>
+<li>Non-Functional requirements:
+<ul>
+<li>the system should scale to hundreds of millions of daily active users</li>
+<li>the system should have low latency</li>
+</ul>
+</li>
+</ul>
+<p>We’re going to focus on designing the second functional requirement (serving a user’s feed) while <strong>respecting the non-functional ones</strong>.</p>
+<h2 id="naive-approach-fanout-on-read">Naive Approach: Fanout-on-Read
+</h2><p>The simplest solution is to build a user’s feed (timeline of posts from users that they follow) at the moment they request it:</p>
+<ul>
+<li>retrieve the list of users they follow</li>
+<li>fetch posts from each of those users</li>
+<li>merge and sort the posts in reverse chronological order</li>
+</ul>
+<figure><img src="/img/posts/social_fanout_on_read.png"
+    alt="A system architecture diagram showing the Fanout-on-Read pattern: an API Gateway requests a feed from a Feed service, which queries a User service for following relationships and a Post CRUD service for posts, pulling data from user and post databases."><figcaption>
+      <p>Fanout-on-Read: the feed service fetches posts from followed users on demand, merging them at request time.</p>
+    </figcaption>
+</figure>
+
+<p>This pattern is known as <strong>Fanout-on-Read</strong>. The key idea is that the system assembles data dynamically every time the user loads their feed.</p>
+<p>This approach meets the functional requirement in a <strong>clear and easy-to-reason-about</strong> way. <strong>Writes are fast</strong> because they involve only a single operation, there’s no data duplication, and the system scales to a reasonably large user base.</p>
+<p>However, it comes with inherent disadvantages that conflict with our non-functional requirements, especially low latency. Reads require multiple queries, and response times increase as the number of followed users grows. Also, celebrity users, who are followed by millions, cause huge data scans.</p>
+<p>So, if we want to satisfy the low-latency requirement, we need to come up with a more sophisticated solution.</p>
+<h2 id="scalable-approach-fanout-on-write">Scalable Approach: Fanout-on-Write
+</h2><p>Instead of constructing a user&rsquo;s feed when requested, we can work proactively, pre-calculating feeds when users create posts. Then, read becomes trivial, as it consists of simply fetching a prepared feed. This follows the Fanout-on-Write pattern and it works as follows:</p>
+<ul>
+<li>when a user creates a post, a message is published to a queue</li>
+<li>a service consumes the message</li>
+<li>it fetches the author&rsquo;s followers</li>
+<li>it updates the followers&rsquo; feeds and stores them in a feed cache</li>
+</ul>
+<figure><img src="/img/posts/social_fanout_on_write.png"
+    alt="A system architecture diagram showing the Fanout-on-Write pattern: when a post is created, the Post CRUD service publishes a message to a queue, a Feed Fanout service consumes it, fetches followers from the User service, and updates each follower’s feed in the Feed Cache."><figcaption>
+      <p>Fanout-on-Write: posts trigger asynchronous fanout through a message queue, updating follower feeds proactively.</p>
+    </figcaption>
+</figure>
+
+<p>When users request their feed, the system simply fetches it from the cache.</p>
+<figure><img src="/img/posts/social_read_cached_feed.png"
+    alt="A simplified architecture diagram illustrating cached feed reads: the API Gateway calls the Feed service, which fetches a prepared feed from the Feed Cache instead of recomputing it."><figcaption>
+      <p>Reading a precomputed feed: the Feed service retrieves a user’s feed directly from the Feed Cache for low-latency reads.</p>
+    </figcaption>
+</figure>
+
+<p>This makes <strong>reads extremely fast</strong> and <strong>latency predictable</strong>. The number of people a user follows no longer determines how expensive a read is. <strong>Repeated refreshes don’t trigger recalculations</strong>.</p>
+<p>The trade-off is slower writes. A single write could result in thousands or even millions or feeds getting proactively updated. Also, storage increases, as multiple copies of the same post are stored in many different cached feeds. Lastly, the system becomes eventually consistent. It is perfectly possible that a user might get a feed which doesn&rsquo;t include a post created moments ago, as the Fanout-on-Write process works asynchronously. However, for a social media platform, this trade-off is often acceptable (we couldn&rsquo;t apply a similar solution to a stock trading system).</p>
+<p>Overall, this design prioritizes read speed, satisfying the low-latency requirement. But it introduces a new challenge: celebrity users.</p>
+<h2 id="special-case-celebrityhigh-fanout-users">Special Case: Celebrity/High-Fanout Users
+</h2><p>A single post from a user with 100 million followers could trigger 100 million fanout writes. This can overwhelm the system and dramatically increase write latency.</p>
+<p>A hybrid approach works well for these cases. By using a configurable threshold to distinguish “normal” from “celebrity” users, we can:</p>
+<ul>
+<li>use Fanout-on-Write for normal users</li>
+<li>use Fanout-on-Read for celebrity users</li>
+</ul>
+<p>When a celebrity user creates a post, this doesn&rsquo;t trigger the Fanout-on-Write flow. Then, when a user requests their feed, the system:</p>
+<ul>
+<li>fetches the precomputed feed from the cache</li>
+<li>fetches posts from celebrity users using Fanout-on-Read approach</li>
+<li>merges and sorts the posts</li>
+</ul>
+<figure><img src="/img/posts/social_read_feed_hybrid.png"
+    alt="An architecture diagram showing the hybrid feed generation approach: the system combines cached feeds for normal users with on-demand fetching of posts from high-fanout celebrity accounts, merging both into the final timeline."><figcaption>
+      <p>Hybrid fanout strategy: posts from normal users are received from Fanout-on-Write updates, while celebrity posts are fetched via Fanout-on-Read to avoid high fanout spikes</p>
+    </figcaption>
+</figure>
+
+<p>This avoids enormous fanouts when celebrity users create posts, while still giving fast reads for the majority of users. It also reduces spike risks and avoids saturating queues. Further optimizations, such as caching celebrity posts, can make this even more efficient.</p>
+<p>This strategy relies on the assumption that high-fanout posts are rare compared to posts from typical users, which tends to hold true.</p>
+<h2 id="beyond-social-media-where-else-is-this-used">Beyond Social Media: Where Else Is This Used?
+</h2><p>Fanout-on-Write is a powerful pattern used far beyond social feeds. Examples include:</p>
+<ul>
+<li>E-commerce: distributing product updates to denormalized catalogs</li>
+<li>Notifications systems: pushing notifications to millions of subscribers</li>
+<li>Content recommendation systems: powering &ldquo;For you&rdquo; feeds on news, video, or shopping platforms</li>
+<li>Learning platforms: updating dashboards for instructors, admins, and students</li>
+<li>Gaming leaderboards: pushing updated stats into multiple leaderboard shards</li>
+</ul>
+<p>All of these involve precomputing and pushing data into ready-to-read stores.</p>
+<h2 id="conclusion">Conclusion
+</h2><p>Solving the same problem under different non-functional requirements can lead to fundamentally different architectures. Constructing a feed is trivial when scale is small or latency is unimportant. But when millions of users and sub-second response times enter the picture, the problem changes entirely.</p>
+<p>Simple solutions aren’t bad, so long as they meet the requirements. Starting small and evolving the architecture as scale grows is often the most pragmatic approach. Over-engineering to satisfy hypothetical future needs usually isn’t.</p>
+<p>Good architecture is ultimately about trade-offs, not silver bullets.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/writing-effective-ai-prompts/">
-                
-                    <img src="/img/posts/writing_effective_ai_prompts.jpg" loading="lazy" alt="Featured image of post Writing Effective AI Prompts" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/writing-effective-ai-prompts/">Writing Effective AI Prompts</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            How LLMs think and how to guide them toward high-quality outputs
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Oct 22, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    9 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/should-ai-write-your-code/">
-                
-                    <img src="/img/posts/should_ai_write_your_code.jpg" loading="lazy" alt="Featured image of post Should AI Write Your Code?" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/should-ai-write-your-code/">Should AI Write Your Code?</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            When to trust it, when to override it and how to stay a responsible engineer
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jul 21, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    8 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/the-anatomy-of-a-graphql-schema/">
-                
-                    <img src="/img/posts/graphql_schema.jpeg" loading="lazy" alt="Featured image of post The Anatomy of a GraphQL Schema" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/the-anatomy-of-a-graphql-schema/">The Anatomy of a GraphQL Schema</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            The Blueprint for Graph Data access
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jul 14, 2024</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    7 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/graphql-introduction/">
-                
-                    <img src="/img/posts/graphql_introduction.jpeg" loading="lazy" alt="Featured image of post GraphQL introduction" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/graphql-introduction/">GraphQL introduction</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            Simplifying data fetching for modern applications
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">May 30, 2024</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    7 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/a-different-way-to-run-the-daily-scrum/">
-                
-                    <img src="/img/posts/a_different_way_to_run_the_daily_scrum.jpg" loading="lazy" alt="Featured image of post A different way to run the daily scrum" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/a-different-way-to-run-the-daily-scrum/">A different way to run the daily scrum</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            Moving off the beaten track in the daily scrum can trade formality for value
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Nov 06, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    9 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/test-commit-revert/">
-                
-                    <img src="/img/posts/tcr.jpg" loading="lazy" alt="Featured image of post Test &amp;&amp; commit || revert" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/test-commit-revert/">Test &amp;&amp; commit || revert</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            The only way to go fast is to go well
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 10, 2021</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    11 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
+            <a href="/tags/system-design/">System Design</a>
         
     </section>
-    <nav class='pagination'>
-        
-        
 
-        
-            
-                <span class='page-link current'>1</span>
-                
-            
-            
-                    <a class='page-link' href='/page/2/'>2</a>
-                
-            
-            
-                    
-                        
-                        <span class='page-link dots'>&hellip;</span>
-                    
-                
-            
-            
-                    <a class='page-link' href='/page/4/'>4</a>
-                
-            
-    </nav>
 
-<footer class="site-footer">
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://nvoulgaris-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -1146,6 +796,85 @@
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>
