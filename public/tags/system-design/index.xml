@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>System Design on Nikos Voulgaris</title>
+        <link>//localhost:1313/tags/system-design/</link>
+        <description>Recent content in System Design on Nikos Voulgaris</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Nikos Voulgaris</copyright>
+        <lastBuildDate>Thu, 04 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/system-design/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How Modern Social Networks Scale Their Feeds</title>
+        <link>//localhost:1313/how-modern-social-networks-scale-their-feeds/</link>
+        <pubDate>Thu, 04 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/how-modern-social-networks-scale-their-feeds/</guid>
+        <description>&lt;img src="//localhost:1313/img/posts/scale_social_network_feeds.png" alt="Featured image of post How Modern Social Networks Scale Their Feeds" /&gt;&lt;p&gt;Serving a user’s timeline sounds like a simple problem: read some data and return it. But as a system grows, the constraints change. How do we design a feed that supports millions of users with low latency? How do we handle celebrity users with tens of millions of followers? And what would Instagram, TikTok, or X look like if they hadn’t solved these challenges?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This post isn’t an attempt to reverse-engineer any specific platform. Instead, it’s an exploration of well-known architectural patterns used by systems that resemble modern social networks.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;the-scenario-requirements-of-a-modern-feed-system&#34;&gt;The Scenario: Requirements of a Modern Feed System
+&lt;/h2&gt;&lt;p&gt;First, let’s understand what we’re trying to build. When designing a system, we generally think in terms of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Functional requirements:&lt;/strong&gt; the core features of the system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-Functional requirements:&lt;/strong&gt; the qualities and constraints of the system (e.g. security, performance, reliability)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a social media platform, a subset of the requirements might look like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Functional requirements:
+&lt;ul&gt;
+&lt;li&gt;users should be able to create posts&lt;/li&gt;
+&lt;li&gt;users should be able to see a timeline of posts from users that they follow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Non-Functional requirements:
+&lt;ul&gt;
+&lt;li&gt;the system should scale to hundreds of millions of daily active users&lt;/li&gt;
+&lt;li&gt;the system should have low latency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We’re going to focus on designing the second functional requirement (serving a user’s feed) while &lt;strong&gt;respecting the non-functional ones&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;naive-approach-fanout-on-read&#34;&gt;Naive Approach: Fanout-on-Read
+&lt;/h2&gt;&lt;p&gt;The simplest solution is to build a user’s feed (timeline of posts from users that they follow) at the moment they request it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;retrieve the list of users they follow&lt;/li&gt;
+&lt;li&gt;fetch posts from each of those users&lt;/li&gt;
+&lt;li&gt;merge and sort the posts in reverse chronological order&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/social_fanout_on_read.png&#34;
+    alt=&#34;A system architecture diagram showing the Fanout-on-Read pattern: an API Gateway requests a feed from a Feed service, which queries a User service for following relationships and a Post CRUD service for posts, pulling data from user and post databases.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;Fanout-on-Read: the feed service fetches posts from followed users on demand, merging them at request time.&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This pattern is known as &lt;strong&gt;Fanout-on-Read&lt;/strong&gt;. The key idea is that the system assembles data dynamically every time the user loads their feed.&lt;/p&gt;
+&lt;p&gt;This approach meets the functional requirement in a &lt;strong&gt;clear and easy-to-reason-about&lt;/strong&gt; way. &lt;strong&gt;Writes are fast&lt;/strong&gt; because they involve only a single operation, there’s no data duplication, and the system scales to a reasonably large user base.&lt;/p&gt;
+&lt;p&gt;However, it comes with inherent disadvantages that conflict with our non-functional requirements, especially low latency. Reads require multiple queries, and response times increase as the number of followed users grows. Also, celebrity users, who are followed by millions, cause huge data scans.&lt;/p&gt;
+&lt;p&gt;So, if we want to satisfy the low-latency requirement, we need to come up with a more sophisticated solution.&lt;/p&gt;
+&lt;h2 id=&#34;scalable-approach-fanout-on-write&#34;&gt;Scalable Approach: Fanout-on-Write
+&lt;/h2&gt;&lt;p&gt;Instead of constructing a user&amp;rsquo;s feed when requested, we can work proactively, pre-calculating feeds when users create posts. Then, read becomes trivial, as it consists of simply fetching a prepared feed. This follows the Fanout-on-Write pattern and it works as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;when a user creates a post, a message is published to a queue&lt;/li&gt;
+&lt;li&gt;a service consumes the message&lt;/li&gt;
+&lt;li&gt;it fetches the author&amp;rsquo;s followers&lt;/li&gt;
+&lt;li&gt;it updates the followers&amp;rsquo; feeds and stores them in a feed cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/social_fanout_on_write.png&#34;
+    alt=&#34;A system architecture diagram showing the Fanout-on-Write pattern: when a post is created, the Post CRUD service publishes a message to a queue, a Feed Fanout service consumes it, fetches followers from the User service, and updates each follower’s feed in the Feed Cache.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;Fanout-on-Write: posts trigger asynchronous fanout through a message queue, updating follower feeds proactively.&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;When users request their feed, the system simply fetches it from the cache.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/social_read_cached_feed.png&#34;
+    alt=&#34;A simplified architecture diagram illustrating cached feed reads: the API Gateway calls the Feed service, which fetches a prepared feed from the Feed Cache instead of recomputing it.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;Reading a precomputed feed: the Feed service retrieves a user’s feed directly from the Feed Cache for low-latency reads.&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This makes &lt;strong&gt;reads extremely fast&lt;/strong&gt; and &lt;strong&gt;latency predictable&lt;/strong&gt;. The number of people a user follows no longer determines how expensive a read is. &lt;strong&gt;Repeated refreshes don’t trigger recalculations&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The trade-off is slower writes. A single write could result in thousands or even millions or feeds getting proactively updated. Also, storage increases, as multiple copies of the same post are stored in many different cached feeds. Lastly, the system becomes eventually consistent. It is perfectly possible that a user might get a feed which doesn&amp;rsquo;t include a post created moments ago, as the Fanout-on-Write process works asynchronously. However, for a social media platform, this trade-off is often acceptable (we couldn&amp;rsquo;t apply a similar solution to a stock trading system).&lt;/p&gt;
+&lt;p&gt;Overall, this design prioritizes read speed, satisfying the low-latency requirement. But it introduces a new challenge: celebrity users.&lt;/p&gt;
+&lt;h2 id=&#34;special-case-celebrityhigh-fanout-users&#34;&gt;Special Case: Celebrity/High-Fanout Users
+&lt;/h2&gt;&lt;p&gt;A single post from a user with 100 million followers could trigger 100 million fanout writes. This can overwhelm the system and dramatically increase write latency.&lt;/p&gt;
+&lt;p&gt;A hybrid approach works well for these cases. By using a configurable threshold to distinguish “normal” from “celebrity” users, we can:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use Fanout-on-Write for normal users&lt;/li&gt;
+&lt;li&gt;use Fanout-on-Read for celebrity users&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a celebrity user creates a post, this doesn&amp;rsquo;t trigger the Fanout-on-Write flow. Then, when a user requests their feed, the system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fetches the precomputed feed from the cache&lt;/li&gt;
+&lt;li&gt;fetches posts from celebrity users using Fanout-on-Read approach&lt;/li&gt;
+&lt;li&gt;merges and sorts the posts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;//localhost:1313/img/posts/social_read_feed_hybrid.png&#34;
+    alt=&#34;An architecture diagram showing the hybrid feed generation approach: the system combines cached feeds for normal users with on-demand fetching of posts from high-fanout celebrity accounts, merging both into the final timeline.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;Hybrid fanout strategy: posts from normal users are received from Fanout-on-Write updates, while celebrity posts are fetched via Fanout-on-Read to avoid high fanout spikes&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This avoids enormous fanouts when celebrity users create posts, while still giving fast reads for the majority of users. It also reduces spike risks and avoids saturating queues. Further optimizations, such as caching celebrity posts, can make this even more efficient.&lt;/p&gt;
+&lt;p&gt;This strategy relies on the assumption that high-fanout posts are rare compared to posts from typical users, which tends to hold true.&lt;/p&gt;
+&lt;h2 id=&#34;beyond-social-media-where-else-is-this-used&#34;&gt;Beyond Social Media: Where Else Is This Used?
+&lt;/h2&gt;&lt;p&gt;Fanout-on-Write is a powerful pattern used far beyond social feeds. Examples include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;E-commerce: distributing product updates to denormalized catalogs&lt;/li&gt;
+&lt;li&gt;Notifications systems: pushing notifications to millions of subscribers&lt;/li&gt;
+&lt;li&gt;Content recommendation systems: powering &amp;ldquo;For you&amp;rdquo; feeds on news, video, or shopping platforms&lt;/li&gt;
+&lt;li&gt;Learning platforms: updating dashboards for instructors, admins, and students&lt;/li&gt;
+&lt;li&gt;Gaming leaderboards: pushing updated stats into multiple leaderboard shards&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of these involve precomputing and pushing data into ready-to-read stores.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
+&lt;/h2&gt;&lt;p&gt;Solving the same problem under different non-functional requirements can lead to fundamentally different architectures. Constructing a feed is trivial when scale is small or latency is unimportant. But when millions of users and sub-second response times enter the picture, the problem changes entirely.&lt;/p&gt;
+&lt;p&gt;Simple solutions aren’t bad, so long as they meet the requirements. Starting small and evolving the architecture as scale grows is often the most pragmatic approach. Over-engineering to satisfy hypothetical future needs usually isn’t.&lt;/p&gt;
+&lt;p&gt;Good architecture is ultimately about trade-offs, not silver bullets.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
