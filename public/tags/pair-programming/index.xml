@@ -20,7 +20,8 @@
 &lt;/h2&gt;&lt;p&gt;Pair programming is an extreme programming (XP) practice. According to Kent Beck&amp;rsquo;s book, &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;em&gt;&amp;ldquo;Extreme Programming Explained: Embrace Change&amp;rdquo;&lt;/em&gt;&lt;/a&gt; it is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the &lt;em&gt;driver&lt;/em&gt; and the &lt;em&gt;navigator&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;driver&lt;/strong&gt; is writing the code, focusing on the task in hand and in the micro view of the code.&lt;/li&gt;
@@ -35,7 +36,8 @@
 &lt;p&gt;Apart from roles, make sure to also &lt;em&gt;switch pairs frequently&lt;/em&gt;. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&amp;rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a &lt;em&gt;soft swap&lt;/em&gt; and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a &lt;em&gt;hard swap&lt;/em&gt;, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.&lt;/p&gt;
 &lt;p&gt;Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice &lt;em&gt;watching&lt;/em&gt; the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;why-bother&#34;&gt;Why bother
 &lt;/h2&gt;&lt;p&gt;Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&amp;rsquo;s talk a little bit about the benefits of pair programming.&lt;/p&gt;
 &lt;h3 id=&#34;the-sum-is-greater-than-the-parts&#34;&gt;The sum is greater than the parts

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/limiting-work-in-progress-in-scrum/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Limiting work in progress in scrum">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Limiting work in progress in scrum">
 <meta property='og:description' content="Experimenting with Kanban's WIP limits to elevate a scrum team">
 <meta property='og:url' content='//localhost:1313/limiting-work-in-progress-in-scrum/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -669,7 +669,8 @@
 <h2 id="what-is-a-wip-limit">What is a WIP limit
 </h2><p>Limiting work-in-progress is a very simple technique.</p>
 <blockquote>
-<p>A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.</p></blockquote>
+<p>A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.</p>
+</blockquote>
 <p>So, if a team has a WIP limit of two stories, it can only work on two stories at the same time at any given moment. In order to start working on a third one, one of the two previously <em>in-progress</em> has to be <em>done</em>.</p>
 <p>It originates from Kanban and there it applies to tasks on the team&rsquo;s Kanban board. In <em>Scrum</em>, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of <em>in-progress</em> may be adjusted according to the team&rsquo;s needs. For instance, a story can be considered <em>in-progress</em> until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.</p>
 <h3 id="can-this-be-applied-to-scrum">Can this be applied to scrum?
@@ -681,14 +682,17 @@
 <h3 id="reduced-lead-time">Reduced lead time
 </h3><p><em>Lead time</em> is a metric, expressing the time elapsed between starting and completing an item of work.</p>
 <blockquote>
-<p>A <em>Scrum</em> team&rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being <em>done</em>.</p></blockquote>
+<p>A <em>Scrum</em> team&rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being <em>done</em>.</p>
+</blockquote>
 <p>Let&rsquo;s study again the hypothetical example of the <em>Scrum</em> team of five software engineers in the middle of the sprint with five stories in-progress. Let&rsquo;s also assume that the team manages to complete all five stories at the very last day of the sprint and that these were all the stories in this sprint. What is the lead time of the team?</p>
 <p>Each of the five stories took nine days (the working days of a two-week sprint excluding the <em>Scrum</em> events day) to complete, so the team&rsquo;s average lead time is</p>
 <blockquote>
-<p>(5 * 9) / 5 = 9 days</p></blockquote>
+<p>(5 * 9) / 5 = 9 days</p>
+</blockquote>
 <p>Let&rsquo;s assume that the team had applied a WIP limit of two. This means that no more than two stories could be worked on parallel. The first two stories could perhaps be <em>done</em> in the third and fourth day respectively. The next two stories could be completed in the seventh and eight days respectively and the last story could be completed on the very last day of the sprint. Let&rsquo;s calculate again the team&rsquo;s average lead time.</p>
 <blockquote>
-<p>(3 + 4 + 7 + 8 + 9) 5 = 5.4 days</p></blockquote>
+<p>(3 + 4 + 7 + 8 + 9) 5 = 5.4 days</p>
+</blockquote>
 <p>These numbers are fictitious of course, but they are meant to illustrate the point. As a matter of fact, feel free to fiddle with the numbers and inspect the results. The result will always be less than nine. I feel that plugging some reasonable numbers in the formula will result in an average lead time <em>significantly below</em> 9, like 5.4.</p>
 <p>This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.</p>
 <h3 id="teamwork">Teamwork
@@ -875,7 +879,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

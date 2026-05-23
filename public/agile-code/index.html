@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/agile-code/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Agile code">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Agile code">
 <meta property='og:description' content="Understanding the essence of agile software engineering, past the superficial process changes">
 <meta property='og:url' content='//localhost:1313/agile-code/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -650,10 +650,12 @@
 <p>Before <em>agile</em>, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &ldquo;lock&rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?</p>
 <p>In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the <em>Agile</em> Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.</p>
 <blockquote>
-<p>The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.</p></blockquote>
+<p>The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.</p>
+</blockquote>
 <p>In my opinion, the key difference between the two approaches lies in the fact that <em>agile</em> detaches the software from the illusion of the end state. There is no end state. There will never be one.</p>
 <blockquote>
-<p>As long as the business is live, the software lives and evolves with it.</p></blockquote>
+<p>As long as the business is live, the software lives and evolves with it.</p>
+</blockquote>
 <h2 id="making-a-company-agile">Making a company Agile
 </h2><p>Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become <em>agile</em> needs to go through some extra filtering. Knowing <em>why</em> should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these <em>why</em> and <em>what</em>.</p>
 <p>Usually, companies that haven&rsquo;t got into the trouble of clarifying these <em>why</em> and <em>what</em> prior to embarking on the transformation, find themselves hiring an <em>agile</em> coach who is supposed to magically move his wand, speak the right words and&hellip; boom! We&rsquo;re <em>agile</em> now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this <em>agile</em> transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?</p>
@@ -670,14 +672,16 @@
 <p>TDD is a workflow that emphasizes on making us write <strong>the best code that we can write</strong> (by constantly asking <em>&ldquo;can you make it better?&rdquo;</em>&quot;). If practiced right, it encourages <strong>better design</strong> (more cohesive and loosely coupled components), provides <strong>documentation</strong> (via executable examples, a.k.a. tests) and, when done with a feature, the <strong>automated regression test suite</strong> comes for free.</p>
 <blockquote>
 <p>As if the above mentioned are not sufficient, I could never stress enough the importance of <a class="link" href="https://en.wikipedia.org/wiki/Shift_left_testing"  target="_blank" rel="noopener"
-    >left shift</a></p></blockquote>
+    >left shift</a></p>
+</blockquote>
 <h3 id="continuous-integration">Continuous integration
 </h3><p>How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? <em>We should always be working on the latest version of  the code</em>. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more <em>professional</em> way.</p>
 <h3 id="code-review">Code review
 </h3><p>At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&rsquo;s benefit.</p>
 <p>Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, <strong>review in essence!</strong></p>
 <blockquote>
-<p>Challenge the code design, propose alternatives and work the trade-offs that they present themselves.</p></blockquote>
+<p>Challenge the code design, propose alternatives and work the trade-offs that they present themselves.</p>
+</blockquote>
 <p>Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.</p>
 <h3 id="refactoring">Refactoring
 </h3><p>Martin Fowler, in his wonderful book <a class="link" href="https://www.goodreads.com/book/show/44936.Refactoring"  target="_blank" rel="noopener"
@@ -742,7 +746,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

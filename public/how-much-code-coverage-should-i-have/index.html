@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/how-much-code-coverage-should-i-have/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="How much code coverage should I have?">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="How much code coverage should I have?">
 <meta property='og:description' content="Avoiding formalistic pitfalls and producing value from testing">
 <meta property='og:url' content='//localhost:1313/how-much-code-coverage-should-i-have/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -648,7 +648,8 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>How many tests should we write for this function? Which tests should these be? It&rsquo;s fairly obvious that a single test would result in a 100% code coverage for this one-liner. Is this sufficient? Now let&rsquo;s take a step back and reflect for a moment.</p>
 <blockquote>
-<p>How many states can this piece of code be in?</p></blockquote>
+<p>How many states can this piece of code be in?</p>
+</blockquote>
 <p>A state would be a = 1 and b = 1. A second state would be a = 1 and b = 2 and so forth. Therefore, the combinations of all the possible values of variables <code>a</code> (the numerator) and <code>b</code> (the denominator) gives us the answer. Assuming that <code>a</code> and <code>b</code> are both java integers, each can take a bit over 4 billion values. Therefore, the states that this piece of code can be in are 4.000.000.000 squared!</p>
 <p>Hopefully, by now, my point is illustrated. <em>It&rsquo;s very easy to reach 100% code coverage and yet, we have tested only 1 out of 4.000.000.000 squared states</em>.</p>
 <h2 id="meaningful-testing">Meaningful testing
@@ -662,14 +663,16 @@
 <h2 id="follow-the-trend">Follow the trend
 </h2><p>Coming back to the situations where organizations enforce specific code coverage numbers - I hope that by now the fundamental problems that lie with this approach have become apparent - what would a sensible policy be? We&rsquo;re not actually suggesting that code coverage is totally useless, right? Of course not. On the contrary, it can be immensely valuable.</p>
 <blockquote>
-<p>How should it be used then?</p></blockquote>
+<p>How should it be used then?</p>
+</blockquote>
 <p>This constitutes ground for experimentation and I would very much like to hear anyone&rsquo;s views on the matter. For now, let me describe an approach that I find useful. Start monitoring the code coverage and create a trend line metric for it. Make sure that, before merging a merge request, the line does not drop. If it does so, kindly ask the author to amend this, before merging the code. This can even constitute a condition in the team&rsquo;s DoD. I believe that a lot of CI tools will provide plug-ins that help implement this policy (personally, I have used Jenkins and JaCoCo).</p>
 <h2 id="untested-code">Untested code
 </h2><p>Instead of missing the point and start chasing after numbers just for the sake of it, use code coverage as what it really is: a <em>tool</em>. Make sure you go thoroughly over the report (tools like JaCoCo produce an extremely detailed report) on a regular basis. This can point out quite a few interesting things, such as untested parts of the code. Identify them and act on them. Perhaps a pattern will become visible. Find the problem and address it.</p>
 <h2 id="quality-testing">Quality testing
 </h2><p>Getting fixated on the code coverage number will harm both the developers and the project they&rsquo;re working on in the long run. Instead of it, try to create a culture that focuses on quality testing. Make sure that the right tests are being written, the engineers start to gradually <strong>trust</strong> their test suite, enabling them to refactor the code as often as they find useful and bugs that slip into production become less and less. At all times, remember that:</p>
 <blockquote>
-<p>Low code coverage means that there are problems. High code coverage means nothing at all on its own.</p></blockquote>
+<p>Low code coverage means that there are problems. High code coverage means nothing at all on its own.</p>
+</blockquote>
 <h2 id="conclusion">Conclusion
 </h2><p>Code coverage is a great <strong>tool</strong>, but use it wisely. Stay clear from useless, arbitrary rules and constraints. Oppose yourself to them, no matter who imposed them, with grounds. Raise the coverage as high as possible, but as a result of responsible, meaningful, quality testing and think hard on any poorly tested (or even untested) areas. Focus on the ability to <strong>refactor using tests as a safety net</strong> and <strong>catching bugs</strong> as early as possible. As always, forget about the rules. Stick to the essence.</p>
 
@@ -772,7 +775,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

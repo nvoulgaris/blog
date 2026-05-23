@@ -399,7 +399,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;if-you-cant-explain-it-dont-ship-it&#34;&gt;If you can’t explain it, don’t ship it
 &lt;/h2&gt;&lt;p&gt;In my opinion, there is a red line that should &lt;strong&gt;never&lt;/strong&gt; be crossed.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Never ship code that you cannot understand!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Never ship code that you cannot understand!&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;It doesn&amp;rsquo;t matter whether the code came from AI, Stack Overflow, or a colleague. It doesn&amp;rsquo;t matter if the tests pass. It doesn&amp;rsquo;t matter if the tool has the best reputation. If you can&amp;rsquo;t explain what it does, why it works, and how it fits into the broader system, it shouldn&amp;rsquo;t be checked in.&lt;/p&gt;
 &lt;p&gt;AI tools can generate code that works, or at least appears to. But correctness is not the same as clarity. If you can&amp;rsquo;t walk someone through the logic or reason for its behavior under edge conditions, you&amp;rsquo;re taking a blind risk.&lt;/p&gt;
 &lt;p&gt;This isn&amp;rsquo;t just about debugging or maintenance. It&amp;rsquo;s about ownership. Once the code is merged, it&amp;rsquo;s your responsibility. If it breaks or causes problems later, you can’t blame the tool.&lt;/p&gt;
@@ -879,7 +880,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;another-way&#34;&gt;Another way
 &lt;/h2&gt;&lt;p&gt;The typical format most teams that I know of use is the &amp;ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&amp;rdquo;. I usually call this the &amp;ldquo;per-person&amp;rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;overview&#34;&gt;Overview
 &lt;/h3&gt;&lt;p&gt;An alternative to the &amp;ldquo;per-person&amp;rdquo; format would be the &amp;ldquo;per-PBI&amp;rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&amp;ldquo;Done&amp;rdquo; swimlane).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s use an example to understand it better. Assuming that the team&amp;rsquo;s sprint backlog is the following:&lt;/p&gt;
@@ -940,7 +942,8 @@ Example: Provide a before/after code snippet.
 &lt;h3 id=&#34;baby-steps&#34;&gt;Baby steps
 &lt;/h3&gt;&lt;p&gt;If there was a single lesson to be learned from practising TCR it would be the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The only way to go fast, it to go well&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The only way to go fast, it to go well&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This is a quote from Uncle Bob, which has shaped my way of thinking around writing code like few others.&lt;/p&gt;
 &lt;p&gt;The core idea behind TCR is moving in small steps. Moving in baby steps. Tiny steps. Small enough to be sure that they keep the tests passing. Small enough not to risk losing a bunch of code if a test fails. The philosophy is &lt;em&gt;&amp;ldquo;what is the next, small, steady step that I can take towards my goal?&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Moving forwards in small, seemingly insignificant steps can be surprisingly more beneficial than going back and forth.&lt;/p&gt;
@@ -983,7 +986,7 @@ Example: Provide a before/after code snippet.
 &lt;li&gt;a &lt;code&gt;watch.sh&lt;/code&gt; script that observes the source code, detects changes on it and triggers the TCR script.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; true; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  inotifywait -r -e modify src
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ./tcr.sh
@@ -992,7 +995,7 @@ Example: Provide a before/after code snippet.
 &lt;li&gt;the &lt;code&gt;tcr.sh&lt;/code&gt; script, that holds the base logic of TCR:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;scripts/test.sh&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;scripts/commit.sh&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;scripts/revert.sh&amp;#34;&lt;/span&gt;
@@ -1002,7 +1005,7 @@ Example: Provide a before/after code snippet.
 &lt;li&gt;the &lt;code&gt;test.sh&lt;/code&gt; script, which executes the unit tests&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; test&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Testing changes...&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ./gradlew test
@@ -1011,7 +1014,7 @@ Example: Provide a before/after code snippet.
 &lt;li&gt;the &lt;code&gt;commit.sh&lt;/code&gt; script&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; commit&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Committing and pushing changes&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git add . &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;WIP&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push
@@ -1020,7 +1023,7 @@ Example: Provide a before/after code snippet.
 &lt;li&gt;and the &lt;code&gt;revert.sh&lt;/code&gt; script&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; revert&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Reverting changes&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git checkout .
@@ -1049,7 +1052,8 @@ Example: Provide a before/after code snippet.
 &lt;p&gt;Now, I repeat that this is a hypothetical scenario, but to the extent of my knowledge, a very realistic and typical one. This &lt;em&gt;&amp;ldquo;transformation&amp;rdquo;&lt;/em&gt; is doomed to fail. It is precisely this kind of &lt;em&gt;&amp;ldquo;transformations&amp;rdquo;&lt;/em&gt; that have caused a lot of people to lose faith in the Agile way of working. This approach is fundamentally flawed. It completely misses the essence. It defeats the purpose. Situations like these are commonly described by the term &lt;em&gt;Agile theater&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s examine what&amp;rsquo;s wrong with this approach. The core idea of the Agile mindset is that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;the people who need the software (stakeholders/users) collaborate closely with the people who make the software and they are able to adjust the course as often as needed&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;the people who need the software (stakeholders/users) collaborate closely with the people who make the software and they are able to adjust the course as often as needed&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;We will discuss how this may be achieved later on, but first, let&amp;rsquo;s understand why the above-mentioned changes do not serve this goal.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1094,7 +1098,8 @@ Example: Provide a before/after code snippet.
 &lt;p&gt;Failing to throw them away and adjust the process in a way that suits our needs and work defeats the purpose. Frameworks are there to put us on the right track and not be blindly followed to the letter, in a ritualistic way. &lt;em&gt;Applying them dogmatically only implies a cargo cult mentality&lt;/em&gt;. Doing things without understanding why and expecting certain results to just happen is precisely the definition of &lt;em&gt;cargo cult&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;The Agile mindset is centered around autonomous teams, working in a self-organized manner. What are the chances that two autonomous, self-organized teams will need and use the exact same process to the letter?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If a process is the same for everyone, it is not Agile&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;If a process is the same for everyone, it is not Agile&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Dogmatically following a framework (e.g. Scrum) to the letter results in everyone doing exactly the same.&lt;/p&gt;
 &lt;p&gt;Don&amp;rsquo;t get me wrong. The process that works best for you may be ridiculously close to Scrum (or Kanban etc). I only suggest that these frameworks need not be followed blindly to the letter.&lt;/p&gt;
 &lt;h2 id=&#34;never-stop-learning&#34;&gt;Never stop learning
@@ -1128,7 +1133,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;what-is-a-wip-limit&#34;&gt;What is a WIP limit
 &lt;/h2&gt;&lt;p&gt;Limiting work-in-progress is a very simple technique.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, if a team has a WIP limit of two stories, it can only work on two stories at the same time at any given moment. In order to start working on a third one, one of the two previously &lt;em&gt;in-progress&lt;/em&gt; has to be &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;It originates from Kanban and there it applies to tasks on the team&amp;rsquo;s Kanban board. In &lt;em&gt;Scrum&lt;/em&gt;, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of &lt;em&gt;in-progress&lt;/em&gt; may be adjusted according to the team&amp;rsquo;s needs. For instance, a story can be considered &lt;em&gt;in-progress&lt;/em&gt; until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.&lt;/p&gt;
 &lt;h3 id=&#34;can-this-be-applied-to-scrum&#34;&gt;Can this be applied to scrum?
@@ -1140,14 +1146,17 @@ Example: Provide a before/after code snippet.
 &lt;h3 id=&#34;reduced-lead-time&#34;&gt;Reduced lead time
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;Lead time&lt;/em&gt; is a metric, expressing the time elapsed between starting and completing an item of work.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s study again the hypothetical example of the &lt;em&gt;Scrum&lt;/em&gt; team of five software engineers in the middle of the sprint with five stories in-progress. Let&amp;rsquo;s also assume that the team manages to complete all five stories at the very last day of the sprint and that these were all the stories in this sprint. What is the lead time of the team?&lt;/p&gt;
 &lt;p&gt;Each of the five stories took nine days (the working days of a two-week sprint excluding the &lt;em&gt;Scrum&lt;/em&gt; events day) to complete, so the team&amp;rsquo;s average lead time is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s assume that the team had applied a WIP limit of two. This means that no more than two stories could be worked on parallel. The first two stories could perhaps be &lt;em&gt;done&lt;/em&gt; in the third and fourth day respectively. The next two stories could be completed in the seventh and eight days respectively and the last story could be completed on the very last day of the sprint. Let&amp;rsquo;s calculate again the team&amp;rsquo;s average lead time.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;These numbers are fictitious of course, but they are meant to illustrate the point. As a matter of fact, feel free to fiddle with the numbers and inspect the results. The result will always be less than nine. I feel that plugging some reasonable numbers in the formula will result in an average lead time &lt;em&gt;significantly below&lt;/em&gt; 9, like 5.4.&lt;/p&gt;
 &lt;p&gt;This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.&lt;/p&gt;
 &lt;h3 id=&#34;teamwork&#34;&gt;Teamwork
@@ -1194,7 +1203,8 @@ Example: Provide a before/after code snippet.
 &lt;/h2&gt;&lt;p&gt;The primary goal of a scrum master remains the same whether the retrospective is taking place remotely or colocated. It is to make sure that &lt;strong&gt;all participants engage in the activity&lt;/strong&gt;. This is a precondition. I cannot imagine a successful session that fails to meet this. When I drive retrospectives, this is the primary reason for which I use the &lt;em&gt;&amp;ldquo;set the stage&amp;rdquo;&lt;/em&gt; step.&lt;/p&gt;
 &lt;p&gt;We will discuss a few extra points on this topic further below, on the &lt;em&gt;facilitation&lt;/em&gt; part, but the reason that I am mentioning it here is that being remote imposes a few extra difficulties. So, before even starting the session, I would propose to &lt;em&gt;focus on communication&lt;/em&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Without communication, there is no engagement and without engagement, there is no retrospective.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Without communication, there is no engagement and without engagement, there is no retrospective.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Therefore I would propose to spend some time both during the preparation of the session and at the beginning of it to make sure that &lt;em&gt;people can be seen, heard and understood&lt;/em&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;use-the-camera&#34;&gt;Use the camera
 &lt;/h3&gt;&lt;p&gt;Using the camera is a great tip for remotely working teams. I find it particularly important during the retrospective. It feels very different conversing with just a voice than with an individual who is located somewhere else. Context and a great deal of expressivity derives from our body language. A lot of our reactions are expressed via it, using facial expressions or hand gestures, without verbal communication. Take a moment to think of how much volume of information is missed when listening to someone without seeing him.&lt;/p&gt;
@@ -1249,7 +1259,8 @@ Example: Provide a before/after code snippet.
 &lt;/h2&gt;&lt;p&gt;Pair programming is an extreme programming (XP) practice. According to Kent Beck&amp;rsquo;s book, &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;em&gt;&amp;ldquo;Extreme Programming Explained: Embrace Change&amp;rdquo;&lt;/em&gt;&lt;/a&gt; it is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the &lt;em&gt;driver&lt;/em&gt; and the &lt;em&gt;navigator&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;driver&lt;/strong&gt; is writing the code, focusing on the task in hand and in the micro view of the code.&lt;/li&gt;
@@ -1264,7 +1275,8 @@ Example: Provide a before/after code snippet.
 &lt;p&gt;Apart from roles, make sure to also &lt;em&gt;switch pairs frequently&lt;/em&gt;. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&amp;rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a &lt;em&gt;soft swap&lt;/em&gt; and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a &lt;em&gt;hard swap&lt;/em&gt;, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.&lt;/p&gt;
 &lt;p&gt;Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice &lt;em&gt;watching&lt;/em&gt; the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;why-bother&#34;&gt;Why bother
 &lt;/h2&gt;&lt;p&gt;Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&amp;rsquo;s talk a little bit about the benefits of pair programming.&lt;/p&gt;
 &lt;h3 id=&#34;the-sum-is-greater-than-the-parts&#34;&gt;The sum is greater than the parts
@@ -1502,7 +1514,8 @@ Example: Provide a before/after code snippet.
     &gt;Clean Architecture&lt;/a&gt;). As formulated by Bertrand Meyer in &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;amp;from_search=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Object Oriented Software Construction&lt;/a&gt;, it states that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Contradictory as it may sound, there&amp;rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should &lt;em&gt;add&lt;/em&gt; some code instead of &lt;em&gt;modifying&lt;/em&gt; the existing code.&lt;/p&gt;
 &lt;p&gt;Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&amp;rsquo;s apply it to the input validation problem, that we analyzed earlier.&lt;/p&gt;
 &lt;h2 id=&#34;ocp-compliant-validation&#34;&gt;OCP compliant validation
@@ -1667,7 +1680,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;what-is-it&#34;&gt;What is it
 &lt;/h2&gt;&lt;p&gt;The term technical debt refers to all the things in a code base that could (and should) be improved, but do not directly affect the behavior of the system. It&amp;rsquo;s the things that the software engineers know should be done in a different, better way, but either chose to defer for the future or realized later on.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Technical debt is code written today that requires more effort in the future&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Technical debt is code written today that requires more effort in the future&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This resembles a lot a bank loan, in which an individual gets money today that require more money (initial amount plus interest) in the future to pay off, essentially creating debt.&lt;/p&gt;
 &lt;p&gt;The term &lt;em&gt;technical debt&lt;/em&gt; is a metaphor, referring to quick win software solutions that will slow development down in the future in order to pay the debt off. Also, since typically future amendments require more time than it would be originally required to provide a proper solution, the debt is accumulated and paid with interest. Not paying the debt usually results in loosing the product, as the code base eventually becomes either &lt;em&gt;unmaintainable&lt;/em&gt; or &lt;em&gt;too expensive&lt;/em&gt; to maintain.&lt;/p&gt;
 &lt;h2 id=&#34;where-does-it-come-from&#34;&gt;Where does it come from
@@ -1675,7 +1689,8 @@ Example: Provide a before/after code snippet.
 &lt;h3 id=&#34;unprofessional-technical-debt&#34;&gt;Unprofessional technical debt
 &lt;/h3&gt;&lt;p&gt;An easy to spot (and, most importantly, prevent) way of creating technical debt is simply not taking the time to do our job in the right way. Every time we opt for a &lt;em&gt;hack&lt;/em&gt;, a &lt;em&gt;quick-and-dirty&lt;/em&gt; solution, a &lt;em&gt;workaround&lt;/em&gt;, every time we &lt;em&gt;skip some unit tests&lt;/em&gt; or &lt;em&gt;do not refactor&lt;/em&gt; the code, we create debt. Every time we are sloppy with our work because someone says that &lt;em&gt;&amp;ldquo;this is urgent&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;ldquo;needs to be done by today&amp;rdquo;&lt;/em&gt; and we succumb to this pressure, we create future troubles for our team and our organization.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Every time we cut corners, we create technical debt&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Every time we cut corners, we create technical debt&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I am trying to put as much emphasis as I can to it and be harsh. Of course, coming up with a way to improve code or identify weaknesses is not only natural, but welcomed, especially as we become more mature. However, &lt;em&gt;wittingly&lt;/em&gt; applying discounts - therefore creating this type of technical debt -  is, in my opinion, absolutely &lt;strong&gt;unprofessional&lt;/strong&gt; and &lt;strong&gt;irresponsible&lt;/strong&gt;. Deliberately undermining our code quality to reduce time to market is an approach that will come back to bite us in the future. Period.&lt;/p&gt;
 &lt;h3 id=&#34;outdated-design-technical-debt&#34;&gt;Outdated design technical debt
 &lt;/h3&gt;&lt;p&gt;Sometimes we start off with simple and robust design and architecture for the initial requirements of the system, but as time goes by and increments are added, we fail to adjust the design and architecture in a proportional way. This phenomenon is more likely to occur when new developers join the team and do not fully understand the original design.&lt;/p&gt;
@@ -1685,7 +1700,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;there-will-always-be-technical-debt&#34;&gt;There will always be technical debt
 &lt;/h2&gt;&lt;p&gt;Of course, trying to always be technical debt free is simply &lt;em&gt;delusional&lt;/em&gt;. Databases deprecate their old driver versions, systems grow enough to require that architecture should be revised and no matter how exceptionally we write a piece of code, as we grow more experienced and knowledgeable, we will always identify weakness and better ways to write it.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, technical debt will present itself no matter how professional and diligent we are.&lt;/p&gt;
 &lt;h2 id=&#34;and-its-ok&#34;&gt;And it&amp;rsquo;s OK
 &lt;/h2&gt;&lt;p&gt;This is a fact and we have to accept it. After all, we should always bear in mind that the iterative nature of shipping software is built on the foundation of feedback. We solve the problem, we deliver the solution, get feedback on it and then try to improve it. Trying to ship a &lt;em&gt;perfect&lt;/em&gt; product will result in a tail chase.&lt;/p&gt;
@@ -1735,7 +1751,8 @@ Example: Provide a before/after code snippet.
 &lt;/h2&gt;&lt;p&gt;The gist behind the notion of encapsulation is that the &lt;em&gt;objects should not reveal their internals&lt;/em&gt; (implementation details) &lt;em&gt;to the outside world&lt;/em&gt; (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of &lt;em&gt;how&lt;/em&gt; they achieve the tasks that are &lt;em&gt;told&lt;/em&gt; to achieve it&amp;rsquo;s &lt;em&gt;their&lt;/em&gt; business and no one else&amp;rsquo;s.&lt;/p&gt;
 &lt;p&gt;In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&amp;rsquo;s state in order to perform the tasks that it&amp;rsquo;s told to perform.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;the-problem-with-getters-and-setters&#34;&gt;The problem with getters and setters
 &lt;/h2&gt;&lt;p&gt;This is exactly where &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; enter the picture. Conventional wisdom has it that since the object&amp;rsquo;s properties are to remain &amp;ldquo;hidden&amp;rdquo;, they should be wrapped by a &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt; each, enabling the external world to &amp;ldquo;access&amp;rdquo; them, without learning about the object&amp;rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. &lt;em&gt;Does it make any sense at all?&lt;/em&gt; At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt;? Essentially we are messing with the object&amp;rsquo;s state in either case - which is quite overtly exposed to the public via these methods.&lt;/p&gt;
 &lt;h2 id=&#34;an-example&#34;&gt;An example
@@ -1759,7 +1776,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;tell-dont-ask&#34;&gt;Tell, don&amp;rsquo;t ask
 &lt;/h2&gt;&lt;p&gt;Some of you might have already noticed that these ideas start to sound a lot like the &lt;em&gt;Tell, don&amp;rsquo;t ask&lt;/em&gt; principle (also known as &lt;em&gt;Law of Demeter&lt;/em&gt;). (In case you&amp;rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;a-story-and-a-lesson-learned&#34;&gt;A story and a lesson learned
 &lt;/h2&gt;&lt;p&gt;Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&amp;rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.&lt;/p&gt;
@@ -1787,7 +1805,8 @@ Example: Provide a before/after code snippet.
 &lt;/h2&gt;&lt;p&gt;Before we even begin talking about how to carry out successful retrospectives, let&amp;rsquo;s think for a moment why we have them in the first place. This meeting is a key part of the ever ending &lt;em&gt;inspect and adapt&lt;/em&gt; loop. It&amp;rsquo;s the team&amp;rsquo;s official slot reserved for thinking what we did during the last sprint and how could we improve it.&lt;/p&gt;
 &lt;p&gt;Bear in mind that this is the &lt;em&gt;last resort&lt;/em&gt; for improvement. The proper moment is &lt;em&gt;any&lt;/em&gt; moment. As soon as we know that something could be improved, we should try to improve it right away. When you come across any pain point, don&amp;rsquo;t forget that &lt;strong&gt;the retrospective is now!&lt;/strong&gt; However, this runs the great risk of never prioritizing and never doing it and therefore, the sprint retrospective is there to force us to work on these issues.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The goal of a retrospective is to produce action items&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The goal of a retrospective is to produce action items&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;structure&#34;&gt;Structure
 &lt;/h2&gt;&lt;p&gt;One of the great pitfalls to be avoided is not preparing a retrospective before facilitating it. Structure and preparation are &lt;strong&gt;key&lt;/strong&gt; to the success of the retrospective and there is a reason for it. Team members often get emotional or carried away when engaged in retrospective conversations (they are supposed to after all) and it can be very easy to lose sight of the goal and spend the session in a meaningless way.&lt;/p&gt;
 &lt;p&gt;Always make sure that you know &lt;strong&gt;exactly&lt;/strong&gt; how the session unfolds relative to the schedule. Is it going too slow? Are we spending too much time on this topic? How far behind are we? Can we cover it and in which way? &lt;em&gt;Always make sure that there is enough time to reach to action items.&lt;/em&gt;&lt;/p&gt;
@@ -1821,9 +1840,11 @@ Example: Provide a before/after code snippet.
 &lt;/h2&gt;&lt;p&gt;Perhaps the biggest pitfall for a retrospective is to come up with action items that are not &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/SMART_criteria&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;SMART&lt;/a&gt;. There is a huge difference between &lt;em&gt;action items&lt;/em&gt; and &lt;em&gt;wishful thinking&lt;/em&gt;. For instance, consider the following two outcomes of a team&amp;rsquo;s retrospective:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Improve collective ownership of the code.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Improve collective ownership of the code.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Do you see the difference? For an action item to be meaningful, it has to be:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Specific&lt;/li&gt;
@@ -1860,7 +1881,8 @@ Example: Provide a before/after code snippet.
         <description>&lt;img src="//localhost:1313/img/posts/velocity.jpg" alt="Featured image of post Working the velocity of a scrum team" /&gt;&lt;p&gt;Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, &lt;em&gt;cool&lt;/em&gt; product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.&lt;/p&gt;
 &lt;p&gt;Among a lot of factors that have resulted to this, arguably the king of the problems is how people misunderstand the concept of the &lt;em&gt;velocity&lt;/em&gt; of a scrum team. Scrum Masters and Product Owners treat it as a productivity reporting tool, trying to make the development team &lt;em&gt;commit&lt;/em&gt; (we will discuss this &lt;em&gt;&amp;ldquo;commitment&amp;rdquo;&lt;/em&gt; issue in another post) to as high a number as possible, while the development team, feeling that they are judged by this number, struggle to increase it sprint by sprint. However, this is a &lt;strong&gt;fundamentally flawed&lt;/strong&gt; view.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I wish I could stress this even more. &lt;strong&gt;Velocity is not a productivity reporting tool!&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Since I - once again - started with what velocity &lt;em&gt;is not&lt;/em&gt;, let&amp;rsquo;s proceed in a more conventional way and talk about what velocity actually &lt;em&gt;is&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;inspect-and-adapt&#34;&gt;Inspect and adapt
@@ -1895,13 +1917,16 @@ Example: Provide a before/after code snippet.
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Actual work days&lt;/strong&gt; is produced by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Focus factor&lt;/strong&gt; is a bit more complicated. Basically, the piece of information that we want to take into consideration is the degree in which the team estimations match the actual work done. The reason for using more than one past sprints is that as teams change, as they mature they go through different phases. These affect their focus factor. For instance, as a new team member is integrated with the team, one would expect the focus factor to have an slightly increasing trend. The focus factor for a single sprint is provided by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Finally, the formula producing the estimated velocity for the upcoming sprint is the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;I usually use the average focus factor of the last 3 sprints (x = 3), but feel free to use any number of sprints that works for you&lt;/em&gt;&lt;/p&gt;
@@ -1938,7 +1963,8 @@ Example: Provide a before/after code snippet.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How many tests should we write for this function? Which tests should these be? It&amp;rsquo;s fairly obvious that a single test would result in a 100% code coverage for this one-liner. Is this sufficient? Now let&amp;rsquo;s take a step back and reflect for a moment.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;A state would be a = 1 and b = 1. A second state would be a = 1 and b = 2 and so forth. Therefore, the combinations of all the possible values of variables &lt;code&gt;a&lt;/code&gt; (the numerator) and &lt;code&gt;b&lt;/code&gt; (the denominator) gives us the answer. Assuming that &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are both java integers, each can take a bit over 4 billion values. Therefore, the states that this piece of code can be in are 4.000.000.000 squared!&lt;/p&gt;
 &lt;p&gt;Hopefully, by now, my point is illustrated. &lt;em&gt;It&amp;rsquo;s very easy to reach 100% code coverage and yet, we have tested only 1 out of 4.000.000.000 squared states&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;meaningful-testing&#34;&gt;Meaningful testing
@@ -1952,14 +1978,16 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;follow-the-trend&#34;&gt;Follow the trend
 &lt;/h2&gt;&lt;p&gt;Coming back to the situations where organizations enforce specific code coverage numbers - I hope that by now the fundamental problems that lie with this approach have become apparent - what would a sensible policy be? We&amp;rsquo;re not actually suggesting that code coverage is totally useless, right? Of course not. On the contrary, it can be immensely valuable.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How should it be used then?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How should it be used then?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This constitutes ground for experimentation and I would very much like to hear anyone&amp;rsquo;s views on the matter. For now, let me describe an approach that I find useful. Start monitoring the code coverage and create a trend line metric for it. Make sure that, before merging a merge request, the line does not drop. If it does so, kindly ask the author to amend this, before merging the code. This can even constitute a condition in the team&amp;rsquo;s DoD. I believe that a lot of CI tools will provide plug-ins that help implement this policy (personally, I have used Jenkins and JaCoCo).&lt;/p&gt;
 &lt;h2 id=&#34;untested-code&#34;&gt;Untested code
 &lt;/h2&gt;&lt;p&gt;Instead of missing the point and start chasing after numbers just for the sake of it, use code coverage as what it really is: a &lt;em&gt;tool&lt;/em&gt;. Make sure you go thoroughly over the report (tools like JaCoCo produce an extremely detailed report) on a regular basis. This can point out quite a few interesting things, such as untested parts of the code. Identify them and act on them. Perhaps a pattern will become visible. Find the problem and address it.&lt;/p&gt;
 &lt;h2 id=&#34;quality-testing&#34;&gt;Quality testing
 &lt;/h2&gt;&lt;p&gt;Getting fixated on the code coverage number will harm both the developers and the project they&amp;rsquo;re working on in the long run. Instead of it, try to create a culture that focuses on quality testing. Make sure that the right tests are being written, the engineers start to gradually &lt;strong&gt;trust&lt;/strong&gt; their test suite, enabling them to refactor the code as often as they find useful and bugs that slip into production become less and less. At all times, remember that:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Code coverage is a great &lt;strong&gt;tool&lt;/strong&gt;, but use it wisely. Stay clear from useless, arbitrary rules and constraints. Oppose yourself to them, no matter who imposed them, with grounds. Raise the coverage as high as possible, but as a result of responsible, meaningful, quality testing and think hard on any poorly tested (or even untested) areas. Focus on the ability to &lt;strong&gt;refactor using tests as a safety net&lt;/strong&gt; and &lt;strong&gt;catching bugs&lt;/strong&gt; as early as possible. As always, forget about the rules. Stick to the essence.&lt;/p&gt;
 </description>
@@ -1975,11 +2003,13 @@ Example: Provide a before/after code snippet.
 &lt;p&gt;Before we endeavor to address the topic, let&amp;rsquo;s take a step back and think a little bit of &lt;em&gt;Agile&lt;/em&gt;. Why do all these people and companies favor Agile over waterfall? After all, waterfall was used for so many successful projects. This can be a surprisingly hard to answer question for a lot of people.&lt;/p&gt;
 &lt;p&gt;In my opinion, the key benefit is the establishment of a &lt;strong&gt;short feedback loop&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Agile suggests that we leave behind the old days when the requirements were specified all upfront and the developers worked isolated for a few months only to deliver software needing change. A very short loop is established, allowing for a small chunk of software to be produced, inspected by the stakeholders, adapt to their feedback and repeat the cycle. &lt;strong&gt;Indefinitely.&lt;/strong&gt; &lt;em&gt;The illusion of the end state is eliminated.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This radical process modification requires profound changes in the heart of our work. Potentially, the most common pitfall is to change the process, but continue writing code in exactly the same way. A lot of companies, perhaps unwittingly, opt for only changing the process, starting walking down a road that is doomed to lead to failure. The scrum master enters here, forced to distance herself from solely the process and look at the bigger picture.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Of course, quality cannot be measured, but there are disciplines that lead to it. Pair programming, test driven development (TDD), refactoring and code reviews among others, bring a set of very important advantages like collective code ownership, improved code design, living documentation (tests) and automated regression test suites (more on this on &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/agile-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Agile code&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Returning to the original question, in my opinion, technical background is a critical skill for a scrum master. Things are rarely black or white, but how is a scrum master coming from (say) a business school able to deeply understand the importance of TDD? Why would she value pair programming against the common belief that it slows the team down? How is she in a position to understand the significance and implications of deploying on production or how much does a defect cost and how it should be prioritized and treated by the team?&lt;/p&gt;
@@ -1999,10 +2029,12 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;two-approaches&#34;&gt;Two approaches
 &lt;/h2&gt;&lt;p&gt;In this post I will delve into the topic of &lt;em&gt;testing behavior&lt;/em&gt; as opposed to &lt;em&gt;testing implementation&lt;/em&gt;. So, let&amp;rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&amp;rsquo;re thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Testing for state on the other hand, means thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&amp;rsquo;s illustrate the two styles via a simplified example.&lt;/p&gt;
 &lt;h2 id=&#34;example&#34;&gt;Example
 &lt;/h2&gt;&lt;p&gt;Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A &lt;em&gt;test-implementation&lt;/em&gt; logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.&lt;/p&gt;
@@ -2012,7 +2044,8 @@ Example: Provide a before/after code snippet.
 &lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&amp;rsquo;re testing, allowing bugs to creep in the production code.&lt;/p&gt;
 &lt;p&gt;We may stay clear from this danger applying the &lt;em&gt;test-behavior&lt;/em&gt; logic. In this case, the tests do not &lt;em&gt;&amp;ldquo;see&amp;rdquo;&lt;/em&gt; the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.&lt;/p&gt;
 &lt;h3 id=&#34;ripple-effects&#34;&gt;Ripple effects
@@ -2194,16 +2227,19 @@ Content-type: application/json
     &gt;Tripsta&lt;/a&gt;, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have.&lt;/p&gt;
 &lt;p&gt;It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests &lt;strong&gt;are not&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests are not nice to have&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests are not nice to have&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests are not negotiable&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests are not negotiable&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;When I hear phrases like &lt;em&gt;&amp;ldquo;If we have time, we&amp;rsquo;ll write some tests too&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;ldquo;It costs 13 story points, but since there is no time, we can  make it 8 if we don&amp;rsquo;t write tests&amp;rdquo;&lt;/em&gt; I want to quit my job and sell greengrocery for a living. Tests should be an integral part of writing software.&lt;/p&gt;
 &lt;p&gt;I could use a lot of lines talking about the necessity of writing unit tests, the benefits they provide and how they should be an integral part of the software development process instead of just a verification layer (&lt;em&gt;hint: TDD&lt;/em&gt;),  but that is another blog post on its own. So, let&amp;rsquo;s delve into a handful of best practices which I have come to value over the years.&lt;/p&gt;
 &lt;h2 id=&#34;best-practices&#34;&gt;Best practices
 &lt;/h2&gt;&lt;h3 id=&#34;naming&#34;&gt;Naming
 &lt;/h3&gt;&lt;p&gt;Some people are bad at naming. Some other (such as me) are terrible at it. In any case, taking the time to come up with a proper name for everything in our code &lt;em&gt;is worth it&lt;/em&gt;. Regardless of how much time we need. Uncle Bob (Robert Martin) likes to say &lt;em&gt;&amp;ldquo;with code, we do more reading than writing, by a huge factor. Which of those operations should be made efficient?&amp;rdquo;&lt;/em&gt; Naming &lt;strong&gt;matters&lt;/strong&gt;!! If I were to give you a single piece of advice on naming, it would be the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Write the tests you&amp;rsquo;d want to read&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Write the tests you&amp;rsquo;d want to read&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Before stop writing a test and moving to the production code, ask yourself these two questions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Does the test clearly express its behavior?&lt;/li&gt;
@@ -2211,7 +2247,8 @@ Content-type: application/json
 &lt;/ul&gt;
 &lt;p&gt;Usually, a developer that struggles to come up with a proper name will settle for a mediocre one, that does not express behavior properly, or even a bad one, which is hard to understand and misleads its reader.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests should be a documentation of the module&amp;rsquo;s behavior?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests should be a documentation of the module&amp;rsquo;s behavior?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Whenever we come across a piece of code that we did not write, we want to be able to read its test suite and figure out what this piece of code does. So, take the time (however much you need) to name your tests (and the variables and functions in them) as best as you can and when you come across a mediocre or a bad name, &lt;em&gt;change it to something better&lt;/em&gt; (leaving the code cleaner than you found it, as Uncle Bob would say).&lt;/p&gt;
 &lt;p&gt;Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;AccountTest&lt;/span&gt; {
@@ -2233,7 +2270,8 @@ Content-type: application/json
 &lt;h3 id=&#34;isolation&#34;&gt;Isolation
 &lt;/h3&gt;&lt;p&gt;This whole point I want to make on isolation can be summarized in the following sentence:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests should leave the system in the state that they found it&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests should leave the system in the state that they found it&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The last thing that we would like to face is 10 failing tests as a result of a single failure that dragged the following 9 tests with it. When we see x tests failing, we should know that there are exactly x problems with the system. Whenever a test is failing, it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately (by its name and the failure).&lt;/p&gt;
 &lt;p&gt;In order to achieve this, we should ensure that our test, even when it fails, will restore the system to the exact situation it found it and it won&amp;rsquo;t leave it dirty. Each test should not know and care if another one run before it (let alone if it failed or not).&lt;/p&gt;
 &lt;h3 id=&#34;watch-the-test-fail&#34;&gt;Watch the test fail
@@ -2282,7 +2320,8 @@ Content-type: application/json
 &lt;h3 id=&#34;single-assertion&#34;&gt;Single assertion
 &lt;/h3&gt;&lt;p&gt;How many assertions should a test have? The answer should always be &lt;em&gt;one&lt;/em&gt;. What message is a red bar sending to us? That something is wrong in the system. Which is our reflex move? To find out what is this. This is exactly why we want our tests to be shouting out loud the reason for their failure. If a test fails, we should know, just by reading its name, what the problem is. How can this happen if a test fails for multiple reasons though?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Unit tests should fail for one and only one reason&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Unit tests should fail for one and only one reason&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Test&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;calculatorShouldGeneratePositiveEvenIntegers&lt;/span&gt;() {
@@ -2345,10 +2384,12 @@ Content-type: application/json
 &lt;p&gt;Before &lt;em&gt;agile&lt;/em&gt;, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &amp;ldquo;lock&amp;rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?&lt;/p&gt;
 &lt;p&gt;In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the &lt;em&gt;Agile&lt;/em&gt; Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In my opinion, the key difference between the two approaches lies in the fact that &lt;em&gt;agile&lt;/em&gt; detaches the software from the illusion of the end state. There is no end state. There will never be one.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;making-a-company-agile&#34;&gt;Making a company Agile
 &lt;/h2&gt;&lt;p&gt;Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become &lt;em&gt;agile&lt;/em&gt; needs to go through some extra filtering. Knowing &lt;em&gt;why&lt;/em&gt; should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Usually, companies that haven&amp;rsquo;t got into the trouble of clarifying these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt; prior to embarking on the transformation, find themselves hiring an &lt;em&gt;agile&lt;/em&gt; coach who is supposed to magically move his wand, speak the right words and&amp;hellip; boom! We&amp;rsquo;re &lt;em&gt;agile&lt;/em&gt; now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this &lt;em&gt;agile&lt;/em&gt; transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?&lt;/p&gt;
@@ -2365,14 +2406,16 @@ Content-type: application/json
 &lt;p&gt;TDD is a workflow that emphasizes on making us write &lt;strong&gt;the best code that we can write&lt;/strong&gt; (by constantly asking &lt;em&gt;&amp;ldquo;can you make it better?&amp;rdquo;&lt;/em&gt;&amp;quot;). If practiced right, it encourages &lt;strong&gt;better design&lt;/strong&gt; (more cohesive and loosely coupled components), provides &lt;strong&gt;documentation&lt;/strong&gt; (via executable examples, a.k.a. tests) and, when done with a feature, the &lt;strong&gt;automated regression test suite&lt;/strong&gt; comes for free.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As if the above mentioned are not sufficient, I could never stress enough the importance of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Shift_left_testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;left shift&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;left shift&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous integration
 &lt;/h3&gt;&lt;p&gt;How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? &lt;em&gt;We should always be working on the latest version of  the code&lt;/em&gt;. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more &lt;em&gt;professional&lt;/em&gt; way.&lt;/p&gt;
 &lt;h3 id=&#34;code-review&#34;&gt;Code review
 &lt;/h3&gt;&lt;p&gt;At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&amp;rsquo;s benefit.&lt;/p&gt;
 &lt;p&gt;Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, &lt;strong&gt;review in essence!&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.&lt;/p&gt;
 &lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;Martin Fowler, in his wonderful book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
