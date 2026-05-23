@@ -23,7 +23,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How many tests should we write for this function? Which tests should these be? It&amp;rsquo;s fairly obvious that a single test would result in a 100% code coverage for this one-liner. Is this sufficient? Now let&amp;rsquo;s take a step back and reflect for a moment.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;A state would be a = 1 and b = 1. A second state would be a = 1 and b = 2 and so forth. Therefore, the combinations of all the possible values of variables &lt;code&gt;a&lt;/code&gt; (the numerator) and &lt;code&gt;b&lt;/code&gt; (the denominator) gives us the answer. Assuming that &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are both java integers, each can take a bit over 4 billion values. Therefore, the states that this piece of code can be in are 4.000.000.000 squared!&lt;/p&gt;
 &lt;p&gt;Hopefully, by now, my point is illustrated. &lt;em&gt;It&amp;rsquo;s very easy to reach 100% code coverage and yet, we have tested only 1 out of 4.000.000.000 squared states&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;meaningful-testing&#34;&gt;Meaningful testing
@@ -37,14 +38,16 @@
 &lt;h2 id=&#34;follow-the-trend&#34;&gt;Follow the trend
 &lt;/h2&gt;&lt;p&gt;Coming back to the situations where organizations enforce specific code coverage numbers - I hope that by now the fundamental problems that lie with this approach have become apparent - what would a sensible policy be? We&amp;rsquo;re not actually suggesting that code coverage is totally useless, right? Of course not. On the contrary, it can be immensely valuable.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How should it be used then?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How should it be used then?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This constitutes ground for experimentation and I would very much like to hear anyone&amp;rsquo;s views on the matter. For now, let me describe an approach that I find useful. Start monitoring the code coverage and create a trend line metric for it. Make sure that, before merging a merge request, the line does not drop. If it does so, kindly ask the author to amend this, before merging the code. This can even constitute a condition in the team&amp;rsquo;s DoD. I believe that a lot of CI tools will provide plug-ins that help implement this policy (personally, I have used Jenkins and JaCoCo).&lt;/p&gt;
 &lt;h2 id=&#34;untested-code&#34;&gt;Untested code
 &lt;/h2&gt;&lt;p&gt;Instead of missing the point and start chasing after numbers just for the sake of it, use code coverage as what it really is: a &lt;em&gt;tool&lt;/em&gt;. Make sure you go thoroughly over the report (tools like JaCoCo produce an extremely detailed report) on a regular basis. This can point out quite a few interesting things, such as untested parts of the code. Identify them and act on them. Perhaps a pattern will become visible. Find the problem and address it.&lt;/p&gt;
 &lt;h2 id=&#34;quality-testing&#34;&gt;Quality testing
 &lt;/h2&gt;&lt;p&gt;Getting fixated on the code coverage number will harm both the developers and the project they&amp;rsquo;re working on in the long run. Instead of it, try to create a culture that focuses on quality testing. Make sure that the right tests are being written, the engineers start to gradually &lt;strong&gt;trust&lt;/strong&gt; their test suite, enabling them to refactor the code as often as they find useful and bugs that slip into production become less and less. At all times, remember that:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Code coverage is a great &lt;strong&gt;tool&lt;/strong&gt;, but use it wisely. Stay clear from useless, arbitrary rules and constraints. Oppose yourself to them, no matter who imposed them, with grounds. Raise the coverage as high as possible, but as a result of responsible, meaningful, quality testing and think hard on any poorly tested (or even untested) areas. Focus on the ability to &lt;strong&gt;refactor using tests as a safety net&lt;/strong&gt; and &lt;strong&gt;catching bugs&lt;/strong&gt; as early as possible. As always, forget about the rules. Stick to the essence.&lt;/p&gt;
 </description>

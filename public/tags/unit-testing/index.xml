@@ -23,7 +23,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How many tests should we write for this function? Which tests should these be? It&amp;rsquo;s fairly obvious that a single test would result in a 100% code coverage for this one-liner. Is this sufficient? Now let&amp;rsquo;s take a step back and reflect for a moment.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How many states can this piece of code be in?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;A state would be a = 1 and b = 1. A second state would be a = 1 and b = 2 and so forth. Therefore, the combinations of all the possible values of variables &lt;code&gt;a&lt;/code&gt; (the numerator) and &lt;code&gt;b&lt;/code&gt; (the denominator) gives us the answer. Assuming that &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are both java integers, each can take a bit over 4 billion values. Therefore, the states that this piece of code can be in are 4.000.000.000 squared!&lt;/p&gt;
 &lt;p&gt;Hopefully, by now, my point is illustrated. &lt;em&gt;It&amp;rsquo;s very easy to reach 100% code coverage and yet, we have tested only 1 out of 4.000.000.000 squared states&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;meaningful-testing&#34;&gt;Meaningful testing
@@ -37,14 +38,16 @@
 &lt;h2 id=&#34;follow-the-trend&#34;&gt;Follow the trend
 &lt;/h2&gt;&lt;p&gt;Coming back to the situations where organizations enforce specific code coverage numbers - I hope that by now the fundamental problems that lie with this approach have become apparent - what would a sensible policy be? We&amp;rsquo;re not actually suggesting that code coverage is totally useless, right? Of course not. On the contrary, it can be immensely valuable.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;How should it be used then?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How should it be used then?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This constitutes ground for experimentation and I would very much like to hear anyone&amp;rsquo;s views on the matter. For now, let me describe an approach that I find useful. Start monitoring the code coverage and create a trend line metric for it. Make sure that, before merging a merge request, the line does not drop. If it does so, kindly ask the author to amend this, before merging the code. This can even constitute a condition in the team&amp;rsquo;s DoD. I believe that a lot of CI tools will provide plug-ins that help implement this policy (personally, I have used Jenkins and JaCoCo).&lt;/p&gt;
 &lt;h2 id=&#34;untested-code&#34;&gt;Untested code
 &lt;/h2&gt;&lt;p&gt;Instead of missing the point and start chasing after numbers just for the sake of it, use code coverage as what it really is: a &lt;em&gt;tool&lt;/em&gt;. Make sure you go thoroughly over the report (tools like JaCoCo produce an extremely detailed report) on a regular basis. This can point out quite a few interesting things, such as untested parts of the code. Identify them and act on them. Perhaps a pattern will become visible. Find the problem and address it.&lt;/p&gt;
 &lt;h2 id=&#34;quality-testing&#34;&gt;Quality testing
 &lt;/h2&gt;&lt;p&gt;Getting fixated on the code coverage number will harm both the developers and the project they&amp;rsquo;re working on in the long run. Instead of it, try to create a culture that focuses on quality testing. Make sure that the right tests are being written, the engineers start to gradually &lt;strong&gt;trust&lt;/strong&gt; their test suite, enabling them to refactor the code as often as they find useful and bugs that slip into production become less and less. At all times, remember that:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Low code coverage means that there are problems. High code coverage means nothing at all on its own.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
 &lt;/h2&gt;&lt;p&gt;Code coverage is a great &lt;strong&gt;tool&lt;/strong&gt;, but use it wisely. Stay clear from useless, arbitrary rules and constraints. Oppose yourself to them, no matter who imposed them, with grounds. Raise the coverage as high as possible, but as a result of responsible, meaningful, quality testing and think hard on any poorly tested (or even untested) areas. Focus on the ability to &lt;strong&gt;refactor using tests as a safety net&lt;/strong&gt; and &lt;strong&gt;catching bugs&lt;/strong&gt; as early as possible. As always, forget about the rules. Stick to the essence.&lt;/p&gt;
 </description>
@@ -59,10 +62,12 @@
 &lt;h2 id=&#34;two-approaches&#34;&gt;Two approaches
 &lt;/h2&gt;&lt;p&gt;In this post I will delve into the topic of &lt;em&gt;testing behavior&lt;/em&gt; as opposed to &lt;em&gt;testing implementation&lt;/em&gt;. So, let&amp;rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&amp;rsquo;re thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Testing for state on the other hand, means thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&amp;rsquo;s illustrate the two styles via a simplified example.&lt;/p&gt;
 &lt;h2 id=&#34;example&#34;&gt;Example
 &lt;/h2&gt;&lt;p&gt;Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A &lt;em&gt;test-implementation&lt;/em&gt; logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.&lt;/p&gt;
@@ -72,7 +77,8 @@
 &lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&amp;rsquo;re testing, allowing bugs to creep in the production code.&lt;/p&gt;
 &lt;p&gt;We may stay clear from this danger applying the &lt;em&gt;test-behavior&lt;/em&gt; logic. In this case, the tests do not &lt;em&gt;&amp;ldquo;see&amp;rdquo;&lt;/em&gt; the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.&lt;/p&gt;
 &lt;h3 id=&#34;ripple-effects&#34;&gt;Ripple effects
@@ -113,16 +119,19 @@
     &gt;Tripsta&lt;/a&gt;, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have.&lt;/p&gt;
 &lt;p&gt;It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests &lt;strong&gt;are not&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests are not nice to have&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests are not nice to have&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests are not negotiable&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests are not negotiable&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;When I hear phrases like &lt;em&gt;&amp;ldquo;If we have time, we&amp;rsquo;ll write some tests too&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;ldquo;It costs 13 story points, but since there is no time, we can  make it 8 if we don&amp;rsquo;t write tests&amp;rdquo;&lt;/em&gt; I want to quit my job and sell greengrocery for a living. Tests should be an integral part of writing software.&lt;/p&gt;
 &lt;p&gt;I could use a lot of lines talking about the necessity of writing unit tests, the benefits they provide and how they should be an integral part of the software development process instead of just a verification layer (&lt;em&gt;hint: TDD&lt;/em&gt;),  but that is another blog post on its own. So, let&amp;rsquo;s delve into a handful of best practices which I have come to value over the years.&lt;/p&gt;
 &lt;h2 id=&#34;best-practices&#34;&gt;Best practices
 &lt;/h2&gt;&lt;h3 id=&#34;naming&#34;&gt;Naming
 &lt;/h3&gt;&lt;p&gt;Some people are bad at naming. Some other (such as me) are terrible at it. In any case, taking the time to come up with a proper name for everything in our code &lt;em&gt;is worth it&lt;/em&gt;. Regardless of how much time we need. Uncle Bob (Robert Martin) likes to say &lt;em&gt;&amp;ldquo;with code, we do more reading than writing, by a huge factor. Which of those operations should be made efficient?&amp;rdquo;&lt;/em&gt; Naming &lt;strong&gt;matters&lt;/strong&gt;!! If I were to give you a single piece of advice on naming, it would be the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Write the tests you&amp;rsquo;d want to read&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Write the tests you&amp;rsquo;d want to read&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Before stop writing a test and moving to the production code, ask yourself these two questions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Does the test clearly express its behavior?&lt;/li&gt;
@@ -130,7 +139,8 @@
 &lt;/ul&gt;
 &lt;p&gt;Usually, a developer that struggles to come up with a proper name will settle for a mediocre one, that does not express behavior properly, or even a bad one, which is hard to understand and misleads its reader.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests should be a documentation of the module&amp;rsquo;s behavior?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests should be a documentation of the module&amp;rsquo;s behavior?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Whenever we come across a piece of code that we did not write, we want to be able to read its test suite and figure out what this piece of code does. So, take the time (however much you need) to name your tests (and the variables and functions in them) as best as you can and when you come across a mediocre or a bad name, &lt;em&gt;change it to something better&lt;/em&gt; (leaving the code cleaner than you found it, as Uncle Bob would say).&lt;/p&gt;
 &lt;p&gt;Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;AccountTest&lt;/span&gt; {
@@ -152,7 +162,8 @@
 &lt;h3 id=&#34;isolation&#34;&gt;Isolation
 &lt;/h3&gt;&lt;p&gt;This whole point I want to make on isolation can be summarized in the following sentence:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tests should leave the system in the state that they found it&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Tests should leave the system in the state that they found it&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The last thing that we would like to face is 10 failing tests as a result of a single failure that dragged the following 9 tests with it. When we see x tests failing, we should know that there are exactly x problems with the system. Whenever a test is failing, it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately (by its name and the failure).&lt;/p&gt;
 &lt;p&gt;In order to achieve this, we should ensure that our test, even when it fails, will restore the system to the exact situation it found it and it won&amp;rsquo;t leave it dirty. Each test should not know and care if another one run before it (let alone if it failed or not).&lt;/p&gt;
 &lt;h3 id=&#34;watch-the-test-fail&#34;&gt;Watch the test fail
@@ -201,7 +212,8 @@
 &lt;h3 id=&#34;single-assertion&#34;&gt;Single assertion
 &lt;/h3&gt;&lt;p&gt;How many assertions should a test have? The answer should always be &lt;em&gt;one&lt;/em&gt;. What message is a red bar sending to us? That something is wrong in the system. Which is our reflex move? To find out what is this. This is exactly why we want our tests to be shouting out loud the reason for their failure. If a test fails, we should know, just by reading its name, what the problem is. How can this happen if a test fails for multiple reasons though?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Unit tests should fail for one and only one reason&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Unit tests should fail for one and only one reason&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Test&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;calculatorShouldGeneratePositiveEvenIntegers&lt;/span&gt;() {

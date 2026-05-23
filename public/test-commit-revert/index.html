@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/test-commit-revert/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Test && commit || revert">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Test && commit || revert">
 <meta property='og:description' content="The only way to go fast is to go well">
 <meta property='og:url' content='//localhost:1313/test-commit-revert/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -674,7 +674,8 @@
 <h3 id="baby-steps">Baby steps
 </h3><p>If there was a single lesson to be learned from practising TCR it would be the following:</p>
 <blockquote>
-<p>The only way to go fast, it to go well</p></blockquote>
+<p>The only way to go fast, it to go well</p>
+</blockquote>
 <p>This is a quote from Uncle Bob, which has shaped my way of thinking around writing code like few others.</p>
 <p>The core idea behind TCR is moving in small steps. Moving in baby steps. Tiny steps. Small enough to be sure that they keep the tests passing. Small enough not to risk losing a bunch of code if a test fails. The philosophy is <em>&ldquo;what is the next, small, steady step that I can take towards my goal?&rdquo;</em>.</p>
 <p>Moving forwards in small, seemingly insignificant steps can be surprisingly more beneficial than going back and forth.</p>
@@ -717,7 +718,7 @@
 <li>a <code>watch.sh</code> script that observes the source code, detects changes on it and triggers the TCR script.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
 </span></span><span style="display:flex;"><span>  inotifywait -r -e modify src
 </span></span><span style="display:flex;"><span>  ./tcr.sh
@@ -726,7 +727,7 @@
 <li>the <code>tcr.sh</code> script, that holds the base logic of TCR:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/test.sh&#34;</span>
 </span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/commit.sh&#34;</span>
 </span></span><span style="display:flex;"><span>source <span style="color:#e6db74">&#34;scripts/revert.sh&#34;</span>
@@ -736,7 +737,7 @@
 <li>the <code>test.sh</code> script, which executes the unit tests</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> test<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Testing changes...&#34;</span>
 </span></span><span style="display:flex;"><span>  ./gradlew test
@@ -745,7 +746,7 @@
 <li>the <code>commit.sh</code> script</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> commit<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Committing and pushing changes&#34;</span>
 </span></span><span style="display:flex;"><span>  git add . <span style="color:#f92672">&amp;&amp;</span> git commit -m <span style="color:#e6db74">&#34;WIP&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push
@@ -754,7 +755,7 @@
 <li>and the <code>revert.sh</code> script</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> revert<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Reverting changes&#34;</span>
 </span></span><span style="display:flex;"><span>  git checkout .
@@ -816,7 +817,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

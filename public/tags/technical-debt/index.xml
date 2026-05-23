@@ -20,7 +20,8 @@
 &lt;h2 id=&#34;what-is-it&#34;&gt;What is it
 &lt;/h2&gt;&lt;p&gt;The term technical debt refers to all the things in a code base that could (and should) be improved, but do not directly affect the behavior of the system. It&amp;rsquo;s the things that the software engineers know should be done in a different, better way, but either chose to defer for the future or realized later on.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Technical debt is code written today that requires more effort in the future&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Technical debt is code written today that requires more effort in the future&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This resembles a lot a bank loan, in which an individual gets money today that require more money (initial amount plus interest) in the future to pay off, essentially creating debt.&lt;/p&gt;
 &lt;p&gt;The term &lt;em&gt;technical debt&lt;/em&gt; is a metaphor, referring to quick win software solutions that will slow development down in the future in order to pay the debt off. Also, since typically future amendments require more time than it would be originally required to provide a proper solution, the debt is accumulated and paid with interest. Not paying the debt usually results in loosing the product, as the code base eventually becomes either &lt;em&gt;unmaintainable&lt;/em&gt; or &lt;em&gt;too expensive&lt;/em&gt; to maintain.&lt;/p&gt;
 &lt;h2 id=&#34;where-does-it-come-from&#34;&gt;Where does it come from
@@ -28,7 +29,8 @@
 &lt;h3 id=&#34;unprofessional-technical-debt&#34;&gt;Unprofessional technical debt
 &lt;/h3&gt;&lt;p&gt;An easy to spot (and, most importantly, prevent) way of creating technical debt is simply not taking the time to do our job in the right way. Every time we opt for a &lt;em&gt;hack&lt;/em&gt;, a &lt;em&gt;quick-and-dirty&lt;/em&gt; solution, a &lt;em&gt;workaround&lt;/em&gt;, every time we &lt;em&gt;skip some unit tests&lt;/em&gt; or &lt;em&gt;do not refactor&lt;/em&gt; the code, we create debt. Every time we are sloppy with our work because someone says that &lt;em&gt;&amp;ldquo;this is urgent&amp;rdquo;&lt;/em&gt; or &lt;em&gt;&amp;ldquo;needs to be done by today&amp;rdquo;&lt;/em&gt; and we succumb to this pressure, we create future troubles for our team and our organization.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Every time we cut corners, we create technical debt&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Every time we cut corners, we create technical debt&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I am trying to put as much emphasis as I can to it and be harsh. Of course, coming up with a way to improve code or identify weaknesses is not only natural, but welcomed, especially as we become more mature. However, &lt;em&gt;wittingly&lt;/em&gt; applying discounts - therefore creating this type of technical debt -  is, in my opinion, absolutely &lt;strong&gt;unprofessional&lt;/strong&gt; and &lt;strong&gt;irresponsible&lt;/strong&gt;. Deliberately undermining our code quality to reduce time to market is an approach that will come back to bite us in the future. Period.&lt;/p&gt;
 &lt;h3 id=&#34;outdated-design-technical-debt&#34;&gt;Outdated design technical debt
 &lt;/h3&gt;&lt;p&gt;Sometimes we start off with simple and robust design and architecture for the initial requirements of the system, but as time goes by and increments are added, we fail to adjust the design and architecture in a proportional way. This phenomenon is more likely to occur when new developers join the team and do not fully understand the original design.&lt;/p&gt;
@@ -38,7 +40,8 @@
 &lt;h2 id=&#34;there-will-always-be-technical-debt&#34;&gt;There will always be technical debt
 &lt;/h2&gt;&lt;p&gt;Of course, trying to always be technical debt free is simply &lt;em&gt;delusional&lt;/em&gt;. Databases deprecate their old driver versions, systems grow enough to require that architecture should be revised and no matter how exceptionally we write a piece of code, as we grow more experienced and knowledgeable, we will always identify weakness and better ways to write it.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;If we look back to a piece of code we wrote a year ago and find nothing that we would do in a different, better way today, perhaps we have remained stagnant for the past year.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, technical debt will present itself no matter how professional and diligent we are.&lt;/p&gt;
 &lt;h2 id=&#34;and-its-ok&#34;&gt;And it&amp;rsquo;s OK
 &lt;/h2&gt;&lt;p&gt;This is a fact and we have to accept it. After all, we should always bear in mind that the iterative nature of shipping software is built on the foundation of feedback. We solve the problem, we deliver the solution, get feedback on it and then try to improve it. Trying to ship a &lt;em&gt;perfect&lt;/em&gt; product will result in a tail chase.&lt;/p&gt;

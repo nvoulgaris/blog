@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/test-behavior/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Test behavior">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Test behavior">
 <meta property='og:description' content="Testing what is done vs how it's done">
 <meta property='og:url' content='//localhost:1313/test-behavior/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -645,10 +645,12 @@
 <h2 id="two-approaches">Two approaches
 </h2><p>In this post I will delve into the topic of <em>testing behavior</em> as opposed to <em>testing implementation</em>. So, let&rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&rsquo;re thinking:</p>
 <blockquote>
-<p>I want to verify that, under these circumstances, the result of an action is this</p></blockquote>
+<p>I want to verify that, under these circumstances, the result of an action is this</p>
+</blockquote>
 <p>Testing for state on the other hand, means thinking:</p>
 <blockquote>
-<p>I want to verify that, under these circumstances, these actions take place to reach to the result</p></blockquote>
+<p>I want to verify that, under these circumstances, these actions take place to reach to the result</p>
+</blockquote>
 <p>Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&rsquo;s illustrate the two styles via a simplified example.</p>
 <h2 id="example">Example
 </h2><p>Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A <em>test-implementation</em> logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.</p>
@@ -658,7 +660,8 @@
 <h3 id="refactoring">Refactoring
 </h3><p>One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.</p>
 <blockquote>
-<p>When refactoring a piece of code, we intend to alter its structure but <strong>not</strong> its behavior.</p></blockquote>
+<p>When refactoring a piece of code, we intend to alter its structure but <strong>not</strong> its behavior.</p>
+</blockquote>
 <p>In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&rsquo;re testing, allowing bugs to creep in the production code.</p>
 <p>We may stay clear from this danger applying the <em>test-behavior</em> logic. In this case, the tests do not <em>&ldquo;see&rdquo;</em> the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.</p>
 <h3 id="ripple-effects">Ripple effects
@@ -787,7 +790,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

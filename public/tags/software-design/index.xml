@@ -189,7 +189,8 @@
     &gt;Clean Architecture&lt;/a&gt;). As formulated by Bertrand Meyer in &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;amp;from_search=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Object Oriented Software Construction&lt;/a&gt;, it states that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A software artifact should be open for extension but closed for modification.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Contradictory as it may sound, there&amp;rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should &lt;em&gt;add&lt;/em&gt; some code instead of &lt;em&gt;modifying&lt;/em&gt; the existing code.&lt;/p&gt;
 &lt;p&gt;Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&amp;rsquo;s apply it to the input validation problem, that we analyzed earlier.&lt;/p&gt;
 &lt;h2 id=&#34;ocp-compliant-validation&#34;&gt;OCP compliant validation
@@ -278,7 +279,8 @@
 &lt;/h2&gt;&lt;p&gt;The gist behind the notion of encapsulation is that the &lt;em&gt;objects should not reveal their internals&lt;/em&gt; (implementation details) &lt;em&gt;to the outside world&lt;/em&gt; (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of &lt;em&gt;how&lt;/em&gt; they achieve the tasks that are &lt;em&gt;told&lt;/em&gt; to achieve it&amp;rsquo;s &lt;em&gt;their&lt;/em&gt; business and no one else&amp;rsquo;s.&lt;/p&gt;
 &lt;p&gt;In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&amp;rsquo;s state in order to perform the tasks that it&amp;rsquo;s told to perform.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;the-problem-with-getters-and-setters&#34;&gt;The problem with getters and setters
 &lt;/h2&gt;&lt;p&gt;This is exactly where &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; enter the picture. Conventional wisdom has it that since the object&amp;rsquo;s properties are to remain &amp;ldquo;hidden&amp;rdquo;, they should be wrapped by a &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt; each, enabling the external world to &amp;ldquo;access&amp;rdquo; them, without learning about the object&amp;rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. &lt;em&gt;Does it make any sense at all?&lt;/em&gt; At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper &lt;code&gt;getter&lt;/code&gt; and &lt;code&gt;setter&lt;/code&gt;? Essentially we are messing with the object&amp;rsquo;s state in either case - which is quite overtly exposed to the public via these methods.&lt;/p&gt;
 &lt;h2 id=&#34;an-example&#34;&gt;An example
@@ -302,7 +304,8 @@
 &lt;h2 id=&#34;tell-dont-ask&#34;&gt;Tell, don&amp;rsquo;t ask
 &lt;/h2&gt;&lt;p&gt;Some of you might have already noticed that these ideas start to sound a lot like the &lt;em&gt;Tell, don&amp;rsquo;t ask&lt;/em&gt; principle (also known as &lt;em&gt;Law of Demeter&lt;/em&gt;). (In case you&amp;rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Data and functionality that depends on these data belong in the same object&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;a-story-and-a-lesson-learned&#34;&gt;A story and a lesson learned
 &lt;/h2&gt;&lt;p&gt;Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&amp;rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using &lt;code&gt;getters&lt;/code&gt; and &lt;code&gt;setters&lt;/code&gt; instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.&lt;/p&gt;
@@ -327,10 +330,12 @@
 &lt;h2 id=&#34;two-approaches&#34;&gt;Two approaches
 &lt;/h2&gt;&lt;p&gt;In this post I will delve into the topic of &lt;em&gt;testing behavior&lt;/em&gt; as opposed to &lt;em&gt;testing implementation&lt;/em&gt;. So, let&amp;rsquo;s elaborate a bit on these two fundamentally different styles. When testing behavior, we&amp;rsquo;re thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, the result of an action is this&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Testing for state on the other hand, means thinking:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I want to verify that, under these circumstances, these actions take place to reach to the result&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Obviously, the approach is utterly different, but the gold is to understand the consequences of following one or the other. Before we work the trade-offs, let&amp;rsquo;s illustrate the two styles via a simplified example.&lt;/p&gt;
 &lt;h2 id=&#34;example&#34;&gt;Example
 &lt;/h2&gt;&lt;p&gt;Assuming we have a unit that fetches all employees from the database, calculates their average salary and sends an e-mail with this number on the subject line. A &lt;em&gt;test-implementation&lt;/em&gt; logic could lead us to verify that the number of the fetched employees is correct by asserting on the size of a list data structure, the correct employees with the correct salaries are retrieved, the average salary is correct after taking into account each employee etc.&lt;/p&gt;
@@ -340,7 +345,8 @@
 &lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;One of the most common pitfalls is to couple too tight our tests with the production code. What would happen in the first approach (test-implementation) when, in the future we decide to dump the list and use a different data structure? Our test (that asserts on the list size and contents) will fail to compile. We will be forced to refactor the test along with the production code, immediately jeopardizing our whole refactoring process. Let me elaborate on this topic.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;When refactoring a piece of code, we intend to alter its structure but &lt;strong&gt;not&lt;/strong&gt; its behavior.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In order to do so, given that the result of any action under the same circumstances remains unaffected, we should be able to rely on our tests to know that we did not change the behavior indeed. However, if we modify our tests, we run the risk of unwittingly modifying what we&amp;rsquo;re testing, allowing bugs to creep in the production code.&lt;/p&gt;
 &lt;p&gt;We may stay clear from this danger applying the &lt;em&gt;test-behavior&lt;/em&gt; logic. In this case, the tests do not &lt;em&gt;&amp;ldquo;see&amp;rdquo;&lt;/em&gt; the actual implementation and since the results of the actions remain unchanged, the tests remain unaffected and we can make sure we keep them green in each and every refactoring move we make.&lt;/p&gt;
 &lt;h3 id=&#34;ripple-effects&#34;&gt;Ripple effects

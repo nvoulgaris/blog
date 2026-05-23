@@ -43,7 +43,8 @@
 &lt;h2 id=&#34;another-way&#34;&gt;Another way
 &lt;/h2&gt;&lt;p&gt;The typical format most teams that I know of use is the &amp;ldquo;What did I do yesterday? What will I do today? Do I have any impediments?&amp;rdquo;. I usually call this the &amp;ldquo;per-person&amp;rdquo; format. However, remember that the format is up to the team to decide. Consulting the scrum guide we find the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;overview&#34;&gt;Overview
 &lt;/h3&gt;&lt;p&gt;An alternative to the &amp;ldquo;per-person&amp;rdquo; format would be the &amp;ldquo;per-PBI&amp;rdquo; format. With this approach, the team works the sprint board right to left and top to bottom. Every open PBI is discussed and the focus is on what the team needs to do in the next 24 hours to move this PBI towards the right (&amp;ldquo;Done&amp;rdquo; swimlane).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s use an example to understand it better. Assuming that the team&amp;rsquo;s sprint backlog is the following:&lt;/p&gt;
@@ -100,7 +101,8 @@
 &lt;h2 id=&#34;what-is-a-wip-limit&#34;&gt;What is a WIP limit
 &lt;/h2&gt;&lt;p&gt;Limiting work-in-progress is a very simple technique.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A WIP limit is a number indicating the maximum items (e.g. stories, tasks) tha may be in-progress at any given moment.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, if a team has a WIP limit of two stories, it can only work on two stories at the same time at any given moment. In order to start working on a third one, one of the two previously &lt;em&gt;in-progress&lt;/em&gt; has to be &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;It originates from Kanban and there it applies to tasks on the team&amp;rsquo;s Kanban board. In &lt;em&gt;Scrum&lt;/em&gt;, it can either be applied to stories or story tasks, depending on what works best for the team. Also, the very definition of &lt;em&gt;in-progress&lt;/em&gt; may be adjusted according to the team&amp;rsquo;s needs. For instance, a story can be considered &lt;em&gt;in-progress&lt;/em&gt; until it is code-reviewed or until it is deployed to production. The limits may span on a number of different swimlanes as well and each swimlane can have its own limit.&lt;/p&gt;
 &lt;h3 id=&#34;can-this-be-applied-to-scrum&#34;&gt;Can this be applied to scrum?
@@ -112,14 +114,17 @@
 &lt;h3 id=&#34;reduced-lead-time&#34;&gt;Reduced lead time
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;Lead time&lt;/em&gt; is a metric, expressing the time elapsed between starting and completing an item of work.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A &lt;em&gt;Scrum&lt;/em&gt; team&amp;rsquo;s lead time is the time required between the team committing to a story (sprint planning) and the story being &lt;em&gt;done&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s study again the hypothetical example of the &lt;em&gt;Scrum&lt;/em&gt; team of five software engineers in the middle of the sprint with five stories in-progress. Let&amp;rsquo;s also assume that the team manages to complete all five stories at the very last day of the sprint and that these were all the stories in this sprint. What is the lead time of the team?&lt;/p&gt;
 &lt;p&gt;Each of the five stories took nine days (the working days of a two-week sprint excluding the &lt;em&gt;Scrum&lt;/em&gt; events day) to complete, so the team&amp;rsquo;s average lead time is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(5 * 9) / 5 = 9 days&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s assume that the team had applied a WIP limit of two. This means that no more than two stories could be worked on parallel. The first two stories could perhaps be &lt;em&gt;done&lt;/em&gt; in the third and fourth day respectively. The next two stories could be completed in the seventh and eight days respectively and the last story could be completed on the very last day of the sprint. Let&amp;rsquo;s calculate again the team&amp;rsquo;s average lead time.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(3 + 4 + 7 + 8 + 9) 5 = 5.4 days&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;These numbers are fictitious of course, but they are meant to illustrate the point. As a matter of fact, feel free to fiddle with the numbers and inspect the results. The result will always be less than nine. I feel that plugging some reasonable numbers in the formula will result in an average lead time &lt;em&gt;significantly below&lt;/em&gt; 9, like 5.4.&lt;/p&gt;
 &lt;p&gt;This essentially means that the team delivered value early. The stakeholders and product users started having increments on the third and fourth day of the sprint instead of the ninth.&lt;/p&gt;
 &lt;h3 id=&#34;teamwork&#34;&gt;Teamwork
@@ -160,7 +165,8 @@
         <description>&lt;img src="//localhost:1313/img/posts/velocity.jpg" alt="Featured image of post Working the velocity of a scrum team" /&gt;&lt;p&gt;Scrum has gone wrong in a number of ways. This is a fact. Agile, an initiative born by software engineers, has turn into a new, &lt;em&gt;cool&lt;/em&gt; product management way. A considerable number of companies advertise that they use scrum when all they do is run a standing, 15-minute meeting in the morning and use sticky notes, being totally oblivious the true mindset of the framework as well as the immense benefits that it can provide.&lt;/p&gt;
 &lt;p&gt;Among a lot of factors that have resulted to this, arguably the king of the problems is how people misunderstand the concept of the &lt;em&gt;velocity&lt;/em&gt; of a scrum team. Scrum Masters and Product Owners treat it as a productivity reporting tool, trying to make the development team &lt;em&gt;commit&lt;/em&gt; (we will discuss this &lt;em&gt;&amp;ldquo;commitment&amp;rdquo;&lt;/em&gt; issue in another post) to as high a number as possible, while the development team, feeling that they are judged by this number, struggle to increase it sprint by sprint. However, this is a &lt;strong&gt;fundamentally flawed&lt;/strong&gt; view.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Velocity is not a productivity reporting tool!&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I wish I could stress this even more. &lt;strong&gt;Velocity is not a productivity reporting tool!&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Since I - once again - started with what velocity &lt;em&gt;is not&lt;/em&gt;, let&amp;rsquo;s proceed in a more conventional way and talk about what velocity actually &lt;em&gt;is&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;inspect-and-adapt&#34;&gt;Inspect and adapt
@@ -195,13 +201,16 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Actual work days&lt;/strong&gt; is produced by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(Team members * Sprint duration) - (Team members * No workdays) - Team holidays&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Focus factor&lt;/strong&gt; is a bit more complicated. Basically, the piece of information that we want to take into consideration is the degree in which the team estimations match the actual work done. The reason for using more than one past sprints is that as teams change, as they mature they go through different phases. These affect their focus factor. For instance, as a new team member is integrated with the team, one would expect the focus factor to have an slightly increasing trend. The focus factor for a single sprint is provided by the following formula:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Actual velocity points / committed velocity points&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Finally, the formula producing the estimated velocity for the upcoming sprint is the following:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;(Actual work days) * (average focus factor of the last x sprints)&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;I usually use the average focus factor of the last 3 sprints (x = 3), but feel free to use any number of sprints that works for you&lt;/em&gt;&lt;/p&gt;
@@ -233,11 +242,13 @@
 &lt;p&gt;Before we endeavor to address the topic, let&amp;rsquo;s take a step back and think a little bit of &lt;em&gt;Agile&lt;/em&gt;. Why do all these people and companies favor Agile over waterfall? After all, waterfall was used for so many successful projects. This can be a surprisingly hard to answer question for a lot of people.&lt;/p&gt;
 &lt;p&gt;In my opinion, the key benefit is the establishment of a &lt;strong&gt;short feedback loop&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Daily stand-ups, open space offices and loads of sticky notes only serve to alter the process, being merely means to an end. &lt;em&gt;The short feedback loop is an end in itself.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Agile suggests that we leave behind the old days when the requirements were specified all upfront and the developers worked isolated for a few months only to deliver software needing change. A very short loop is established, allowing for a small chunk of software to be produced, inspected by the stakeholders, adapt to their feedback and repeat the cycle. &lt;strong&gt;Indefinitely.&lt;/strong&gt; &lt;em&gt;The illusion of the end state is eliminated.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This radical process modification requires profound changes in the heart of our work. Potentially, the most common pitfall is to change the process, but continue writing code in exactly the same way. A lot of companies, perhaps unwittingly, opt for only changing the process, starting walking down a road that is doomed to lead to failure. The scrum master enters here, forced to distance herself from solely the process and look at the bigger picture.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Guarding the process is essential, but it means nothing without guarding the practices that lead to better software quality.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Of course, quality cannot be measured, but there are disciplines that lead to it. Pair programming, test driven development (TDD), refactoring and code reviews among others, bring a set of very important advantages like collective code ownership, improved code design, living documentation (tests) and automated regression test suites (more on this on &lt;a class=&#34;link&#34; href=&#34;https://nvoulgaris.com/agile-code&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Agile code&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Returning to the original question, in my opinion, technical background is a critical skill for a scrum master. Things are rarely black or white, but how is a scrum master coming from (say) a business school able to deeply understand the importance of TDD? Why would she value pair programming against the common belief that it slows the team down? How is she in a position to understand the significance and implications of deploying on production or how much does a defect cost and how it should be prioritized and treated by the team?&lt;/p&gt;

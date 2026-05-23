@@ -22,7 +22,8 @@
 &lt;/h2&gt;&lt;p&gt;The primary goal of a scrum master remains the same whether the retrospective is taking place remotely or colocated. It is to make sure that &lt;strong&gt;all participants engage in the activity&lt;/strong&gt;. This is a precondition. I cannot imagine a successful session that fails to meet this. When I drive retrospectives, this is the primary reason for which I use the &lt;em&gt;&amp;ldquo;set the stage&amp;rdquo;&lt;/em&gt; step.&lt;/p&gt;
 &lt;p&gt;We will discuss a few extra points on this topic further below, on the &lt;em&gt;facilitation&lt;/em&gt; part, but the reason that I am mentioning it here is that being remote imposes a few extra difficulties. So, before even starting the session, I would propose to &lt;em&gt;focus on communication&lt;/em&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Without communication, there is no engagement and without engagement, there is no retrospective.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Without communication, there is no engagement and without engagement, there is no retrospective.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Therefore I would propose to spend some time both during the preparation of the session and at the beginning of it to make sure that &lt;em&gt;people can be seen, heard and understood&lt;/em&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;use-the-camera&#34;&gt;Use the camera
 &lt;/h3&gt;&lt;p&gt;Using the camera is a great tip for remotely working teams. I find it particularly important during the retrospective. It feels very different conversing with just a voice than with an individual who is located somewhere else. Context and a great deal of expressivity derives from our body language. A lot of our reactions are expressed via it, using facial expressions or hand gestures, without verbal communication. Take a moment to think of how much volume of information is missed when listening to someone without seeing him.&lt;/p&gt;
@@ -77,7 +78,8 @@
 &lt;/h2&gt;&lt;p&gt;Before we even begin talking about how to carry out successful retrospectives, let&amp;rsquo;s think for a moment why we have them in the first place. This meeting is a key part of the ever ending &lt;em&gt;inspect and adapt&lt;/em&gt; loop. It&amp;rsquo;s the team&amp;rsquo;s official slot reserved for thinking what we did during the last sprint and how could we improve it.&lt;/p&gt;
 &lt;p&gt;Bear in mind that this is the &lt;em&gt;last resort&lt;/em&gt; for improvement. The proper moment is &lt;em&gt;any&lt;/em&gt; moment. As soon as we know that something could be improved, we should try to improve it right away. When you come across any pain point, don&amp;rsquo;t forget that &lt;strong&gt;the retrospective is now!&lt;/strong&gt; However, this runs the great risk of never prioritizing and never doing it and therefore, the sprint retrospective is there to force us to work on these issues.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The goal of a retrospective is to produce action items&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The goal of a retrospective is to produce action items&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;structure&#34;&gt;Structure
 &lt;/h2&gt;&lt;p&gt;One of the great pitfalls to be avoided is not preparing a retrospective before facilitating it. Structure and preparation are &lt;strong&gt;key&lt;/strong&gt; to the success of the retrospective and there is a reason for it. Team members often get emotional or carried away when engaged in retrospective conversations (they are supposed to after all) and it can be very easy to lose sight of the goal and spend the session in a meaningless way.&lt;/p&gt;
 &lt;p&gt;Always make sure that you know &lt;strong&gt;exactly&lt;/strong&gt; how the session unfolds relative to the schedule. Is it going too slow? Are we spending too much time on this topic? How far behind are we? Can we cover it and in which way? &lt;em&gt;Always make sure that there is enough time to reach to action items.&lt;/em&gt;&lt;/p&gt;
@@ -111,9 +113,11 @@
 &lt;/h2&gt;&lt;p&gt;Perhaps the biggest pitfall for a retrospective is to come up with action items that are not &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/SMART_criteria&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;SMART&lt;/a&gt;. There is a huge difference between &lt;em&gt;action items&lt;/em&gt; and &lt;em&gt;wishful thinking&lt;/em&gt;. For instance, consider the following two outcomes of a team&amp;rsquo;s retrospective:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Improve collective ownership of the code.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Improve collective ownership of the code.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;No self merges. All code will be reviewed by at least one more engineer before being merged. Bob will monitor it and in the next retrospective will let us know if we succeeded or not.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Do you see the difference? For an action item to be meaningful, it has to be:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Specific&lt;/li&gt;

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/how-getters-and-setters-harm-encapsulation/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="How getters and setters harm encapsulation">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="How getters and setters harm encapsulation">
 <meta property='og:description' content="Think twice before exposing the implementation details of a class">
 <meta property='og:url' content='//localhost:1313/how-getters-and-setters-harm-encapsulation/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -655,7 +655,8 @@
 </h2><p>The gist behind the notion of encapsulation is that the <em>objects should not reveal their internals</em> (implementation details) <em>to the outside world</em> (other objects). They should be like black boxes, providing an interface for the world, allowing it to tell them what needs to be done. All the details of <em>how</em> they achieve the tasks that are <em>told</em> to achieve it&rsquo;s <em>their</em> business and no one else&rsquo;s.</p>
 <p>In a technical level, an object exposes a set of public methods (API) and probably uses variables and data structures to manage it&rsquo;s state in order to perform the tasks that it&rsquo;s told to perform.</p>
 <blockquote>
-<p>Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.</p></blockquote>
+<p>Encapsulation mandates that the state of the object should be kept private, unknown to the external world, at any given time.</p>
+</blockquote>
 <h2 id="the-problem-with-getters-and-setters">The problem with getters and setters
 </h2><p>This is exactly where <code>getters</code> and <code>setters</code> enter the picture. Conventional wisdom has it that since the object&rsquo;s properties are to remain &ldquo;hidden&rdquo;, they should be wrapped by a <code>getter</code> and <code>setter</code> each, enabling the external world to &ldquo;access&rdquo; them, without learning about the object&rsquo;s state. Now, pause for a minute and read this last sentence once again before proceeding. <em>Does it make any sense at all?</em> At the end of the day, what difference does it make if we are to use the properties either directly or via their wrapper <code>getter</code> and <code>setter</code>? Essentially we are messing with the object&rsquo;s state in either case - which is quite overtly exposed to the public via these methods.</p>
 <h2 id="an-example">An example
@@ -679,7 +680,8 @@
 <h2 id="tell-dont-ask">Tell, don&rsquo;t ask
 </h2><p>Some of you might have already noticed that these ideas start to sound a lot like the <em>Tell, don&rsquo;t ask</em> principle (also known as <em>Law of Demeter</em>). (In case you&rsquo;re not familiar with this principle, feel free to look it up online as I will not delve into its details in this post). The essence behind the principle, which is in total accordance with the previously expressed ideas is that objects are not to be treated as data structures. Splitting the data and the operations on these data in different objects is not wise.</p>
 <blockquote>
-<p>Data and functionality that depends on these data belong in the same object</p></blockquote>
+<p>Data and functionality that depends on these data belong in the same object</p>
+</blockquote>
 <h2 id="a-story-and-a-lesson-learned">A story and a lesson learned
 </h2><p>Once, while working for a company heavily based on microservices, I had to implement a small feature in a microservice I wasn&rsquo;t normally contributing to. While studying the code I quickly realized that it was a common practice to access class properties directly. I actually ended up walking into a tech leads meeting trying to explain both what encapsulation is and why it would be beneficial to use it, by wrapping properties with <code>getters</code> and <code>setters</code>.</p>
 <p>Eventually, I failed to pass the message (at least adequately enough to initiate a change), which made me sad, but what made me even sadder was the realization, later in my life, that even if I had convinced this group of people to start using <code>getters</code> and <code>setters</code> instead of directly accessing the properties, essentially not a thing would have been changed in terms of the quality of the code and the product.</p>
@@ -792,7 +794,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

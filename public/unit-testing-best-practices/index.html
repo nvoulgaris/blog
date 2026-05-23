@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/unit-testing-best-practices/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Unit testing best practices">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Unit testing best practices">
 <meta property='og:description' content="Taking unit tests to the next level">
 <meta property='og:url' content='//localhost:1313/unit-testing-best-practices/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -646,16 +646,19 @@
     >Tripsta</a>, I am required to deliver a training on unit testing basics. I would like to share the most valuable techniques, methodologies and best practices that I have collected over the years. I believe that they constitute the pillars of a solid foundation that every developer should have.</p>
 <p>It may be a bit unconventional (the way I love it), but before we even start, let me clarify the two most important things that tests <strong>are not</strong>.</p>
 <blockquote>
-<p>Tests are not nice to have</p></blockquote>
+<p>Tests are not nice to have</p>
+</blockquote>
 <blockquote>
-<p>Tests are not negotiable</p></blockquote>
+<p>Tests are not negotiable</p>
+</blockquote>
 <p>When I hear phrases like <em>&ldquo;If we have time, we&rsquo;ll write some tests too&rdquo;</em> or <em>&ldquo;It costs 13 story points, but since there is no time, we can  make it 8 if we don&rsquo;t write tests&rdquo;</em> I want to quit my job and sell greengrocery for a living. Tests should be an integral part of writing software.</p>
 <p>I could use a lot of lines talking about the necessity of writing unit tests, the benefits they provide and how they should be an integral part of the software development process instead of just a verification layer (<em>hint: TDD</em>),  but that is another blog post on its own. So, let&rsquo;s delve into a handful of best practices which I have come to value over the years.</p>
 <h2 id="best-practices">Best practices
 </h2><h3 id="naming">Naming
 </h3><p>Some people are bad at naming. Some other (such as me) are terrible at it. In any case, taking the time to come up with a proper name for everything in our code <em>is worth it</em>. Regardless of how much time we need. Uncle Bob (Robert Martin) likes to say <em>&ldquo;with code, we do more reading than writing, by a huge factor. Which of those operations should be made efficient?&rdquo;</em> Naming <strong>matters</strong>!! If I were to give you a single piece of advice on naming, it would be the following:</p>
 <blockquote>
-<p>Write the tests you&rsquo;d want to read</p></blockquote>
+<p>Write the tests you&rsquo;d want to read</p>
+</blockquote>
 <p>Before stop writing a test and moving to the production code, ask yourself these two questions:</p>
 <ul>
 <li>Does the test clearly express its behavior?</li>
@@ -663,7 +666,8 @@
 </ul>
 <p>Usually, a developer that struggles to come up with a proper name will settle for a mediocre one, that does not express behavior properly, or even a bad one, which is hard to understand and misleads its reader.</p>
 <blockquote>
-<p>Tests should be a documentation of the module&rsquo;s behavior?</p></blockquote>
+<p>Tests should be a documentation of the module&rsquo;s behavior?</p>
+</blockquote>
 <p>Whenever we come across a piece of code that we did not write, we want to be able to read its test suite and figure out what this piece of code does. So, take the time (however much you need) to name your tests (and the variables and functions in them) as best as you can and when you come across a mediocre or a bad name, <em>change it to something better</em> (leaving the code cleaner than you found it, as Uncle Bob would say).</p>
 <p>Also, keep in mind that things change and, especially in the world of computer science, they do so rapidly. There is nothing wrong in starting off with a technique and shifting to a new one when you identify benefits to it. For instance, my team and I worked on a greenfield project almost a year ago and initially adopted the following naming convention:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AccountTest</span> {
@@ -685,7 +689,8 @@
 <h3 id="isolation">Isolation
 </h3><p>This whole point I want to make on isolation can be summarized in the following sentence:</p>
 <blockquote>
-<p>Tests should leave the system in the state that they found it</p></blockquote>
+<p>Tests should leave the system in the state that they found it</p>
+</blockquote>
 <p>The last thing that we would like to face is 10 failing tests as a result of a single failure that dragged the following 9 tests with it. When we see x tests failing, we should know that there are exactly x problems with the system. Whenever a test is failing, it should clearly declare a single aspect of the software that is not functioning properly and point us to it immediately (by its name and the failure).</p>
 <p>In order to achieve this, we should ensure that our test, even when it fails, will restore the system to the exact situation it found it and it won&rsquo;t leave it dirty. Each test should not know and care if another one run before it (let alone if it failed or not).</p>
 <h3 id="watch-the-test-fail">Watch the test fail
@@ -734,7 +739,8 @@
 <h3 id="single-assertion">Single assertion
 </h3><p>How many assertions should a test have? The answer should always be <em>one</em>. What message is a red bar sending to us? That something is wrong in the system. Which is our reflex move? To find out what is this. This is exactly why we want our tests to be shouting out loud the reason for their failure. If a test fails, we should know, just by reading its name, what the problem is. How can this happen if a test fails for multiple reasons though?</p>
 <blockquote>
-<p>Unit tests should fail for one and only one reason</p></blockquote>
+<p>Unit tests should fail for one and only one reason</p>
+</blockquote>
 <p>Watch out for a common misconception though. The following test, contains two assertions. Does it violate the single assertion rule?</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">calculatorShouldGeneratePositiveEvenIntegers</span>() {
@@ -833,7 +839,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">

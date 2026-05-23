@@ -20,7 +20,8 @@
 &lt;/h2&gt;&lt;p&gt;Pair programming is an extreme programming (XP) practice. According to Kent Beck&amp;rsquo;s book, &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;em&gt;&amp;ldquo;Extreme Programming Explained: Embrace Change&amp;rdquo;&lt;/em&gt;&lt;/a&gt; it is&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;A programming technique where two people program with one keyboard, one mouse, and one monitor&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;So, essentially, two software engineers, working on the same task, in a single machine. Two roles are defined and used by the participants, ideally swapped frequently: the &lt;em&gt;driver&lt;/em&gt; and the &lt;em&gt;navigator&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;driver&lt;/strong&gt; is writing the code, focusing on the task in hand and in the micro view of the code.&lt;/li&gt;
@@ -35,7 +36,8 @@
 &lt;p&gt;Apart from roles, make sure to also &lt;em&gt;switch pairs frequently&lt;/em&gt;. In case the whole team is pairing amongst themselves, perhaps it could be a daily scrum discussion. I&amp;rsquo;ve heard of teams, which pair by default, that apply a soft and hard swaps a couple of times throughout the week. So, for instance, every Monday, there is a &lt;em&gt;soft swap&lt;/em&gt; and people are free to either continue pairing with their colleague or swap to work on another task or with someone else and every Wednesday there is a &lt;em&gt;hard swap&lt;/em&gt;, in which people actually have to switch pairs. No matter which method you use, I would suggest making sure that pairs are rotated frequently.&lt;/p&gt;
 &lt;p&gt;Arguably, the best results out of pair programming come when people of the same level and expertise work together (for instance novice-novice or expert-expert). However, I would encourage you to also try mixing it up a bit and have expert - novice pairs. In this case, pay extra attention to not having the expert driving a lot! If anything, make sure that the novice is driving more, otherwise, you may end up with the novice &lt;em&gt;watching&lt;/em&gt; the expert programming, getting lost and giving up soon. Also, an expert may be particularly unwilling to pair with a novice, believing that it will slow her down. It will! but always remember that&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Pair programming may slow the expert down for a few hours, but it will speed the novice up for the rest of her life&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;why-bother&#34;&gt;Why bother
 &lt;/h2&gt;&lt;p&gt;Now, the first reaction of people that have not used the practice is scepticism, to say the least. After all, it sounds very counter-intuitive at first. Why have two people doing the work that one of them would originally do anyway? So, let&amp;rsquo;s talk a little bit about the benefits of pair programming.&lt;/p&gt;
 &lt;h3 id=&#34;the-sum-is-greater-than-the-parts&#34;&gt;The sum is greater than the parts
@@ -180,10 +182,12 @@
 &lt;p&gt;Before &lt;em&gt;agile&lt;/em&gt;, managers and (if lucky) representatives of the development team entered a meeting room in order to discuss (and agree on) any potential aspect and detail of an upcoming project, documenting everything. Then, the development team would come up with a plan to implement everything that document described. Therefore, they would &amp;ldquo;lock&amp;rdquo; themselves up, pursuing the coveted end state, which, of course, was thoroughly described in the document. After the implementation completion (which included a considerably large testing period), the outcome was delivered to the customer, finally engaging in a feedback loop, only to find out that - guess what - change was needed (let alone that half the features were not needed and would never be used). By its nature, this approach is cumbersome and does not embrace change. Locking yourself to a plan and blindly sticking with it jeopardizes becoming outdated with respect to new priorities. Think about it. How soon in the process can the customer realize that a change is needed? How can this be accommodated  in the above mentioned life cycle? How can this model deal with changing priorities?&lt;/p&gt;
 &lt;p&gt;In February 2001, seventeen people got together to discuss (what they perceived as) the problem in the way we build software and, by composing the &lt;em&gt;Agile&lt;/em&gt; Manifesto, proposed a mindset centered around the creation of a short feedback loop. Therefore, the newly proposed idea proposed that we do not blindly stick to the (long term) plan anymore. We do a little bit of work, involve the customer seeking feedback, inspect the current state, adapt to the feedback and repeat the cycle.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The way change is perceived is fundamentally altered, embracing it instead of considering it undesired. Now change is turned into an opportunity.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;In my opinion, the key difference between the two approaches lies in the fact that &lt;em&gt;agile&lt;/em&gt; detaches the software from the illusion of the end state. There is no end state. There will never be one.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;As long as the business is live, the software lives and evolves with it.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;making-a-company-agile&#34;&gt;Making a company Agile
 &lt;/h2&gt;&lt;p&gt;Being influenced is not a bad thing on its own. Blindly (or even worse, dogmatically) embracing a new idea is what I consider one of the greatest pitfalls out there tough. Being influenced is great, so long as one filters and challenges everything. Deciding to undergo the vast transformation that is required for a company in order to become &lt;em&gt;agile&lt;/em&gt; needs to go through some extra filtering. Knowing &lt;em&gt;why&lt;/em&gt; should it go after such a radical transformation and therefore, what is expected out of it are keys to the its success. Needless to say, just because it is trendy or some other company did it successfully do not suffice as reasoning. Sometimes, a bit of constructive criticism could be just what is needed to get us on the right track on understanding these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Usually, companies that haven&amp;rsquo;t got into the trouble of clarifying these &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt; prior to embarking on the transformation, find themselves hiring an &lt;em&gt;agile&lt;/em&gt; coach who is supposed to magically move his wand, speak the right words and&amp;hellip; boom! We&amp;rsquo;re &lt;em&gt;agile&lt;/em&gt; now. More often than not, a few months later, they find themselves with a shiny new process, but writing code in the exact same way and facing the same old problems. A few more months later, they find themselves wondering why this &lt;em&gt;agile&lt;/em&gt; transformation did not pay off and why does it still take so long to solve a critical bug on production. Why is there a critical bug on production in the first place?&lt;/p&gt;
@@ -200,14 +204,16 @@
 &lt;p&gt;TDD is a workflow that emphasizes on making us write &lt;strong&gt;the best code that we can write&lt;/strong&gt; (by constantly asking &lt;em&gt;&amp;ldquo;can you make it better?&amp;rdquo;&lt;/em&gt;&amp;quot;). If practiced right, it encourages &lt;strong&gt;better design&lt;/strong&gt; (more cohesive and loosely coupled components), provides &lt;strong&gt;documentation&lt;/strong&gt; (via executable examples, a.k.a. tests) and, when done with a feature, the &lt;strong&gt;automated regression test suite&lt;/strong&gt; comes for free.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As if the above mentioned are not sufficient, I could never stress enough the importance of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Shift_left_testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;left shift&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;left shift&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous integration
 &lt;/h3&gt;&lt;p&gt;How quickly can we get our latest code, safely to production? How often do we have to integrate our code and face conflicts while doing so? &lt;em&gt;We should always be working on the latest version of  the code&lt;/em&gt;. We should frequently push to our Version Control Systems (VCS) and check the code out in order to avoid delays and nightmare conflicts later on. Having a continuous integration system helps us work in a more &lt;em&gt;professional&lt;/em&gt; way.&lt;/p&gt;
 &lt;h3 id=&#34;code-review&#34;&gt;Code review
 &lt;/h3&gt;&lt;p&gt;At least two people should sign the code off. Review the code often. Make sure that the team trusts one another as it will free them to be relentless, which will only work to the team&amp;rsquo;s benefit.&lt;/p&gt;
 &lt;p&gt;Use different review styles: over the shoulder review, pair programming or an official session, with the whole team present, dedicated to the task. Whichever the style, &lt;strong&gt;review in essence!&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Challenge the code design, propose alternatives and work the trade-offs that they present themselves.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Talk about performance, maintainability, business needs (without meaning that code formatting for instance should be neglected). Plan a review early enough to provide sufficient time to adapt to changes.&lt;/p&gt;
 &lt;h3 id=&#34;refactoring&#34;&gt;Refactoring
 &lt;/h3&gt;&lt;p&gt;Martin Fowler, in his wonderful book &lt;a class=&#34;link&#34; href=&#34;https://www.goodreads.com/book/show/44936.Refactoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

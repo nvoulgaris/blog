@@ -291,7 +291,8 @@ Example: Provide a before/after code snippet.
 &lt;h2 id=&#34;if-you-cant-explain-it-dont-ship-it&#34;&gt;If you can’t explain it, don’t ship it
 &lt;/h2&gt;&lt;p&gt;In my opinion, there is a red line that should &lt;strong&gt;never&lt;/strong&gt; be crossed.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Never ship code that you cannot understand!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Never ship code that you cannot understand!&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;It doesn&amp;rsquo;t matter whether the code came from AI, Stack Overflow, or a colleague. It doesn&amp;rsquo;t matter if the tests pass. It doesn&amp;rsquo;t matter if the tool has the best reputation. If you can&amp;rsquo;t explain what it does, why it works, and how it fits into the broader system, it shouldn&amp;rsquo;t be checked in.&lt;/p&gt;
 &lt;p&gt;AI tools can generate code that works, or at least appears to. But correctness is not the same as clarity. If you can&amp;rsquo;t walk someone through the logic or reason for its behavior under edge conditions, you&amp;rsquo;re taking a blind risk.&lt;/p&gt;
 &lt;p&gt;This isn&amp;rsquo;t just about debugging or maintenance. It&amp;rsquo;s about ownership. Once the code is merged, it&amp;rsquo;s your responsibility. If it breaks or causes problems later, you can’t blame the tool.&lt;/p&gt;

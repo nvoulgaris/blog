@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='//localhost:1313/open-closed-principle-a-case-study/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Open-Closed principle: a case study">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Open-Closed principle: a case study">
 <meta property='og:description' content="Understanding the meaning of open for extension, but closed for modification">
 <meta property='og:url' content='//localhost:1313/open-closed-principle-a-case-study/'>
 <meta property='og:site_name' content='Nikos Voulgaris'>
@@ -19,7 +19,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7643KK7Q6D"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -673,7 +673,8 @@
     >Clean Architecture</a>). As formulated by Bertrand Meyer in <a class="link" href="https://www.goodreads.com/book/show/946106.Object_Oriented_Software_Construction?ac=1&amp;from_search=true"  target="_blank" rel="noopener"
     >Object Oriented Software Construction</a>, it states that</p>
 <blockquote>
-<p>A software artifact should be open for extension but closed for modification.</p></blockquote>
+<p>A software artifact should be open for extension but closed for modification.</p>
+</blockquote>
 <p>Contradictory as it may sound, there&rsquo;s a lot of wisdom in that sentence. Essentially, we should be able to extend the behavior of a module, without having to actually modify its code. That resembles a lot what we discussed earlier. When we want to add a feature (behavior), we should <em>add</em> some code instead of <em>modifying</em> the existing code.</p>
 <p>Since this is a notoriously difficult to understand principle (perhaps due to the contradiction when articulated), let&rsquo;s apply it to the input validation problem, that we analyzed earlier.</p>
 <h2 id="ocp-compliant-validation">OCP compliant validation
@@ -856,7 +857,7 @@ s.setAttribute('data-timestamp', +new Date());
         
             2018 - 
         
-        2025 Nikos Voulgaris
+        2026 Nikos Voulgaris
     </section>
     
     <section class="powerby">
